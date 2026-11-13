@@ -19,7 +19,7 @@ MODEL = "@cf/black-forest-labs/flux-1-schnell"
 
 def _one(prompt, steps, account, token, seed):
     url = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{MODEL}"
-    body = {"prompt": prompt, "steps": int(steps), "seed": int(seed)}
+    body = {"prompt": prompt, "steps": int(steps)}
     for attempt in range(1, 5):
         r = requests.post(url, headers={"Authorization": f"Bearer {token}"}, json=body, timeout=180)
         if r.status_code == 200:

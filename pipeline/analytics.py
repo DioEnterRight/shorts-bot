@@ -9,6 +9,11 @@ from .common import env, load_history, log, now_ist, save_history
 def main():
     history = load_history()
     cutoff = now_ist() - dt.timedelta(days=30)
+    # YouTube Developer Policies III.E.4: don't keep YouTube data older than 30 days unrefreshed.
+    # Old videos keep only their aggregate stats (allowed for authorized analytics); the YouTube video ID is removed.
+    for v in history["videos"]:
+        if v.get("published_at") and dt.datetime.fromisoformat(v["published_at"]) <= cutoff:
+            v.pop("yt_video_id", None)
     recent = [v for v in history["videos"] if v.get("status") == "published"
               and dt.datetime.fromisoformat(v["published_at"]) > cutoff]
     if not recent:
@@ -28,6 +33,13 @@ def main():
                 v.setdefault("metrics", {}).update(yt[v["yt_video_id"]])
     except Exception as e:  # noqa: BLE001
         log(f"YouTube stats skipped: {e}")
+        if "invalid_grant" in str(e):
+            # Access was revoked in Google security settings -> delete stored YouTube data (Developer Policies III.D)
+            for v in history["videos"]:
+                v.pop("yt_video_id", None)
+                for k in [k for k in v.get("metrics", {}) if k.startswith("yt_")]:
+                    v["metrics"].pop(k)
+            log("YouTube access revoked: stored YouTube data deleted.")
     for v in recent:
         if v.get("metrics"):
             age = (now_ist() - dt.datetime.fromisoformat(v["published_at"])).days
