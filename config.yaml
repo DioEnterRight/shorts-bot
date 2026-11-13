@@ -1,0 +1,73 @@
+# ============================================================
+#  SHORTS BOT SETTINGS  —  the only file you normally edit
+# ============================================================
+
+# Emergency stop. Set to true and nothing gets made or posted.
+paused: false
+
+channel:
+  # What the channel is about. Claude picks daily topics from this.
+  niche: >-
+    Weird science explainers: what happens inside your body, bizarre
+    "what if" scenarios, animal superpowers, how everyday things really
+    work, strange history moments. Curious, slightly dark, funny.
+  language: en-us
+
+video:
+  target_seconds: 35      # Claude aims for this length (30-45 works best)
+  width: 1080
+  height: 1920
+  fps: 30
+
+# ------------------------------------------------------------
+#  VISUALS  <<< HIGGSFIELD SWAP SLOT >>>
+#   cloudflare_flux   = free AI pictures + camera motion (default now)
+#   higgsfield_clips  = real AI motion clips from Higgsfield, our voice/captions
+#   higgsfield_full   = Higgsfield makes the whole finished video
+#   placeholder       = plain test cards (used by test mode only)
+# ------------------------------------------------------------
+visuals:
+  provider: cloudflare_flux
+  # Added in front of every picture prompt so every video looks the same.
+  style_prefix: >-
+    Stylized 3D CGI render, glossy clay-like materials, soft subsurface
+    skin, dramatic studio rim lighting, dark vignette background, slightly
+    exaggerated cartoon proportions, cinematic close-up, highly detailed,
+    clean and readable, vertical composition, main subject centered
+  style_suffix: "no text, no letters, no captions, no watermark, no logo"
+  # Our own recurring character. Claude writes [GUY] and it becomes this.
+  mascot: >-
+    a bald smooth-skinned stylized 3D cartoon man with big expressive eyes,
+    wearing a plain grey t-shirt
+  flux_steps: 8           # 4-8. Higher = nicer, still free
+
+voice:
+  voice: am_michael       # Kokoro voice. Others: am_adam, am_onyx, bm_george
+  speed: 1.12             # 1.0 = normal. Zack-style is a bit fast
+  gap_seconds: 0.10       # pause between lines
+
+captions:
+  words_per_chunk: 2
+  font: Anton
+  font_size: 185
+  color: "FFFFFF"         # normal words (hex RGB)
+  highlight: "FFE600"     # keyword colour (hex RGB)
+  position_from_bottom: 640
+
+audio:
+  music_volume_db: -22    # background music under the voice
+  sfx_volume_db: -8
+  caption_pops: true      # tiny pop sound on each caption
+
+publish:
+  post_time_ist: "19:00"  # info only — real time is set in .github/workflows/publish.yml
+  instagram: true
+  # youtube_mode:
+  #   manual = bot sends you a GitHub notification with the file + title to upload
+  #   api    = fully automatic (only after Google approves your API audit)
+  #   off    = skip YouTube
+  youtube_mode: manual
+  hashtags_max: 5
+
+# How many finished videos to keep ready as backup (protects against a bad day).
+buffer: 2

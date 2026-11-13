@@ -1,0 +1,5 @@
+- Hook in the first 2 seconds: a visceral "what happens if" or "why does your body" question.
+- One idea per video. Cut every 3-5 seconds.
+- Put the viewer in it: "you", "your".
+- One deadpan joke near the end; end on a line that loops back to the hook.
+- (Claude rewrites this list every Sunday from real stats.)

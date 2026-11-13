@@ -1,0 +1,50 @@
+name: Post video
+
+on:
+  schedule:
+    - cron: "27 13 * * *"   # every day ~18:57 India time (GitHub may run it a few minutes late)
+  workflow_dispatch: {}
+
+concurrency:
+  group: shorts-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q requests pyyaml google-api-python-client google-auth
+
+      - name: Post to Instagram + YouTube
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_PAGE_TOKEN: ${{ secrets.IG_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m pipeline.publish
+
+      - name: Save memory
+        if: always()
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "bot: posted $(date -u +%F)"
+          git pull --rebase -q || true
+          git push || true
