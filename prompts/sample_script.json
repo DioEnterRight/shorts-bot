@@ -1,21 +1,76 @@
 {
   "topic": "What happens if you swallow chewing gum",
+  "setting": "a bright modern kitchen",
   "category": "human_body",
   "hook_type": "what_if",
   "experiment": false,
   "title": "What Happens If You Swallow Gum?",
   "description": "Does gum really stay in your stomach for seven years? Here is the real journey.",
-  "hashtags": ["#science", "#humanbody", "#didyouknow"],
-  "facts_checked": ["Gum base is not digested but passes through in days -> mayoclinic.org"],
+  "hashtags": [
+    "#science",
+    "#humanbody",
+    "#didyouknow"
+  ],
+  "facts_checked": [
+    "Gum base is not digested but passes through in days -> mayoclinic.org"
+  ],
   "scenes": [
-    {"line": "What happens if you swallow a piece of chewing gum?", "visual": "[GUY] frozen mid-gulp with a pink gum ball sliding down his throat, x-ray cutaway of his neck", "motion": "punch_in", "sfx": "whoosh", "emphasis": "swallow"},
-    {"line": "First, it slides down your esophagus like a tiny pink submarine.", "visual": "cutaway of a pink fleshy tube with a small pink gum ball sliding down it", "motion": "pan_down", "sfx": "none", "emphasis": "submarine"},
-    {"line": "Then it splashes into your stomach, a bubbling pool of acid.", "visual": "a pink gum ball splashing into a glowing green bubbling acid pool inside a stomach cavern", "motion": "shake", "sfx": "hit", "emphasis": "acid"},
-    {"line": "The acid melts the sugar and flavor in minutes.", "visual": "macro view of a gum ball losing its colour while tiny sugar crystals dissolve around it", "motion": "zoom_in", "sfx": "none", "emphasis": "minutes"},
-    {"line": "But the rubbery gum base? Your body can't break it down.", "visual": "tiny cartoon stomach enzymes pulling on a stretchy grey rubber blob that refuses to tear", "motion": "pan_right", "sfx": "boing", "emphasis": "rubbery"},
-    {"line": "So it just rides along with everything else you ate.", "visual": "a grey gum blob riding on top of food chunks through a winding intestine tunnel like a water slide", "motion": "pan_left", "sfx": "whoosh", "emphasis": "rides"},
-    {"line": "And a few days later, it leaves the same way everything does.", "visual": "[GUY] sitting on a toilet reading a newspaper looking relieved, cartoon style", "motion": "zoom_out", "sfx": "pop", "emphasis": "leaves"},
-    {"line": "Seven years? Nope. Just a very awkward road trip.", "visual": "a grey gum blob wearing tiny sunglasses waving goodbye from inside a cartoon tunnel", "motion": "punch_in", "sfx": "boing", "emphasis": "road"}
+    {
+      "line": "What happens if you swallow a piece of chewing gum?",
+      "visual": "[GUY] frozen mid-gulp with a pink gum ball sliding down his throat, x-ray cutaway of his neck",
+      "motion": "punch_in",
+      "sfx": "whoosh",
+      "emphasis": "swallow"
+    },
+    {
+      "line": "First, it slides down your esophagus like a tiny pink submarine.",
+      "visual": "cutaway of a pink fleshy tube with a small pink gum ball sliding down it",
+      "motion": "pan_down",
+      "sfx": "none",
+      "emphasis": "submarine"
+    },
+    {
+      "line": "Then it splashes into your stomach, a bubbling pool of acid.",
+      "visual": "a pink gum ball splashing into a glowing green bubbling acid pool inside a stomach cavern",
+      "motion": "shake",
+      "sfx": "hit",
+      "emphasis": "acid"
+    },
+    {
+      "line": "The acid melts the sugar and flavor in minutes.",
+      "visual": "macro view of a gum ball losing its colour while tiny sugar crystals dissolve around it",
+      "motion": "zoom_in",
+      "sfx": "none",
+      "emphasis": "minutes"
+    },
+    {
+      "line": "But the rubbery gum base? Your body can't break it down.",
+      "visual": "tiny cartoon stomach enzymes pulling on a stretchy grey rubber blob that refuses to tear",
+      "motion": "pan_right",
+      "sfx": "boing",
+      "emphasis": "rubbery"
+    },
+    {
+      "line": "So it just rides along with everything else you ate.",
+      "visual": "a grey gum blob riding on top of food chunks through a winding intestine tunnel like a water slide",
+      "motion": "pan_left",
+      "sfx": "whoosh",
+      "emphasis": "rides"
+    },
+    {
+      "line": "And a few days later, it leaves the same way everything does.",
+      "visual": "[GUY] sitting on a toilet reading a newspaper looking relieved, cartoon style",
+      "motion": "zoom_out",
+      "sfx": "pop",
+      "emphasis": "leaves"
+    },
+    {
+      "line": "Seven years? Nope. Just a very awkward road trip.",
+      "visual": "a grey gum blob wearing tiny sunglasses waving goodbye from inside a cartoon tunnel",
+      "motion": "punch_in",
+      "sfx": "boing",
+      "emphasis": "road"
+    }
   ],
   "playbook_update": ""
 }

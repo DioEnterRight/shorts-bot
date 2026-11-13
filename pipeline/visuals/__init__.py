@@ -16,7 +16,9 @@ def build_prompt(cfg, visual):
 
 
 def get_provider(name):
-    if name == "cloudflare_flux":
+    if name == "cloudflare_klein":
+        from . import cloudflare_klein as mod
+    elif name == "cloudflare_flux":
         from . import cloudflare_flux as mod
     elif name == "placeholder":
         from . import placeholder as mod

@@ -21,25 +21,29 @@ video:
 
 # ------------------------------------------------------------
 #  VISUALS  <<< HIGGSFIELD SWAP SLOT >>>
-#   cloudflare_flux   = free AI pictures + camera motion (default now)
+#   cloudflare_klein  = free AI pictures, SAME character + style every scene (default now)
+#   cloudflare_flux   = older free mode (every picture separate)
 #   higgsfield_clips  = real AI motion clips from Higgsfield, our voice/captions
 #   higgsfield_full   = Higgsfield makes the whole finished video
 #   placeholder       = plain test cards (used by test mode only)
 # ------------------------------------------------------------
 visuals:
-  provider: cloudflare_flux
+  provider: cloudflare_klein
   # Added in front of every picture prompt so every video looks the same.
   style_prefix: >-
-    Stylized 3D CGI render, glossy clay-like materials, soft subsurface
-    skin, dramatic studio rim lighting, dark vignette background, slightly
-    exaggerated cartoon proportions, cinematic close-up, highly detailed,
-    clean and readable, vertical composition, main subject centered
-  style_suffix: "no text, no letters, no captions, no watermark, no logo"
+    Still frame from a high-end 3D animated explainer short, realistic
+    smooth CGI like a modern animated film, natural skin and materials,
+    soft cinematic lighting, clean uncluttered everyday environment,
+    medium shot, one clear action, sharp focus, vertical 9:16 composition,
+    main subject centered
+  style_suffix: "no text, no letters, no captions, no watermark, no logo, no split panels"
   # Our own recurring character. Claude writes [GUY] and it becomes this.
+  # (The bot draws him once, saves data/mascot.png, and reuses that picture as a reference forever.
+  #  Delete data/mascot.png to get a new character.)
   mascot: >-
-    a bald smooth-skinned stylized 3D cartoon man with big expressive eyes,
-    wearing a plain grey t-shirt
-  flux_steps: 8           # 4-8. Higher = nicer, still free
+    an ordinary young man in his late 20s with short dark-brown hair, light
+    stubble, friendly face, plain grey t-shirt and dark jeans
+  flux_steps: 8           # only used by cloudflare_flux
 
 voice:
   voice: am_michael       # Kokoro voice. Others: am_adam, am_onyx, bm_george

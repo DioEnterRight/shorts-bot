@@ -1,0 +1,33 @@
+name: Throw away ready videos
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: shorts-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pyyaml
+      - run: python -m pipeline.clear_queue
+      - name: Save memory
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "bot: cleared queue $(date -u +%F)"
+          git pull --rebase -q || true
+          git push || true

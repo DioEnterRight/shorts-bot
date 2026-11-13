@@ -10,7 +10,8 @@ titles or catchphrases.
 
 ## Script rules
 - Target length: about {target_seconds} seconds = {min_words}-{max_words} words total.
-- 6 to 9 scenes. One spoken line per scene, 6-18 words per line.
+- 6 or 7 scenes. One spoken line per scene, 10-18 words per line (each picture
+  stays on screen ~5 seconds, long enough to read it).
 - Line 1 is the HOOK: a visceral question or claim that stops the scroll in under
   2 seconds ("What happens if you swallow a whole bee?"). No greetings, no "today".
 - Middle lines: clear cause -> effect, one step per scene, concrete and visual.
@@ -26,12 +27,24 @@ Before writing, use web search to verify the 2-3 key claims your script depends 
 If a claim cannot be verified, drop it or pick a different topic. List what you
 checked in "facts_checked" (claim -> source domain).
 
-## Visuals (one picture per scene)
-Write each "visual" as a picture description for an image AI: subject, action,
-camera angle, setting. Concrete objects, one clear focal point. Cutaways inside
-bodies/objects are great. When our recurring character appears, write [GUY]
-(it gets replaced by his fixed description). Never ask for text or words in the
-image. Do NOT include style words — style is added automatically.
+## Visuals (one picture per scene) — THE VIDEO MUST MAKE SENSE WITH THE SOUND OFF
+The pictures tell ONE continuous little story with ONE main character, like frames
+from the same animated short. A viewer who only watches must understand what is
+happening.
+- Our main character [GUY] is the viewer's stand-in: put [GUY] in MOST scenes,
+  experiencing the thing ([GUY] swallowing the gum, [GUY]'s hand in water...).
+  Write exactly "[GUY]" — never describe his looks yourself.
+- Decide ONE setting for the whole video (e.g. "a bright modern bathroom") and put
+  it in "setting". Every scene happens there unless the story truly moves.
+- Each "visual" shows LITERALLY what that line says — the most obvious, instantly
+  recognizable picture of it. No metaphors, no symbols, no abstract art.
+- One clear subject and action per picture, medium or close-up shot.
+- Inside-the-body / inside-the-object moments: a clean cutaway or x-ray view of
+  [GUY]'s body part, still clearly part of him. Max 2 such scenes per video.
+- Consecutive scenes should feel connected (same place, continuing action),
+  like a story moving forward — not random stock images.
+- Never ask for text or words in the picture. Do NOT include style words — style
+  is added automatically.
 
 For each scene also pick:
 - "motion": one of punch_in, zoom_in, zoom_out, pan_left, pan_right, pan_up, pan_down, shake
@@ -61,6 +74,7 @@ about 30% try something new. If there is no data yet, just pick the best topic.
 Reply with ONLY one JSON object, no markdown fences, no comments, exactly this shape:
 {{
   "topic": "short topic name",
+  "setting": "the one place the whole video happens, e.g. a bright modern bathroom",
   "category": "human_body | animals | what_if | everyday_science | history | space | food | other",
   "hook_type": "what_if | why | how | did_you_know | myth_busting | ranking",
   "experiment": true or false,
