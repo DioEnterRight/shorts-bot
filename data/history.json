@@ -42,6 +42,34 @@
       "status": "discarded",
       "created": "2026-11-14T04:49+05:30",
       "yt_done": true
+    },
+    {
+      "id": "20261114-211715-why-you-get-brain-freeze",
+      "title": "Why Ice Cream Gives You Brain Freeze (Your Brain Isn't Freezing)",
+      "topic": "Why you get brain freeze",
+      "category": "human_body",
+      "hook_type": "why",
+      "experiment": false,
+      "hook_line": "Why does eating ice cream too fast feel like your brain is under attack?",
+      "duration": 36.51,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261114-211715-why-you-get-brain-freeze",
+      "status": "queued",
+      "created": "2026-11-14T21:20+05:30"
+    },
+    {
+      "id": "20261114-212025-why-onions-make-you-cry",
+      "title": "Why Does Chopping an Onion Make You Cry?",
+      "topic": "Why onions make you cry",
+      "category": "everyday_science",
+      "hook_type": "why",
+      "experiment": false,
+      "hook_line": "Why does chopping one tiny onion make you cry like you just watched a sad movie?",
+      "duration": 33.44,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261114-212025-why-onions-make-you-cry",
+      "status": "queued",
+      "created": "2026-11-14T21:23+05:30"
     }
   ]
 }
