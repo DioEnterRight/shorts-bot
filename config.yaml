@@ -70,7 +70,7 @@ publish:
   #   manual = bot sends you a GitHub notification with the file + title to upload
   #   api    = fully automatic (only after Google approves your API audit)
   #   off    = skip YouTube
-  youtube_mode: manual
+  youtube_mode: api
   hashtags_max: 5
 
 # How many finished videos to keep ready as backup (protects against a bad day).
