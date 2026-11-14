@@ -101,7 +101,11 @@ def _wait(token, cid):
 def publish(video_path, caption, video_url=None):
     ig_id = env("IG_USER_ID", required=True)
     token = env("IG_PAGE_TOKEN", required=True)
-    ig_file = _ig_copy(video_path)
+    try:
+        ig_file = _ig_copy(video_path)
+    except Exception as e:  # noqa: BLE001  (no ffmpeg etc. -> just use the original file)
+        log(f"Instagram re-encode skipped: {e}")
+        ig_file = video_path
 
     attempts = [("file upload", lambda: _upload_file(ig_id, token, caption, ig_file)),
                 ("file upload (retry)", lambda: _upload_file(ig_id, token, caption, ig_file))]
