@@ -55,7 +55,9 @@
       "visuals": "cloudflare_klein",
       "tag": "vid-20261114-211715-why-you-get-brain-freeze",
       "status": "queued",
-      "created": "2026-11-14T21:20+05:30"
+      "created": "2026-11-14T21:20+05:30",
+      "yt_video_id": "z0hpXvrn4DA",
+      "yt_done": true
     },
     {
       "id": "20261114-212025-why-onions-make-you-cry",
