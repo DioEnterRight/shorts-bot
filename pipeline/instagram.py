@@ -84,6 +84,39 @@ def _upload_url(ig_id, token, caption, url):
     return _container(ig_id, token, caption, {"video_url": url})
 
 
+def _temp_public_url(path):
+    """Park the video on a free temporary public host (auto-deletes) so Instagram can fetch it.
+    Needed because Meta's resumable upload only works for 'Facebook Login for Business' apps."""
+    with open(path, "rb") as f:
+        r = requests.post("https://litterbox.catbox.moe/resources/internals/api.php",
+                          data={"reqtype": "fileupload", "time": "12h"},
+                          files={"fileToUpload": ("reel.mp4", f, "video/mp4")}, timeout=300)
+    url = r.text.strip()
+    if r.status_code != 200 or not url.startswith("https://"):
+        raise RuntimeError(f"temporary host refused the file: HTTP {r.status_code} {url[:200]}")
+    log(f"Instagram temp link: {url}")
+    return url
+
+
+def notify_manual(meta, tag):
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    link = f"https://github.com/{repo}/releases/tag/{tag}"
+    body = f"""Instagram auto-post failed, so post this one by hand (about 1 minute):
+
+1. Open **{link}** and download **final.mp4** to your phone
+2. Instagram app -> **+** -> **Reel** -> pick the file
+3. Paste the caption below
+4. Turn on **AI label** if shown, then Share
+
+**Caption**
+```
+{meta.get('caption', '')}
+```
+"""
+    run(["gh", "issue", "create", "--title", f"📱 Post to Instagram: {meta['title'][:60]}", "--body", body],
+        check=False)
+
+
 def _wait(token, cid):
     for _ in range(40):
         time.sleep(15)
@@ -107,10 +140,15 @@ def publish(video_path, caption, video_url=None):
         log(f"Instagram re-encode skipped: {e}")
         ig_file = video_path
 
-    attempts = [("file upload", lambda: _upload_file(ig_id, token, caption, ig_file)),
-                ("file upload (retry)", lambda: _upload_file(ig_id, token, caption, ig_file))]
+    attempts = []
+    # Way A: Instagram downloads from a temporary public link (most reliable for normal Meta apps)
+    attempts.append(("temporary public link",
+                     lambda: _upload_url(ig_id, token, caption, _temp_public_url(ig_file))))
+    # Way B: the GitHub release link (works only when the repo is public)
     if video_url:
-        attempts.append(("public link", lambda: _upload_url(ig_id, token, caption, video_url)))
+        attempts.append(("GitHub release link", lambda: _upload_url(ig_id, token, caption, video_url)))
+    # Way C: direct file push (only works for 'Facebook Login for Business' apps)
+    attempts.append(("direct file upload", lambda: _upload_file(ig_id, token, caption, ig_file)))
 
     cid, errs = None, []
     for name, fn in attempts:
@@ -120,7 +158,7 @@ def publish(video_path, caption, video_url=None):
             _wait(token, c)
             cid = c
             break
-        except RuntimeError as e:
+        except Exception as e:  # noqa: BLE001
             errs.append(f"{name}: {e}")
             log(f"Instagram {name} failed: {str(e)[:400]}")
             time.sleep(20)

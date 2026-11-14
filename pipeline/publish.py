@@ -49,6 +49,7 @@ def main():
                            if os.environ.get("GITHUB_REPOSITORY") else None))
         except Exception as e:  # noqa: BLE001
             errors.append(f"Instagram: {e}")
+            instagram.notify_manual(meta, v["tag"])
 
     mode = p.get("youtube_mode", "manual")
     if mode != "off" and not v.get("yt_done"):
