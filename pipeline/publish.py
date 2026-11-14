@@ -1,6 +1,7 @@
 """POST VIDEO: takes the oldest ready video and posts it."""
 import datetime as dt
 import json
+import os
 import sys
 
 from . import instagram, youtube
@@ -42,7 +43,10 @@ def main():
 
     if p.get("instagram") and not v.get("ig_media_id"):
         try:
-            v["ig_media_id"], v["ig_link"] = instagram.publish(video, meta["caption"])
+            v["ig_media_id"], v["ig_link"] = instagram.publish(
+                video, meta["caption"],
+                video_url=(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/download/{v['tag']}/final.mp4"
+                           if os.environ.get("GITHUB_REPOSITORY") else None))
         except Exception as e:  # noqa: BLE001
             errors.append(f"Instagram: {e}")
 
