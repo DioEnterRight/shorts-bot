@@ -16,7 +16,17 @@
       "yt_done": true,
       "ig_media_id": "18134178448837213",
       "ig_link": "https://www.instagram.com/reel/Dfu5O8ClA4F/",
-      "published_at": "2026-11-15T00:24+05:30"
+      "published_at": "2026-11-15T00:24+05:30",
+      "metrics": {
+        "ig_views": 7,
+        "ig_reach": 6,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 8413
+      },
+      "metrics_age_days": 0
     },
     {
       "id": "20261114-225952-why-you-get-goosebumps",
@@ -31,6 +41,20 @@
       "tag": "vid-20261114-225952-why-you-get-goosebumps",
       "status": "queued",
       "created": "2026-11-14T23:02+05:30"
+    },
+    {
+      "id": "20261115-043843-why-your-fingers-wrinkle-in-wa",
+      "title": "Why Your Fingers Turn Into Raisins in the Bath",
+      "topic": "Why your fingers wrinkle in water",
+      "category": "human_body",
+      "hook_type": "why",
+      "experiment": false,
+      "hook_line": "Why do your fingers turn into raisins when you stay in the bath too long?",
+      "duration": 36.7,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261115-043843-why-your-fingers-wrinkle-in-wa",
+      "status": "queued",
+      "created": "2026-11-15T04:40+05:30"
     }
   ]
 }

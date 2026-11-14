@@ -2,4 +2,11 @@
 - One idea per video. Cut every 3-5 seconds.
 - Put the viewer in it: "you", "your".
 - One deadpan joke near the end; end on a line that loops back to the hook.
-- (Claude rewrites this list every Sunday from real stats.)
+- No performance data yet (as of 2026-11-14): keep testing human-body "why" hooks against "what if" hooks.
+- Debunk a common myth in line 2 ("most people think...") to add a twist before the real explanation.
+- Verify every claim with a search before writing; when science is unsettled, say "scientists think" instead of stating it as fact.
+- Keep one setting and [GUY] in most scenes so the video makes sense with the sound off.
+- Max 2 inside-the-body cutaways per video.
+- Use everyday objects (sponge, soap, rubber duck) as visual props to keep pictures instantly recognizable.
+- Avoid numbers unless verified.
+- Review this playbook against real stats once views, retention and likes data exist, and double down on the top hook types.
