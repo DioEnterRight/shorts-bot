@@ -84,6 +84,43 @@ def _upload_url(ig_id, token, caption, url):
     return _container(ig_id, token, caption, {"video_url": url})
 
 
+def _branch_public_url(path):
+    """Push the video to a throwaway 'media' branch of THIS repo and return its raw.githubusercontent.com link
+    (a direct link, no redirects). Instagram can fetch it only if the repo is PUBLIC."""
+    import shutil
+    import subprocess
+    import tempfile
+    from pathlib import Path
+    repo = env("GITHUB_REPOSITORY")
+    tok = env("GH_TOKEN")
+    if not repo or not tok:
+        raise RuntimeError("GITHUB_REPOSITORY / GH_TOKEN missing (only works inside GitHub Actions)")
+    name = f"reel-{int(time.time())}.mp4"
+    d = Path(tempfile.mkdtemp())
+    shutil.copy(path, d / name)
+
+    def git(*a):
+        subprocess.run(["git", "-c", "user.name=shorts-bot", "-c", "user.email=shorts-bot@users.noreply.github.com",
+                        *a], cwd=d, check=True, capture_output=True, text=True)
+    try:
+        git("init", "-q", "-b", "media")
+        git("add", name)
+        git("commit", "-q", "-m", "temporary video for Instagram")
+        git("push", "-q", "--force", f"https://x-access-token:{tok}@github.com/{repo}.git", "media:media")
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"could not push media branch: {(e.stderr or '').replace(tok, '***')[-300:]}")
+    url = f"https://raw.githubusercontent.com/{repo}/media/{name}"
+    code = None
+    for _ in range(8):
+        code = requests.head(url, timeout=30, allow_redirects=False).status_code
+        if code == 200:
+            log(f"Instagram media link ready: {url}")
+            return url
+        time.sleep(5)
+    raise RuntimeError(f"media link answers HTTP {code}. If 404: your repo is PRIVATE - make it Public "
+                       "(Settings -> General -> bottom -> Change visibility) so Instagram can download the video.")
+
+
 def _temp_public_url(path):
     """Park the video on a free temporary public host (auto-deletes) so Instagram can fetch it.
     Needed because Meta's resumable upload only works for 'Facebook Login for Business' apps."""
@@ -141,7 +178,9 @@ def publish(video_path, caption, video_url=None):
         ig_file = video_path
 
     attempts = []
-    # Way A: Instagram downloads from a temporary public link (most reliable for normal Meta apps)
+    # Way A: video parked on a 'media' branch of this repo (direct link; repo must be PUBLIC)
+    attempts.append(("repo media link", lambda: _upload_url(ig_id, token, caption, _branch_public_url(ig_file))))
+    # Way A2: temporary public host
     attempts.append(("temporary public link",
                      lambda: _upload_url(ig_id, token, caption, _temp_public_url(ig_file))))
     # Way B: the GitHub release link (works only when the repo is public)
