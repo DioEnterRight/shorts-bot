@@ -14,9 +14,9 @@ from .common import DATA, OUT, load_config, load_history, log, now_ist, run, sav
 from .visuals import get_provider
 
 
-def produce_one(cfg, history, test):
+def produce_one(cfg, history, test, provider_override=None):
     stamp = now_ist().strftime("%Y%m%d-%H%M%S")
-    provider_name = "placeholder" if test else cfg["visuals"]["provider"]
+    provider_name = provider_override or ("placeholder" if test else cfg["visuals"]["provider"])
     script = None
     if provider_name.startswith("higgsfield"):
         from .visuals import higgsfield
@@ -66,9 +66,11 @@ def produce_one(cfg, history, test):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--test", action="store_true", help="offline test, no keys needed")
+    ap.add_argument("--test", action="store_true", help="offline test (sample script, no Claude/keys)")
     ap.add_argument("--release", action="store_true", help="queue result as a GitHub Release")
     ap.add_argument("--count", type=int, default=0, help="force how many to make")
+    ap.add_argument("--provider", default=None,
+                    help="override visuals provider (e.g. higgsfield_test to demo the Higgsfield path offline)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -88,7 +90,7 @@ def main():
 
     made = 0
     for _ in range(need):
-        work, meta, script = produce_one(cfg, history, args.test)
+        work, meta, script = produce_one(cfg, history, args.test, args.provider)
         made += 1
         if args.release:
             tag = f"vid-{meta['id']}"

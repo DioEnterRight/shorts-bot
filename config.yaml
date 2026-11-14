@@ -20,12 +20,17 @@ video:
   fps: 30
 
 # ------------------------------------------------------------
-#  VISUALS  <<< HIGGSFIELD SWAP SLOT >>>
-#   cloudflare_klein  = free AI pictures, SAME character + style every scene (default now)
+#  VISUALS  <<< HIGGSFIELD SWAP SLOT >>>  change ONE word below.
+#   cloudflare_klein  = FREE AI pictures, SAME character + style every scene (use this now)
 #   cloudflare_flux   = older free mode (every picture separate)
-#   higgsfield_clips  = real AI motion clips from Higgsfield, our voice/captions
+#   higgsfield_test   = DEMO the Higgsfield motion pipeline with placeholder clips, no account
+#   higgsfield_clips  = REAL Higgsfield motion clips + our voice/captions (when you have Higgsfield)
 #   higgsfield_full   = Higgsfield makes the whole finished video
-#   placeholder       = plain test cards (used by test mode only)
+#   placeholder       = plain colour cards (used by the Test-mode button only)
+#
+#  When Higgsfield comes back: set provider to higgsfield_clips and follow
+#  tools/higgsfield_routine_prompt.md. To check the pipeline first, set
+#  higgsfield_test and run the Test button — it builds a full video from motion clips.
 # ------------------------------------------------------------
 visuals:
   provider: cloudflare_klein
@@ -70,7 +75,7 @@ publish:
   #   manual = bot sends you a GitHub notification with the file + title to upload
   #   api    = fully automatic (only after Google approves your API audit)
   #   off    = skip YouTube
-  youtube_mode: api
+  youtube_mode: manual
   hashtags_max: 5
 
 # How many finished videos to keep ready as backup (protects against a bad day).

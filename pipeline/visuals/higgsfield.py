@@ -43,12 +43,21 @@ def ticket_script():
     return None
 
 
-def _download(url, dest):
-    with requests.get(url, stream=True, timeout=300) as r:
-        r.raise_for_status()
-        with open(dest, "wb") as f:
-            for chunk in r.iter_content(1 << 20):
-                f.write(chunk)
+def _fetch(url_or_path, dest):
+    """Accept an https URL, OR a path to a clip the routine committed into the repo
+    (e.g. "inbox/clips/scene0.mp4"). Both end up as a local file the editor can use."""
+    import shutil
+    if str(url_or_path).startswith(("http://", "https://")):
+        with requests.get(url_or_path, stream=True, timeout=300) as r:
+            r.raise_for_status()
+            with open(dest, "wb") as f:
+                for chunk in r.iter_content(1 << 20):
+                    f.write(chunk)
+        return dest
+    local = (ROOT / url_or_path).resolve()
+    if not str(local).startswith(str(ROOT.resolve())) or not local.exists():
+        raise RuntimeError(f"Higgsfield clip not found or outside repo: {url_or_path}")
+    shutil.copy(local, dest)
     return dest
 
 
@@ -60,15 +69,15 @@ def generate(cfg, script, workdir):
         raise RuntimeError("Higgsfield ticket has fewer clips than scenes")
     out = []
     for i, c in enumerate(clips[: len(script["scenes"])]):
-        log(f"Downloading Higgsfield clip {i + 1}")
-        out.append(_download(c["url"], workdir / f"scene_{i:02d}.mp4"))
+        log(f"Fetching Higgsfield clip {i + 1}")
+        out.append(_fetch(c.get("url") or c.get("path"), workdir / f"scene_{i:02d}.mp4"))
     return out
 
 
 def fetch_full(workdir):
     """higgsfield_full: a finished video made entirely in Higgsfield."""
     ticket = _ticket()
-    if not ticket.get("final_url"):
-        raise RuntimeError("Higgsfield ticket has no final_url")
-    path = _download(ticket["final_url"], workdir / "final.mp4")
+    if not (ticket.get("final_url") or ticket.get("final_path")):
+        raise RuntimeError("Higgsfield ticket has no final_url / final_path")
+    path = _fetch(ticket.get("final_url") or ticket.get("final_path"), workdir / "final.mp4")
     return path, ticket

@@ -20,6 +20,8 @@ def get_provider(name):
         from . import cloudflare_klein as mod
     elif name == "cloudflare_flux":
         from . import cloudflare_flux as mod
+    elif name == "higgsfield_test":
+        from . import higgsfield_test as mod
     elif name == "placeholder":
         from . import placeholder as mod
     elif name in ("higgsfield_clips", "higgsfield_full"):

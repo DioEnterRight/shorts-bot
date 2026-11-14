@@ -9,6 +9,11 @@ on:
         description: "Test mode: no keys used, nothing posted, just shows you a sample video"
         type: boolean
         default: true
+      provider:
+        description: "Visuals (leave 'config' to use config.yaml; higgsfield_test = demo the Higgsfield pipeline)"
+        type: choice
+        default: config
+        options: [config, higgsfield_test, placeholder, cloudflare_klein, cloudflare_flux]
 
 concurrency:
   group: shorts-bot
@@ -70,11 +75,14 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          PROVIDER: ${{ github.event_name == 'workflow_dispatch' && inputs.provider || 'config' }}
         run: |
+          ARGS=""
+          if [ "$PROVIDER" != "config" ]; then ARGS="--provider $PROVIDER"; fi
           if [ "$TEST" = "true" ]; then
-            python -m pipeline.produce --test
+            python -m pipeline.produce --test $ARGS
           else
-            python -m pipeline.produce --release
+            python -m pipeline.produce --release $ARGS
           fi
 
       - name: Show me the test video

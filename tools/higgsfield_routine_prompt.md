@@ -27,10 +27,12 @@ You produce today's video assets for the shorts-bot repo.
      the scene's "visual" ([GUY] replaced by config visuals.mascot). Keep total credits under 120.
    - If "higgsfield_full": use Higgsfield's faceless video tool to make ONE finished 9:16 video
      (narration + captions + music) from the script lines, 30-45 seconds.
-4. Write inbox/YYYYMMDD.json (today's date, India time) with:
+4. Write inbox/YYYYMMDD.json (today's date, India time) with EITHER a url OR a committed file path:
    - higgsfield_clips: {"script": <script JSON>, "scenes": [{"url": "<clip url>"}, ...]}
+                       or commit the clips into inbox/clips/ and use {"path": "inbox/clips/scene0.mp4"}
    - higgsfield_full:  {"script": <script JSON>, "final_url": "<video url>",
                         "title": "<title>", "description": "<description>"}
+                       (or "final_path": "inbox/final.mp4" if you commit the file)
 5. Commit and push to main with message "higgsfield: assets YYYYMMDD".
 If Higgsfield fails or credits run out, write nothing — the bot will report the error,
 and you can switch config back to cloudflare_flux.

@@ -21,7 +21,19 @@ def _check(r, what):
     except ValueError:
         data = {"raw": r.text[:500]}
     if r.status_code >= 400 or "error" in data:
-        raise RuntimeError(f"Instagram {what} failed ({r.status_code}): {str(data)[:600]}")
+        msg = str(data)
+        hint = ""
+        if "Cannot call API for app" in msg or "on behalf of user" in msg:
+            hint = ("\nHINT: Your Meta app can't act for your account yet. Fix (one time):\n"
+                    "  1. developers.facebook.com -> your app -> top bar: switch App Mode to LIVE\n"
+                    "     (needs the Privacy Policy URL filled in under App settings -> Basic -> use your policy page).\n"
+                    "  2. App roles -> Roles: make sure your Facebook account is listed (Administrator).\n"
+                    "  3. Re-generate IG_PAGE_TOKEN (Graph API Explorer -> me/accounts) and update the secret.")
+        elif "does not exist" in msg or "nonexisting field" in msg or "Unsupported" in msg:
+            hint = "\nHINT: Check IG_USER_ID is your Instagram account id (from PAGE_ID?fields=instagram_business_account)."
+        elif "expired" in msg or "session has been invalidated" in msg or r.status_code == 190:
+            hint = "\nHINT: IG_PAGE_TOKEN expired. Re-make a long-lived token and update the secret."
+        raise RuntimeError(f"Instagram {what} failed ({r.status_code}): {msg[:500]}{hint}")
     return data
 
 
