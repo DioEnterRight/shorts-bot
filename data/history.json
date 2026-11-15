@@ -18,15 +18,15 @@
       "ig_link": "https://www.instagram.com/reel/Dfu5O8ClA4F/",
       "published_at": "2026-11-15T00:24+05:30",
       "metrics": {
-        "ig_views": 7,
-        "ig_reach": 6,
+        "ig_views": 111,
+        "ig_reach": 102,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 8413
+        "ig_avg_watch_ms": 7167
       },
-      "metrics_age_days": 0
+      "metrics_age_days": 1
     },
     {
       "id": "20261114-225952-why-you-get-goosebumps",
@@ -45,7 +45,20 @@
       "ig_link": "https://www.instagram.com/reel/Dfw6cvZlZyy/",
       "yt_video_id": "MOL1oIdMQgQ",
       "yt_done": true,
-      "published_at": "2026-11-15T19:13+05:30"
+      "published_at": "2026-11-15T19:13+05:30",
+      "metrics": {
+        "ig_views": 4,
+        "ig_reach": 2,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 15794,
+        "yt_views": 38,
+        "yt_likes": 0,
+        "yt_comments": 0
+      },
+      "metrics_age_days": 0
     },
     {
       "id": "20261115-043843-why-your-fingers-wrinkle-in-wa",
@@ -64,7 +77,48 @@
       "ig_link": "https://www.instagram.com/reel/Dfw999aiNdd/",
       "yt_video_id": "HrMXHt8bdVU",
       "yt_done": true,
-      "published_at": "2026-11-15T19:43+05:30"
+      "published_at": "2026-11-15T19:43+05:30",
+      "metrics": {
+        "ig_views": 73,
+        "ig_reach": 67,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 5015,
+        "yt_views": 223,
+        "yt_likes": 5,
+        "yt_comments": 0
+      },
+      "metrics_age_days": 0
+    },
+    {
+      "id": "20261116-043952-why-you-get-hiccups",
+      "title": "Why Do You Hiccup? Your Body Has a Weird Glitch",
+      "topic": "Why you get hiccups",
+      "category": "human_body",
+      "hook_type": "why",
+      "experiment": false,
+      "hook_line": "Why does your body suddenly start jerking and squeaking, and refuse to stop, right in the middle of dinner?",
+      "duration": 45.14,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261116-043952-why-you-get-hiccups",
+      "status": "queued",
+      "created": "2026-11-16T04:42+05:30"
+    },
+    {
+      "id": "20261116-044242-why-you-get-brain-freeze",
+      "title": "Why Ice Cream Gives You a Headache Out of Nowhere",
+      "topic": "Why you get brain freeze",
+      "category": "human_body",
+      "hook_type": "why",
+      "experiment": false,
+      "hook_line": "Why does a bite of ice cream make your head feel like it is splitting open?",
+      "duration": 38.1,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261116-044242-why-you-get-brain-freeze",
+      "status": "queued",
+      "created": "2026-11-16T04:45+05:30"
     }
   ]
 }
