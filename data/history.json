@@ -58,8 +58,13 @@
       "duration": 36.7,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261115-043843-why-your-fingers-wrinkle-in-wa",
-      "status": "queued",
-      "created": "2026-11-15T04:40+05:30"
+      "status": "published",
+      "created": "2026-11-15T04:40+05:30",
+      "ig_media_id": "18115510880140167",
+      "ig_link": "https://www.instagram.com/reel/Dfw999aiNdd/",
+      "yt_video_id": "HrMXHt8bdVU",
+      "yt_done": true,
+      "published_at": "2026-11-15T19:43+05:30"
     }
   ]
 }
