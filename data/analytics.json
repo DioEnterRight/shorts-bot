@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 7167
       },
-      "last_update": "2026-11-16T21:37+05:30",
+      "last_update": "2026-11-16T22:45+05:30",
       "views": {
         "ig": 111
       }
@@ -48,7 +48,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-16T21:37+05:30",
+      "last_update": "2026-11-16T22:45+05:30",
       "views": {
         "yt": 54,
         "ig": 4
@@ -72,15 +72,44 @@
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 4642,
-        "yt_views": 322,
+        "yt_views": 347,
         "yt_likes": 9,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-16T21:37+05:30",
+      "last_update": "2026-11-16T22:45+05:30",
       "views": {
-        "yt": 322,
+        "yt": 347,
         "ig": 84
+      }
+    },
+    "20261116-213712-hi-great-molasses-flood-of-bost": {
+      "video_id": "20261116-213712-hi-great-molasses-flood-of-bost",
+      "language": "hi",
+      "topic": "Great Molasses Flood of Boston",
+      "theme": "story",
+      "title": "जब Boston की सड़कों पर शीरे की लहर आई 😳",
+      "hook_type": "story",
+      "hook_line": "सोचिए, आप सड़क पर चल रहे हैं, और सामने से शीरे की लहर आ रही है!",
+      "duration": 44.17,
+      "published_at": "2026-11-16T22:17+05:30",
+      "metrics": {
+        "ig_views": 4,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 4,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-16T22:45+05:30",
+      "views": {
+        "yt": 4,
+        "ig": 4
       }
     }
   },
@@ -97,8 +126,8 @@
           "hi": 0
         }
       },
-      "computed_at": "2026-11-16T21:37+05:30"
+      "computed_at": "2026-11-16T22:45+05:30"
     }
   },
-  "updated": "2026-11-16T21:37+05:30"
+  "updated": "2026-11-16T22:45+05:30"
 }

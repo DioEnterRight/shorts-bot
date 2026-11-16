@@ -134,6 +134,38 @@
       "tag": "vid-20261116-214615-hi-cold-diuresis-why-you-pee-mo",
       "status": "discarded",
       "created": "2026-11-16T21:53+05:30"
+    },
+    {
+      "id": "20261116-224536-en-why-shooting-stars-glow",
+      "title": "That Shooting Star Is Just a Grain of Sand",
+      "topic": "Why shooting stars glow",
+      "canonical_en": "Why shooting stars are mostly the size of a grain of sand and what makes them glow",
+      "language": "en",
+      "theme": "explainer",
+      "category": "space",
+      "hook_type": "did_you_know",
+      "hook_line": "That streak across the sky? It's usually a speck the size of sand.",
+      "duration": 32.51,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261116-224536-en-why-shooting-stars-glow",
+      "status": "queued",
+      "created": "2026-11-16T22:53+05:30"
+    },
+    {
+      "id": "20261116-225304-en-leonid-meteor-storms",
+      "title": "The night the sky rained 40 meteors a second",
+      "topic": "Leonid meteor storms",
+      "canonical_en": "Why do the Leonid meteor showers sometimes turn into meteor storms with thousands of shooting stars per hour?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "space",
+      "hook_type": "did_you_know",
+      "hook_line": "In 1966, the sky over Arizona rained about 40 meteors every second.",
+      "duration": 39.03,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261116-225304-en-leonid-meteor-storms",
+      "status": "queued",
+      "created": "2026-11-16T22:59+05:30"
     }
   ],
   "version": 2

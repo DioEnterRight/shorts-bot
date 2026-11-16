@@ -22,6 +22,28 @@
       "video_id": "20261116-214615-hi-cold-diuresis-why-you-pee-mo",
       "status": "produced",
       "created": "2026-11-16T21:53+05:30"
+    },
+    {
+      "canonical_en": "Why shooting stars are mostly the size of a grain of sand and what makes them glow",
+      "question": "Why does a grain of sand light up the whole night sky?",
+      "hook": "That streak across the sky? It's usually a speck the size of a grain of sand.",
+      "angle": "Meteors glow because of air compressed in front of the grain, not friction. Tie it to the Leonid meteor shower, which peaks around Nov 17-18.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261116-224536-en-why-shooting-stars-glow",
+      "status": "produced",
+      "created": "2026-11-16T22:53+05:30"
+    },
+    {
+      "canonical_en": "Why do the Leonid meteor showers sometimes turn into meteor storms with thousands of shooting stars per hour?",
+      "question": "Why did the sky once rain 100,000 meteors an hour, and could it happen again?",
+      "hook": "In 1966, the night sky over Arizona rained about 40 meteors every single second.",
+      "angle": "Covers the comet's dust trails and the 33-year cycle behind the rare Leonid storms (1833, 1966, 1999-2002), not how a shooting star glows. It's timed to this week's peak on Nov 17-18.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261116-225304-en-leonid-meteor-storms",
+      "status": "produced",
+      "created": "2026-11-16T22:59+05:30"
     }
   ]
 }
