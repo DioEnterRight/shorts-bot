@@ -110,8 +110,14 @@
       "duration": 44.17,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-213712-hi-great-molasses-flood-of-bost",
-      "status": "queued",
-      "created": "2026-11-16T21:46+05:30"
+      "status": "published",
+      "created": "2026-11-16T21:46+05:30",
+      "ig_media_id": "18116534690172683",
+      "ig_link": "https://www.instagram.com/reel/Dfz0U4Ck5nc/",
+      "ig_state": "posted",
+      "yt_video_id": "3PAACXv4JUw",
+      "yt_state": "posted",
+      "published_at": "2026-11-16T22:17+05:30"
     },
     {
       "id": "20261116-214615-hi-cold-diuresis-why-you-pee-mo",
