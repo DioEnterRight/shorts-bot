@@ -23,7 +23,18 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "whoosh",
-      "emphasis": "swallow"
+      "emphasis": "swallow",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "think",
+        "mood": "fun",
+        "props": [
+          {
+            "name": "food",
+            "motion": "bounce"
+          }
+        ]
+      }
     },
     {
       "line": "Everyone says it stays inside you for seven years.",
@@ -34,7 +45,22 @@
       "transition": "zoom",
       "overlay": "7 years?",
       "sfx": "boing",
-      "emphasis": "seven"
+      "emphasis": "seven",
+      "cartoon": {
+        "layout": "props",
+        "expression": "neutral",
+        "mood": "night",
+        "props": [
+          {
+            "name": "clock",
+            "motion": "spin"
+          },
+          {
+            "name": "question",
+            "motion": "float"
+          }
+        ]
+      }
     },
     {
       "line": "First, it slides down your esophagus like a pink submarine.",
@@ -45,7 +71,18 @@
       "transition": "cut",
       "overlay": "esophagus",
       "sfx": "whoosh",
-      "emphasis": "submarine"
+      "emphasis": "submarine",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "shock",
+        "mood": "body",
+        "props": [
+          {
+            "name": "food",
+            "motion": "drip"
+          }
+        ]
+      }
     },
     {
       "line": "Then it splashes into your stomach acid.",
@@ -56,7 +93,22 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "hit",
-      "emphasis": "acid"
+      "emphasis": "acid",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "shock",
+        "mood": "body",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "shake"
+          },
+          {
+            "name": "water_drop",
+            "motion": "drip"
+          }
+        ]
+      }
     },
     {
       "line": "The sugar and flavour dissolve almost instantly.",
@@ -67,7 +119,22 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "none",
-      "emphasis": "dissolve"
+      "emphasis": "dissolve",
+      "cartoon": {
+        "layout": "versus",
+        "expression": "neutral",
+        "mood": "warm",
+        "props": [
+          {
+            "name": "food",
+            "motion": "pop"
+          },
+          {
+            "name": "water_drop",
+            "motion": "drip"
+          }
+        ]
+      }
     },
     {
       "line": "But the rubbery gum base? Your body cannot break it down.",
@@ -78,7 +145,22 @@
       "transition": "cut",
       "overlay": "gum base",
       "sfx": "boing",
-      "emphasis": "rubbery"
+      "emphasis": "rubbery",
+      "cartoon": {
+        "layout": "props",
+        "expression": "neutral",
+        "mood": "danger",
+        "props": [
+          {
+            "name": "cross",
+            "motion": "pulse"
+          },
+          {
+            "name": "food",
+            "motion": "shake"
+          }
+        ]
+      }
     },
     {
       "line": "So your gut just pushes it along with everything else.",
@@ -89,7 +171,18 @@
       "transition": "whip",
       "overlay": "",
       "sfx": "whoosh",
-      "emphasis": "pushes"
+      "emphasis": "pushes",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "neutral",
+        "mood": "body",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "pulse"
+          }
+        ]
+      }
     },
     {
       "line": "A few days later, it leaves the building.",
@@ -100,7 +193,18 @@
       "transition": "fade",
       "overlay": "",
       "sfx": "pop",
-      "emphasis": "days"
+      "emphasis": "days",
+      "cartoon": {
+        "layout": "props",
+        "expression": "happy",
+        "mood": "calm",
+        "props": [
+          {
+            "name": "check",
+            "motion": "grow"
+          }
+        ]
+      }
     },
     {
       "line": "Seven years was a myth all along.",
@@ -111,7 +215,18 @@
       "transition": "whip",
       "overlay": "",
       "sfx": "boing",
-      "emphasis": "myth"
+      "emphasis": "myth",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "happy",
+        "mood": "fun",
+        "props": [
+          {
+            "name": "cross",
+            "motion": "pop"
+          }
+        ]
+      }
     },
     {
       "line": "Still, maybe don't swallow a whole pack at once.",
@@ -122,7 +237,22 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "tick",
-      "emphasis": "pack"
+      "emphasis": "pack",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "sick",
+        "mood": "danger",
+        "props": [
+          {
+            "name": "food",
+            "motion": "shake"
+          },
+          {
+            "name": "exclamation",
+            "motion": "bounce"
+          }
+        ]
+      }
     }
   ],
   "playbook_update": ""

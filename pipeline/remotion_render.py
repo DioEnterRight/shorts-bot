@@ -3,23 +3,28 @@
 Python owns timing (scene frames, word times, sound cues); Remotion only draws. The props are
 validated here before the render and again by the zod schema in remotion/src/bot/schema.ts.
 
+  cartoon style:   each scene is drawn in code: the channel's guy (expressions, talking mouth synced
+                   to word times), props from a 34-item catalog with motion presets, layouts
+                   actor / props / versus (cause -> effect arrow) / inside (magnifier into the body).
   explainer style: each scene = its picture (from the visuals provider) with a camera move,
                    remocn transitions, overlay sticker / counter, impact bursts, word captions.
   blocky style:    each scene = a three.js toy world with original blocky characters acting
                    (no pictures needed, so no Cloudflare credits are spent).
 """
 import json
+import os
 import shutil
 import subprocess
 from pathlib import Path
 
+from . import cartoon
 from .audio import sfx_cues
 from .common import ROOT, log
 from .edit import HALF, plan
 
 REMOTION = ROOT / "remotion"
 COMPOSITION = "ShortsBot"
-STYLES = {"explainer", "blocky"}
+STYLES = {"explainer", "cartoon", "blocky"}
 CAPTION_STYLES = {"word_pop", "karaoke", "highlight_box", "bounce_in", "active_pop", "outline", "stamp"}
 CAMERAS = {"punch_in", "zoom_in", "zoom_out", "pan_left", "pan_right", "pan_up", "pan_down", "shake"}
 TRANSITIONS = {"cut", "whip", "zoom", "fade", "iris", "wave"}
@@ -74,6 +79,7 @@ def build_props(cfg, script, assets, timeline, total, lp, style, audio_name="mix
             "shot": sc.get("shot", "closeup"),
             "emphasis": sc.get("emphasis", ""),
             "blocky": _blocky(sc, i),
+            "cartoon": sc.get("cartoon") or cartoon.normalize(sc),
         })
     # A transition of 2*h frames overlaps both scenes, so each scene is extended by h on that side
     # (done above) and the series still totals sum(n) frames: the audio stays in sync.
@@ -115,7 +121,8 @@ def validate_props(props, public_dir=None):
         need(s["transitionFrames"] < s["durationInFrames"], f"scene {i} transition longer than scene")
         if i:
             need(s["transitionFrames"] <= props["scenes"][i - 1]["durationInFrames"], f"scene {i} transition too long")
-        need(props["style"] == "blocky" or s["media"], f"scene {i} has no picture")
+        need(props["style"] != "explainer" or s["media"], f"scene {i} has no picture")
+        need(len(s["cartoon"]["props"]) <= 3, f"scene {i} has more than 3 props")
         if public_dir and s["media"]:
             need((Path(public_dir) / s["media"]).exists(), f"missing {s['media']}")
         series += s["durationInFrames"] - s["transitionFrames"]
@@ -144,6 +151,12 @@ def stage_public(props, assets, mix_path, workdir):
     return pub
 
 
+def _concurrency(rc):
+    """auto = one render tab per CPU core (2 on private-repo runners, 4 on public ones)."""
+    c = rc.get("concurrency", "auto")
+    return (os.cpu_count() or 2) if c == "auto" else int(c)
+
+
 def _browser():
     for name in ("google-chrome", "chromium", "chromium-browser"):
         if p := shutil.which(name):
@@ -160,7 +173,7 @@ def render(cfg, script, assets, timeline, total, lp, style, mix_path, workdir):
     raw = workdir / "remotion_raw.mp4"
     rc = cfg["render"]
     cmd = ["npx", "--no-install", "remotion", "render", "src/index.ts", COMPOSITION, str(raw),
-           f"--props={props_path}", f"--public-dir={pub}", f"--concurrency={rc.get('concurrency', 2)}",
+           f"--props={props_path}", f"--public-dir={pub}", f"--concurrency={_concurrency(rc)}",
            "--log=error", "--codec=h264", "--crf=20", "--pixel-format=yuv420p", "--color-space=bt709"]
     if b := _browser():
         cmd.append(f"--browser-executable={b}")

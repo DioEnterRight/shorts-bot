@@ -168,6 +168,7 @@ def generate(cfg, history, theme, lp, performance, call_claude, extract_json):
         try:
             reply = extract_json(call_claude(prompt + extra))
         except (ValueError, json.JSONDecodeError) as e:
+            log(f"  Claude's idea reply was not valid JSON ({str(e)[:80]}); asking again", "WARN")
             rejected_all.append(({"canonical_en": "(unreadable reply)"}, str(e)[:100]))
             continue
         best, rejected = choose(reply.get("ideas", []), past, threshold)

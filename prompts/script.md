@@ -59,6 +59,18 @@ director of a short animated explainer, not a slideshow:
 - "sfx": one of whoosh, hit, pop, boing, riser, tick, none (hit = impact, boing = the joke,
   riser = building tension; use none often).
 - "emphasis": the ONE most important word of that beat, copied exactly from "line".
+- "cartoon": how the beat is drawn in the animated cartoon style (code-drawn, no pictures):
+  - "layout": actor (the guy on screen with props near him), props (1-3 big props, nothing else),
+    versus (prop A -> animated arrow -> prop B: cause and effect), inside (the guy small in a corner
+    and a big magnifier circle showing what happens inside his body).
+  - "expression" of the guy: neutral, happy, shock, sick, sleepy, think, hot, cold, pain.
+  - "mood" (background colour): fun, calm, warm, cold, danger, body, night.
+  - "props": up to 3 of {{"name": ..., "motion": ...}}. name from ONLY this list:
+    brain, heart, stomach, lungs, bladder, kidney, bone, eye, tooth, blood_cell, germ, cell, dna, muscle, thermometer, clock, water_drop, fire, snowflake, ice_cube, lightning, zzz, question, exclamation, check, cross, food, cup, phone, sun, moon, money, battery, wave.
+    motion: pop, pulse, shake, float, spin, grow, bounce, drip.
+    Pick props that SHOW the beat (stomach + shake for a growl; brain + fire for overheating;
+    snowflake -> bladder in versus for "cold makes you pee"). Vary layouts; use inside for body
+    processes and versus for causes.
 
 ## Learning from results
 {performance}
@@ -81,7 +93,9 @@ Reply with ONLY one JSON object, no markdown fences, no comments, exactly this s
   "scenes": [
     {{"line": "spoken words", "shot": "character", "visual": "what we see",
       "background": "where", "camera": "punch_in", "transition": "cut", "overlay": "",
-      "sfx": "whoosh", "emphasis": "word"}}
+      "sfx": "whoosh", "emphasis": "word",
+      "cartoon": {{"layout": "actor", "expression": "shock", "mood": "body",
+                   "props": [{{"name": "stomach", "motion": "shake"}}]}}}}
   ],
   "playbook_update": "{playbook_field_hint}"
 }}

@@ -6,6 +6,10 @@ export const CAMERAS = ["punch_in", "zoom_in", "zoom_out", "pan_left", "pan_righ
 export const TRANSITIONS = ["cut", "whip", "zoom", "fade", "iris", "wave"] as const;
 export const CAPTION_STYLES = ["word_pop", "karaoke", "highlight_box", "bounce_in", "active_pop", "outline", "stamp"] as const;
 export const POSES = ["talk", "wave", "think", "walk", "jump", "shock"] as const;
+export const LAYOUTS = ["actor", "props", "versus", "inside"] as const;
+export const MOTIONS = ["pop", "pulse", "shake", "float", "spin", "grow", "bounce", "drip"] as const;
+export const MOODS = ["fun", "calm", "warm", "cold", "danger", "body", "night"] as const;
+export const EXPRESSIONS = ["neutral", "happy", "shock", "sick", "sleepy", "think", "hot", "cold", "pain"] as const;
 
 const scene = z.object({
   durationInFrames: z.number().int().positive(),
@@ -19,6 +23,12 @@ const scene = z.object({
   shot: z.string(),
   emphasis: z.string(),
   blocky: z.object({ pose: z.enum(POSES), pair: z.boolean() }),
+  cartoon: z.object({
+    layout: z.enum(LAYOUTS),
+    expression: z.enum(EXPRESSIONS),
+    mood: z.enum(MOODS),
+    props: z.array(z.object({ name: z.string(), motion: z.enum(MOTIONS) })).max(3),
+  }),
 });
 
 export const botSchema = z
@@ -28,7 +38,7 @@ export const botSchema = z
     height: z.literal(1920),
     durationInFrames: z.number().int().positive(),
     language: z.string(),
-    style: z.enum(["explainer", "blocky"]),
+    style: z.enum(["explainer", "cartoon", "blocky"]),
     captionStyle: z.enum(CAPTION_STYLES),
     uppercase: z.boolean(),
     accent: z.string().regex(/^#[0-9A-Fa-f]{6}$/),

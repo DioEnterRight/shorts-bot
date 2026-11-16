@@ -186,6 +186,9 @@ GitHub Actions (~300-400 of 2,000 free min/month) · Cloudflare AI (roughly 2,00
 
 - `render.engine: remotion` in `config.yaml` draws videos with code (the `remotion/` folder):
   camera moves, transitions, word-pop captions, stickers. `ffmpeg` switches back to the old renderer.
+- Explainer videos use the `cartoon` style: animated, drawn fully in code (no AI pictures, so no
+  Cloudflare credits and no "output flagged" refusals). Story videos still use AI pictures with camera
+  moves. Switch per theme with `render_style` (cartoon | explainer | blocky).
 - The Roblox-style theme is drawn as a 3D blocky toy world in code (original characters, no game branding).
 - `voice.engine: edge` uses Microsoft's free edge-tts voices (Hindi: Madhur or Swara) with real
   per-word timing for captions. If edge-tts fails, that video uses Kokoro automatically.

@@ -4,7 +4,7 @@
  "height": 1920,
  "durationInFrames": 1042,
  "language": "en",
- "style": "blocky",
+ "style": "cartoon",
  "captionStyle": "word_pop",
  "uppercase": true,
  "accent": "#FFE600",
@@ -24,6 +24,17 @@
    "blocky": {
     "pose": "talk",
     "pair": true
+   },
+   "cartoon": {
+    "layout": "actor",
+    "expression": "think",
+    "mood": "fun",
+    "props": [
+     {
+      "name": "food",
+      "motion": "bounce"
+     }
+    ]
    }
   },
   {
@@ -40,6 +51,21 @@
    "blocky": {
     "pose": "jump",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "props",
+    "expression": "neutral",
+    "mood": "night",
+    "props": [
+     {
+      "name": "clock",
+      "motion": "spin"
+     },
+     {
+      "name": "question",
+      "motion": "float"
+     }
+    ]
    }
   },
   {
@@ -56,6 +82,17 @@
    "blocky": {
     "pose": "think",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "inside",
+    "expression": "shock",
+    "mood": "body",
+    "props": [
+     {
+      "name": "food",
+      "motion": "drip"
+     }
+    ]
    }
   },
   {
@@ -72,6 +109,21 @@
    "blocky": {
     "pose": "shock",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "inside",
+    "expression": "shock",
+    "mood": "body",
+    "props": [
+     {
+      "name": "stomach",
+      "motion": "shake"
+     },
+     {
+      "name": "water_drop",
+      "motion": "drip"
+     }
+    ]
    }
   },
   {
@@ -88,6 +140,21 @@
    "blocky": {
     "pose": "wave",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "versus",
+    "expression": "neutral",
+    "mood": "warm",
+    "props": [
+     {
+      "name": "food",
+      "motion": "pop"
+     },
+     {
+      "name": "water_drop",
+      "motion": "drip"
+     }
+    ]
    }
   },
   {
@@ -104,6 +171,21 @@
    "blocky": {
     "pose": "jump",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "props",
+    "expression": "neutral",
+    "mood": "danger",
+    "props": [
+     {
+      "name": "cross",
+      "motion": "pulse"
+     },
+     {
+      "name": "food",
+      "motion": "shake"
+     }
+    ]
    }
   },
   {
@@ -120,6 +202,17 @@
    "blocky": {
     "pose": "talk",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "inside",
+    "expression": "neutral",
+    "mood": "body",
+    "props": [
+     {
+      "name": "stomach",
+      "motion": "pulse"
+     }
+    ]
    }
   },
   {
@@ -136,6 +229,17 @@
    "blocky": {
     "pose": "jump",
     "pair": false
+   },
+   "cartoon": {
+    "layout": "props",
+    "expression": "happy",
+    "mood": "calm",
+    "props": [
+     {
+      "name": "check",
+      "motion": "grow"
+     }
+    ]
    }
   },
   {
@@ -152,6 +256,17 @@
    "blocky": {
     "pose": "jump",
     "pair": true
+   },
+   "cartoon": {
+    "layout": "actor",
+    "expression": "happy",
+    "mood": "fun",
+    "props": [
+     {
+      "name": "cross",
+      "motion": "pop"
+     }
+    ]
    }
   },
   {
@@ -168,6 +283,21 @@
    "blocky": {
     "pose": "talk",
     "pair": true
+   },
+   "cartoon": {
+    "layout": "actor",
+    "expression": "sick",
+    "mood": "danger",
+    "props": [
+     {
+      "name": "food",
+      "motion": "shake"
+     },
+     {
+      "name": "exclamation",
+      "motion": "bounce"
+     }
+    ]
    }
   }
  ],
