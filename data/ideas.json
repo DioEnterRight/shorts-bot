@@ -44,6 +44,17 @@
       "video_id": "20261116-225304-en-leonid-meteor-storms",
       "status": "produced",
       "created": "2026-11-16T22:59+05:30"
+    },
+    {
+      "canonical_en": "Why does a glacier in Antarctica bleed blood-red water?",
+      "question": "Why is there a glacier in Antarctica that looks like it's bleeding?",
+      "hook": "In Antarctica there's a glacier that bleeds. And the 'blood' comes out clear.",
+      "angle": "The red is not algae, as explorers once guessed. It is very salty, iron-rich water from a lake that has been sealed under the ice for over a million years. The water comes out clear and only turns red when it meets air, the same way iron rusts. Microbes live down there in total darkness by 'breathing' iron.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261117-002543-en-blood-falls-the-bleeding-gla",
+      "status": "produced",
+      "created": "2026-11-17T00:58+05:30"
     }
   ]
 }

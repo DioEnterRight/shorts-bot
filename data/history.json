@@ -166,6 +166,22 @@
       "tag": "vid-20261116-225304-en-leonid-meteor-storms",
       "status": "queued",
       "created": "2026-11-16T22:59+05:30"
+    },
+    {
+      "id": "20261117-002543-en-blood-falls-the-bleeding-gla",
+      "title": "Why This Antarctic Glacier Bleeds Blood-Red Water",
+      "topic": "Blood Falls, the bleeding glacier",
+      "canonical_en": "Why does a glacier in Antarctica bleed blood-red water?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "geography",
+      "hook_type": "why",
+      "hook_line": "Why does a glacier in Antarctica bleed bright red water?",
+      "duration": 34.47,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261117-002543-en-blood-falls-the-bleeding-gla",
+      "status": "queued",
+      "created": "2026-11-17T00:58+05:30"
     }
   ],
   "version": 2
