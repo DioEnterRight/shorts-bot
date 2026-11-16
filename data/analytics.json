@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 7167
       },
-      "last_update": "2026-11-16T18:04+05:30",
+      "last_update": "2026-11-16T21:37+05:30",
       "views": {
         "ig": 111
       }
@@ -48,7 +48,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-16T18:04+05:30",
+      "last_update": "2026-11-16T21:37+05:30",
       "views": {
         "yt": 54,
         "ig": 4
@@ -72,14 +72,14 @@
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 4642,
-        "yt_views": 304,
-        "yt_likes": 6,
+        "yt_views": 322,
+        "yt_likes": 9,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-16T18:04+05:30",
+      "last_update": "2026-11-16T21:37+05:30",
       "views": {
-        "yt": 304,
+        "yt": 322,
         "ig": 84
       }
     }
@@ -97,8 +97,8 @@
           "hi": 0
         }
       },
-      "computed_at": "2026-11-16T18:04+05:30"
+      "computed_at": "2026-11-16T21:37+05:30"
     }
   },
-  "updated": "2026-11-16T18:04+05:30"
+  "updated": "2026-11-16T21:37+05:30"
 }
