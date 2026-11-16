@@ -29,7 +29,9 @@ languages:
     name: English
     prompt: prompts/lang_en.md
     tts_lang: en-us
-    voice: am_michael       # Kokoro voice. Others: am_adam, am_onyx, bm_george
+    voice: am_michael       # Kokoro voice (fallback). Others: am_adam, am_onyx, bm_george
+    edge_voice: en-US-AndrewNeural   # edge-tts voice (primary). Others: en-US-GuyNeural, en-US-ChristopherNeural
+    edge_rate: "+10%"
     speed: 1.12
     words_per_second: 2.7   # Kokoro speaking rate at speed 1.0 (used for script length)
     caption_font: Anton
@@ -40,7 +42,9 @@ languages:
     name: Hindi (natural Hinglish)
     prompt: prompts/lang_hi.md
     tts_lang: hi
-    voice: hm_omega         # Kokoro Hindi voices: hm_omega, hm_psi (male), hf_alpha, hf_beta (female)
+    voice: hm_omega         # Kokoro (fallback): hm_omega, hm_psi (male), hf_alpha, hf_beta (female)
+    edge_voice: hi-IN-MadhurNeural   # edge-tts (primary): hi-IN-MadhurNeural (male) or hi-IN-SwaraNeural (female)
+    edge_rate: "+5%"
     speed: 1.05
     words_per_second: 2.5
     caption_font: Noto Sans Devanagari
@@ -65,18 +69,21 @@ allocation:
 themes:
   explainer:
     share: 0.8
+    render_style: explainer
     guidance: >-
       A clear answer to one specific, surprising question about the body, mind,
       nature, science, technology, space, history or geography. Real explanation,
       verified facts, one satisfying "oh, THAT's why" payoff.
   story:
     share: 0.13
+    render_style: explainer
     guidance: >-
       A short narrated story with a twist, built on something real: a strange
       historical event, an unlikely invention, a survival story, a scientific
       accident. Clear beginning, tension, payoff. Still teaches one real thing.
   roblox_story:
     share: 0.07
+    render_style: blocky    # remotion engine: drawn as a 3D toy world in code, no AI pictures
     guidance: >-
       A short dramatic or funny story told in a blocky game-world style
       (original characters). Story-time pacing, a twist ending. Do not use
@@ -133,7 +140,20 @@ visuals:
   min_scenes_ok: 0.75     # if a few pictures fail, re-use neighbours; below this share, stop
 
 voice:
+  engine: edge            # edge = Microsoft edge-tts with real word timings (falls back to Kokoro by itself)
+                          # kokoro = always Kokoro. Test-mode runs always use Kokoro (offline).
+  edge_retries: 3         # tries per line before the whole video switches to Kokoro
   gap_seconds: 0.08       # pause between lines
+
+# How the finished video is drawn.
+#   remotion = code-made motion graphics (remotion/ folder): camera moves, remocn transitions,
+#              word-pop captions, stickers, impact bursts; blocky themes are drawn in 3D code
+#   ffmpeg   = the older Python renderer (pictures + pan/zoom + burned-in captions)
+render:
+  engine: remotion
+  caption_style: word_pop   # word_pop | karaoke | highlight_box | bounce_in | active_pop | outline | stamp
+  concurrency: 2            # GitHub's free runners have 2 CPU cores
+  timeout_minutes: 25
 
 captions:
   words_per_chunk: 2

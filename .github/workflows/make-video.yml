@@ -46,6 +46,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
+          cache-dependency-path: remotion/package-lock.json
 
       - name: Install ffmpeg
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
@@ -60,6 +62,13 @@ jobs:
         run: |
           pip install -q -r requirements.txt
           python -m pipeline.fetch_models
+
+      - name: Install Remotion (video renderer)
+        run: |
+          npm ci --prefix remotion --no-audit --no-fund
+          # Renders use the runner's preinstalled Google Chrome with software WebGL (SwiftShader).
+          # If Chrome is ever missing, Remotion downloads its own headless browser instead.
+          google-chrome --version || (cd remotion && npx remotion browser ensure)
 
       - name: Install Claude Code
         if: env.TEST != 'true'

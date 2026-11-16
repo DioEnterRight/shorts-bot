@@ -10,7 +10,7 @@ import json
 import shutil
 import sys
 
-from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, voice
+from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, remotion_render, voice
 from .common import DATA, OUT, load_config, load_history, log, now_ist, run, save_history, slugify, stable_seed
 from .visuals import get_provider
 
@@ -82,13 +82,25 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         script["title"] = ticket.get("title", script["title"])
         script["description"] = ticket.get("description", script["description"])
     else:
-        assets = get_provider(provider_name).generate(cfg, script, work)
-        voice_path, timeline, vlen = voice.synthesize(cfg, script, lp, work)
+        engine = cfg["render"]["engine"]
+        style = cfg["themes"][theme].get("render_style", "explainer") if engine == "remotion" else "explainer"
+        if style == "blocky":   # drawn entirely in code: no pictures to generate
+            assets = [None] * len(script["scenes"])
+        else:
+            assets = get_provider(provider_name).generate(cfg, script, work)
+        voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
+        script["voice_engine"] = voice_engine
         total = vlen + 0.7
-        cap_path, cap_times = captions.build(cfg, script, timeline, total, lp, work)
         seed = stable_seed(vid_id)
-        mix_path = audio.mix(cfg, script, timeline, cap_times, voice_path, total, work, seed)
-        final = edit.render(cfg, script, assets, timeline, total, cap_path, mix_path, work)
+        if engine == "remotion":
+            mix_path = audio.mix(cfg, script, timeline, [], voice_path, total, work, seed, with_sfx=False)
+            final = remotion_render.render(cfg, script, assets, timeline, total, lp, style, mix_path, work)
+        elif engine == "ffmpeg":
+            cap_path, cap_times = captions.build(cfg, script, timeline, total, lp, work)
+            mix_path = audio.mix(cfg, script, timeline, cap_times, voice_path, total, work, seed)
+            final = edit.render(cfg, script, assets, timeline, total, cap_path, mix_path, work)
+        else:
+            raise ValueError(f"render.engine must be remotion or ffmpeg, not {engine!r}")
         (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
 
     duration = qc.check(final, fps=cfg["video"]["fps"])
@@ -104,7 +116,8 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         "topic": script["topic"], "canonical_en": script.get("canonical_en"), "category": script.get("category"),
         "hook_type": script.get("hook_type"), "hook_line": script["scenes"][0]["line"],
         "scenes": len(script["scenes"]), "facts_checked": script.get("facts_checked", []),
-        "visuals": provider_name, **disclosure(cfg),
+        "visuals": provider_name, "render": cfg["render"]["engine"],
+        "voice_engine": script.get("voice_engine"), **disclosure(cfg),
     }
     (work / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
     return work, meta, script, idea

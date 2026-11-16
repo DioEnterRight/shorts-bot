@@ -1,5 +1,22 @@
 # shorts-bot Remotion kit
 
+## How the bot uses it
+
+`pipeline/remotion_render.py` turns the script + voice timings into `remotion_props.json`, checks it,
+and renders the `ShortsBot` composition (`src/bot/`). Python owns all timing; Remotion only draws.
+The props are checked twice: in Python (`validate_props`) and by the zod schema (`src/bot/schema.ts`),
+which stops the render on any mismatch.
+
+- `explainer` style (explainer + story themes): the scene picture with an eased camera move,
+  motion blur on punch-ins, remocn transitions (whip-pan, zoom-blur, iris, wave, fade),
+  radial burst on "hit" moments, sticker labels (remocn marker) or counting numbers (remotion-bits).
+- `blocky` style (roblox_story theme): a three.js toy world with original blocky characters
+  (poses: talk, wave, think, walk, jump, shock). No AI pictures, so no Cloudflare credits.
+- Captions: remocn word captions from the real word timings; Noto Sans Devanagari for Hindi.
+- Sound: voice + music mixed in Python, sound effects (hit/pop/tick/whoosh) placed by Remotion.
+
+Measured on a 2-core machine: ~2.5 min for a 38 s explainer, ~4.5 min for a 27 s blocky video.
+
 Code-made video for shorts-bot. Render: `npm ci && npx remotion render src/index.ts <Composition> out.mp4`.
 Config for 2-core CPU runners is in `remotion.config.ts` (software WebGL, concurrency 2).
 

@@ -193,7 +193,30 @@ def load_music(seconds, seed):
 
 
 # ---------------- mix ----------------
-def mix(cfg, script, timeline, caption_times, voice_path, total, workdir, seed):
+def sfx_cues(cfg, script, timeline, caption_times):
+    """Every sound effect as (name, seconds, relative gain). Shared by the ffmpeg mix and Remotion."""
+    cues = []
+    for i, (sc, line) in enumerate(zip(script["scenes"], timeline)):
+        if i > 0:  # swish on every cut, louder on whip/zoom transitions
+            loud = 0.75 if sc.get("transition") in ("whip", "zoom") else 0.3
+            cues.append(("whoosh", line["start"] - 0.22, loud))
+        kind = sc.get("sfx", "none")
+        if kind != "none" and kind in SFX:
+            at = line["start"]
+            emph = sc.get("emphasis", "").lower()
+            for w in line["words"]:
+                if emph and emph in w["word"].lower():
+                    at = w["start"]
+                    break
+            if kind == "riser":
+                at -= 0.9
+            cues.append((kind, at, 1.0))
+    if cfg["audio"].get("caption_pops"):
+        cues += [("pop", ct, 0.18) for ct in caption_times]
+    return [(n, max(0.0, at), g) for n, at, g in cues]
+
+
+def mix(cfg, script, timeline, caption_times, voice_path, total, workdir, seed, with_sfx=True):
     a = cfg["audio"]
     voice, vsr = sf.read(voice_path, dtype="float64")
     if voice.ndim > 1:
@@ -225,25 +248,10 @@ def mix(cfg, script, timeline, caption_times, voice_path, total, workdir, seed):
         e = min(n, s + len(sound))
         fx[s:e] += sound[: e - s] * g
 
-    cache = {k: f() for k, f in SFX.items()}
-    for i, (sc, line) in enumerate(zip(script["scenes"], timeline)):
-        if i > 0:  # swish on every cut, louder on whip/zoom transitions
-            loud = 0.75 if sc.get("transition") in ("whip", "zoom") else 0.3
-            place(cache["whoosh"], line["start"] - 0.22, gain * loud)
-        kind = sc.get("sfx", "none")
-        if kind != "none" and kind in cache:
-            at = line["start"]
-            emph = sc.get("emphasis", "").lower()
-            for w in line["words"]:
-                if emph and emph in w["word"].lower():
-                    at = w["start"]
-                    break
-            if kind == "riser":
-                at -= 0.9
-            place(cache[kind], at, gain)
-    if a.get("caption_pops"):
-        for ct in caption_times:
-            place(cache["pop"], ct, gain * 0.18)
+    if with_sfx:
+        cache = {k: f() for k, f in SFX.items()}
+        for name, at, g in sfx_cues(cfg, script, timeline, caption_times):
+            place(cache[name], at, gain * g)
 
     out = v + music + fx
     peak = np.max(np.abs(out)) + 1e-9
