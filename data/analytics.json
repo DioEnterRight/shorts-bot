@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "videos": {
+    "20261114-225649-why-your-stomach-doesn-t-diges": {
+      "video_id": "20261114-225649-why-your-stomach-doesn-t-diges",
+      "language": "en",
+      "topic": "Why your stomach doesn't digest itself",
+      "theme": "explainer",
+      "title": "Your Stomach Melts Meat. So Why Doesn't It Melt You?",
+      "hook_type": "why",
+      "hook_line": "Your stomach is full of acid that melts meat. So why doesn't it melt you?",
+      "duration": 36.33,
+      "published_at": "2026-11-15T00:24+05:30",
+      "metrics": {
+        "ig_views": 111,
+        "ig_reach": 102,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 7167
+      },
+      "last_update": "2026-11-16T18:04+05:30",
+      "views": {
+        "ig": 111
+      }
+    },
+    "20261114-225952-why-you-get-goosebumps": {
+      "video_id": "20261114-225952-why-you-get-goosebumps",
+      "language": "en",
+      "topic": "Why you get goosebumps",
+      "theme": "explainer",
+      "title": "Why Do You Get Goosebumps? Your Skin Is Doing a Weird Trick",
+      "hook_type": "why",
+      "hook_line": "Why does your skin suddenly turn into a plucked chicken every time you get scared or cold?",
+      "duration": 40.13,
+      "published_at": "2026-11-15T19:13+05:30",
+      "metrics": {
+        "ig_views": 4,
+        "ig_reach": 2,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 15794,
+        "yt_views": 54,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-16T18:04+05:30",
+      "views": {
+        "yt": 54,
+        "ig": 4
+      }
+    },
+    "20261115-043843-why-your-fingers-wrinkle-in-wa": {
+      "video_id": "20261115-043843-why-your-fingers-wrinkle-in-wa",
+      "language": "en",
+      "topic": "Why your fingers wrinkle in water",
+      "theme": "explainer",
+      "title": "Why Your Fingers Turn Into Raisins in the Bath",
+      "hook_type": "why",
+      "hook_line": "Why do your fingers turn into raisins when you stay in the bath too long?",
+      "duration": 36.7,
+      "published_at": "2026-11-15T19:43+05:30",
+      "metrics": {
+        "ig_views": 84,
+        "ig_reach": 81,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 4642,
+        "yt_views": 304,
+        "yt_likes": 6,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-16T18:04+05:30",
+      "views": {
+        "yt": 304,
+        "ig": 84
+      }
+    }
+  },
+  "allocation": {
+    "language": {
+      "shares": {
+        "en": 0.5,
+        "hi": 0.5
+      },
+      "diagnostics": {
+        "reason": "not enough data yet (need 4 per language)",
+        "counts": {
+          "en": 0,
+          "hi": 0
+        }
+      },
+      "computed_at": "2026-11-16T18:04+05:30"
+    }
+  },
+  "updated": "2026-11-16T18:04+05:30"
+}

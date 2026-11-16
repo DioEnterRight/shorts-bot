@@ -13,20 +13,13 @@
       "tag": "vid-20261114-225649-why-your-stomach-doesn-t-diges",
       "status": "published",
       "created": "2026-11-14T22:59+05:30",
-      "yt_done": true,
       "ig_media_id": "18134178448837213",
       "ig_link": "https://www.instagram.com/reel/Dfu5O8ClA4F/",
       "published_at": "2026-11-15T00:24+05:30",
-      "metrics": {
-        "ig_views": 111,
-        "ig_reach": 102,
-        "ig_likes": 0,
-        "ig_comments": 0,
-        "ig_shares": 0,
-        "ig_saves": 0,
-        "ig_avg_watch_ms": 7167
-      },
-      "metrics_age_days": 1
+      "language": "en",
+      "theme": "explainer",
+      "ig_state": "posted",
+      "yt_state": "manual_notified"
     },
     {
       "id": "20261114-225952-why-you-get-goosebumps",
@@ -44,21 +37,11 @@
       "ig_media_id": "18388299181235204",
       "ig_link": "https://www.instagram.com/reel/Dfw6cvZlZyy/",
       "yt_video_id": "MOL1oIdMQgQ",
-      "yt_done": true,
       "published_at": "2026-11-15T19:13+05:30",
-      "metrics": {
-        "ig_views": 4,
-        "ig_reach": 2,
-        "ig_likes": 0,
-        "ig_comments": 0,
-        "ig_shares": 0,
-        "ig_saves": 0,
-        "ig_avg_watch_ms": 15794,
-        "yt_views": 38,
-        "yt_likes": 0,
-        "yt_comments": 0
-      },
-      "metrics_age_days": 0
+      "language": "en",
+      "theme": "explainer",
+      "ig_state": "posted",
+      "yt_state": "posted"
     },
     {
       "id": "20261115-043843-why-your-fingers-wrinkle-in-wa",
@@ -76,21 +59,11 @@
       "ig_media_id": "18115510880140167",
       "ig_link": "https://www.instagram.com/reel/Dfw999aiNdd/",
       "yt_video_id": "HrMXHt8bdVU",
-      "yt_done": true,
       "published_at": "2026-11-15T19:43+05:30",
-      "metrics": {
-        "ig_views": 73,
-        "ig_reach": 67,
-        "ig_likes": 0,
-        "ig_comments": 0,
-        "ig_shares": 0,
-        "ig_saves": 0,
-        "ig_avg_watch_ms": 5015,
-        "yt_views": 223,
-        "yt_likes": 5,
-        "yt_comments": 0
-      },
-      "metrics_age_days": 0
+      "language": "en",
+      "theme": "explainer",
+      "ig_state": "posted",
+      "yt_state": "posted"
     },
     {
       "id": "20261116-043952-why-you-get-hiccups",
@@ -104,7 +77,9 @@
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-043952-why-you-get-hiccups",
       "status": "queued",
-      "created": "2026-11-16T04:42+05:30"
+      "created": "2026-11-16T04:42+05:30",
+      "language": "en",
+      "theme": "explainer"
     },
     {
       "id": "20261116-044242-why-you-get-brain-freeze",
@@ -118,7 +93,10 @@
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-044242-why-you-get-brain-freeze",
       "status": "queued",
-      "created": "2026-11-16T04:45+05:30"
+      "created": "2026-11-16T04:45+05:30",
+      "language": "en",
+      "theme": "explainer"
     }
-  ]
+  ],
+  "version": 2
 }
