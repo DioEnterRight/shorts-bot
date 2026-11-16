@@ -1,0 +1,1085 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "durationInFrames": 1042,
+ "language": "en",
+ "style": "blocky",
+ "captionStyle": "word_pop",
+ "uppercase": true,
+ "accent": "#FFE600",
+ "audio": "sfx/whoosh.wav",
+ "scenes": [
+  {
+   "durationInFrames": 102,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "What happens if you swallow your chewing gum?",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "punch_in",
+   "overlay": "",
+   "shot": "character",
+   "emphasis": "swallow",
+   "blocky": {
+    "pose": "talk",
+    "pair": true
+   }
+  },
+  {
+   "durationInFrames": 112,
+   "transitionIn": "zoom",
+   "transitionFrames": 10,
+   "line": "Everyone says it stays inside you for seven years.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "zoom_out",
+   "overlay": "7 years?",
+   "shot": "metaphor",
+   "emphasis": "seven",
+   "blocky": {
+    "pose": "jump",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 117,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "First, it slides down your esophagus like a pink submarine.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "pan_down",
+   "overlay": "esophagus",
+   "shot": "cutaway",
+   "emphasis": "submarine",
+   "blocky": {
+    "pose": "think",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 84,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "Then it splashes into your stomach acid.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "shake",
+   "overlay": "",
+   "shot": "cutaway",
+   "emphasis": "acid",
+   "blocky": {
+    "pose": "shock",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 83,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "The sugar and flavour dissolve almost instantly.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "zoom_in",
+   "overlay": "",
+   "shot": "closeup",
+   "emphasis": "dissolve",
+   "blocky": {
+    "pose": "wave",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 133,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "But the rubbery gum base? Your body cannot break it down.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "zoom_in",
+   "overlay": "gum base",
+   "shot": "diagram",
+   "emphasis": "rubbery",
+   "blocky": {
+    "pose": "jump",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 127,
+   "transitionIn": "whip",
+   "transitionFrames": 8,
+   "line": "So your gut just pushes it along with everything else.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "pan_right",
+   "overlay": "",
+   "shot": "cutaway",
+   "emphasis": "pushes",
+   "blocky": {
+    "pose": "talk",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 104,
+   "transitionIn": "fade",
+   "transitionFrames": 10,
+   "line": "A few days later, it leaves the building.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "zoom_out",
+   "overlay": "",
+   "shot": "metaphor",
+   "emphasis": "days",
+   "blocky": {
+    "pose": "jump",
+    "pair": false
+   }
+  },
+  {
+   "durationInFrames": 87,
+   "transitionIn": "whip",
+   "transitionFrames": 8,
+   "line": "Seven years was a myth all along.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "punch_in",
+   "overlay": "",
+   "shot": "character",
+   "emphasis": "myth",
+   "blocky": {
+    "pose": "jump",
+    "pair": true
+   }
+  },
+  {
+   "durationInFrames": 129,
+   "transitionIn": "cut",
+   "transitionFrames": 0,
+   "line": "Still, maybe don't swallow a whole pack at once.",
+   "media": null,
+   "mediaIsVideo": false,
+   "camera": "zoom_in",
+   "overlay": "",
+   "shot": "character",
+   "emphasis": "pack",
+   "blocky": {
+    "pose": "talk",
+    "pair": true
+   }
+  }
+ ],
+ "captions": [
+  {
+   "text": "What",
+   "startMs": 150,
+   "endMs": 535,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " happens",
+   "startMs": 535,
+   "endMs": 919,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " if",
+   "startMs": 919,
+   "endMs": 1304,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " you",
+   "startMs": 1304,
+   "endMs": 1688,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " swallow",
+   "startMs": 1688,
+   "endMs": 2073,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " your",
+   "startMs": 2073,
+   "endMs": 2458,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " chewing",
+   "startMs": 2458,
+   "endMs": 2842,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " gum?",
+   "startMs": 2842,
+   "endMs": 3227,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " Everyone",
+   "startMs": 3307,
+   "endMs": 3692,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " says",
+   "startMs": 3692,
+   "endMs": 4076,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 4076,
+   "endMs": 4461,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " stays",
+   "startMs": 4461,
+   "endMs": 4845,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " inside",
+   "startMs": 4845,
+   "endMs": 5230,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " you",
+   "startMs": 5230,
+   "endMs": 5615,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " for",
+   "startMs": 5615,
+   "endMs": 5999,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " seven",
+   "startMs": 5999,
+   "endMs": 6384,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " years.",
+   "startMs": 6384,
+   "endMs": 6768,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " First,",
+   "startMs": 6848,
+   "endMs": 7233,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 7233,
+   "endMs": 7618,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " slides",
+   "startMs": 7618,
+   "endMs": 8002,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " down",
+   "startMs": 8002,
+   "endMs": 8387,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " your",
+   "startMs": 8387,
+   "endMs": 8772,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " esophagus",
+   "startMs": 8772,
+   "endMs": 9156,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " like",
+   "startMs": 9156,
+   "endMs": 9541,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " a",
+   "startMs": 9541,
+   "endMs": 9925,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " pink",
+   "startMs": 9925,
+   "endMs": 10310,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " submarine.",
+   "startMs": 10310,
+   "endMs": 10695,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " Then",
+   "startMs": 10775,
+   "endMs": 11159,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 11159,
+   "endMs": 11544,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " splashes",
+   "startMs": 11544,
+   "endMs": 11928,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " into",
+   "startMs": 11928,
+   "endMs": 12313,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " your",
+   "startMs": 12313,
+   "endMs": 12698,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " stomach",
+   "startMs": 12698,
+   "endMs": 13082,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " acid.",
+   "startMs": 13082,
+   "endMs": 13467,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " The",
+   "startMs": 13547,
+   "endMs": 13932,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " sugar",
+   "startMs": 13932,
+   "endMs": 14316,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " and",
+   "startMs": 14316,
+   "endMs": 14701,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " flavour",
+   "startMs": 14701,
+   "endMs": 15085,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " dissolve",
+   "startMs": 15085,
+   "endMs": 15470,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " almost",
+   "startMs": 15470,
+   "endMs": 15855,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " instantly.",
+   "startMs": 15855,
+   "endMs": 16239,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " But",
+   "startMs": 16319,
+   "endMs": 16704,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " the",
+   "startMs": 16704,
+   "endMs": 17088,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " rubbery",
+   "startMs": 17088,
+   "endMs": 17473,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " gum",
+   "startMs": 17473,
+   "endMs": 17858,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " base?",
+   "startMs": 17858,
+   "endMs": 18242,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " Your",
+   "startMs": 18242,
+   "endMs": 18627,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " body",
+   "startMs": 18627,
+   "endMs": 19012,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " cannot",
+   "startMs": 19012,
+   "endMs": 19396,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " break",
+   "startMs": 19396,
+   "endMs": 19781,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 19781,
+   "endMs": 20165,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " down.",
+   "startMs": 20165,
+   "endMs": 20550,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " So",
+   "startMs": 20630,
+   "endMs": 21015,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " your",
+   "startMs": 21015,
+   "endMs": 21399,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " gut",
+   "startMs": 21399,
+   "endMs": 21784,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " just",
+   "startMs": 21784,
+   "endMs": 22168,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " pushes",
+   "startMs": 22168,
+   "endMs": 22553,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 22553,
+   "endMs": 22938,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " along",
+   "startMs": 22938,
+   "endMs": 23322,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " with",
+   "startMs": 23322,
+   "endMs": 23707,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " everything",
+   "startMs": 23707,
+   "endMs": 24092,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " else.",
+   "startMs": 24092,
+   "endMs": 24476,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " A",
+   "startMs": 24556,
+   "endMs": 24941,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " few",
+   "startMs": 24941,
+   "endMs": 25325,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " days",
+   "startMs": 25325,
+   "endMs": 25710,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " later,",
+   "startMs": 25710,
+   "endMs": 26095,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " it",
+   "startMs": 26095,
+   "endMs": 26479,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " leaves",
+   "startMs": 26479,
+   "endMs": 26864,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " the",
+   "startMs": 26864,
+   "endMs": 27248,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " building.",
+   "startMs": 27248,
+   "endMs": 27633,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " Seven",
+   "startMs": 27713,
+   "endMs": 28098,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " years",
+   "startMs": 28098,
+   "endMs": 28482,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " was",
+   "startMs": 28482,
+   "endMs": 28867,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " a",
+   "startMs": 28867,
+   "endMs": 29252,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " myth",
+   "startMs": 29252,
+   "endMs": 29636,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " all",
+   "startMs": 29636,
+   "endMs": 30021,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " along.",
+   "startMs": 30021,
+   "endMs": 30405,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " Still,",
+   "startMs": 30485,
+   "endMs": 30870,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " maybe",
+   "startMs": 30870,
+   "endMs": 31255,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " don't",
+   "startMs": 31255,
+   "endMs": 31639,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " swallow",
+   "startMs": 31639,
+   "endMs": 32024,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " a",
+   "startMs": 32024,
+   "endMs": 32408,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " whole",
+   "startMs": 32408,
+   "endMs": 32793,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " pack",
+   "startMs": 32793,
+   "endMs": 33178,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " at",
+   "startMs": 33178,
+   "endMs": 33562,
+   "timestampMs": null,
+   "confidence": null
+  },
+  {
+   "text": " once.",
+   "startMs": 33562,
+   "endMs": 33947,
+   "timestampMs": null,
+   "confidence": null
+  }
+ ],
+ "sfx": [
+  {
+   "name": "whoosh",
+   "frame": 51,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 93,
+   "volume": 0.597
+  },
+  {
+   "name": "pop",
+   "frame": 180,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 199,
+   "volume": 0.239
+  },
+  {
+   "name": "whoosh",
+   "frame": 309,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 317,
+   "volume": 0.239
+  },
+  {
+   "name": "hit",
+   "frame": 392,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 400,
+   "volume": 0.239
+  },
+  {
+   "name": "whoosh",
+   "frame": 483,
+   "volume": 0.239
+  },
+  {
+   "name": "pop",
+   "frame": 513,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 612,
+   "volume": 0.597
+  },
+  {
+   "name": "whoosh",
+   "frame": 665,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 730,
+   "volume": 0.239
+  },
+  {
+   "name": "pop",
+   "frame": 760,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 825,
+   "volume": 0.597
+  },
+  {
+   "name": "pop",
+   "frame": 878,
+   "volume": 0.796
+  },
+  {
+   "name": "whoosh",
+   "frame": 908,
+   "volume": 0.239
+  },
+  {
+   "name": "tick",
+   "frame": 984,
+   "volume": 0.796
+  },
+  {
+   "name": "pop",
+   "frame": 4,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 28,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 51,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 74,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 99,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 122,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 145,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 168,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 192,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 217,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 240,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 263,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 286,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 309,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 335,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 358,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 381,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 406,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 429,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 453,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 476,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 501,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 524,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 547,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 570,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 593,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 619,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 642,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 665,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 688,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 711,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 737,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 760,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 783,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 806,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 831,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 854,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 878,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 901,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 926,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 949,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 972,
+   "volume": 0.143
+  },
+  {
+   "name": "pop",
+   "frame": 995,
+   "volume": 0.143
+  }
+ ]
+}

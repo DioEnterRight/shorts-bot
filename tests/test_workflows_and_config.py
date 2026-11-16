@@ -78,3 +78,20 @@ def test_choose_slot_with_and_without_stats(cfg):
     lang, _ = produce.choose_slot(cfg, hist, {"allocation": {"language": {"shares": {"en": 0.8, "hi": 0.2}}}})
     assert lang == "hi"  # floor: 4 English in a row -> Hindi is due
     assert produce.choose_slot(cfg, hist, {}, language="en", theme="story") == ("en", "story")
+
+
+def test_make_video_installs_remotion_with_npm_cache():
+    wf = load("make-video.yml")
+    node = next(s for s in steps(wf) if s.get("uses", "").startswith("actions/setup-node"))
+    assert node["with"]["cache"] == "npm" and node["with"]["cache-dependency-path"] == "remotion/package-lock.json"
+    assert any("npm ci --prefix remotion" in s.get("run", "") for s in steps(wf))
+
+
+def test_render_and_voice_config(cfg):
+    from pipeline import remotion_render
+    assert cfg["render"]["engine"] in ("remotion", "ffmpeg")
+    assert cfg["render"]["caption_style"] in remotion_render.CAPTION_STYLES
+    assert cfg["voice"]["engine"] in ("edge", "kokoro")
+    for code in cfg["languages"]["enabled"]:
+        assert cfg["languages"][code].get("edge_voice")
+    assert cfg["themes"]["roblox_story"]["render_style"] == "blocky"

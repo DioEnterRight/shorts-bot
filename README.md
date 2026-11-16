@@ -181,3 +181,13 @@ GitHub emails you. Open **Actions → the red ❌ run** → read the last lines.
 ## 💸 Why it stays free
 
 GitHub Actions (~300-400 of 2,000 free min/month) · Cloudflare AI (roughly 2,000 of 10,000 free neurons/day per video — more beats than before) · Kokoro voice + captions + music + editing (run on GitHub's machine) · Claude (your subscription) · Instagram + YouTube APIs (free). **₹0/month.**
+
+## Video renderer (Remotion) and voice (edge-tts)
+
+- `render.engine: remotion` in `config.yaml` draws videos with code (the `remotion/` folder):
+  camera moves, transitions, word-pop captions, stickers. `ffmpeg` switches back to the old renderer.
+- The Roblox-style theme is drawn as a 3D blocky toy world in code (original characters, no game branding).
+- `voice.engine: edge` uses Microsoft's free edge-tts voices (Hindi: Madhur or Swara) with real
+  per-word timing for captions. If edge-tts fails, that video uses Kokoro automatically.
+  edge-tts is an unofficial use of a Microsoft service, so it can stop working without warning.
+- Test-mode runs use Kokoro only (no internet voices).
