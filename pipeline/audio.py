@@ -227,8 +227,9 @@ def mix(cfg, script, timeline, caption_times, voice_path, total, workdir, seed):
 
     cache = {k: f() for k, f in SFX.items()}
     for i, (sc, line) in enumerate(zip(script["scenes"], timeline)):
-        if i > 0:
-            place(cache["whoosh"], line["start"] - 0.22, gain * 0.55)  # every cut
+        if i > 0:  # swish on every cut, louder on whip/zoom transitions
+            loud = 0.75 if sc.get("transition") in ("whip", "zoom") else 0.3
+            place(cache["whoosh"], line["start"] - 0.22, gain * loud)
         kind = sc.get("sfx", "none")
         if kind != "none" and kind in cache:
             at = line["start"]

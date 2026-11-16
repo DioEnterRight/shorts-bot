@@ -14,7 +14,7 @@ Higgsfield MCP connector (spends your plan credits). So the hand-off works like 
   3. This module downloads those files. Everything else (voice, captions, music,
      posting) keeps working exactly the same in 'higgsfield_clips' mode.
 
-To switch: set visuals.provider in config.yaml. To switch back: 'cloudflare_flux'.
+To switch: set visuals.provider in config.yaml. To switch back: 'cloudflare_klein'.
 """
 import json
 
@@ -31,7 +31,7 @@ def _ticket():
         raise RuntimeError(
             f"Higgsfield mode is on, but {p.relative_to(ROOT)} was not found. "
             "Either the Higgsfield routine has not run yet, or switch visuals.provider "
-            "back to cloudflare_flux in config.yaml.")
+            "back to cloudflare_klein in config.yaml.")
     return json.loads(p.read_text())
 
 
