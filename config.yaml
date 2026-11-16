@@ -55,6 +55,14 @@ languages:
     caption_font_size: 140
 
 allocation:
+  # weekly = fixed plan: `main` language every day, plus `weekly_quota` videos per Mon-Sun week
+  #          (from `quota_day` on). adaptive = split learned from views (settings below).
+  mode: weekly
+  main: en
+  weekly_quota:
+    hi: 1
+  quota_day: wed
+  # --- adaptive mode only ---
   floor: 0.2              # each language always gets at least 20% (so max 80% for the stronger one)
   min_videos: 4           # per language, before views are allowed to move the split
   min_age_days: 2         # ignore videos younger than this (views still coming in)

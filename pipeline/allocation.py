@@ -108,3 +108,31 @@ def pick(shares, recent, floor=None, window=10):
     n = len(win)
     deficit = {k: shares[k] * (n + 1) - win.count(k) for k in order}
     return max(order, key=lambda k: (round(deficit[k], 9), shares[k], -order.index(k)))
+
+
+# ---------------- weekly quota (config allocation.mode: weekly) ----------------
+DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+
+def weekly_pick(made, now, main, quota, day):
+    """Language for the next video under a fixed weekly plan.
+
+    made: [(created datetime, language)] of videos already made (any status except discarded).
+    main: the default language (English). quota: {"hi": 1} = videos per Mon-Sun week (IST).
+    day: earliest weekday for the quota videos ("wed"), so they don't all land on Monday.
+    A quota language is picked once its day has come and it is still short this week;
+    if several are short, the one furthest behind goes first.
+    """
+    week_start = (now - _days(now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+    this_week = [lang for t, lang in made if t >= week_start]
+    if now.weekday() < DAYS.index(day):
+        return main
+    short = {lang: n - this_week.count(lang) for lang, n in quota.items() if this_week.count(lang) < n}
+    if not short:
+        return main
+    return max(sorted(short), key=lambda lang: short[lang])
+
+
+def _days(n):
+    import datetime as dt
+    return dt.timedelta(days=n)

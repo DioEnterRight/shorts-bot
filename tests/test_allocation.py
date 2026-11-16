@@ -109,3 +109,41 @@ def test_theme_mix_keeps_explainers_majority():
         seq.append(al.pick(shares, seq, window=20))
     assert 0.75 <= seq.count("explainer") / 200 <= 0.85
     assert seq.count("roblox_story") >= 8 and seq.count("story") >= 20
+
+
+# ---------------- weekly quota ----------------
+import datetime as _dt
+
+from pipeline.common import IST
+
+
+def _t(y, m, d, h=10):
+    return _dt.datetime(y, m, d, h, tzinfo=IST)
+
+
+def test_weekly_one_hindi_from_wednesday():
+    from pipeline.allocation import weekly_pick
+    q = {"hi": 1}
+    mon, wed, thu, sun = _t(2026, 11, 16), _t(2026, 11, 18), _t(2026, 11, 19), _t(2026, 11, 22)
+    assert weekly_pick([], mon, "en", q, "wed") == "en"                    # before quota day
+    assert weekly_pick([(mon, "en"), (mon, "en")], wed, "en", q, "wed") == "hi"
+    made = [(mon, "en"), (wed, "hi")]
+    assert weekly_pick(made, thu, "en", q, "wed") == "en"                  # quota met
+    assert weekly_pick(made, sun, "en", q, "wed") == "en"
+    last_week = [(_t(2026, 11, 11), "hi")]
+    assert weekly_pick(last_week, thu, "en", q, "wed") == "hi"             # last week's doesn't count
+    # simulate a whole week, 1 video/day: exactly one Hindi
+    made = []
+    for d in range(16, 23):
+        lang = weekly_pick(made, _t(2026, 11, d), "en", q, "wed")
+        made.append((_t(2026, 11, d), lang))
+    assert [l for _, l in made].count("hi") == 1
+
+
+def test_choose_slot_weekly(cfg):
+    from pipeline import produce
+    cfg["allocation"].update(mode="weekly", main="en", weekly_quota={"hi": 1}, quota_day="mon")
+    lang, _ = produce.choose_slot(cfg, {"videos": []}, {})
+    assert lang == "hi"
+    hist = {"videos": [{"created": produce.now_ist().isoformat(), "language": "hi", "status": "queued"}]}
+    assert produce.choose_slot(cfg, hist, {})[0] == "en"

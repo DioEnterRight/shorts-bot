@@ -182,6 +182,10 @@ GitHub emails you. Open **Actions → the red ❌ run** → read the last lines.
 
 GitHub Actions (~300-400 of 2,000 free min/month) · Cloudflare AI (roughly 2,000 of 10,000 free neurons/day per video — more beats than before) · Kokoro voice + captions + music + editing (run on GitHub's machine) · Claude (your subscription) · Instagram + YouTube APIs (free). **₹0/month.**
 
+**Language plan (`allocation.mode: weekly`):** English every day, plus exactly one Hindi video per
+Mon-Sun week (made from Wednesday on). Change `weekly_quota` or set `mode: adaptive` to go back to
+the split learned from views.
+
 ## Video renderer (Remotion) and voice (edge-tts)
 
 **Bespoke scenes (default for explainer and story videos).** For every video, Claude Opus writes new
