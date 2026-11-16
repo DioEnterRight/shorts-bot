@@ -149,7 +149,7 @@ def test_edge_retries_then_raises(monkeypatch):
 @pytest.mark.slow
 @pytest.mark.skipif(not (ROOT / "remotion" / "node_modules").exists() or not shutil.which("npx"),
                     reason="remotion/node_modules not installed")
-@pytest.mark.parametrize("code,style", [("hi", "explainer"), ("en", "blocky")])
+@pytest.mark.parametrize("code,style", [("hi", "explainer"), ("en", "blocky"), ("hi", "cartoon")])
 def test_remotion_schema_accepts_props(cfg, sample, tmp_path, code, style):
     props, assets, _ = props_for(cfg, sample, code, style, tmp_path)
     pub = remotion_render.stage_public(props, assets, _wav(tmp_path), tmp_path)
@@ -166,3 +166,35 @@ def test_remotion_schema_accepts_props(cfg, sample, tmp_path, code, style):
     path.write_text(json.dumps(props), encoding="utf-8")
     bad = subprocess.run(cmd, cwd=ROOT / "remotion", capture_output=True, text=True)
     assert bad.returncode != 0
+
+
+# ---------------- cartoon storyboard ----------------
+
+def test_cartoon_normalize_cleans_and_derives():
+    from pipeline import cartoon
+    sc = {"shot": "diagram", "cartoon": {"layout": "versus", "expression": "angry", "mood": "pink",
+                                          "props": [{"name": "Virus", "motion": "wiggle"}, "dragon", {"name": "pee"}]}}
+    c = cartoon.normalize(sc)
+    assert c["props"] == [{"name": "germ", "motion": "pop"}, {"name": "bladder", "motion": "pop"}]
+    assert c["layout"] == "versus" and c["expression"] == "neutral" and c["mood"] == "body"
+    assert cartoon.normalize({"shot": "cutaway"})["layout"] == "inside"
+    assert cartoon.normalize({"shot": "metaphor"})["props"][0]["name"] == "question"
+
+
+def test_cartoon_catalog_matches_remotion():
+    import re
+    from pipeline import cartoon
+    tsx = (ROOT / "remotion/src/bot/cartoon/Props.tsx").read_text()
+    drawn = re.findall(r"^  ([a-z_]+): \(\) =>", tsx, re.M)
+    assert drawn == cartoon.PROPS
+    schema = (ROOT / "remotion/src/bot/schema.ts").read_text()
+    for name, values in (("LAYOUTS", cartoon.LAYOUTS), ("MOTIONS", cartoon.MOTIONS), ("MOODS", cartoon.MOODS),
+                         ("EXPRESSIONS", cartoon.EXPRESSIONS)):
+        line = re.search(rf"export const {name} = \[([^\]]+)\]", schema).group(1)
+        assert re.findall(r'"([a-z_]+)"', line) == values, name
+
+
+def test_cartoon_props_valid(cfg, sample, tmp_path):
+    props, _, _ = props_for(cfg, sample, "hi", "cartoon", tmp_path)
+    remotion_render.validate_props(props)
+    assert {s["cartoon"]["layout"] for s in props["scenes"]} >= {"actor", "inside", "versus"}

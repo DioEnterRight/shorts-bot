@@ -7,7 +7,11 @@ and renders the `ShortsBot` composition (`src/bot/`). Python owns all timing; Re
 The props are checked twice: in Python (`validate_props`) and by the zod schema (`src/bot/schema.ts`),
 which stops the render on any mismatch.
 
-- `explainer` style (explainer + story themes): the scene picture with an eased camera move,
+- `cartoon` style (explainer theme, default): fully animated and drawn in code. The channel's guy
+  (9 expressions, mouth moves while words are spoken), 34 props (organs, germs, cells, fire, ice,
+  clock, food...) with motion presets, and 4 layouts: actor, props, versus (cause -> arrow ->
+  effect) and inside (a magnifier into the body). Claude picks these per scene ("cartoon" field).
+- `explainer` style (story theme): the scene picture with an eased camera move,
   motion blur on punch-ins, remocn transitions (whip-pan, zoom-blur, iris, wave, fade),
   radial burst on "hit" moments, sticker labels (remocn marker) or counting numbers (remotion-bits).
 - `blocky` style (roblox_story theme): a three.js toy world with original blocky characters

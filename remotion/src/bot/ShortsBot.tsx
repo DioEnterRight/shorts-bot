@@ -8,6 +8,7 @@ import { waveWipe } from "../library/remocn/registry/wave-wipe";
 import { whipPan } from "../library/remocn/registry/whip-pan";
 import { zoomBlur } from "../library/remocn/registry/zoom-blur";
 import { BlockyScene } from "./BlockyScene";
+import { CartoonScene } from "./cartoon/CartoonScene";
 import { Captions } from "./Captions";
 import { ExplainerScene } from "./ExplainerScene";
 import { loadBotFonts } from "./fonts";
@@ -43,7 +44,9 @@ export const ShortsBot: React.FC<BotProps> = (p) => {
                 <TransitionSeries.Transition presentation={presentation(s.transitionIn, i)} timing={linearTiming({ durationInFrames: s.transitionFrames })} />
               )}
               <TransitionSeries.Sequence durationInFrames={s.durationInFrames}>
-                {p.style === "blocky" ? <BlockyScene s={s} p={p} index={i} /> : <ExplainerScene s={s} p={p} impact={impact} />}
+                {p.style === "blocky" ? <BlockyScene s={s} p={p} index={i} />
+                  : p.style === "cartoon" ? <CartoonScene s={s} p={p} impact={impact} sceneStart={from} />
+                  : <ExplainerScene s={s} p={p} impact={impact} />}
               </TransitionSeries.Sequence>
             </React.Fragment>
           );

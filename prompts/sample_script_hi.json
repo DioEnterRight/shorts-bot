@@ -26,7 +26,18 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "hit",
-      "emphasis": "गुड़गुड़"
+      "emphasis": "गुड़गुड़",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "shock",
+        "mood": "fun",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "shake"
+          }
+        ]
+      }
     },
     {
       "line": "असल में ये आवाज़ भूख की नहीं, cleaning की है।",
@@ -37,7 +48,22 @@
       "transition": "zoom",
       "overlay": "",
       "sfx": "boing",
-      "emphasis": "cleaning"
+      "emphasis": "cleaning",
+      "cartoon": {
+        "layout": "props",
+        "expression": "neutral",
+        "mood": "calm",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "pulse"
+          },
+          {
+            "name": "water_drop",
+            "motion": "float"
+          }
+        ]
+      }
     },
     {
       "line": "जब stomach खाली होता है, उसकी muscles लहर की तरह सिकुड़ती हैं।",
@@ -48,7 +74,18 @@
       "transition": "cut",
       "overlay": "muscles",
       "sfx": "whoosh",
-      "emphasis": "muscles"
+      "emphasis": "muscles",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "neutral",
+        "mood": "body",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "pulse"
+          }
+        ]
+      }
     },
     {
       "line": "ये लहरें बचा हुआ खाना और gas आगे धकेलती हैं।",
@@ -59,7 +96,22 @@
       "transition": "cut",
       "overlay": "gas",
       "sfx": "pop",
-      "emphasis": "gas"
+      "emphasis": "gas",
+      "cartoon": {
+        "layout": "versus",
+        "expression": "neutral",
+        "mood": "body",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "pulse"
+          },
+          {
+            "name": "food",
+            "motion": "bounce"
+          }
+        ]
+      }
     },
     {
       "line": "खाली पेट में आवाज़ दबाने के लिए कुछ नहीं होता, तो echo बनता है।",
@@ -70,7 +122,22 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "riser",
-      "emphasis": "echo"
+      "emphasis": "echo",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "think",
+        "mood": "night",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "shake"
+          },
+          {
+            "name": "wave",
+            "motion": "float"
+          }
+        ]
+      }
     },
     {
       "line": "साथ ही stomach एक hormone छोड़ता है, ghrelin।",
@@ -81,7 +148,22 @@
       "transition": "zoom",
       "overlay": "ghrelin",
       "sfx": "none",
-      "emphasis": "ghrelin"
+      "emphasis": "ghrelin",
+      "cartoon": {
+        "layout": "inside",
+        "expression": "neutral",
+        "mood": "body",
+        "props": [
+          {
+            "name": "stomach",
+            "motion": "pop"
+          },
+          {
+            "name": "water_drop",
+            "motion": "drip"
+          }
+        ]
+      }
     },
     {
       "line": "Ghrelin खून के रास्ते brain तक पहुँचता है।",
@@ -92,7 +174,22 @@
       "transition": "whip",
       "overlay": "",
       "sfx": "whoosh",
-      "emphasis": "brain"
+      "emphasis": "brain",
+      "cartoon": {
+        "layout": "versus",
+        "expression": "neutral",
+        "mood": "body",
+        "props": [
+          {
+            "name": "blood_cell",
+            "motion": "float"
+          },
+          {
+            "name": "brain",
+            "motion": "pulse"
+          }
+        ]
+      }
     },
     {
       "line": "और brain तुरंत आपको भूख का signal भेज देता है।",
@@ -103,7 +200,26 @@
       "transition": "cut",
       "overlay": "signal",
       "sfx": "hit",
-      "emphasis": "signal"
+      "emphasis": "signal",
+      "cartoon": {
+        "layout": "versus",
+        "expression": "shock",
+        "mood": "warm",
+        "props": [
+          {
+            "name": "brain",
+            "motion": "pulse"
+          },
+          {
+            "name": "lightning",
+            "motion": "shake"
+          },
+          {
+            "name": "food",
+            "motion": "bounce"
+          }
+        ]
+      }
     },
     {
       "line": "तो अगली बार exam में पेट बोले,",
@@ -114,7 +230,18 @@
       "transition": "whip",
       "overlay": "",
       "sfx": "none",
-      "emphasis": "exam"
+      "emphasis": "exam",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "sleepy",
+        "mood": "night",
+        "props": [
+          {
+            "name": "clock",
+            "motion": "spin"
+          }
+        ]
+      }
     },
     {
       "line": "समझ जाना, अंदर बस सफ़ाई चल रही है।",
@@ -125,7 +252,18 @@
       "transition": "cut",
       "overlay": "",
       "sfx": "boing",
-      "emphasis": "सफ़ाई"
+      "emphasis": "सफ़ाई",
+      "cartoon": {
+        "layout": "actor",
+        "expression": "happy",
+        "mood": "fun",
+        "props": [
+          {
+            "name": "check",
+            "motion": "grow"
+          }
+        ]
+      }
     }
   ],
   "playbook_update": ""

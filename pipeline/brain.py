@@ -2,7 +2,7 @@
 import json
 import re
 
-from . import languages
+from . import cartoon, languages
 from .common import DATA, ROOT, env, log, norm_text, now_ist, run
 
 CAMERAS = {"punch_in", "zoom_in", "zoom_out", "pan_left", "pan_right", "pan_up", "pan_down", "shake"}
@@ -104,6 +104,7 @@ def validate(s, cfg, lp, theme="explainer"):
         if norm_text(sc.get("emphasis", "")) not in {norm_text(w) for w in sc["line"].split()}:
             sc["emphasis"] = ""
         sc["character"] = "[GUY]" in sc["visual"]
+        cartoon.normalize(sc)
     # genuinely different pictures, not one image restyled
     visuals = [norm_text(sc["visual"]) for sc in scenes]
     if any(a == b for a, b in zip(visuals, visuals[1:])):

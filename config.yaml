@@ -69,7 +69,7 @@ allocation:
 themes:
   explainer:
     share: 0.8
-    render_style: explainer
+    render_style: cartoon   # cartoon = animated, drawn in code | explainer = AI pictures + camera moves
     guidance: >-
       A clear answer to one specific, surprising question about the body, mind,
       nature, science, technology, space, history or geography. Real explanation,
@@ -152,7 +152,7 @@ voice:
 render:
   engine: remotion
   caption_style: word_pop   # word_pop | karaoke | highlight_box | bounce_in | active_pop | outline | stamp
-  concurrency: 2            # GitHub's free runners have 2 CPU cores
+  concurrency: auto         # one render tab per CPU core (GitHub runners: 2 private / 4 public repo)
   timeout_minutes: 25
 
 captions:
