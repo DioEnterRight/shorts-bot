@@ -184,6 +184,20 @@ GitHub Actions (~300-400 of 2,000 free min/month) · Cloudflare AI (roughly 2,00
 
 ## Video renderer (Remotion) and voice (edge-tts)
 
+**Bespoke scenes (default for explainer and story videos).** For every video, Claude Opus writes new
+animation code for each scene with the channel's design kit (`remotion/src/kit`: the mascot with real
+lip-sync and gestures, props, 1,500+ icons, arrows, meters, charts, counters, comparisons), renders a
+contact sheet of its own frames, looks at it and fixes problems (2 rounds). The bot then checks every
+scene (allowed imports only, no random/timers, typecheck, a crash-test render). Any scene that fails
+uses the cartoon template, so a video always ships. This takes ~10-25 min per video on the runner.
+Model: `claude: model: opus` in `config.yaml` (Sonnet only as automatic fallback).
+
+**Dev tools installed in the repo** (for working on the bot with Claude Code on your PC):
+graphify (`uv tool install graphifyy`, then `graphify update .` builds the code graph; hooks in
+`.claude/settings.json` fail open in CI), ponytail skills (for the full plugin with hooks run
+`/plugin marketplace add DietrichGebert/ponytail` and `/plugin install ponytail@ponytail` in Claude Code),
+claude-motion review/taste skills (`cm-*`), and `tools/validate_skills.sh` (agentskills spec check).
+
 - `render.engine: remotion` in `config.yaml` draws videos with code (the `remotion/` folder):
   camera moves, transitions, word-pop captions, stickers. `ffmpeg` switches back to the old renderer.
 - Explainer videos use the `cartoon` style: animated, drawn fully in code (no AI pictures, so no

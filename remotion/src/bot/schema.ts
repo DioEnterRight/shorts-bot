@@ -23,6 +23,7 @@ const scene = z.object({
   shot: z.string(),
   emphasis: z.string(),
   blocky: z.object({ pose: z.enum(POSES), pair: z.boolean() }),
+  component: z.string().nullable(),
   cartoon: z.object({
     layout: z.enum(LAYOUTS),
     expression: z.enum(EXPRESSIONS),
@@ -38,7 +39,8 @@ export const botSchema = z
     height: z.literal(1920),
     durationInFrames: z.number().int().positive(),
     language: z.string(),
-    style: z.enum(["explainer", "cartoon", "blocky"]),
+    style: z.enum(["explainer", "cartoon", "blocky", "bespoke"]),
+    visemes: z.array(z.tuple([z.number().int(), z.string()])),
     captionStyle: z.enum(CAPTION_STYLES),
     uppercase: z.boolean(),
     accent: z.string().regex(/^#[0-9A-Fa-f]{6}$/),

@@ -84,7 +84,7 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
     else:
         engine = cfg["render"]["engine"]
         style = cfg["themes"][theme].get("render_style", "explainer") if engine == "remotion" else "explainer"
-        if style in ("blocky", "cartoon"):   # drawn entirely in code: no pictures to generate
+        if style in ("blocky", "cartoon", "bespoke"):   # drawn entirely in code: no pictures to generate
             assets = [None] * len(script["scenes"])
         else:
             assets = get_provider(provider_name).generate(cfg, script, work)

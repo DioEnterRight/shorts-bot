@@ -149,7 +149,7 @@ def test_edge_retries_then_raises(monkeypatch):
 @pytest.mark.slow
 @pytest.mark.skipif(not (ROOT / "remotion" / "node_modules").exists() or not shutil.which("npx"),
                     reason="remotion/node_modules not installed")
-@pytest.mark.parametrize("code,style", [("hi", "explainer"), ("en", "blocky"), ("hi", "cartoon")])
+@pytest.mark.parametrize("code,style", [("hi", "explainer"), ("en", "blocky"), ("hi", "cartoon"), ("en", "bespoke")])
 def test_remotion_schema_accepts_props(cfg, sample, tmp_path, code, style):
     props, assets, _ = props_for(cfg, sample, code, style, tmp_path)
     pub = remotion_render.stage_public(props, assets, _wav(tmp_path), tmp_path)

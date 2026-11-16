@@ -4,7 +4,7 @@ import { RadialBurst } from "../../library/remocn/registry/radial-burst";
 import { cameraTransform } from "../ExplainerScene";
 import { Overlay } from "../Overlay";
 import type { BotProps, BotScene } from "../schema";
-import { Actor } from "./Actor";
+import { Bean, type Emotion } from "../../kit/Bean";
 import { Prop } from "./Props";
 
 type Cartoon = BotScene["cartoon"];
@@ -52,13 +52,12 @@ const Arrow: React.FC<{ x1: number; x2: number; y: number }> = ({ x1, x2, y }) =
   );
 };
 
-// Mouth moves while a word is being spoken (word times come from the voice step).
-const useTalk = (p: BotProps, sceneStart: number) => {
-  const f = useCurrentFrame();
-  const ms = ((sceneStart + f) / p.fps) * 1000;
-  const speaking = p.captions.some((c) => ms >= c.startMs && ms < c.endMs);
-  return speaking ? 0.35 + 0.65 * Math.abs(Math.sin(f * 0.9)) : 0;
-};
+const EMO: Record<string, Emotion> = { neutral: "neutral", happy: "happy", shock: "shock", sick: "sick", sleepy: "sleepy",
+  think: "neutral", hot: "hot", cold: "cold", pain: "worried" };
+// Lip-synced guy (viseme track) that acts: points at the props while explaining.
+const Guy: React.FC<{ expression: string; size?: number; point?: "left" | "right" | "up" }> = ({ expression, size = 560, point }) => (
+  <Bean emotion={EMO[expression] ?? "neutral"} pose={expression === "think" ? "think" : expression === "shock" ? "shrug" : point ? (`point_${point}` as const) : "idle"} size={size} />
+);
 
 export const CartoonScene: React.FC<{ s: BotScene; p: BotProps; impact: boolean; sceneStart: number }> = ({ s, p, impact, sceneStart }) => {
   const f = useCurrentFrame();
@@ -68,8 +67,6 @@ export const CartoonScene: React.FC<{ s: BotScene; p: BotProps; impact: boolean;
   const local = Math.max(0, f - pre);
   const c = s.cartoon;
   const [a, b] = MOOD[c.mood];
-  const talk = useTalk(p, sceneStart);
-  const squash = 1 + talk * 0.05 + (c.expression === "shock" ? 0.06 * Math.max(0, 1 - local / 10) : 0);
   const props = c.props;
   const d = pre + 4;
 
@@ -78,7 +75,7 @@ export const CartoonScene: React.FC<{ s: BotScene; p: BotProps; impact: boolean;
     const spots = [[220, 400], [860, 440], [540, 260]];
     body = (
       <>
-        <div style={{ position: "absolute", left: 260, top: 540 }}><Actor expression={c.expression} talk={talk} t={t} squash={squash} /></div>
+        <div style={{ position: "absolute", left: 260, top: 520 }}><Guy expression={c.expression} point={props.length ? "left" : undefined} /></div>
         {props.map((q, i) => <Placed key={i} name={q.name} m={q.motion} x={spots[i][0]} y={spots[i][1]} size={300} delay={d + 6 + i * 6} />)}
       </>
     );
@@ -96,7 +93,7 @@ export const CartoonScene: React.FC<{ s: BotScene; p: BotProps; impact: boolean;
     body = (
       <>
         <div style={{ position: "absolute", left: -40, top: 1000, transform: "scale(.62)", transformOrigin: "0 0", opacity: 0.95 }}>
-          <Actor expression={c.expression} talk={talk} t={t} squash={squash} />
+          <Guy expression={c.expression} point="up" />
         </div>
         <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
           <path d={`M300 1180 L${380 + 160 * lens} ${1000 - 120 * lens}`} stroke="#fff" strokeWidth={10} strokeDasharray="22 16" opacity={lens} />

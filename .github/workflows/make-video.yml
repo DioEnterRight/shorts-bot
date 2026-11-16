@@ -31,10 +31,11 @@ permissions:
 jobs:
   make:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 120   # Opus designs every scene and reviews its own frames (~10-25 min per video)
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
+      REMOTION_BROWSER: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@v4
 
