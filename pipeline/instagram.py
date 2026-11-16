@@ -9,7 +9,7 @@ import time
 
 import requests
 
-from .common import env, log, run
+from .common import env, log, norm_text, run
 
 VER = "v26.0"
 GRAPH = f"https://graph.facebook.com/{VER}"
@@ -51,21 +51,21 @@ def _ig_copy(video_path):
     return out
 
 
-def _container(ig_id, token, caption, extra):
+def _container(ig_id, token, caption, extra, ai_label=True):
+    # is_ai_generated: official self-disclosure flag of the Content Publishing API (changelog 22 Jun 2026)
     params = {"media_type": "REELS", "caption": caption[:2150], "share_to_feed": "true",
-              "is_ai_generated": "true", "access_token": token, **extra}
+              "access_token": token, **extra}
+    if ai_label:
+        params["is_ai_generated"] = "true"
     r = requests.post(f"{GRAPH}/{ig_id}/media", data=params, timeout=60)
-    if r.status_code >= 400 and "is_ai_generated" in r.text:
-        params.pop("is_ai_generated")
-        r = requests.post(f"{GRAPH}/{ig_id}/media", data=params, timeout=60)
     cid = _check(r, "create container")["id"]
     log(f"Instagram container {cid}")
     return cid
 
 
-def _upload_file(ig_id, token, caption, path):
+def _upload_file(ig_id, token, caption, path, ai_label=True):
     """Way 1: push the file straight from the runner (resumable upload)."""
-    cid = _container(ig_id, token, caption, {"upload_type": "resumable"})
+    cid = _container(ig_id, token, caption, {"upload_type": "resumable"}, ai_label)
     size = os.path.getsize(path)
     with open(path, "rb") as f:
         r = requests.post(f"https://rupload.facebook.com/ig-api-upload/{VER}/{cid}",
@@ -79,9 +79,18 @@ def _upload_file(ig_id, token, caption, path):
     return cid
 
 
-def _upload_url(ig_id, token, caption, url):
-    """Way 2: Instagram downloads the video itself from a public link (needs a PUBLIC repo)."""
-    return _container(ig_id, token, caption, {"video_url": url})
+def _upload_url(ig_id, token, caption, url, ai_label=True):
+    """Way 2: Instagram downloads the video itself from a public link."""
+    return _container(ig_id, token, caption, {"video_url": url}, ai_label)
+
+
+def _delete_media_branch():
+    """The 'media' branch exists only so Instagram can fetch the file. Remove it once posted."""
+    repo, tok = env("GITHUB_REPOSITORY"), env("GH_TOKEN")
+    if not repo or not tok:
+        return
+    res = run(["gh", "api", "-X", "DELETE", f"repos/{repo}/git/refs/heads/media"], check=False, capture=True)
+    log("Temporary media branch removed" if res.returncode == 0 else "Temporary media branch not removed", "INFO")
 
 
 def _branch_public_url(path):
@@ -143,7 +152,7 @@ def notify_manual(meta, tag):
 1. Open **{link}** and download **final.mp4** to your phone
 2. Instagram app -> **+** -> **Reel** -> pick the file
 3. Paste the caption below
-4. Turn on **AI label** if shown, then Share
+4. Turn on **AI label** if shown (the bot's setting for this video: see config `disclosure`), then Share
 
 **Caption**
 ```
@@ -168,7 +177,22 @@ def _wait(token, cid):
     raise RuntimeError("Instagram processing timed out")
 
 
-def publish(video_path, caption, video_url=None):
+def find_existing(caption):
+    """Guard against double posts when saved state was lost: is this caption already among recent posts?"""
+    try:
+        ig_id, token = env("IG_USER_ID", required=True), env("IG_PAGE_TOKEN", required=True)
+        r = requests.get(f"{GRAPH}/{ig_id}/media", params={"fields": "id,caption", "limit": 10,
+                                                           "access_token": token}, timeout=60)
+        target = norm_text(caption)[:120]
+        for m in _check(r, "recent media").get("data", []):
+            if target and norm_text(m.get("caption", ""))[:120] == target:
+                return m["id"]
+    except Exception as e:  # noqa: BLE001  (a failed check must not block posting)
+        log(f"Instagram duplicate check skipped: {e}", "WARN")
+    return None
+
+
+def publish(video_path, caption, video_url=None, ai_label=True):
     ig_id = env("IG_USER_ID", required=True)
     token = env("IG_PAGE_TOKEN", required=True)
     try:
@@ -179,15 +203,15 @@ def publish(video_path, caption, video_url=None):
 
     attempts = []
     # Way A: video parked on a 'media' branch of this repo (direct link; repo must be PUBLIC)
-    attempts.append(("repo media link", lambda: _upload_url(ig_id, token, caption, _branch_public_url(ig_file))))
+    attempts.append(("repo media link", lambda: _upload_url(ig_id, token, caption, _branch_public_url(ig_file), ai_label)))
     # Way A2: temporary public host
     attempts.append(("temporary public link",
-                     lambda: _upload_url(ig_id, token, caption, _temp_public_url(ig_file))))
+                     lambda: _upload_url(ig_id, token, caption, _temp_public_url(ig_file), ai_label)))
     # Way B: the GitHub release link (works only when the repo is public)
     if video_url:
-        attempts.append(("GitHub release link", lambda: _upload_url(ig_id, token, caption, video_url)))
+        attempts.append(("GitHub release link", lambda: _upload_url(ig_id, token, caption, video_url, ai_label)))
     # Way C: direct file push (only works for 'Facebook Login for Business' apps)
-    attempts.append(("direct file upload", lambda: _upload_file(ig_id, token, caption, ig_file)))
+    attempts.append(("direct file upload", lambda: _upload_file(ig_id, token, caption, ig_file, ai_label)))
 
     cid, errs = None, []
     for name, fn in attempts:
@@ -201,6 +225,7 @@ def publish(video_path, caption, video_url=None):
             errs.append(f"{name}: {e}")
             log(f"Instagram {name} failed: {str(e)[:400]}")
             time.sleep(20)
+    _delete_media_branch()
     if not cid:
         raise RuntimeError("all Instagram ways failed ->\n  " + "\n  ".join(errs))
 
