@@ -3,6 +3,8 @@
 Python owns timing (scene frames, word times, sound cues); Remotion only draws. The props are
 validated here before the render and again by the zod schema in remotion/src/bot/schema.ts.
 
+  bespoke style:   Claude writes new scene code for every scene (pipeline/scenegen.py) with the
+                   design kit in remotion/src/kit; scenes that fail the gates use the cartoon look.
   cartoon style:   each scene is drawn in code: the channel's guy (expressions, talking mouth synced
                    to word times), props from a 34-item catalog with motion presets, layouts
                    actor / props / versus (cause -> effect arrow) / inside (magnifier into the body).
@@ -17,14 +19,14 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from . import cartoon
+from . import cartoon, scenegen, visemes
 from .audio import sfx_cues
 from .common import ROOT, log
 from .edit import HALF, plan
 
 REMOTION = ROOT / "remotion"
 COMPOSITION = "ShortsBot"
-STYLES = {"explainer", "cartoon", "blocky"}
+STYLES = {"explainer", "cartoon", "blocky", "bespoke"}
 CAPTION_STYLES = {"word_pop", "karaoke", "highlight_box", "bounce_in", "active_pop", "outline", "stamp"}
 CAMERAS = {"punch_in", "zoom_in", "zoom_out", "pan_left", "pan_right", "pan_up", "pan_down", "shake"}
 TRANSITIONS = {"cut", "whip", "zoom", "fade", "iris", "wave"}
@@ -80,6 +82,7 @@ def build_props(cfg, script, assets, timeline, total, lp, style, audio_name="mix
             "emphasis": sc.get("emphasis", ""),
             "blocky": _blocky(sc, i),
             "cartoon": sc.get("cartoon") or cartoon.normalize(sc),
+            "component": f"Scene{i + 1}" if style == "bespoke" else None,
         })
     # A transition of 2*h frames overlaps both scenes, so each scene is extended by h on that side
     # (done above) and the series still totals sum(n) frames: the audio stays in sync.
@@ -96,6 +99,7 @@ def build_props(cfg, script, assets, timeline, total, lp, style, audio_name="mix
         "uppercase": bool(lp.get("caption_uppercase", False)),
         "accent": "#" + cfg["captions"].get("highlight", "FFE600"),
         "audio": audio_name,
+        "visemes": visemes.track(timeline, fps),
         "scenes": scenes,
         "captions": _caption_tokens(timeline),
         "sfx": [{"name": SFX_FILES[name], "frame": round(at * fps), "volume": round(min(1.0, gain * g * 2), 3)}
@@ -170,6 +174,12 @@ def render(cfg, script, assets, timeline, total, lp, style, mix_path, workdir):
     validate_props(props, pub)
     props_path = workdir / "remotion_props.json"
     props_path.write_text(json.dumps(props, ensure_ascii=False), encoding="utf-8")
+    if style == "bespoke":
+        props = scenegen.generate(cfg, script, props, props_path, pub, _browser())
+        props_path.write_text(json.dumps(props, ensure_ascii=False), encoding="utf-8")
+        (workdir / "scenes").mkdir(exist_ok=True)      # keep the generated code with the video
+        for f in scenegen.GEN.glob("Scene*.tsx"):
+            shutil.copy(f, workdir / "scenes" / f.name)
     raw = workdir / "remotion_raw.mp4"
     rc = cfg["render"]
     cmd = ["npx", "--no-install", "remotion", "render", "src/index.ts", COMPOSITION, str(raw),
@@ -178,7 +188,11 @@ def render(cfg, script, assets, timeline, total, lp, style, mix_path, workdir):
     if b := _browser():
         cmd.append(f"--browser-executable={b}")
     log(f"Remotion render: {props['durationInFrames']} frames, style={style}, captions={props['captionStyle']}")
-    subprocess.run(cmd, cwd=REMOTION, check=True, timeout=int(rc.get("timeout_minutes", 25)) * 60)
+    try:
+        subprocess.run(cmd, cwd=REMOTION, check=True, timeout=int(rc.get("timeout_minutes", 25)) * 60)
+    finally:
+        if style == "bespoke":
+            scenegen.reset()
     out = workdir / "final.mp4"
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(raw), "-map", "0:v", "-map", "0:a",
                     "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k",

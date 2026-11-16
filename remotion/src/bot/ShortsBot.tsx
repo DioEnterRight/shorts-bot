@@ -12,6 +12,8 @@ import { CartoonScene } from "./cartoon/CartoonScene";
 import { Captions } from "./Captions";
 import { ExplainerScene } from "./ExplainerScene";
 import { loadBotFonts } from "./fonts";
+import { GENERATED } from "../generated";
+import { SceneCtx, type SceneInfo } from "../kit/core";
 import type { BotProps, BotScene } from "./schema";
 
 loadBotFonts();
@@ -25,6 +27,16 @@ const presentation = (kind: BotScene["transitionIn"], i: number): TransitionPres
     case "wave": return waveWipe({});
     default: return fade();
   }
+};
+
+const sceneInfo = (p: BotProps, s: BotScene, i: number, from: number): SceneInfo => {
+  const toLocal = (ms: number) => Math.round((ms / 1000) * p.fps) - from;
+  return {
+    index: i, durationInFrames: s.durationInFrames, sceneStart: from, preFrames: s.transitionFrames / 2,
+    words: p.captions.map((c) => ({ text: c.text.trim(), from: toLocal(c.startMs), to: toLocal(c.endMs) }))
+      .filter((w) => w.from >= 0 && w.from < s.durationInFrames),
+    line: s.line, language: p.language, accent: p.accent, visemes: p.visemes, emphasis: s.emphasis,
+  };
 };
 
 // Python (pipeline/remotion_render.py) owns all timing; this only draws it.
@@ -44,9 +56,12 @@ export const ShortsBot: React.FC<BotProps> = (p) => {
                 <TransitionSeries.Transition presentation={presentation(s.transitionIn, i)} timing={linearTiming({ durationInFrames: s.transitionFrames })} />
               )}
               <TransitionSeries.Sequence durationInFrames={s.durationInFrames}>
-                {p.style === "blocky" ? <BlockyScene s={s} p={p} index={i} />
-                  : p.style === "cartoon" ? <CartoonScene s={s} p={p} impact={impact} sceneStart={from} />
-                  : <ExplainerScene s={s} p={p} impact={impact} />}
+                <SceneCtx.Provider value={sceneInfo(p, s, i, from)}>
+                  {p.style === "blocky" ? <BlockyScene s={s} p={p} index={i} />
+                    : p.style === "bespoke" && s.component && GENERATED[s.component] ? React.createElement(GENERATED[s.component])
+                    : p.style === "explainer" ? <ExplainerScene s={s} p={p} impact={impact} />
+                    : <CartoonScene s={s} p={p} impact={impact} sceneStart={from} />}
+                </SceneCtx.Provider>
               </TransitionSeries.Sequence>
             </React.Fragment>
           );

@@ -55,6 +55,14 @@ languages:
     caption_font_size: 140
 
 allocation:
+  # weekly = fixed plan: `main` language every day, plus `weekly_quota` videos per Mon-Sun week
+  #          (from `quota_day` on). adaptive = split learned from views (settings below).
+  mode: weekly
+  main: en
+  weekly_quota:
+    hi: 1
+  quota_day: wed
+  # --- adaptive mode only ---
   floor: 0.2              # each language always gets at least 20% (so max 80% for the stronger one)
   min_videos: 4           # per language, before views are allowed to move the split
   min_age_days: 2         # ignore videos younger than this (views still coming in)
@@ -69,14 +77,14 @@ allocation:
 themes:
   explainer:
     share: 0.8
-    render_style: cartoon   # cartoon = animated, drawn in code | explainer = AI pictures + camera moves
+    render_style: bespoke   # bespoke = Claude writes new animation code per video | cartoon = fixed kit | explainer = AI pictures
     guidance: >-
       A clear answer to one specific, surprising question about the body, mind,
       nature, science, technology, space, history or geography. Real explanation,
       verified facts, one satisfying "oh, THAT's why" payoff.
   story:
     share: 0.13
-    render_style: explainer
+    render_style: bespoke   # story videos are drawn per video too (AI pictures: explainer)
     guidance: >-
       A short narrated story with a twist, built on something real: a strange
       historical event, an unlikely invention, a survival story, a scientific
@@ -144,6 +152,19 @@ voice:
                           # kokoro = always Kokoro. Test-mode runs always use Kokoro (offline).
   edge_retries: 3         # tries per line before the whole video switches to Kokoro
   gap_seconds: 0.08       # pause between lines
+
+# Which Claude writes ideas, scripts and scene animation code (Claude Code CLI, your subscription).
+claude:
+  model: opus                 # pinned: never depend on the account's default model
+  fallback_model: sonnet      # used automatically if Opus is overloaded
+  effort: high
+
+# Bespoke scenes: Claude (model above) writes a new Remotion scene per beat, checks its own frames.
+scenegen:
+  review_rounds: 2          # render contact sheet -> look -> fix cycles
+  max_turns: 90
+  effort: high
+  timeout_minutes: 25       # after this, whatever scenes pass the gates are used
 
 # How the finished video is drawn.
 #   remotion = code-made motion graphics (remotion/ folder): camera moves, remocn transitions,

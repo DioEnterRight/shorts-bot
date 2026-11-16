@@ -11,7 +11,7 @@ import shutil
 import sys
 
 from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, remotion_render, voice
-from .common import DATA, OUT, load_config, load_history, log, now_ist, run, save_history, slugify, stable_seed
+from .common import DATA, OUT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify, stable_seed
 from .visuals import get_provider
 
 
@@ -24,6 +24,11 @@ def recent_sequence(history, key, default):
 def choose_slot(cfg, history, stats, language=None, theme=None):
     """Which language and theme the next video gets (deterministic, see allocation.py)."""
     s = allocation.settings(cfg)
+    alloc = cfg.get("allocation", {})
+    if not language and alloc.get("mode") == "weekly":
+        made = [(parse_time(v["created"]), v.get("language", "en")) for v in history["videos"]
+                if v.get("status") != "discarded" and v.get("created")]
+        language = allocation.weekly_pick(made, now_ist(), alloc["main"], alloc["weekly_quota"], alloc.get("quota_day", "wed"))
     if not language:
         shares = (stats.get("allocation", {}).get("language") or {}).get("shares")
         langs = languages.enabled(cfg)
@@ -84,7 +89,7 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
     else:
         engine = cfg["render"]["engine"]
         style = cfg["themes"][theme].get("render_style", "explainer") if engine == "remotion" else "explainer"
-        if style in ("blocky", "cartoon"):   # drawn entirely in code: no pictures to generate
+        if style in ("blocky", "cartoon", "bespoke"):   # drawn entirely in code: no pictures to generate
             assets = [None] * len(script["scenes"])
         else:
             assets = get_provider(provider_name).generate(cfg, script, work)

@@ -3,7 +3,7 @@ import json
 import re
 
 from . import cartoon, languages
-from .common import DATA, ROOT, env, log, norm_text, now_ist, run
+from .common import DATA, ROOT, env, load_config, log, norm_text, now_ist, run
 
 CAMERAS = {"punch_in", "zoom_in", "zoom_out", "pan_left", "pan_right", "pan_up", "pan_down", "shake"}
 SFX = {"whoosh", "hit", "pop", "boing", "riser", "tick", "none"}
@@ -53,11 +53,22 @@ def extract_json(text):
     return json.loads(text[start:end + 1])
 
 
-def call_claude(prompt):
+def claude_model_args(effort=None):
+    """Model flags from config.yaml `claude:` (pinned so runs don't depend on the account default)."""
+    cc = load_config().get("claude", {})
+    args = ["--model", cc.get("model", "opus")]
+    if cc.get("fallback_model"):
+        args += ["--fallback-model", cc["fallback_model"]]
+    if effort or cc.get("effort"):
+        args += ["--effort", effort or cc["effort"]]
+    return args
+
+
+def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None):
     env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
-    res = run(["claude", "-p", prompt, "--output-format", "json",
-               "--allowedTools", "WebSearch,WebFetch", "--max-turns", "20"],
-              capture=True, check=False)
+    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort),
+               "--allowedTools", tools, "--max-turns", str(max_turns)],
+              capture=True, check=False, cwd=cwd, timeout=timeout)
     if res.returncode != 0:
         print(res.stdout[-3000:], res.stderr[-3000:])
         raise RuntimeError("Claude Code call failed (check CLAUDE_CODE_OAUTH_TOKEN or usage limits)")

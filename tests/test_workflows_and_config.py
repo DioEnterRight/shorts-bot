@@ -72,6 +72,7 @@ def test_config_languages_and_themes(cfg):
 
 
 def test_choose_slot_with_and_without_stats(cfg):
+    cfg["allocation"]["mode"] = "adaptive"   # the view-learned split (weekly mode tested in test_allocation)
     hist = {"videos": []}
     assert produce.choose_slot(cfg, hist, {"allocation": {}}) == ("en", "explainer")
     hist = {"videos": [{"created": f"2026-11-{d:02d}", "language": "en", "theme": "explainer"} for d in range(1, 5)]}
