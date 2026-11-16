@@ -143,8 +143,9 @@ def test_offline_end_to_end(lang, tmp_state, monkeypatch, tmp_path):
     from pipeline import produce
     monkeypatch.setattr(produce, "OUT", tmp_path / "out")
     cfg = produce.load_config()
+    cfg["render"]["engine"] = "ffmpeg"     # this test covers the ffmpeg path (captions.ass); toon2d has its own tests
     stats = {"allocation": {}}
-    work, meta, script, _ = produce.produce_one(cfg, {"videos": []}, stats, test=True, language=lang)
+    work, meta, script, _ = produce.produce_one(cfg, {"videos": []}, stats, test=True, language=lang, theme="explainer")
     final = work / "final.mp4"
     info = json.loads(subprocess.run(["ffprobe", "-v", "error", "-print_format", "json", "-show_streams",
                                       "-show_format", str(final)], capture_output=True, text=True).stdout)

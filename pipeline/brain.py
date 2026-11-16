@@ -53,10 +53,10 @@ def extract_json(text):
     return json.loads(text[start:end + 1])
 
 
-def claude_model_args(effort=None):
+def claude_model_args(effort=None, model=None):
     """Model flags from config.yaml `claude:` (pinned so runs don't depend on the account default)."""
     cc = load_config().get("claude", {})
-    args = ["--model", cc.get("model", "opus")]
+    args = ["--model", model or cc.get("model", "opus")]
     if cc.get("fallback_model"):
         args += ["--fallback-model", cc["fallback_model"]]
     if effort or cc.get("effort"):
@@ -64,9 +64,9 @@ def claude_model_args(effort=None):
     return args
 
 
-def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None):
+def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None):
     env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
-    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort),
+    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort, model),
                "--allowedTools", tools, "--max-turns", str(max_turns)],
               capture=True, check=False, cwd=cwd, timeout=timeout)
     if res.returncode != 0:

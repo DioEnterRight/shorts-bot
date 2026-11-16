@@ -90,7 +90,7 @@ def test_make_video_installs_remotion_with_npm_cache():
 
 def test_render_and_voice_config(cfg):
     from pipeline import remotion_render
-    assert cfg["render"]["engine"] in ("remotion", "ffmpeg")
+    assert cfg["render"]["engine"] in ("toon2d", "remotion", "ffmpeg")
     assert cfg["render"]["caption_style"] in remotion_render.CAPTION_STYLES
     assert cfg["voice"]["engine"] in ("edge", "kokoro")
     for code in cfg["languages"]["enabled"]:

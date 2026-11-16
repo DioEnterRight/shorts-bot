@@ -1,0 +1,12 @@
+Copyright (c) 2026 DioEnterRight. All rights reserved.
+
+The code in this repository is the property of DioEnterRight unless a file or folder says otherwise.
+Third-party parts keep their own terms and credits:
+
+- toon2d/engine, toon2d/reference, toon2d/examples: adapted from "ReachMora 2D Long-Form" by ReachMora
+  (which credits aivxer's "Claude 2D Animation Long Form" for the puppet, lighting and grade code).
+  No licence file was published with it; its README asks that the "Made by ReachMora" credit is kept.
+  See toon2d/CREDITS.md. DioEnterRight's changes (vertical 9:16 port, captions, word-timed mouths,
+  Unicode matching, pipeline wiring) are marked "shorts-bot" in the code.
+- toon2d/fonts: SIL Open Font License / Apache 2.0 (see the licence files there).
+- .claude/skills: each skill keeps its own licence (MIT unless its folder says otherwise).

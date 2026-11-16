@@ -186,9 +186,22 @@ GitHub Actions (~300-400 of 2,000 free min/month) · Cloudflare AI (roughly 2,00
 Mon-Sun week (made from Wednesday on). Change `weekly_quota` or set `mode: adaptive` to go back to
 the split learned from views.
 
-## Video renderer (Remotion) and voice (edge-tts)
+## Video renderer (toon2d 2D cartoon) and voice (edge-tts)
 
-**Bespoke scenes (default for explainer and story videos).** For every video, Claude Opus writes new
+**toon2d (default for explainer and story videos).** A flat 2D ink-on-paper cartoon engine
+(`toon2d/`, adapted from ReachMora 2D Long-Form, credit kept in `toon2d/CREDITS.md`). Claude Sonnet writes one
+`story.json` storyboard per video (shot kinds like closeup, wide, walk, counter, chart, table, versus, map,
+polaroid ending); it never writes drawing code, so a video costs one short Claude call. The engine checks the
+storyboard (`plan`), Claude gets one repair round, and an automatic storyboard is the last fallback. Shorts are
+vertical 9:16 with burned-in word captions and word-timed mouths. Renders take ~2-4 min per Short on the runner.
+Settings: `toon2d:` in `config.yaml`. Look at shots by hand: `cd toon2d && RM_ASPECT=9:16 python -m engine stills <folder>`.
+
+**Weekly long video (English, 16:9, YouTube only).** Sundays (`Long video (weekly)` workflow): the week's best
+English Short (by analytics) is expanded by Opus into a researched ~5-minute script (`longform:` in
+`config.yaml`), voiced, storyboarded and rendered by toon2d, then uploaded as `privacy: private` until you
+switch it to `public`. Manual test: run the workflow with `test` ticked (no Claude, no upload, video as artifact).
+
+**Bespoke Remotion scenes (optional, per theme with `engine: remotion`).** For every video, Claude Opus writes new
 animation code for each scene with the channel's design kit (`remotion/src/kit`: the mascot with real
 lip-sync and gestures, props, 1,500+ icons, arrows, meters, charts, counters, comparisons), renders a
 contact sheet of its own frames, looks at it and fixes problems (2 rounds). The bot then checks every
@@ -202,7 +215,7 @@ graphify (`uv tool install graphifyy`, then `graphify update .` builds the code 
 `/plugin marketplace add DietrichGebert/ponytail` and `/plugin install ponytail@ponytail` in Claude Code),
 claude-motion review/taste skills (`cm-*`), and `tools/validate_skills.sh` (agentskills spec check).
 
-- `render.engine: remotion` in `config.yaml` draws videos with code (the `remotion/` folder):
+- `engine: remotion` (per theme, or `render.engine`) draws videos with Remotion (the `remotion/` folder):
   camera moves, transitions, word-pop captions, stickers. `ffmpeg` switches back to the old renderer.
 - Explainer videos use the `cartoon` style: animated, drawn fully in code (no AI pictures, so no
   Cloudflare credits and no "output flagged" refusals). Story videos still use AI pictures with camera

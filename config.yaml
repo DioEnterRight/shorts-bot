@@ -77,7 +77,7 @@ allocation:
 themes:
   explainer:
     share: 0.8
-    render_style: bespoke   # bespoke = Claude writes new animation code per video | cartoon = fixed kit | explainer = AI pictures
+    render_style: bespoke   # used only if this theme sets engine: remotion (bespoke | cartoon | explainer)
     guidance: >-
       A clear answer to one specific, surprising question about the body, mind,
       nature, science, technology, space, history or geography. Real explanation,
@@ -91,6 +91,7 @@ themes:
       accident. Clear beginning, tension, payoff. Still teaches one real thing.
   roblox_story:
     share: 0.07
+    engine: remotion        # keeps the 3D toy-world look (render_style below) instead of toon2d
     render_style: blocky    # remotion engine: drawn as a 3D toy world in code, no AI pictures
     guidance: >-
       A short dramatic or funny story told in a blocky game-world style
@@ -171,10 +172,29 @@ scenegen:
 #              word-pop captions, stickers, impact bursts; blocky themes are drawn in 3D code
 #   ffmpeg   = the older Python renderer (pictures + pan/zoom + burned-in captions)
 render:
-  engine: remotion
+  engine: toon2d            # toon2d = 2D ink cartoon (toon2d/, Claude writes one storyboard) | remotion | ffmpeg
+                            # a theme can override it with its own `engine:` line
   caption_style: word_pop   # word_pop | karaoke | highlight_box | bounce_in | active_pop | outline | stamp
   concurrency: auto         # one render tab per CPU core (GitHub runners: 2 private / 4 public repo)
   timeout_minutes: 25
+
+toon2d:                     # the 2D cartoon engine (toon2d/engine, adapted from ReachMora 2D Long-Form)
+  model: sonnet             # storyboard writer: one short text-only call per video (no code, no tools)
+  effort: medium
+  story_attempts: 2         # Claude attempts (2nd one gets the plan-check problems); then the auto storyboard
+  captions: true            # burned-in word captions on Shorts
+  long_captions: false      # and on the weekly long video
+  music_db: -17             # music bed vs voice
+  resolution: 1080          # 1080 or 720 (720 renders ~2x faster)
+  timeout_minutes: 40
+
+longform:                   # weekly English long video, 16:9, YouTube only (.github/workflows/long-video.yml)
+  enabled: true
+  minutes: 5                # 3-15; ~150 spoken words a minute
+  model: opus               # writes + fact-checks the long script (one call, web search on)
+  effort: high
+  max_turns: 30
+  privacy: private          # check the first ones in YouTube Studio, then set to public
 
 captions:
   words_per_chunk: 2

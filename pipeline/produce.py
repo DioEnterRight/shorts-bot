@@ -10,7 +10,7 @@ import json
 import shutil
 import sys
 
-from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, remotion_render, voice
+from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, remotion_render, toon2d, voice
 from .common import DATA, OUT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify, stable_seed
 from .visuals import get_provider
 
@@ -87,9 +87,9 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         script["title"] = ticket.get("title", script["title"])
         script["description"] = ticket.get("description", script["description"])
     else:
-        engine = cfg["render"]["engine"]
+        engine = cfg["themes"][theme].get("engine", cfg["render"]["engine"])
         style = cfg["themes"][theme].get("render_style", "explainer") if engine == "remotion" else "explainer"
-        if style in ("blocky", "cartoon", "bespoke"):   # drawn entirely in code: no pictures to generate
+        if engine == "toon2d" or style in ("blocky", "cartoon", "bespoke"):   # drawn entirely in code: no pictures
             assets = [None] * len(script["scenes"])
         else:
             assets = get_provider(provider_name).generate(cfg, script, work)
@@ -97,7 +97,10 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         script["voice_engine"] = voice_engine
         total = vlen + 0.7
         seed = stable_seed(vid_id)
-        if engine == "remotion":
+        if engine == "toon2d":
+            final, script["storyboard"] = toon2d.render(cfg, script, timeline, voice_path, total, work, lp["code"],
+                                                        brain.call_claude, brain.extract_json, use_claude=not test)
+        elif engine == "remotion":
             mix_path = audio.mix(cfg, script, timeline, [], voice_path, total, work, seed, with_sfx=False)
             final = remotion_render.render(cfg, script, assets, timeline, total, lp, style, mix_path, work)
         elif engine == "ffmpeg":
@@ -105,11 +108,11 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
             mix_path = audio.mix(cfg, script, timeline, cap_times, voice_path, total, work, seed)
             final = edit.render(cfg, script, assets, timeline, total, cap_path, mix_path, work)
         else:
-            raise ValueError(f"render.engine must be remotion or ffmpeg, not {engine!r}")
+            raise ValueError(f"render engine must be toon2d, remotion or ffmpeg, not {engine!r}")
         (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
 
     duration = qc.check(final, fps=cfg["video"]["fps"])
-    if final.name != "final.mp4":
+    if final != work / "final.mp4":
         shutil.move(final, work / "final.mp4")
         final = work / "final.mp4"
 
@@ -121,7 +124,8 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         "topic": script["topic"], "canonical_en": script.get("canonical_en"), "category": script.get("category"),
         "hook_type": script.get("hook_type"), "hook_line": script["scenes"][0]["line"],
         "scenes": len(script["scenes"]), "facts_checked": script.get("facts_checked", []),
-        "visuals": provider_name, "render": cfg["render"]["engine"],
+        "visuals": provider_name, "render": cfg["themes"][script["theme"]].get("engine", cfg["render"]["engine"]),
+        "storyboard": script.get("storyboard"),
         "voice_engine": script.get("voice_engine"), **disclosure(cfg),
     }
     (work / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")

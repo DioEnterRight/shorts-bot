@@ -2,7 +2,7 @@
 from .common import ffprobe, log
 
 
-def check(path, min_s=10, max_s=89, fps=30):
+def check(path, min_s=10, max_s=89, fps=30, size=(1080, 1920)):
     info = ffprobe(path)
     v = [s for s in info["streams"] if s["codec_type"] == "video"]
     a = [s for s in info["streams"] if s["codec_type"] == "audio"]
@@ -12,8 +12,8 @@ def check(path, min_s=10, max_s=89, fps=30):
         problems.append("no video stream")
     else:
         w, h = int(v[0]["width"]), int(v[0]["height"])
-        if (w, h) != (1080, 1920):
-            problems.append(f"not 1080x1920 ({w}x{h})")
+        if (w, h) != tuple(size):
+            problems.append(f"not {size[0]}x{size[1]} ({w}x{h})")
         num, den = (int(x) for x in v[0].get("avg_frame_rate", "0/1").split("/"))
         if den and abs(num / den - fps) > 0.5:
             problems.append(f"frame rate {num / den:.2f} != {fps}")
