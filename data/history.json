@@ -76,7 +76,7 @@
       "duration": 45.14,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-043952-why-you-get-hiccups",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-16T04:42+05:30",
       "language": "en",
       "theme": "explainer"
@@ -92,7 +92,7 @@
       "duration": 38.1,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-044242-why-you-get-brain-freeze",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-16T04:45+05:30",
       "language": "en",
       "theme": "explainer"
