@@ -30,7 +30,7 @@ def test_different_ideas_pass(a, b):
 
 
 def cand(text, **scores):
-    return {"canonical_en": text, "hook": "h", "scores": {"curiosity": 5, "originality": 5, "visual": 5,
+    return {"canonical_en": text, "hook": "h", "payoff": "p", "fact_status": "documented", "scores": {"curiosity": 5, "originality": 5, "visual": 5,
                                                           "clarity": 5, **scores}}
 
 
@@ -47,8 +47,9 @@ def test_choose_skips_history_and_internal_duplicates_and_ranks():
 
 
 def test_choose_rejects_incomplete():
-    best, rejected = ideas.choose([{"canonical_en": "", "hook": "x"}, {"canonical_en": "x"}], [], 0.5)
-    assert best is None and len(rejected) == 2
+    best, rejected = ideas.choose([{"canonical_en": "", "hook": "x"}, {"canonical_en": "x"},
+                                   {"canonical_en": "y", "hook": "h", "payoff": "p", "fact_status": "rumour"}], [], 0.5)
+    assert best is None and len(rejected) == 3
 
 
 def test_hindi_video_compared_by_english_core(tmp_state):
@@ -102,3 +103,11 @@ def test_ideas_prompt_mentions_theme_language_and_history(cfg):
     p = ideas.build_prompt(cfg, "roblox_story", {"code": "hi", "name": "Hindi (natural Hinglish)"},
                            ["Why you get hiccups"], "No data yet.")
     assert "roblox_story" in p and "Hinglish" in p and "Why you get hiccups" in p
+
+
+def test_prompts_carry_the_story_shape(cfg):
+    p = ideas.build_prompt(cfg, "explainer", {"code": "en", "name": "English"}, [], "No data yet.")
+    assert "paradox stated as fact" in p and '"fact_status"' in p and '"twist": 1-10' in p
+    script = (ideas.ROOT / "prompts" / "script.md").read_text(encoding="utf-8")
+    for step in ("HOOK", "SETTING", "ESCALATION", "PIVOT", "TWIST / PAYOFF"):
+        assert step in script
