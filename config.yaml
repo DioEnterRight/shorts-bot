@@ -12,10 +12,8 @@ channel:
     everyday mysteries, science, technology and inventions, space and
     discoveries, history and geography. Curious, slightly dark, funny.
 
-video:
+video:                    # vertical 1080x1920, drawn by toon2d (see `toon2d:` below)
   target_seconds: 35      # Claude aims for this length (30-45 works best)
-  width: 1080
-  height: 1920
   fps: 30
 
 # ------------------------------------------------------------
@@ -34,10 +32,6 @@ languages:
     edge_rate: "+10%"
     speed: 1.12
     words_per_second: 2.7   # Kokoro speaking rate at speed 1.0 (used for script length)
-    caption_font: Anton
-    caption_font_file: Anton-Regular.ttf
-    caption_uppercase: true
-    caption_font_size: 160
   hi:
     name: Hindi (natural Hinglish)
     prompt: prompts/lang_hi.md
@@ -47,12 +41,6 @@ languages:
     edge_rate: "+5%"
     speed: 1.05
     words_per_second: 2.5
-    caption_font: Noto Sans Devanagari
-    caption_font_file: NotoSansDevanagari-Bold.ttf
-    caption_latin_font: Noto Sans        # English words inside Hindi lines
-    caption_latin_font_file: NotoSans-Bold.ttf
-    caption_uppercase: false
-    caption_font_size: 140
 
 allocation:
   # weekly = fixed plan: `main` language every day, plus `weekly_quota` videos per Mon-Sun week
@@ -77,76 +65,28 @@ allocation:
 themes:
   explainer:
     share: 0.8
-    render_style: bespoke   # used only if this theme sets engine: remotion (bespoke | cartoon | explainer)
     guidance: >-
       A clear answer to one specific, surprising question about the body, mind,
       nature, science, technology, space, history or geography. Real explanation,
       verified facts, one satisfying "oh, THAT's why" payoff.
   story:
     share: 0.13
-    render_style: bespoke   # story videos are drawn per video too (AI pictures: explainer)
     guidance: >-
       A short narrated story with a twist, built on something real: a strange
       historical event, an unlikely invention, a survival story, a scientific
       accident. Clear beginning, tension, payoff. Still teaches one real thing.
   roblox_story:
     share: 0.07
-    engine: remotion        # keeps the 3D toy-world look (render_style below) instead of toon2d
-    render_style: blocky    # remotion engine: drawn as a 3D toy world in code, no AI pictures
     guidance: >-
-      A short dramatic or funny story told in a blocky game-world style
-      (original characters). Story-time pacing, a twist ending. Do not use
-      Roblox logos, official assets, real players' names or other creators'
-      characters. Keep it suitable for teens.
-    art_style: >-
-      Stylized 3D render of a blocky toy-like game world, chunky low-poly
-      characters with simple cube heads and cheerful expressions, bright
-      saturated colors, soft studio lighting, playful camera angles
-    mascot: >-
-      an original blocky game avatar with a cube-shaped head, short spiky orange
-      hair, big friendly eyes, teal hoodie and grey trousers
+      A short dramatic or funny story set in a blocky game world (original
+      characters). Story-time pacing, a twist ending. Do not use Roblox logos,
+      official assets, real players' names or other creators' characters.
+      Keep it suitable for teens.
 
 ideas:
   candidates: 8               # ideas Claude brainstorms per video before one is picked
   similarity_threshold: 0.5   # 0-1: higher = allow more similar ideas
   dedupe_across_languages: true
-
-# ------------------------------------------------------------
-#  VISUALS  <<< HIGGSFIELD SWAP SLOT >>>  change ONE word below.
-#   cloudflare_klein  = FREE AI pictures, SAME character + style every scene (use this now)
-#   cloudflare_flux   = older free mode (every picture separate)
-#   higgsfield_test   = DEMO the Higgsfield motion pipeline with placeholder clips, no account
-#   higgsfield_clips  = REAL Higgsfield motion clips + our voice/captions (when you have Higgsfield)
-#   higgsfield_full   = Higgsfield makes the whole finished video
-#   placeholder       = plain colour cards (used by the Test-mode button only)
-# ------------------------------------------------------------
-visuals:
-  provider: cloudflare_klein
-  # Default look for every picture. Stylised, NOT photoreal (see `disclosure` below).
-  art_style: >-
-    Stylized 3D animated educational cartoon, like a frame from a modern
-    family animated film: smooth rounded shapes, slightly exaggerated
-    proportions, vivid saturated colors, soft global illumination with rim
-    light, clean simple background, clear silhouette, high detail
-  # How each kind of shot is drawn (Claude picks a shot per scene).
-  shots:
-    character: "expressive cartoon character acting out the moment, readable pose and face"
-    cutaway: "clean educational cutaway of the inside, cartoon anatomy or machinery, glowing highlights on the key part, non-graphic, simple dark gradient backdrop"
-    diagram: "3D infographic-style illustration with simple shapes and arrows, no words, toy-like materials"
-    metaphor: "playful visual metaphor that explains the idea, toy-like miniature world"
-    closeup: "extreme close-up on the key object, shallow depth of field"
-    wide: "wide establishing shot of the whole scene, small character in a big world"
-  composition: >-
-    vertical 9:16, main subject in the upper two-thirds of the frame, lower
-    third kept simple and uncluttered
-  avoid: "no text, no letters, no captions, no watermark, no logo, no split panels, not photorealistic, no real people"
-  # Our own recurring character. Claude writes [GUY] and it becomes this.
-  # The bot draws him once per art style and reuses the picture as a reference.
-  mascot: >-
-    a friendly cartoon young man with big expressive eyes, messy dark-brown
-    hair, round face, mustard-yellow hoodie and dark jeans
-  flux_steps: 8           # only used by cloudflare_flux
-  min_scenes_ok: 0.75     # if a few pictures fail, re-use neighbours; below this share, stop
 
 voice:
   engine: edge            # edge = Microsoft edge-tts with real word timings (falls back to Kokoro by itself)
@@ -154,31 +94,14 @@ voice:
   edge_retries: 3         # tries per line before the whole video switches to Kokoro
   gap_seconds: 0.08       # pause between lines
 
-# Which Claude writes ideas, scripts and scene animation code (Claude Code CLI, your subscription).
+# Which Claude writes ideas and scripts (Claude Code CLI, your subscription).
 claude:
   model: opus                 # pinned: never depend on the account's default model
   fallback_model: sonnet      # used automatically if Opus is overloaded
   effort: high
 
-# Bespoke scenes: Claude (model above) writes a new Remotion scene per beat, checks its own frames.
-scenegen:
-  review_rounds: 2          # render contact sheet -> look -> fix cycles
-  max_turns: 90
-  effort: high
-  timeout_minutes: 25       # after this, whatever scenes pass the gates are used
-
-# How the finished video is drawn.
-#   remotion = code-made motion graphics (remotion/ folder): camera moves, remocn transitions,
-#              word-pop captions, stickers, impact bursts; blocky themes are drawn in 3D code
-#   ffmpeg   = the older Python renderer (pictures + pan/zoom + burned-in captions)
-render:
-  engine: toon2d            # toon2d = 2D ink cartoon (toon2d/, Claude writes one storyboard) | remotion | ffmpeg
-                            # a theme can override it with its own `engine:` line
-  caption_style: word_pop   # word_pop | karaoke | highlight_box | bounce_in | active_pop | outline | stamp
-  concurrency: auto         # one render tab per CPU core (GitHub runners: 2 private / 4 public repo)
-  timeout_minutes: 25
-
-toon2d:                     # the 2D cartoon engine (toon2d/engine, adapted from ReachMora 2D Long-Form)
+# How videos are drawn: the 2D ink cartoon engine (toon2d/, adapted from ReachMora 2D Long-Form).
+toon2d:
   model: sonnet             # storyboard writer: one short text-only call per video (no code, no tools)
   effort: medium
   story_attempts: 2         # Claude attempts (2nd one gets the plan-check problems); then the auto storyboard
@@ -196,18 +119,6 @@ longform:                   # weekly English long video, 16:9, YouTube only (.gi
   max_turns: 30
   privacy: private          # check the first ones in YouTube Studio, then set to public
 
-captions:
-  words_per_chunk: 2
-  color: "FFFFFF"         # normal words (hex RGB)
-  highlight: "FFE600"     # keyword colour (hex RGB)
-  position_from_bottom: 460   # lower third, above the Shorts/Reels buttons and title
-  max_width: 900              # px; long chunks shrink to fit
-
-audio:
-  music_volume_db: -22    # background music under the voice
-  sfx_volume_db: -8
-  caption_pops: true      # tiny pop sound on each caption
-
 # ------------------------------------------------------------
 #  AI DISCLOSURE  (decided from the real content, see README)
 #  YouTube requires the "altered or synthetic" flag only for REALISTIC content;
@@ -216,8 +127,7 @@ audio:
 #  realistic synthetic voice, so the Instagram AI label stays on.
 # ------------------------------------------------------------
 disclosure:
-  photorealistic_visuals: false   # set true if you switch to realistic footage/pictures
-  youtube_synthetic: auto         # auto = follow photorealistic_visuals; or true / false
+  youtube_synthetic: false        # 2D cartoon = not realistic, so no YouTube flag
   instagram_ai_label: true
 
 publish:

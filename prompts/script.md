@@ -10,7 +10,7 @@ Theme: **{theme_name}** — {theme_guidance}
 
 ## House style
 Fast, curious, slightly dark and funny animated explainers with a calm, deadpan narrator.
-The look is a colourful stylised 3D cartoon (never photoreal). The style is ours: never
+The look is a flat 2D ink-on-paper cartoon (never photoreal). The style is ours: never
 mention, copy or imitate any specific creator, their characters, titles or catchphrases.
 
 ## Script rules
@@ -34,43 +34,14 @@ sources: universities, journals, health agencies, museums, space agencies). If a
 cannot be verified, drop it. When science is unsettled, say so ("scientists think").
 List what you checked in "facts_checked" (claim -> source domain).
 
-## Storyboard — THE VIDEO MUST MAKE SENSE WITH THE SOUND OFF
-Every beat gets its OWN picture that shows exactly what that beat says. Think like the
-director of a short animated explainer, not a slideshow:
-- Shot types (pick one per beat in "shot"):
-  character (our [GUY] acting it out), cutaway (inside the body/object, cartoon and
-  non-graphic), diagram (simple 3D infographic, no words), metaphor (a playful visual
-  comparison), closeup (key object), wide (establishing the place/scale).
-- Use at least 3 different shot types. Never use the same shot type more than twice in a row.
-  Typical arc: character (hook) -> closeup/cutaway/diagram/metaphor (explain) -> character (payoff).
-- [GUY] is our recurring main character, the viewer's stand-in. Put him in the character
-  beats; write exactly "[GUY]" and never describe his looks. Cutaways show the inside of
-  [GUY]'s body in a clean cartoon style when the topic is the body.
-- "visual": one clear subject + action, literal and instantly recognisable. Describe
-  what we SEE (subject, action, key detail). No text or words in the picture. No style words.
-- "background": the place for this beat; change it when the story moves (inside the
-  stomach, a kitchen, space...). Avoid the same plain background in every beat.
-- "camera": one of punch_in, zoom_in, zoom_out, pan_left, pan_right, pan_up, pan_down, shake
-  (punch_in = hook and reveals, shake = impacts; vary them, no repeats in a row).
-- "transition" into this beat: cut (default, most beats), whip (fast change of place),
-  zoom (diving inside something), fade (time passes). Beat 1 uses cut.
-- "overlay": optional on-screen label (max 3 words, in the video's language) naming the
-  key thing in a cutaway/diagram, e.g. "ghrelin". Empty string if not needed. Max 4 per video.
-- "sfx": one of whoosh, hit, pop, boing, riser, tick, none (hit = impact, boing = the joke,
-  riser = building tension; use none often).
+## Beats — THE VIDEO MUST MAKE SENSE WITH THE SOUND OFF
+A storyboard artist turns your beats into cartoon shots later (characters, icons, counters, charts, maps,
+versus splits). Give each beat what they need:
+- "visual": what the viewer should SEE for this beat, literal and concrete (who does what, which object,
+  which number or comparison). Our recurring host can act it out. No style words.
+- "overlay": optional on-screen label (max 3 words, in Roman letters even for Hindi) for the key thing,
+  e.g. "ghrelin". Empty string if not needed. Max 4 per video.
 - "emphasis": the ONE most important word of that beat, copied exactly from "line".
-- "cartoon": how the beat is drawn in the animated cartoon style (code-drawn, no pictures):
-  - "layout": actor (the guy on screen with props near him), props (1-3 big props, nothing else),
-    versus (prop A -> animated arrow -> prop B: cause and effect), inside (the guy small in a corner
-    and a big magnifier circle showing what happens inside his body).
-  - "expression" of the guy: neutral, happy, shock, sick, sleepy, think, hot, cold, pain.
-  - "mood" (background colour): fun, calm, warm, cold, danger, body, night.
-  - "props": up to 3 of {{"name": ..., "motion": ...}}. name from ONLY this list:
-    brain, heart, stomach, lungs, bladder, kidney, bone, eye, tooth, blood_cell, germ, cell, dna, muscle, thermometer, clock, water_drop, fire, snowflake, ice_cube, lightning, zzz, question, exclamation, check, cross, food, cup, phone, sun, moon, money, battery, wave.
-    motion: pop, pulse, shake, float, spin, grow, bounce, drip.
-    Pick props that SHOW the beat (stomach + shake for a growl; brain + fire for overheating;
-    snowflake -> bladder in versus for "cold makes you pee"). Vary layouts; use inside for body
-    processes and versus for causes.
 
 ## Learning from results
 {performance}
@@ -91,11 +62,7 @@ Reply with ONLY one JSON object, no markdown fences, no comments, exactly this s
   "hashtags": ["#tag1", "#tag2", "#tag3"],
   "facts_checked": ["claim -> source.com"],
   "scenes": [
-    {{"line": "spoken words", "shot": "character", "visual": "what we see",
-      "background": "where", "camera": "punch_in", "transition": "cut", "overlay": "",
-      "sfx": "whoosh", "emphasis": "word",
-      "cartoon": {{"layout": "actor", "expression": "shock", "mood": "body",
-                   "props": [{{"name": "stomach", "motion": "shake"}}]}}}}
+    {{"line": "spoken words", "visual": "what we see", "overlay": "", "emphasis": "word"}}
   ],
   "playbook_update": "{playbook_field_hint}"
 }}

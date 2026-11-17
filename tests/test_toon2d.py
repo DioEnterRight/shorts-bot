@@ -48,8 +48,7 @@ def test_auto_story_covers_every_sentence_and_ends_on_polaroid():
 
 def test_config_and_engine_files():
     cfg = load_config()
-    assert cfg["render"]["engine"] == "toon2d"
-    assert cfg["themes"]["roblox_story"]["engine"] == "remotion"      # keeps its 3D look
+    assert cfg["toon2d"]["model"] and cfg["toon2d"]["captions"] is True
     for f in ("engine/kit.py", "engine/shots.py", "fonts/Kalam-Bold.ttf", "CREDITS.md", "reference/story-format.md"):
         assert (ROOT / "toon2d" / f).exists(), f
     assert "ReachMora" in (ROOT / "toon2d" / "CREDITS.md").read_text(encoding="utf-8")

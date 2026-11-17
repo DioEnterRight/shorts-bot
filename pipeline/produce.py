@@ -1,18 +1,16 @@
-"""MAKE VIDEO: slot (language + theme) -> idea -> script -> pictures -> voice -> captions
--> sound -> edit -> check -> queue.
+"""MAKE VIDEO: slot (language + theme) -> idea -> script -> voice -> toon2d storyboard + render -> check -> queue.
 
-  python -m pipeline.produce --test                 # offline test: sample script + test cards, no keys
+  python -m pipeline.produce --test                 # offline test: sample script, Kokoro, auto storyboard, no keys
   python -m pipeline.produce --test --language hi   # same, Hindi sample
-  python -m pipeline.produce --release              # real run: Claude + Cloudflare, uploads to GitHub Releases
+  python -m pipeline.produce --release              # real run: Claude, queued as a GitHub Release
 """
 import argparse
 import json
 import shutil
 import sys
 
-from . import allocation, analytics, audio, brain, captions, edit, ideas, languages, qc, remotion_render, toon2d, voice
-from .common import DATA, OUT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify, stable_seed
-from .visuals import get_provider
+from . import allocation, analytics, brain, ideas, languages, qc, toon2d, voice
+from .common import DATA, OUT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify
 
 
 def recent_sequence(history, key, default):
@@ -44,35 +42,26 @@ def choose_slot(cfg, history, stats, language=None, theme=None):
 
 
 def disclosure(cfg):
-    """Platform AI-disclosure flags, decided from what the video actually contains."""
+    """Platform AI-disclosure flags. The video is a 2D cartoon (not photoreal); the voice is synthetic."""
     d = cfg.get("disclosure") or {}
-    photoreal = bool(d.get("photorealistic_visuals", False))
-    yt = d.get("youtube_synthetic", "auto")
-    return {"synthetic_youtube": photoreal if yt == "auto" else bool(yt),
+    return {"synthetic_youtube": bool(d.get("youtube_synthetic", False)),
             "ai_label_instagram": bool(d.get("instagram_ai_label", True))}
 
 
-def make_script(cfg, history, stats, lp, theme, test, provider_name):
+def make_script(cfg, history, stats, lp, theme, test):
     if test:
         return brain.sample_script(cfg, lp, theme), None
-    if provider_name.startswith("higgsfield"):
-        from .visuals import higgsfield
-        ticket = higgsfield.ticket_script()  # the Higgsfield routine may have written it already
-        if ticket:
-            tlp = languages.profile(cfg, ticket.get("language", lp["code"]))
-            return brain.validate(ticket, cfg, tlp, ticket.get("theme", theme)), None
     perf = brain.performance_summary(stats, lp["code"])
     idea = ideas.generate(cfg, history, theme, lp, perf, brain.call_claude, brain.extract_json)
     return brain.write_script(cfg, idea, lp, theme, perf), idea
 
 
-def produce_one(cfg, history, stats, test, provider_override=None, language=None, theme=None):
+def produce_one(cfg, history, stats, test, language=None, theme=None):
     stamp = now_ist().strftime("%Y%m%d-%H%M%S")
-    provider_name = provider_override or ("placeholder" if test else cfg["visuals"]["provider"])
     language, theme = choose_slot(cfg, history, stats, language, theme)
     lp = languages.profile(cfg, language)
-    log(f"Slot: language={language} theme={theme} visuals={provider_name}")
-    script, idea = make_script(cfg, history, stats, lp, theme, test, provider_name)
+    log(f"Slot: language={language} theme={theme}")
+    script, idea = make_script(cfg, history, stats, lp, theme, test)
     lp = languages.profile(cfg, script["language"])
     vid_id = f"{stamp}-{script['language']}-{slugify(script['topic'], 28)}"
     work = OUT / vid_id
@@ -80,41 +69,13 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
     (work / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False), encoding="utf-8")
     log(f"=== Making {vid_id} ===")
 
-    if provider_name == "higgsfield_full":
-        from .visuals import higgsfield
-        src, ticket = higgsfield.fetch_full(work)
-        final = edit.finish_external(cfg, src, work)
-        script["title"] = ticket.get("title", script["title"])
-        script["description"] = ticket.get("description", script["description"])
-    else:
-        engine = cfg["themes"][theme].get("engine", cfg["render"]["engine"])
-        style = cfg["themes"][theme].get("render_style", "explainer") if engine == "remotion" else "explainer"
-        if engine == "toon2d" or style in ("blocky", "cartoon", "bespoke"):   # drawn entirely in code: no pictures
-            assets = [None] * len(script["scenes"])
-        else:
-            assets = get_provider(provider_name).generate(cfg, script, work)
-        voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
-        script["voice_engine"] = voice_engine
-        total = vlen + 0.7
-        seed = stable_seed(vid_id)
-        if engine == "toon2d":
-            final, script["storyboard"] = toon2d.render(cfg, script, timeline, voice_path, total, work, lp["code"],
-                                                        brain.call_claude, brain.extract_json, use_claude=not test)
-        elif engine == "remotion":
-            mix_path = audio.mix(cfg, script, timeline, [], voice_path, total, work, seed, with_sfx=False)
-            final = remotion_render.render(cfg, script, assets, timeline, total, lp, style, mix_path, work)
-        elif engine == "ffmpeg":
-            cap_path, cap_times = captions.build(cfg, script, timeline, total, lp, work)
-            mix_path = audio.mix(cfg, script, timeline, cap_times, voice_path, total, work, seed)
-            final = edit.render(cfg, script, assets, timeline, total, cap_path, mix_path, work)
-        else:
-            raise ValueError(f"render engine must be toon2d, remotion or ffmpeg, not {engine!r}")
-        (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
-
+    voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
+    (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
+    final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
+                                      brain.call_claude, brain.extract_json, use_claude=not test)
     duration = qc.check(final, fps=cfg["video"]["fps"])
-    if final != work / "final.mp4":
-        shutil.move(final, work / "final.mp4")
-        final = work / "final.mp4"
+    shutil.move(final, work / "final.mp4")
+    final = work / "final.mp4"
 
     caption = f"{script['title']}\n\n{script['description']}\n\n{' '.join(script['hashtags'])}".strip()
     meta = {
@@ -124,9 +85,7 @@ def produce_one(cfg, history, stats, test, provider_override=None, language=None
         "topic": script["topic"], "canonical_en": script.get("canonical_en"), "category": script.get("category"),
         "hook_type": script.get("hook_type"), "hook_line": script["scenes"][0]["line"],
         "scenes": len(script["scenes"]), "facts_checked": script.get("facts_checked", []),
-        "visuals": provider_name, "render": cfg["themes"][script["theme"]].get("engine", cfg["render"]["engine"]),
-        "storyboard": script.get("storyboard"),
-        "voice_engine": script.get("voice_engine"), **disclosure(cfg),
+        "storyboard": storyboard, "voice_engine": voice_engine, **disclosure(cfg),
     }
     (work / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
     return work, meta, script, idea
@@ -137,8 +96,6 @@ def main():
     ap.add_argument("--test", action="store_true", help="offline test (sample script, no Claude/keys)")
     ap.add_argument("--release", action="store_true", help="queue result as a GitHub Release")
     ap.add_argument("--count", type=int, default=0, help="force how many to make")
-    ap.add_argument("--provider", default=None,
-                    help="override visuals provider (e.g. higgsfield_test to demo the Higgsfield path offline)")
     ap.add_argument("--language", default=None, help="force a language (en / hi); default: learned split")
     ap.add_argument("--theme", default=None, help="force a theme from config.yaml -> themes")
     args = ap.parse_args()
@@ -163,8 +120,7 @@ def main():
 
     made = 0
     for _ in range(need):
-        work, meta, script, idea = produce_one(cfg, history, stats, args.test, args.provider,
-                                               args.language, args.theme)
+        work, meta, script, idea = produce_one(cfg, history, stats, args.test, args.language, args.theme)
         made += 1
         if args.release:
             tag = f"vid-{meta['id']}"
@@ -172,7 +128,7 @@ def main():
                  "--title", meta["title"][:100], "--notes", meta["caption"][:2000]])
             history["videos"].append({**{k: meta[k] for k in (
                 "id", "title", "topic", "canonical_en", "language", "theme", "category", "hook_type",
-                "hook_line", "duration", "visuals")},
+                "hook_line", "duration", "storyboard")},
                 "tag": tag, "status": "queued", "created": now_ist().isoformat(timespec="minutes")})
             save_history(history)
             led = ideas.load()
