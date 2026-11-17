@@ -108,6 +108,8 @@ def check(project, aspect):
               cwd=ENGINE_DIR, env=_env(aspect, captions=False))
     out = (res.stdout or "") + (res.stderr or "")
     lines = [ln.strip() for ln in out.splitlines() if ln.strip() and "Fontconfig" not in ln]
+    if lines and re.match(r"(ImportError|ModuleNotFoundError)\b", lines[-1]):  # broken install, not the storyboard
+        raise RuntimeError(f"toon2d engine crashed: {lines[-1]}")
     problems = [ln for ln in lines if ln.startswith("WARNING")]
     if res.returncode != 0:  # a crash or SystemExit message is the last line
         problems.append(lines[-1] if lines else f"plan exited {res.returncode}")
@@ -143,6 +145,8 @@ def storyboard(cfg, script, timing, project, aspect, language, call_claude, extr
                 msg = (prompt + "\n\nYour previous storyboard had these problems:\n" + "\n".join(bad[:20])
                        + "\n\nPrevious storyboard:\n" + json.dumps(story, ensure_ascii=False) + "\n\nReply with the fixed JSON only.")
             except Exception as e:  # noqa: BLE001 - one bad reply should not kill the video
+                if "engine crashed" in str(e):
+                    raise
                 log(f"Storyboard attempt failed: {str(e)[:200]}", "WARN")
     story = auto_story(script, timing)
     story_path.write_text(json.dumps(story, indent=1, ensure_ascii=False), encoding="utf-8")
@@ -175,8 +179,19 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
     captions = bool(tc.get("captions", True)) if aspect == "9:16" else bool(tc.get("long_captions", False))
     env = _env(aspect, captions, tc.get("resolution"))
     timeout = int(tc.get("timeout_minutes", 40)) * 60
-    for cmd in (["render"], ["audio", "--music-db", str(tc.get("music_db", -17))], ["final", "--title", "final"]):
-        run([sys.executable, "-m", "engine", cmd[0], str(project), *cmd[1:]], cwd=ENGINE_DIR, env=env, timeout=timeout)
+    engine = [sys.executable, "-m", "engine"]
+    try:
+        run([*engine, "render", str(project)], cwd=ENGINE_DIR, env=env, timeout=timeout)
+    except RuntimeError as e:
+        if source != "claude":
+            raise
+        log(f"Claude's storyboard crashed while rendering ({str(e)[:200]}); re-rendering with the automatic one", "WARN")
+        story, source = auto_story(script, timing), "auto"
+        (project / "story.json").write_text(json.dumps(story, indent=1, ensure_ascii=False), encoding="utf-8")
+        shutil.rmtree(project / "work", ignore_errors=True)
+        run([*engine, "render", str(project)], cwd=ENGINE_DIR, env=env, timeout=timeout)
+    for cmd in (["audio", "--music-db", str(tc.get("music_db", -17))], ["final", "--title", "final"]):
+        run([*engine, cmd[0], str(project), *cmd[1:]], cwd=ENGINE_DIR, env=env, timeout=timeout)
     out = project / "out" / ("final.mp4" if not tc.get("resolution") or int(tc["resolution"]) == 1080
                              else f"final_{tc['resolution']}p.mp4")
     if not out.exists():

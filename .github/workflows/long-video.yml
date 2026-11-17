@@ -42,8 +42,8 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install ffmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Install ffmpeg + skia system libraries
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libegl1 libgl1   # skia (toon2d) needs EGL/GL
 
       - name: Cache voice model
         uses: actions/cache@v4

@@ -128,3 +128,43 @@ def test_long_workflow_and_config():
     assert "pipeline.longform" in run_step["run"] and "YT_REFRESH_TOKEN" in run_step["env"]
     lc = load_config()["longform"]
     assert lc["privacy"] in ("private", "unlisted", "public") and 3 <= lc["minutes"] <= 15
+
+
+class _Res:
+    def __init__(self, rc, out): self.returncode, self.stdout, self.stderr = rc, out, ""
+
+
+def test_check_raises_on_broken_install_but_reports_story_errors(monkeypatch, tmp_path):
+    monkeypatch.setattr(toon2d, "run", lambda *a, **k: _Res(1, "Traceback (most recent call last):\nImportError: libEGL.so.1: cannot open"))
+    with pytest.raises(RuntimeError, match="engine crashed: ImportError"):
+        toon2d.check(tmp_path, "9:16")
+    monkeypatch.setattr(toon2d, "run", lambda *a, **k: _Res(1, "Traceback (most recent call last):\nTypeError: can only concatenate str"))
+    assert toon2d.check(tmp_path, "9:16") == ["TypeError: can only concatenate str"]   # goes to the repair round
+
+
+def test_broken_install_skips_claude_retries(monkeypatch, tmp_path):
+    T = toon2d.timing_from_timeline(TL, 4.5)
+    calls = []
+    monkeypatch.setattr(toon2d, "check", lambda *a: (_ for _ in ()).throw(RuntimeError("toon2d engine crashed: ImportError")))
+    with pytest.raises(RuntimeError, match="engine crashed"):
+        toon2d.storyboard(load_config(), SCRIPT, T, tmp_path, "9:16", "en",
+                          lambda *a, **k: calls.append(1) or '{"cast":{},"shots":[]}', json.loads, use_claude=True)
+    assert calls == [1]   # one Claude call, no second attempt on a crash
+
+
+def test_render_falls_back_to_auto_story_when_claude_story_crashes(monkeypatch, tmp_path):
+    cmds = []
+
+    def fake_run(cmd, **k):
+        cmds.append(cmd[3])
+        if cmd[3] == "render" and cmds.count("render") == 1:
+            raise RuntimeError("Command failed (1): TypeError")
+        if cmd[3] == "final":
+            (tmp_path / "toon2d" / "out").mkdir(parents=True, exist_ok=True)
+            (tmp_path / "toon2d" / "out" / "final.mp4").write_bytes(b"x")
+    monkeypatch.setattr(toon2d, "run", fake_run)
+    monkeypatch.setattr(toon2d, "storyboard", lambda *a, **k: ({"shots": []}, "claude"))
+    voice = tmp_path / "voice.wav"; voice.write_bytes(b"")
+    out, source = toon2d.render(load_config(), SCRIPT, TL, voice, 4.5, tmp_path, "en", None, None)
+    assert source == "auto" and cmds == ["render", "render", "audio", "final"]
+    assert json.loads((tmp_path / "toon2d" / "story.json").read_text(encoding="utf-8"))["cast"]["host"]
