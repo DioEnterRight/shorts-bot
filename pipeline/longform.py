@@ -99,6 +99,7 @@ def make(cfg, test=False, upload=True):
     (work / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False), encoding="utf-8")
     script.setdefault("theme", "explainer")
     voice_path, timeline, vlen, engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
+    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({engine}; target 130-145)")
     # the storyboard sees the chapter outline instead of per-line visual hints
     sb_script = dict(script, scenes=[{"visual": o} for o in script["outline"]])
     sample = json.loads((ROOT / "toon2d" / "examples" / "marshmallow" / "story.json").read_text(encoding="utf-8")) if test else None

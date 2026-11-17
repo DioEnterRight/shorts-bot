@@ -84,6 +84,12 @@ def synthesize(cfg, script, lp, workdir, allow_edge=True):
     return (*_synthesize_kokoro(cfg, script, lp, workdir), "kokoro")
 
 
+def pace_wpm(timeline):
+    """Words per minute over the whole voice track, pauses included (target 130-145)."""
+    words = sum(len(line["words"]) for line in timeline)
+    return words / max(timeline[-1]["end"], 1e-6) * 60
+
+
 def _synthesize_kokoro(cfg, script, lp, workdir):
     from kokoro_onnx import Kokoro
 

@@ -70,6 +70,7 @@ def produce_one(cfg, history, stats, test, language=None, theme=None):
     log(f"=== Making {vid_id} ===")
 
     voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
+    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; target 130-145)")
     (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
     sample = None
     if test:  # a hand-made storyboard for the sample script, so test videos look like real ones

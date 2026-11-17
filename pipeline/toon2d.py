@@ -63,7 +63,10 @@ def build_prompt(script, timing, aspect, language):
         rules = ("Vertical frame: leave out every x and y (labels, stamps, chars, props, places): the engine lays "
                  "vertical shots out itself. Keep wide shots to 1-2 characters. No silent title cards (no shot without s). "
                  "Burned-in captions are added automatically, so labels are for key words and numbers only.")
-        pacing = "One shot per sentence (or two short sentences); about 2-5 seconds each."
+        pacing = ("One shot per sentence (3-4 seconds each). Every shot changes at least two of: background (set or "
+                  "kind), camera framing (closeup / wide / graphic), character pose or emotion, and cast. Never repeat "
+                  "the same kind + set + character in two shots in a row. Calm pacing: no \"whip\", no stamps more "
+                  "than twice per video, steady push-ins only (leave out \"cam\").")
         platform = "YouTube Shorts / Instagram Reels"
     else:
         fmt = "LANDSCAPE 16:9 long YouTube video (1920x1080)."
@@ -116,6 +119,26 @@ def check(project, aspect):
     return problems
 
 
+MAX_SHOT_SECONDS = 4.6   # a new shot (background, angle, pose or cast) at least every 3-4 seconds
+
+
+def variety_problems(story, timing):
+    """Pacing rules the engine doesn't check: no multi-sentence shot longer than ~4.5 s, and never two shots in a row
+    with the same kind, set and character (background, angle or cast must change)."""
+    S = {s["i"]: s for s in timing["sentences"]}
+    probs, prev = [], None
+    for n, sh in enumerate(story.get("shots", [])):
+        sents = [i for i in sh.get("s", []) if i in S]
+        if len(sents) > 1 and S[sents[-1]]["end"] - S[sents[0]]["start"] > MAX_SHOT_SECONDS:
+            probs.append(f"shot {n} is {S[sents[-1]]['end'] - S[sents[0]]['start']:.1f}s long: give each sentence its own shot")
+        who = sh.get("who") or tuple(sorted(c.get("id", "") for c in sh.get("chars", [])))
+        key = (sh.get("kind"), sh.get("set"), who)
+        if key == prev:
+            probs.append(f"shots {n - 1} and {n} have the same kind, set and character: change the background, angle or cast")
+        prev = key
+    return probs
+
+
 def _serious(problems):
     """Cue words that were not found only shift an event to 40% of its shot: everything else must be fixed."""
     return [p for p in problems if "not found in its sentences" not in p]
@@ -146,7 +169,7 @@ def storyboard(cfg, script, timing, project, aspect, language, call_claude, extr
                 story = extract_json(reply)
                 story["title"] = "final"
                 story_path.write_text(json.dumps(story, indent=1, ensure_ascii=False), encoding="utf-8")
-                bad = _serious(check(project, aspect))
+                bad = _serious(check(project, aspect)) + variety_problems(story, timing)
                 if not bad:
                     log(f"Storyboard OK: {len(story.get('shots', []))} shots")
                     return story, "claude"
@@ -167,8 +190,9 @@ def storyboard(cfg, script, timing, project, aspect, language, call_claude, extr
 
 
 # ---------------- render ----------------
-def _env(aspect, captions, res=None):
-    e = dict(os.environ, RM_ASPECT=aspect, RM_CAPTIONS="1" if captions else "0", PYTHONIOENCODING="utf-8")
+def _env(aspect, captions, res=None, calm=True):
+    e = dict(os.environ, RM_ASPECT=aspect, RM_CAPTIONS="1" if captions else "0", RM_CALM="1" if calm else "0",
+             PYTHONIOENCODING="utf-8")
     if res:
         e["RM_RES"] = str(res)
     return e
@@ -186,7 +210,7 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
     (project / "visemes.json").write_text(json.dumps(visemes.track(timeline, FPS)), encoding="utf-8")
     story, source = storyboard(cfg, script, timing, project, aspect, language, call_claude, extract_json, use_claude, sample)
     captions = bool(tc.get("captions", True)) if aspect == "9:16" else bool(tc.get("long_captions", False))
-    env = _env(aspect, captions, tc.get("resolution"))
+    env = _env(aspect, captions, tc.get("resolution"), bool(tc.get("calm", True)))
     timeout = int(tc.get("timeout_minutes", 40)) * 60
     engine = [sys.executable, "-m", "engine"]
     try:
@@ -199,7 +223,8 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
         (project / "story.json").write_text(json.dumps(story, indent=1, ensure_ascii=False), encoding="utf-8")
         shutil.rmtree(project / "work", ignore_errors=True)
         run([*engine, "render", str(project)], cwd=ENGINE_DIR, env=env, timeout=timeout)
-    for cmd in (["audio", "--music-db", str(tc.get("music_db", -17))], ["final", "--title", "final"]):
+    for cmd in (["audio", "--music-db", str(tc.get("music_db", -20)), "--sfx-db", str(tc.get("sfx_db", -13))],
+                ["final", "--title", "final"]):
         run([*engine, cmd[0], str(project), *cmd[1:]], cwd=ENGINE_DIR, env=env, timeout=timeout)
     out = project / "out" / ("final.mp4" if not tc.get("resolution") or int(tc["resolution"]) == 1080
                              else f"final_{tc['resolution']}p.mp4")

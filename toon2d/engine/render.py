@@ -105,6 +105,8 @@ def whip_flags(tl):
     """Whip pans only on a change of place between two world shots (or into/out of a map or skyline).
     Graphics shots (icon, list, counter, chart, versus, table, title) hard-cut. "whip": true/false overrides."""
     out = []
+    if CALM:  # shorts-bot: steady pacing, no whip pans
+        return [False] * len(tl.shots)
     for i, s in enumerate(tl.shots):
         sp = s["spec"]; n = tl.shots[i + 1]["spec"] if i + 1 < len(tl.shots) else None; auto = False
         if n and sp.get("kind", "wide") in WORLD and n.get("kind", "wide") in WORLD:
@@ -134,7 +136,7 @@ def draw_frame(shot, fr_, f, whip_in, whip_out):
     if whip_out and shot.f1 - f <= 5: wx = -((6 - (shot.f1 - f)) ** 2) * 34; sig = (6 - (shot.f1 - f)) * 16
     if whip_in and f - shot.f0 < 4: wx = (4 - (f - shot.f0)) ** 2 * 52; sig = (4 - (f - shot.f0)) * 18
     shx = shy = 0
-    for st in shot.shakes:
+    for st in ([] if CALM else shot.shakes):  # shorts-bot: no camera shake in calm mode
         if st <= t < st + .35: d = 1 - (t - st) / .35; shx += 16 * d * math.sin(t * 90); shy += 12 * d * math.cos(t * 77)
     pol = shot.pol
     if pol and t >= pol["t"] and fr_.frozen is not None:
