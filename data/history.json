@@ -148,7 +148,7 @@
       "duration": 32.51,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-224536-en-why-shooting-stars-glow",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-16T22:53+05:30"
     },
     {
@@ -164,8 +164,56 @@
       "duration": 39.03,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261116-225304-en-leonid-meteor-storms",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-16T22:59+05:30"
+    },
+    {
+      "id": "20261117-002543-en-blood-falls-the-bleeding-gla",
+      "title": "Why This Antarctic Glacier Bleeds Blood-Red Water",
+      "topic": "Blood Falls, the bleeding glacier",
+      "canonical_en": "Why does a glacier in Antarctica bleed blood-red water?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "geography",
+      "hook_type": "why",
+      "hook_line": "Why does a glacier in Antarctica bleed bright red water?",
+      "duration": 34.47,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261117-002543-en-blood-falls-the-bleeding-gla",
+      "status": "discarded",
+      "created": "2026-11-17T00:58+05:30"
+    },
+    {
+      "id": "20261117-044759-en-the-pirate-who-scared-ships",
+      "title": "The scariest pirate in history may never have killed anyone",
+      "topic": "The pirate who scared ships into surrendering",
+      "canonical_en": "Why the scariest pirate in history may never have killed anyone until his last fight",
+      "language": "en",
+      "theme": "explainer",
+      "category": "history",
+      "hook_type": "myth_busting",
+      "hook_line": "The scariest pirate in history tucked burning fuses under his hat.",
+      "duration": 33.27,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261117-044759-en-the-pirate-who-scared-ships",
+      "status": "queued",
+      "created": "2026-11-17T05:20+05:30"
+    },
+    {
+      "id": "20261117-052034-en-the-sperm-whale-that-sank-th",
+      "title": "The whale that sank a ship on purpose, and why its head survived",
+      "topic": "The sperm whale that sank the Essex",
+      "canonical_en": "How could a whale sink a whaling ship on purpose (the Essex, Nov 20, 1820)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "story",
+      "hook_type": "story",
+      "hook_line": "In 1820, a whale rammed a ship, turned around, and did it again.",
+      "duration": 36.01,
+      "visuals": "cloudflare_klein",
+      "tag": "vid-20261117-052034-en-the-sperm-whale-that-sank-th",
+      "status": "queued",
+      "created": "2026-11-17T06:02+05:30"
     }
   ],
   "version": 2
