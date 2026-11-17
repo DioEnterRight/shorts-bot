@@ -6,6 +6,3 @@ __pycache__/
 client_secret*.json
 .pytest_cache/
 graphify-out/
-remotion/src/generated/Scene*.tsx
-remotion/src/generated/brief.json
-remotion/out/

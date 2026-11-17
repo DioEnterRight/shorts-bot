@@ -16,243 +16,63 @@
   "scenes": [
     {
       "line": "What happens if you swallow your chewing gum?",
-      "shot": "character",
       "visual": "[GUY] freezing mid-gulp, eyes wide, a pink gum ball visible in his open mouth",
-      "background": "a bright school corridor",
-      "camera": "punch_in",
-      "transition": "cut",
       "overlay": "",
-      "sfx": "whoosh",
-      "emphasis": "swallow",
-      "cartoon": {
-        "layout": "actor",
-        "expression": "think",
-        "mood": "fun",
-        "props": [
-          {
-            "name": "food",
-            "motion": "bounce"
-          }
-        ]
-      }
+      "emphasis": "swallow"
     },
     {
       "line": "Everyone says it stays inside you for seven years.",
-      "shot": "metaphor",
       "visual": "a pink gum ball sitting in a tiny armchair inside a cosy stomach-shaped room with a calendar flipping pages",
-      "background": "cartoon stomach interior decorated like a living room",
-      "camera": "zoom_out",
-      "transition": "zoom",
       "overlay": "7 years?",
-      "sfx": "boing",
-      "emphasis": "seven",
-      "cartoon": {
-        "layout": "props",
-        "expression": "neutral",
-        "mood": "night",
-        "props": [
-          {
-            "name": "clock",
-            "motion": "spin"
-          },
-          {
-            "name": "question",
-            "motion": "float"
-          }
-        ]
-      }
+      "emphasis": "seven"
     },
     {
       "line": "First, it slides down your esophagus like a pink submarine.",
-      "shot": "cutaway",
       "visual": "cartoon cutaway of [GUY]'s throat with a pink gum ball sliding down the food pipe",
-      "background": "glowing cutaway of the neck",
-      "camera": "pan_down",
-      "transition": "cut",
       "overlay": "esophagus",
-      "sfx": "whoosh",
-      "emphasis": "submarine",
-      "cartoon": {
-        "layout": "inside",
-        "expression": "shock",
-        "mood": "body",
-        "props": [
-          {
-            "name": "food",
-            "motion": "drip"
-          }
-        ]
-      }
+      "emphasis": "submarine"
     },
     {
       "line": "Then it splashes into your stomach acid.",
-      "shot": "cutaway",
       "visual": "gum ball splashing into a bubbling green pool inside a cartoon stomach",
-      "background": "inside the stomach",
-      "camera": "shake",
-      "transition": "cut",
       "overlay": "",
-      "sfx": "hit",
-      "emphasis": "acid",
-      "cartoon": {
-        "layout": "inside",
-        "expression": "shock",
-        "mood": "body",
-        "props": [
-          {
-            "name": "stomach",
-            "motion": "shake"
-          },
-          {
-            "name": "water_drop",
-            "motion": "drip"
-          }
-        ]
-      }
+      "emphasis": "acid"
     },
     {
       "line": "The sugar and flavour dissolve almost instantly.",
-      "shot": "closeup",
       "visual": "close-up of the gum ball fizzing as colourful sugar sparkles float away from it",
-      "background": "inside the stomach",
-      "camera": "zoom_in",
-      "transition": "cut",
       "overlay": "",
-      "sfx": "none",
-      "emphasis": "dissolve",
-      "cartoon": {
-        "layout": "versus",
-        "expression": "neutral",
-        "mood": "warm",
-        "props": [
-          {
-            "name": "food",
-            "motion": "pop"
-          },
-          {
-            "name": "water_drop",
-            "motion": "drip"
-          }
-        ]
-      }
+      "emphasis": "dissolve"
     },
     {
       "line": "But the rubbery gum base? Your body cannot break it down.",
-      "shot": "diagram",
       "visual": "simple 3D diagram: a grey rubbery blob surrounded by tiny enzyme characters bouncing off it",
-      "background": "clean dark gradient",
-      "camera": "zoom_in",
-      "transition": "cut",
       "overlay": "gum base",
-      "sfx": "boing",
-      "emphasis": "rubbery",
-      "cartoon": {
-        "layout": "props",
-        "expression": "neutral",
-        "mood": "danger",
-        "props": [
-          {
-            "name": "cross",
-            "motion": "pulse"
-          },
-          {
-            "name": "food",
-            "motion": "shake"
-          }
-        ]
-      }
+      "emphasis": "rubbery"
     },
     {
       "line": "So your gut just pushes it along with everything else.",
-      "shot": "cutaway",
       "visual": "cartoon cutaway of winding intestines squeezing the grey blob forward like a conveyor belt",
-      "background": "inside the intestines",
-      "camera": "pan_right",
-      "transition": "whip",
       "overlay": "",
-      "sfx": "whoosh",
-      "emphasis": "pushes",
-      "cartoon": {
-        "layout": "inside",
-        "expression": "neutral",
-        "mood": "body",
-        "props": [
-          {
-            "name": "stomach",
-            "motion": "pulse"
-          }
-        ]
-      }
+      "emphasis": "pushes"
     },
     {
       "line": "A few days later, it leaves the building.",
-      "shot": "metaphor",
       "visual": "the grey blob wearing tiny sunglasses walking out of an exit door with a glowing EXIT shape",
-      "background": "a cartoon exit door at the end of a tunnel",
-      "camera": "zoom_out",
-      "transition": "fade",
       "overlay": "",
-      "sfx": "pop",
-      "emphasis": "days",
-      "cartoon": {
-        "layout": "props",
-        "expression": "happy",
-        "mood": "calm",
-        "props": [
-          {
-            "name": "check",
-            "motion": "grow"
-          }
-        ]
-      }
+      "emphasis": "days"
     },
     {
       "line": "Seven years was a myth all along.",
-      "shot": "character",
       "visual": "[GUY] laughing with relief, holding a torn calendar page",
-      "background": "the bright school corridor",
-      "camera": "punch_in",
-      "transition": "whip",
       "overlay": "",
-      "sfx": "boing",
-      "emphasis": "myth",
-      "cartoon": {
-        "layout": "actor",
-        "expression": "happy",
-        "mood": "fun",
-        "props": [
-          {
-            "name": "cross",
-            "motion": "pop"
-          }
-        ]
-      }
+      "emphasis": "myth"
     },
     {
       "line": "Still, maybe don't swallow a whole pack at once.",
-      "shot": "character",
       "visual": "[GUY] looking guilty at a pile of empty gum wrappers on the floor",
-      "background": "the bright school corridor",
-      "camera": "zoom_in",
-      "transition": "cut",
       "overlay": "",
-      "sfx": "tick",
-      "emphasis": "pack",
-      "cartoon": {
-        "layout": "actor",
-        "expression": "sick",
-        "mood": "danger",
-        "props": [
-          {
-            "name": "food",
-            "motion": "shake"
-          },
-          {
-            "name": "exclamation",
-            "motion": "bounce"
-          }
-        ]
-      }
+      "emphasis": "pack"
     }
   ],
   "playbook_update": ""

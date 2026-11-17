@@ -3,7 +3,6 @@ import pathlib
 import yaml
 
 from pipeline import produce
-from pipeline.visuals import get_provider
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WF = ROOT / ".github" / "workflows"
@@ -33,16 +32,10 @@ def test_state_push_failures_are_not_swallowed():
     assert "set -euo pipefail" in script and "exit 1" in script
 
 
-def test_provider_selector_covers_every_provider():
+def test_language_selector():
     on = load("make-video.yml")[True]  # PyYAML reads the key `on` as True
-    options = on["workflow_dispatch"]["inputs"]["provider"]["options"]
-    for p in options:
-        if p != "config":
-            get_provider(p)
-    for p in ("higgsfield_clips", "higgsfield_full", "cloudflare_klein", "higgsfield_test"):
-        assert p in options
     assert on["workflow_dispatch"]["inputs"]["language"]["options"] == ["auto", "en", "hi"]
-
+    assert "provider" not in on["workflow_dispatch"]["inputs"]
 
 def test_schedules_unchanged():
     assert load("make-video.yml")[True]["schedule"][0]["cron"] == "33 22 * * *"
@@ -65,7 +58,6 @@ def test_config_languages_and_themes(cfg):
     for code in cfg["languages"]["enabled"]:
         lp = cfg["languages"][code]
         assert (ROOT / lp["prompt"]).exists()
-        assert (ROOT / "assets" / "fonts" / lp["caption_font_file"]).exists()
     shares = {k: t["share"] for k, t in cfg["themes"].items()}
     assert abs(sum(shares.values()) - 1) < 1e-6 and 0.75 <= shares["explainer"] <= 0.85
     assert cfg["allocation"]["floor"] == 0.2
@@ -81,18 +73,15 @@ def test_choose_slot_with_and_without_stats(cfg):
     assert produce.choose_slot(cfg, hist, {}, language="en", theme="story") == ("en", "story")
 
 
-def test_make_video_installs_remotion_with_npm_cache():
-    wf = load("make-video.yml")
-    node = next(s for s in steps(wf) if s.get("uses", "").startswith("actions/setup-node"))
-    assert node["with"]["cache"] == "npm" and node["with"]["cache-dependency-path"] == "remotion/package-lock.json"
-    assert any("npm ci --prefix remotion" in s.get("run", "") for s in steps(wf))
+def test_make_video_has_no_remotion_or_picture_steps():
+    text = (ROOT / ".github" / "workflows" / "make-video.yml").read_text(encoding="utf-8")
+    assert "remotion" not in text.lower() and "CF_API_TOKEN" not in text and "provider" not in text
+    assert any("requirements.txt" in s.get("run", "") for s in steps(load("make-video.yml")))
 
 
 def test_render_and_voice_config(cfg):
-    from pipeline import remotion_render
-    assert cfg["render"]["engine"] in ("remotion", "ffmpeg")
-    assert cfg["render"]["caption_style"] in remotion_render.CAPTION_STYLES
+    assert set(cfg) >= {"toon2d", "longform", "voice", "claude"} and not {"render", "visuals", "captions", "audio"} & set(cfg)
     assert cfg["voice"]["engine"] in ("edge", "kokoro")
     for code in cfg["languages"]["enabled"]:
         assert cfg["languages"][code].get("edge_voice")
-    assert cfg["themes"]["roblox_story"]["render_style"] == "blocky"
+    assert all(set(t) == {"share", "guidance"} for t in cfg["themes"].values())

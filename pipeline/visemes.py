@@ -1,7 +1,7 @@
 """Mouth shapes for the mascot from word timings (clean-room, no external aligner).
 
 Each word's letters are grouped into sound units and spread across the word's spoken time.
-Shapes follow the Preston Blair set used in remotion/src/kit/Bean.tsx:
+Shapes follow the Preston Blair set (toon2d maps them to open / mid / o / closed mouths):
   X rest/closed, A m/b/p, B most consonants, C e/i, D a (wide), E o, F u/oo, G f/v, H l/th.
 The mouth closes (X) in any gap longer than GAP seconds, every shape holds at least MIN_HOLD
 frames, and identical neighbours merge - so the guy talks like he is explaining, not yapping.

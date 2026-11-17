@@ -213,10 +213,8 @@ def test_private_youtube_views_excluded():
 def test_disclosure_follows_content(cfg):
     from pipeline.produce import disclosure
     assert disclosure(cfg) == {"synthetic_youtube": False, "ai_label_instagram": True}
-    cfg["disclosure"]["photorealistic_visuals"] = True
+    cfg["disclosure"]["youtube_synthetic"] = True
     assert disclosure(cfg)["synthetic_youtube"] is True
-    cfg["disclosure"]["youtube_synthetic"] = False
-    assert disclosure(cfg)["synthetic_youtube"] is False
 
 
 def test_no_secret_values_in_repo_files():

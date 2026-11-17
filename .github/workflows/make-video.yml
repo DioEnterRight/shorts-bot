@@ -9,11 +9,6 @@ on:
         description: "Test mode: no keys used, nothing posted, just shows you a sample video (untick to make real videos)"
         type: boolean
         default: true
-      provider:
-        description: "Visuals (leave 'config' to use config.yaml; higgsfield_test = demo the Higgsfield pipeline)"
-        type: choice
-        default: config
-        options: [config, higgsfield_test, placeholder, cloudflare_klein, cloudflare_flux, higgsfield_clips, higgsfield_full]
       language:
         description: "Language (auto = the learned English/Hindi split)"
         type: choice
@@ -31,11 +26,10 @@ permissions:
 jobs:
   make:
     runs-on: ubuntu-latest
-    timeout-minutes: 120   # Opus designs every scene and reviews its own frames (~10-25 min per video)
+    timeout-minutes: 60    # a toon2d Short takes ~5-10 min
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
-      REMOTION_BROWSER: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@v4
 
@@ -47,11 +41,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: npm
-          cache-dependency-path: remotion/package-lock.json
 
-      - name: Install ffmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Install ffmpeg + skia system libraries
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libegl1 libgl1   # skia (toon2d) needs EGL/GL
 
       - name: Cache voice model
         uses: actions/cache@v4
@@ -63,13 +55,6 @@ jobs:
         run: |
           pip install -q -r requirements.txt
           python -m pipeline.fetch_models
-
-      - name: Install Remotion (video renderer)
-        run: |
-          npm ci --prefix remotion --no-audit --no-fund
-          # Renders use the runner's preinstalled Google Chrome with software WebGL (SwiftShader).
-          # If Chrome is ever missing, Remotion downloads its own headless browser instead.
-          google-chrome --version || (cd remotion && npx remotion browser ensure)
 
       - name: Install Claude Code
         if: env.TEST != 'true'
@@ -88,14 +73,10 @@ jobs:
       - name: Make the video
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          PROVIDER: ${{ github.event_name == 'workflow_dispatch' && inputs.provider || 'config' }}
           LANGUAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.language || 'auto' }}
         run: |
           ARGS=""
-          if [ "$PROVIDER" != "config" ]; then ARGS="--provider $PROVIDER"; fi
-          if [ "$LANGUAGE" != "auto" ]; then ARGS="$ARGS --language $LANGUAGE"; fi
+          if [ "$LANGUAGE" != "auto" ]; then ARGS="--language $LANGUAGE"; fi
           if [ "$TEST" = "true" ]; then
             python -m pipeline.produce --test $ARGS
           else

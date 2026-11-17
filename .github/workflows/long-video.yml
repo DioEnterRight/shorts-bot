@@ -1,0 +1,89 @@
+name: Long video (weekly)
+
+on:
+  schedule:
+    - cron: "43 4 * * 0"   # Sundays ~10:13 India time
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Offline test (sample script, no Claude, no upload; video saved as an artifact)"
+        type: boolean
+        default: false
+      upload:
+        description: "Upload to YouTube (privacy from config.yaml longform.privacy)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: shorts-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  long:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180   # Opus research + script, storyboard, ~20-40 min render for 5 min at 1080p
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
+      UPLOAD: ${{ github.event_name != 'workflow_dispatch' || inputs.upload }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install ffmpeg + skia system libraries
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libegl1 libgl1   # skia (toon2d) needs EGL/GL
+
+      - name: Cache voice model
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0-int8
+
+      - name: Install Python packages + voice model
+        run: |
+          pip install -q -r requirements.txt
+          python -m pipeline.fetch_models
+
+      - name: Install Claude Code
+        if: env.TEST != 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Make (and upload) the long video
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          if [ "$TEST" = "true" ]; then
+            python -m pipeline.longform --test
+          elif [ "$UPLOAD" = "true" ]; then
+            python -m pipeline.longform
+          else
+            python -m pipeline.longform --no-upload
+          fi
+
+      - name: Keep the video (test or no-upload runs)
+        if: always() && (env.TEST == 'true' || env.UPLOAD != 'true')
+        uses: actions/upload-artifact@v4
+        with:
+          name: long-video
+          path: out/*-long-*/toon2d_long/out/final.mp4
+          retention-days: 5
+
+      - name: Save memory (history)
+        if: always() && env.TEST != 'true'
+        run: |
+          tools/save_state.sh "bot: long video $(date -u +%F)"

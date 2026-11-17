@@ -2,13 +2,9 @@
 import json
 import re
 
-from . import cartoon, languages
+from . import languages
 from .common import DATA, ROOT, env, load_config, log, norm_text, now_ist, run
 
-CAMERAS = {"punch_in", "zoom_in", "zoom_out", "pan_left", "pan_right", "pan_up", "pan_down", "shake"}
-SFX = {"whoosh", "hit", "pop", "boing", "riser", "tick", "none"}
-SHOTS = {"character", "cutaway", "diagram", "metaphor", "closeup", "wide"}
-TRANSITIONS = {"cut", "whip", "zoom", "fade"}
 MIN_SCENES, MAX_SCENES = 6, 16
 
 
@@ -53,10 +49,10 @@ def extract_json(text):
     return json.loads(text[start:end + 1])
 
 
-def claude_model_args(effort=None):
+def claude_model_args(effort=None, model=None):
     """Model flags from config.yaml `claude:` (pinned so runs don't depend on the account default)."""
     cc = load_config().get("claude", {})
-    args = ["--model", cc.get("model", "opus")]
+    args = ["--model", model or cc.get("model", "opus")]
     if cc.get("fallback_model"):
         args += ["--fallback-model", cc["fallback_model"]]
     if effort or cc.get("effort"):
@@ -64,9 +60,9 @@ def claude_model_args(effort=None):
     return args
 
 
-def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None):
+def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None):
     env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
-    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort),
+    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort, model),
                "--allowedTools", tools, "--max-turns", str(max_turns)],
               capture=True, check=False, cwd=cwd, timeout=timeout)
     if res.returncode != 0:
@@ -90,38 +86,19 @@ def validate(s, cfg, lp, theme="explainer"):
     scenes = s.get("scenes") or []
     if not (MIN_SCENES <= len(scenes) <= MAX_SCENES):
         raise ValueError(f"Bad scene count: {len(scenes)} (want {MIN_SCENES}-{MAX_SCENES})")
-    prev_cam = None
     for i, sc in enumerate(scenes):
         sc["line"] = (sc.get("line") or "").strip()
         sc["visual"] = (sc.get("visual") or "").strip()
         if not sc["line"] or not sc["visual"]:
             raise ValueError(f"Scene {i + 1}: empty line or visual")
-        sc["camera"] = sc.get("camera") or sc.get("motion")
-        if sc["camera"] not in CAMERAS:
-            sc["camera"] = "punch_in" if i == 0 else "zoom_in"
-        if sc["camera"] == prev_cam and sc["camera"] != "zoom_in":
-            sc["camera"] = "zoom_in"
-        prev_cam = sc["camera"]
-        sc["motion"] = sc["camera"]  # older code paths / higgsfield routine read "motion"
-        if sc.get("shot") not in SHOTS:
-            sc["shot"] = "character" if "[GUY]" in sc["visual"] else "closeup"
-        sc["transition"] = sc.get("transition") if sc.get("transition") in TRANSITIONS else "cut"
-        if i == 0:
-            sc["transition"] = "cut"
-        sc["background"] = (sc.get("background") or "").strip()
         sc["overlay"] = " ".join((sc.get("overlay") or "").split()[:3])[:28]
-        if sc.get("sfx") not in SFX:
-            sc["sfx"] = "none"
         if norm_text(sc.get("emphasis", "")) not in {norm_text(w) for w in sc["line"].split()}:
             sc["emphasis"] = ""
-        sc["character"] = "[GUY]" in sc["visual"]
-        cartoon.normalize(sc)
-    # genuinely different pictures, not one image restyled
+        for k in [k for k in sc if k not in ("line", "visual", "overlay", "emphasis")]:
+            del sc[k]
     visuals = [norm_text(sc["visual"]) for sc in scenes]
     if any(a == b for a, b in zip(visuals, visuals[1:])):
         raise ValueError("Two consecutive scenes have the same visual")
-    if len(scenes) >= 8 and len({sc["shot"] for sc in scenes}) < 3:
-        raise ValueError("Storyboard uses fewer than 3 shot types")
     overlays = [sc for sc in scenes if sc["overlay"]]
     for sc in overlays[4:]:
         sc["overlay"] = ""

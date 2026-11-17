@@ -1,15 +1,16 @@
 # shorts-bot
 
-Daily faceless Shorts/Reels bot (English + Hindi). Python orchestrates (`pipeline/`), Claude Code writes
-ideas, scripts and per-video Remotion scene code, Remotion (`remotion/`) renders 1080x1920 @30fps on
-GitHub Actions CPU runners, `pipeline/publish.py` posts. Read README.md for the full flow.
+Daily faceless Shorts/Reels bot (English, one Hindi a week) plus a weekly English long video. Python
+orchestrates (`pipeline/`): Claude Code writes ideas and scripts, then one storyboard (`story.json`) per
+video, and the toon2d engine (`toon2d/`, Python + skia) draws it: 1080x1920 Shorts, 1920x1080 long videos,
+on GitHub Actions CPU runners. `pipeline/publish.py` posts. Read README.md for the full flow.
 
-- Bespoke scenes: `pipeline/scenegen.py` + the design kit `remotion/src/kit` + skill `shortsbot-scene-kit`.
-  Generated files in `remotion/src/generated/Scene*.tsx` are per run and never committed.
-- Tests: `python -m pytest -q -m "not slow"` (offline). `-m slow` needs ffmpeg + remotion/node_modules.
+- toon2d: `pipeline/toon2d.py` (timing, storyboard prompt + plan check + fallback, render). Engine changes
+  for vertical frames are marked `shorts-bot` in `toon2d/engine`. Storyboard format: `toon2d/reference/story-format.md`.
+- Special 3D-world shorts are made by hand with the `cartoon-audio-short` skill, never by the bot.
+- Tests: `python -m pytest -q -m "not slow"` (offline). `-m slow` renders with ffmpeg + skia.
 - Never post, push or touch `data/` while testing. Prefer the simplest change; fail fast.
-- ponytail skills: use them when maintaining the Python pipeline, NOT when writing scene code
-  (its "write less code" rule works against rich animation).
+- ponytail skills: use them when maintaining the Python pipeline.
 
 ## graphify
 
