@@ -9,4 +9,6 @@ Third-party parts keep their own terms and credits:
   See toon2d/CREDITS.md. DioEnterRight's changes (vertical 9:16 port, captions, word-timed mouths,
   Unicode matching, pipeline wiring) are marked "shorts-bot" in the code.
 - toon2d/fonts: SIL Open Font License / Apache 2.0 (see the licence files there).
-- .claude/skills: each skill keeps its own licence (MIT unless its folder says otherwise).
+- .claude/skills/cartoon-audio-short/kit: the cartoon-short-kit (credit kept, see its CREDITS.md), with
+  vendored three.js r160 (MIT) and toon.ts from mromidev/claude-animated-shorts (MIT).
+- .claude/skills: each other skill keeps its own licence (MIT unless its folder says otherwise).

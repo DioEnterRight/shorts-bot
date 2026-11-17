@@ -201,6 +201,11 @@ English Short (by analytics) is expanded by Opus into a researched ~5-minute scr
 `config.yaml`), voiced, storyboarded and rendered by toon2d, then uploaded as `privacy: private` until you
 switch it to `public`. Manual test: run the workflow with `test` ticked (no Claude, no upload, video as artifact).
 
+**Special 3D-world shorts (by hand).** The `cartoon-audio-short` skill (`.claude/skills/cartoon-audio-short`)
+makes 2D card characters in an inked, painted 3D world (three.js in headless Chrome). Claude writes the world,
+cameras and sound for each video, so it costs far more tokens and ~15-30 min of rendering: use it for special
+videos from Claude Code on your PC ("make a cartoon short about ..."), not for the daily bot. It never uploads.
+
 **Bespoke Remotion scenes (optional, per theme with `engine: remotion`).** For every video, Claude Opus writes new
 animation code for each scene with the channel's design kit (`remotion/src/kit`: the mascot with real
 lip-sync and gestures, props, 1,500+ icons, arrows, meters, charts, counters, comparisons), renders a
