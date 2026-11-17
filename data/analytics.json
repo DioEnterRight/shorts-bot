@@ -12,17 +12,17 @@
       "duration": 36.33,
       "published_at": "2026-11-15T00:24+05:30",
       "metrics": {
-        "ig_views": 111,
-        "ig_reach": 102,
+        "ig_views": 0,
+        "ig_reach": 0,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 7167
+        "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-17T15:41+05:30",
+      "last_update": "2026-11-17T17:44+05:30",
       "views": {
-        "ig": 111
+        "ig": 0
       }
     },
     "20261114-225952-why-you-get-goosebumps": {
@@ -36,22 +36,22 @@
       "duration": 40.13,
       "published_at": "2026-11-15T19:13+05:30",
       "metrics": {
-        "ig_views": 4,
-        "ig_reach": 2,
+        "ig_views": 0,
+        "ig_reach": 0,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 15794,
+        "ig_avg_watch_ms": 0,
         "yt_views": 68,
         "yt_likes": 1,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-17T15:41+05:30",
+      "last_update": "2026-11-17T17:44+05:30",
       "views": {
         "yt": 68,
-        "ig": 4
+        "ig": 0
       }
     },
     "20261115-043843-why-your-fingers-wrinkle-in-wa": {
@@ -65,22 +65,22 @@
       "duration": 36.7,
       "published_at": "2026-11-15T19:43+05:30",
       "metrics": {
-        "ig_views": 84,
-        "ig_reach": 81,
+        "ig_views": 0,
+        "ig_reach": 0,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 4642,
+        "ig_avg_watch_ms": 0,
         "yt_views": 466,
         "yt_likes": 11,
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-17T15:41+05:30",
+      "last_update": "2026-11-17T17:44+05:30",
       "views": {
         "yt": 466,
-        "ig": 84
+        "ig": 0
       }
     },
     "20261116-213712-hi-great-molasses-flood-of-bost": {
@@ -94,22 +94,51 @@
       "duration": 44.17,
       "published_at": "2026-11-16T22:17+05:30",
       "metrics": {
-        "ig_views": 130,
-        "ig_reach": 109,
+        "ig_views": 0,
+        "ig_reach": 0,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 9065,
+        "ig_avg_watch_ms": 0,
         "yt_views": 5,
         "yt_likes": 0,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-17T15:41+05:30",
+      "last_update": "2026-11-17T17:44+05:30",
       "views": {
         "yt": 5,
-        "ig": 130
+        "ig": 0
+      }
+    },
+    "20261117-154143-en-the-1939-franksgiving-split": {
+      "video_id": "20261117-154143-en-the-1939-franksgiving-split",
+      "language": "en",
+      "topic": "The 1939 Franksgiving split",
+      "theme": "explainer",
+      "title": "The Year America Had Two Thanksgivings",
+      "hook_type": "paradox",
+      "hook_line": "In nineteen thirty-nine, America had two Thanksgivings, one week apart.",
+      "duration": 42.5,
+      "published_at": "2026-11-17T15:59+05:30",
+      "metrics": {
+        "ig_views": 212,
+        "ig_reach": 156,
+        "ig_likes": 1,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 13642,
+        "yt_views": 96,
+        "yt_likes": 2,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-17T17:44+05:30",
+      "views": {
+        "yt": 96,
+        "ig": 212
       }
     }
   },
@@ -126,8 +155,8 @@
           "hi": 0
         }
       },
-      "computed_at": "2026-11-17T15:41+05:30"
+      "computed_at": "2026-11-17T17:44+05:30"
     }
   },
-  "updated": "2026-11-17T15:41+05:30"
+  "updated": "2026-11-17T17:44+05:30"
 }
