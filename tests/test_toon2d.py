@@ -203,7 +203,7 @@ def test_variety_rules_flag_long_and_repeated_shots():
 
 def test_calm_mode_and_quiet_mix_are_on_by_default():
     cfg = load_config()
-    assert cfg["toon2d"]["calm"] is True and cfg["toon2d"]["music_db"] <= -20 and cfg["voice"]["gap_seconds"] >= 0.3
+    assert cfg["toon2d"]["calm"] is True and cfg["toon2d"]["music_db"] <= -20 and 0.1 <= cfg["voice"]["gap_seconds"] <= 0.3
     assert toon2d._env("9:16", True, calm=True)["RM_CALM"] == "1"
     from pipeline import voice
     assert round(voice.pace_wpm([{"words": [{}] * 70, "end": 30.0}])) == 140

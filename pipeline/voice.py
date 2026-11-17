@@ -85,7 +85,7 @@ def synthesize(cfg, script, lp, workdir, allow_edge=True):
 
 
 def pace_wpm(timeline):
-    """Words per minute over the whole voice track, pauses included (target 130-145)."""
+    """Words per minute over the whole voice track, pauses included (target 160-180 for Shorts)."""
     words = sum(len(line["words"]) for line in timeline)
     return words / max(timeline[-1]["end"], 1e-6) * 60
 

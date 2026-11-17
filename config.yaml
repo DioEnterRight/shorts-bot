@@ -36,8 +36,8 @@ languages:
     tts_lang: en-us
     voice: am_michael       # Kokoro voice (fallback). Others: am_adam, am_onyx, bm_george
     edge_voice: en-US-AndrewNeural   # edge-tts voice (primary). Others: en-US-GuyNeural, en-US-ChristopherNeural
-    edge_rate: "-8%"         # calm, measured pace (target 130-145 wpm; check "Speaking pace" in the run log)
-    speed: 0.8              # Kokoro: ~150 wpm while speaking, ~135-140 with the pauses
+    edge_rate: "+0%"         # Shorts pace, target 160-180 wpm: check "Speaking pace" in the run log
+    speed: 0.95             # Kokoro: ~184 wpm while speaking, ~171 with the pauses
     words_per_second: 2.7   # Kokoro speaking rate at speed 1.0 (used for script length)
   hi:
     name: Hindi (natural Hinglish)
@@ -45,8 +45,8 @@ languages:
     tts_lang: hi
     voice: hm_omega         # Kokoro (fallback): hm_omega, hm_psi (male), hf_alpha, hf_beta (female)
     edge_voice: hi-IN-MadhurNeural   # edge-tts (primary): hi-IN-MadhurNeural (male) or hi-IN-SwaraNeural (female)
-    edge_rate: "-5%"
-    speed: 0.8
+    edge_rate: "+0%"
+    speed: 0.95
     words_per_second: 2.5
 
 allocation:
@@ -101,7 +101,7 @@ voice:
   engine: edge            # edge = Microsoft edge-tts with real word timings (falls back to Kokoro by itself)
                           # kokoro = always Kokoro. Test-mode runs always use Kokoro (offline).
   edge_retries: 3         # tries per line before the whole video switches to Kokoro
-  gap_seconds: 0.4        # pause between sentences (each line is one sentence)
+  gap_seconds: 0.2        # short pause between sentences (each line is one sentence)
 
 # Which Claude writes ideas and scripts (Claude Code CLI, your subscription).
 claude:

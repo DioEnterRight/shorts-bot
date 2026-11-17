@@ -16,8 +16,8 @@ mention, copy or imitate any specific creator, their characters, titles or catch
 ## Script rules
 - Length: about {target_seconds} seconds = {min_words}-{max_words} spoken words in total.
 - Split the narration into {min_scenes}-{max_scenes} scenes (beats). One beat = exactly ONE sentence of
-  about 6-10 words (3-4 seconds at a calm pace). Each beat moves the story forward and gets its own picture.
-- Write for a calm, measured narrator (about 140 words a minute): clear, simple words, no tongue-twisters.
+  about 8-11 words (3-4 seconds). Each beat moves the story forward and gets its own picture.
+- Write for a clear, energetic narrator (about 170 words a minute): simple words, no tongue-twisters.
 - Use this shape:
   1. HOOK (beat 1, no setup): the idea's paradox stated as fact. No greetings, no "today",
      no "in this video".
