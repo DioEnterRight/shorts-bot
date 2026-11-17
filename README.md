@@ -1,4 +1,4 @@
-# 🌍 Explore The World — daily Shorts & Reels bot
+# 🪙 Cons & Coins — daily Shorts & Reels bot
 
 Makes **one 2D cartoon Short a day** (Instagram Reels + YouTube Shorts) and **one long English video a week**
 (YouTube), by itself, in the cloud. Your PC and phone can be off. Cost: ₹0 (your Claude subscription + free tiers).
@@ -112,6 +112,11 @@ Open **Actions → the red ❌ run** → read the last lines.
 | `No video ready` | the Make run failed — fix it, then run Make video |
 | `Could not push bot state` / permission errors | Settings → Actions → General → Workflow permissions → **Read and write** |
 | `YouTube API uploads are staying private` (issue) | audit not approved yet → set `youtube_mode: manual` |
+
+## 🎨 Channel art
+
+`python tools/brand_art.py out/brand` redraws the profile pictures (1080x1080, Instagram + YouTube) and the
+YouTube banner (2560x1440) with the video engine, so they match the videos.
 
 ## 🛠 Dev tools (for working on the bot with Claude Code)
 
