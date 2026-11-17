@@ -121,10 +121,19 @@ def _serious(problems):
     return [p for p in problems if "not found in its sentences" not in p]
 
 
-def storyboard(cfg, script, timing, project, aspect, language, call_claude, extract_json, use_claude):
-    """Write project/story.json. Claude first (with one repair round), auto storyboard as the fallback."""
+def storyboard(cfg, script, timing, project, aspect, language, call_claude, extract_json, use_claude, sample=None):
+    """Write project/story.json. A given sample storyboard (test mode) must pass as is; otherwise Claude
+    first (with one repair round), auto storyboard as the fallback."""
     tc = cfg.get("toon2d", {})
     story_path = project / "story.json"
+    if sample is not None:
+        story = dict(sample, title="final")
+        story_path.write_text(json.dumps(story, indent=1, ensure_ascii=False), encoding="utf-8")
+        bad = _serious(check(project, aspect))
+        if bad:
+            raise RuntimeError(f"Sample storyboard failed the plan check: {bad[:5]}")
+        log(f"Using the sample storyboard ({len(story['shots'])} shots)")
+        return story, "sample"
     if use_claude:
         prompt = build_prompt(script, timing, aspect, language)
         msg = prompt
@@ -166,7 +175,7 @@ def _env(aspect, captions, res=None):
 
 
 def render(cfg, script, timeline, voice_path, duration, work, language, call_claude, extract_json,
-           use_claude=True, aspect="9:16"):
+           use_claude=True, aspect="9:16", sample=None):
     """Storyboard + render + sound. Returns (final mp4 path, storyboard source 'claude'|'auto')."""
     tc = cfg.get("toon2d", {})
     project = work / ("toon2d" if aspect == "9:16" else "toon2d_long")
@@ -175,7 +184,7 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
     timing = timing_from_timeline(timeline, duration)
     (project / "timing.json").write_text(json.dumps(timing, indent=1, ensure_ascii=False), encoding="utf-8")
     (project / "visemes.json").write_text(json.dumps(visemes.track(timeline, FPS)), encoding="utf-8")
-    story, source = storyboard(cfg, script, timing, project, aspect, language, call_claude, extract_json, use_claude)
+    story, source = storyboard(cfg, script, timing, project, aspect, language, call_claude, extract_json, use_claude, sample)
     captions = bool(tc.get("captions", True)) if aspect == "9:16" else bool(tc.get("long_captions", False))
     env = _env(aspect, captions, tc.get("resolution"))
     timeout = int(tc.get("timeout_minutes", 40)) * 60

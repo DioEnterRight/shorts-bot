@@ -168,3 +168,21 @@ def test_render_falls_back_to_auto_story_when_claude_story_crashes(monkeypatch, 
     out, source = toon2d.render(load_config(), SCRIPT, TL, voice, 4.5, tmp_path, "en", None, None)
     assert source == "auto" and cmds == ["render", "render", "audio", "final"]
     assert json.loads((tmp_path / "toon2d" / "story.json").read_text(encoding="utf-8"))["cast"]["host"]
+
+
+@pytest.mark.parametrize("lang", ["en", "hi"])
+def test_sample_storyboards_pass_the_plan_check(lang, tmp_path):
+    pytest.importorskip("skia")
+    script = json.loads((ROOT / "prompts" / f"sample_script_{lang}.json").read_text(encoding="utf-8"))
+    tl, t = [], .2
+    for sc in script["scenes"]:
+        words = []
+        for w in sc["line"].split():
+            words.append({"word": w, "start": t, "end": t + .28}); t += .3
+        tl.append({"words": words}); t += .3
+    (tmp_path / "timing.json").write_text(json.dumps(toon2d.timing_from_timeline(tl, t), ensure_ascii=False), encoding="utf-8")
+    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(t),
+                    str(tmp_path / "voice.wav")], check=True)
+    (tmp_path / "story.json").write_text((ROOT / "prompts" / f"sample_story_{lang}.json").read_text(encoding="utf-8"),
+                                         encoding="utf-8")
+    assert toon2d.check(tmp_path, "9:16") == []    # no warnings at all: every sentence covered, every cue found

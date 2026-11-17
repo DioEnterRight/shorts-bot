@@ -1,0 +1,16 @@
+{"title": "final", "mood": "playful",
+ "cast": {"host": {"skin": "tan", "outfit": "hoodie", "color": "#2F7A5A", "shirt": "#E8E0D0", "hair": "curly", "hair_col": "#1C1B22"},
+          "cleaner": {"skin": "brown", "outfit": "tshirt", "color": "#3B6FB6", "hair": "short", "hair_col": "#1C1B22", "hat": "cap", "hat_col": "#F2C14E"},
+          "kid": {"skin": "fair", "outfit": "sweater", "color": "#8A3A3A", "hair": "short", "hair_col": "#3A2A1E", "glasses": true}},
+ "shots": [
+  {"kind": "wide", "s": [0], "set": "office", "time": "day", "chars": [{"id": "host", "emotion": "embarrassed"}, {"id": "kid", "emotion": "shocked"}], "labels": [{"text": "GRRRR!", "at": "गुड़गुड़", "color": "red"}], "tag": "EXAM HALL"},
+  {"kind": "versus", "s": [1], "left": {"who": "host", "title": "HUNGER?", "emotion": "worried", "at": "भूख"}, "right": {"who": "cleaner", "title": "CLEANING!", "emotion": "happy", "at": "cleaning"}},
+  {"kind": "chart", "s": [2], "board": "white", "chart": {"type": "line", "values": [2, 8, 3, 9, 2, 8, 3], "labels": ["", "", "", "", "", "", ""], "title": "MUSCLE WAVES", "show_values": false, "at": "muscles"}},
+  {"kind": "walk", "s": [3], "set": "street", "time": "day", "chars": [{"id": "cleaner", "emotion": "confident"}], "labels": [{"text": "FOOD + GAS", "at": "gas", "color": "lime"}]},
+  {"kind": "closeup", "s": [4], "who": "host", "set": "office", "time": "day", "emotion": "shocked", "stamp": {"text": "ECHO!", "at": "echo", "color": "gold"}},
+  {"kind": "icon", "s": [5], "icons": [{"name": "warning", "label": "GHRELIN", "at": "ghrelin"}]},
+  {"kind": "map", "s": [6], "places": [{"name": "STOMACH"}, {"name": "BLOOD"}, {"name": "BRAIN"}], "vehicle": "car", "at": "खून"},
+  {"kind": "icon", "s": [7], "icons": [{"name": "brain", "label": "BRAIN", "at": "brain"}, {"name": "phone", "label": "HUNGRY!", "at": "signal"}], "chars": [{"id": "host", "emotion": "excited", "pose": "point"}]},
+  {"kind": "closeup", "s": [8], "who": "host", "set": "office", "time": "day", "emotion": "nervous", "labels": [{"text": "EXAM", "at": "exam", "color": "cream"}]},
+  {"kind": "wide", "s": [9], "set": "home", "time": "day", "chars": [{"id": "host", "emotion": "happy", "pose": "celebrate"}, {"id": "cleaner", "emotion": "happy", "pose": "wave"}], "polaroid": {"at": "सफ़ाई", "who": "cleaner", "caption": "JUST CLEANING"}}
+ ]}

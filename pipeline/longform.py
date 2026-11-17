@@ -101,8 +101,9 @@ def make(cfg, test=False, upload=True):
     voice_path, timeline, vlen, engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
     # the storyboard sees the chapter outline instead of per-line visual hints
     sb_script = dict(script, scenes=[{"visual": o} for o in script["outline"]])
+    sample = json.loads((ROOT / "toon2d" / "examples" / "marshmallow" / "story.json").read_text(encoding="utf-8")) if test else None
     final, source = toon2d.render(cfg, sb_script, timeline, voice_path, vlen + 0.7, work, "en",
-                                  brain.call_claude, brain.extract_json, use_claude=not test, aspect="16:9")
+                                  brain.call_claude, brain.extract_json, use_claude=not test, aspect="16:9", sample=sample)
     dur = qc.check(final, min_s=60, max_s=60 * 20, size=(1920, 1080))
     meta = {"id": vid, "title": script["title"], "description": script["description"],
             "hashtags": script["hashtags"], "language": "en", "duration": round(dur, 2),
