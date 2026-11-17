@@ -7,10 +7,18 @@ paused: false
 
 channel:
   # What the channel is about. Claude picks daily ideas inside this space.
-  niche: >-
-    Explore The World: curious explainers about the human body, the mind,
-    everyday mysteries, science, technology and inventions, space and
-    discoveries, history and geography. Curious, slightly dark, funny.
+  # Topic menu (ReachMora idea strategy: high-earning, bingeable niches with drawable cause and effect).
+  # Claude mixes these across its pitches. Delete a line to drop that niche.
+  niche: |-
+    Explore The World: curious, slightly dark, funny cartoon stories and explainers.
+    - Money stories, scams and cons (rise, trick, twist)
+    - Business rise and fall (one decision that made or broke a company)
+    - Psychology and human behaviour (why people do strange things)
+    - Self-improvement and life lessons (one habit or rule, shown in a story)
+    - How money really works (inflation, banks, debt, prices, explained simply)
+    - Weird history and mysteries (strange events, odd laws, lucky accidents)
+    - Light true crime (heists, frauds, escapes; nothing graphic)
+    - Weird science and the human body (the surprising mechanism behind something familiar)
 
 video:                    # vertical 1080x1920, drawn by toon2d (see `toon2d:` below)
   target_seconds: 35      # Claude aims for this length (30-45 works best)
@@ -66,15 +74,17 @@ themes:
   explainer:
     share: 0.8
     guidance: >-
-      A clear answer to one specific, surprising question about the body, mind,
-      nature, science, technology, space, history or geography. Real explanation,
+      A clear answer to one specific, surprising question from the topic menu
+      (how money really works, psychology, self-improvement, weird science and
+      the body...). Formats: explainer, list or versus. Real explanation,
       verified facts, one satisfying "oh, THAT's why" payoff.
   story:
     share: 0.13
     guidance: >-
-      A short narrated story with a twist, built on something real: a strange
-      historical event, an unlikely invention, a survival story, a scientific
-      accident. Clear beginning, tension, payoff. Still teaches one real thing.
+      A short narrated story with a twist, built on something real: a con or
+      scam, a business rise and fall, a heist or escape, a strange historical
+      event, an unlikely invention. Clear beginning, tension, payoff. Still
+      teaches one real thing.
   roblox_story:
     share: 0.07
     guidance: >-

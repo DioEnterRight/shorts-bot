@@ -131,7 +131,7 @@ def build_prompt(cfg, idea, lp, theme, performance):
     playbook = playbook_path.read_text(encoding="utf-8") if playbook_path.exists() else "(empty)"
     sunday = now_ist().weekday() == 6
     shown = {k: idea.get(k) for k in ("canonical_en", "title", "question", "hook", "angle", "why_care", "payoff",
-                                      "visual_moments", "fact_status", "research_basis")}
+                                      "format", "series", "visual_moments", "fact_status", "research_basis")}
     return tpl.format(
         idea=json.dumps(shown, ensure_ascii=False, indent=2),
         theme_name=theme, theme_guidance=cfg["themes"][theme]["guidance"].strip(),
