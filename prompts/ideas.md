@@ -28,17 +28,16 @@ People Who Never Text First", "What Happens to Your Money When a Bank Collapses"
 ## What makes an idea perfect for this channel
 Every idea, explainer or story, is built like a tiny story with a twist:
 - ONE surprising, specific thing (a question, a mechanism or a true story), not a broad subject
-  ("why your nose runs in the cold", not "noses").
+  ("why casinos have no clocks", not "casinos").
 - A physical cause and effect we can SHOW in a flat 2D cartoon: objects, money changing hands,
-  a journey, a before and after, two things compared, a body part doing something. Avoid ideas
+  a journey, a before and after, two people or choices compared. Avoid ideas
   that are only abstract.
 - A clear everyman character (often "you", or one ordinary person in history) and stakes that
   escalate beat by beat.
-- A hook that states a paradox as fact ("A man sold the Eiffel Tower. Twice." / "Your stomach
-  is digesting itself right now."), and a short ironic twist that ends the video.
+- A hook that states a paradox as fact ("A man sold the Eiffel Tower. Twice."), and a short ironic twist that ends the video.
 - 2-3 big visual moments (a collapse, a reveal, a chase, a giant number, a split comparison).
-- Mix eras and themes across your pitches: body, mind, ancient, medieval, 1800s, modern, science,
-  animals, inventions, disasters, weird laws, lucky accidents.
+- Mix eras and themes across your pitches: ancient, medieval, 1800s, modern, cons, heists, companies,
+  inventions, disasters, weird laws, lucky accidents, everyday psychology.
 - Facts: for anything presented as true, check the key facts with web search BEFORE pitching it.
   Say plainly whether it is documented, disputed or a legend. Never present a viral myth as fact:
   a legend is only allowed if the video frames it as "legend says".
@@ -67,7 +66,7 @@ Reply with ONLY one JSON object, no markdown fences:
       "payoff": "the twist: the short, ironic last line of the video",
       "visual_moments": ["2-3 big drawable moments, then any smaller ones (max 5)"],
       "fact_status": "documented | disputed | legend",
-      "category": "money_cons | business | psychology | self_improvement | money_explained | weird_history | true_crime | science_body | other",
+      "category": "money_cons | business | psychology | self_improvement | money_explained | weird_history | true_crime | other",
       "format": "story | explainer | list | versus",
       "series": "the repeatable series this could start, e.g. Greatest Cons",
       "hook_type": "paradox | why | how | what_if | myth_busting | story",

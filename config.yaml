@@ -18,7 +18,6 @@ channel:
     - How money really works (inflation, banks, debt, prices, explained simply)
     - Weird history and mysteries (strange events, odd laws, lucky accidents)
     - Light true crime (heists, frauds, escapes; nothing graphic)
-    - Weird science and the human body (the surprising mechanism behind something familiar)
 
 video:                    # vertical 1080x1920, drawn by toon2d (see `toon2d:` below)
   target_seconds: 35      # Claude aims for this length (30-45 works best)
@@ -75,8 +74,8 @@ themes:
     share: 0.8
     guidance: >-
       A clear answer to one specific, surprising question from the topic menu
-      (how money really works, psychology, self-improvement, weird science and
-      the body...). Formats: explainer, list or versus. Real explanation,
+      (how money really works, psychology, self-improvement, business, weird
+      history...). Formats: explainer, list or versus. Real explanation,
       verified facts, one satisfying "oh, THAT's why" payoff.
   story:
     share: 0.13
