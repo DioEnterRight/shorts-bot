@@ -196,7 +196,7 @@
       "duration": 33.27,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261117-044759-en-the-pirate-who-scared-ships",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-17T05:20+05:30"
     },
     {
@@ -212,7 +212,7 @@
       "duration": 36.01,
       "visuals": "cloudflare_klein",
       "tag": "vid-20261117-052034-en-the-sperm-whale-that-sank-th",
-      "status": "queued",
+      "status": "discarded",
       "created": "2026-11-17T06:02+05:30"
     }
   ],
