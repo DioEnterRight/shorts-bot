@@ -19,7 +19,9 @@ channel:
     - Weird history and mysteries (strange events, odd laws, lucky accidents)
     - Light true crime (heists, frauds, escapes; nothing graphic)
 
-video:                    # vertical 1080x1920, drawn by toon2d (see `toon2d:` below)
+video:                    # vertical 1080x1920
+  style: cartoon3d        # cartoon3d = Claude builds a 2D-cards-in-3D world per Short (falls back to toon2d)
+                          # toon2d    = flat 2D cartoon from one small storyboard (far fewer tokens)
   target_seconds: 35      # Claude aims for this length (30-45 works best)
   fps: 30
 
@@ -108,6 +110,15 @@ claude:
   model: opus                 # pinned: never depend on the account's default model
   fallback_model: sonnet      # used automatically if Opus is overloaded
   effort: high
+
+# Mixed 3D + 2D Shorts (.claude/skills/cartoon-audio-short). The run log prints "Claude usage: ..." per call;
+# compare /usage in Claude Code before and after a run to see the share of your weekly limit.
+cartoon3d:
+  model: opus
+  effort: high
+  max_turns: 80
+  claude_timeout_minutes: 60
+  render_timeout_minutes: 150   # CPU WebGL, ~4 s per frame: a 35 s Short is ~30-60 min on GitHub
 
 # How videos are drawn: the 2D ink cartoon engine (toon2d/, adapted from ReachMora 2D Long-Form).
 toon2d:

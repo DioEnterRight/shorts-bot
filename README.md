@@ -40,7 +40,7 @@ Makes **one 2D cartoon Short a day** (Instagram Reels + YouTube Shorts) and **on
 | Post time | the `cron:` line in `.github/workflows/post-video.yml` (UTC = IST − 5:30) |
 | YouTube auto vs manual | `publish → youtube_mode`: `api` / `manual` / `off` |
 
-## 🎨 How a video is drawn (toon2d)
+## 🎨 How a video is drawn
 
 `toon2d/` is a flat 2D ink-on-paper cartoon engine (Python + skia, CPU only), adapted from ReachMora 2D
 Long-Form (credit in `toon2d/CREDITS.md`). Claude Sonnet writes one `story.json` per video: shot kinds like
@@ -50,9 +50,12 @@ gets one repair round, and an automatic storyboard is the last fallback, so a vi
 follow the words; Shorts get burned-in captions. A Short renders in ~2-4 min on the runner.
 Look at shots by hand: `cd toon2d && RM_ASPECT=9:16 python -m engine stills <video folder>/toon2d`.
 
-**Special 3D-world shorts (by hand only).** The `cartoon-audio-short` skill makes card characters in an inked,
-painted 3D world. Claude writes the world, cameras and sound per video (many more tokens, ~15-30 min render),
-so use it from Claude Code on your PC for special videos. It never uploads.
+**Mixed 3D + 2D Shorts (default: `video → style: cartoon3d`).** For every Short, Claude (Opus) runs the
+`cartoon-audio-short` skill on the runner: it builds a new inked, painted 3D world, original card characters, poses,
+cameras and a sound-cue table, checks one or two contact sheets, and the bot renders it in Chrome (CPU WebGL,
+~30-60 min) and mixes it. If anything fails, that Short is made in toon2d instead. This costs far more tokens
+than toon2d: every Claude call logs `Claude usage: ...`, and `/usage` in Claude Code before and after a run shows
+the share of your weekly limit. Too much? Set `style: toon2d`. Test mode renders the kit's soldier example.
 
 ## 🇮🇳 English + Hindi
 

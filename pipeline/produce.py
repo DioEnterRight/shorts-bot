@@ -9,7 +9,7 @@ import json
 import shutil
 import sys
 
-from . import allocation, analytics, brain, ideas, languages, qc, toon2d, voice
+from . import allocation, analytics, brain, cartoon3d, ideas, languages, qc, toon2d, voice
 from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify
 
 
@@ -72,11 +72,25 @@ def produce_one(cfg, history, stats, test, language=None, theme=None):
     voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
     log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; target 160-180)")
     (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
-    sample = None
-    if test:  # a hand-made storyboard for the sample script, so test videos look like real ones
-        sample = json.loads((ROOT / "prompts" / f"sample_story_{lp['code']}.json").read_text(encoding="utf-8"))
-    final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
-                                      brain.call_claude, brain.extract_json, use_claude=not test, sample=sample)
+    final = None
+    if cfg["video"].get("style", "toon2d") == "cartoon3d":
+        try:
+            if test:   # the kit's own example story, voiced offline: proves the 3D toolchain without Claude
+                en = languages.profile(cfg, "en")   # the example story is English
+                final = cartoon3d.render_example(cfg, work, lambda t, p, s: voice.kokoro_fit(cfg, t, p, s, en))
+                storyboard = "3d-example"
+            else:
+                final = cartoon3d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"], brain.call_claude)
+                storyboard = "3d"
+        except Exception as e:  # noqa: BLE001 - the day's Short still ships, in 2D
+            log(f"cartoon3d failed ({str(e)[:300]}); making this Short in 2D", "WARN")
+            final = None
+    if final is None:
+        sample = None
+        if test:  # a hand-made storyboard for the sample script, so test videos look like real ones
+            sample = json.loads((ROOT / "prompts" / f"sample_story_{lp['code']}.json").read_text(encoding="utf-8"))
+        final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
+                                          brain.call_claude, brain.extract_json, use_claude=not test, sample=sample)
     duration = qc.check(final, fps=cfg["video"]["fps"])
     shutil.move(final, work / "final.mp4")
     final = work / "final.mp4"

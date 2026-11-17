@@ -69,6 +69,10 @@ def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, c
         print(res.stdout[-3000:], res.stderr[-3000:])
         raise RuntimeError("Claude Code call failed (check CLAUDE_CODE_OAUTH_TOKEN or usage limits)")
     wrapper = json.loads(res.stdout)
+    u = wrapper.get("usage") or {}
+    log(f"Claude usage: in={u.get('input_tokens', 0)} out={u.get('output_tokens', 0)} "
+        f"cache_read={u.get('cache_read_input_tokens', 0)} cache_write={u.get('cache_creation_input_tokens', 0)} "
+        f"turns={wrapper.get('num_turns', '?')} cost_equiv=${wrapper.get('total_cost_usd', 0) or 0:.2f}")
     if wrapper.get("is_error"):
         raise RuntimeError(f"Claude returned an error: {wrapper.get('result', '')[:500]}")
     return wrapper.get("result", "")

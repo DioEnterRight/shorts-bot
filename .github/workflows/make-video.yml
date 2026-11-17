@@ -26,10 +26,11 @@ permissions:
 jobs:
   make:
     runs-on: ubuntu-latest
-    timeout-minutes: 60    # a toon2d Short takes ~5-10 min
+    timeout-minutes: 240   # cartoon3d: Claude ~20-45 min + CPU render ~30-60 min; toon2d ~5-10 min
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
+      CHROME: /usr/bin/google-chrome   # cartoon3d renders with the runner's Chrome (software WebGL)
     steps:
       - uses: actions/checkout@v4
 
@@ -55,6 +56,9 @@ jobs:
         run: |
           pip install -q -r requirements.txt
           python -m pipeline.fetch_models
+
+      - name: Install Playwright (cartoon3d renderer)
+        run: npm install -g playwright@1
 
       - name: Install Claude Code
         if: env.TEST != 'true'
