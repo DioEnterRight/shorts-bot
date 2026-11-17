@@ -110,7 +110,7 @@ def is_duplicate(text, past, threshold):
 
 def rank_key(idea):
     s = idea.get("scores") or {}
-    vals = [float(s.get(k, 5)) for k in ("curiosity", "originality", "visual", "clarity")]
+    vals = [float(s.get(k, 5)) for k in ("curiosity", "originality", "visual", "clarity", "twist")]
     return sum(vals) + 0.5 * float(s.get("originality", 5))
 
 
@@ -119,7 +119,8 @@ def choose(candidates, past, threshold):
     kept, rejected = [], []
     for idea in candidates:
         text = idea.get("canonical_en", "").strip()
-        if not text or not idea.get("hook"):
+        if not text or not idea.get("hook") or not idea.get("payoff") \
+                or idea.get("fact_status") not in ("documented", "disputed", "legend"):
             rejected.append((idea, "incomplete"))
             continue
         dup, (score, match) = is_duplicate(text, past + [k["canonical_en"] for k in kept], threshold)
