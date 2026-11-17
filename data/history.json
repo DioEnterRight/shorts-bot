@@ -214,6 +214,38 @@
       "tag": "vid-20261117-052034-en-the-sperm-whale-that-sank-th",
       "status": "discarded",
       "created": "2026-11-17T06:02+05:30"
+    },
+    {
+      "id": "20261117-154143-en-the-1939-franksgiving-split",
+      "title": "The Year America Had Two Thanksgivings",
+      "topic": "The 1939 Franksgiving split",
+      "canonical_en": "Why did America have two different Thanksgivings in 1939?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "In nineteen thirty-nine, America had two Thanksgivings, one week apart.",
+      "duration": 42.5,
+      "storyboard": "auto",
+      "tag": "vid-20261117-154143-en-the-1939-franksgiving-split",
+      "status": "queued",
+      "created": "2026-11-17T15:48+05:30"
+    },
+    {
+      "id": "20261117-154837-en-the-tulip-mania-myth",
+      "title": "The Tulip Crash That Ruined No One",
+      "topic": "The tulip mania myth",
+      "canonical_en": "Did tulip mania really bankrupt the Dutch, or is the famous bubble mostly a myth?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "myth_busting",
+      "hook_line": "History's craziest bubble bankrupted nobody historians can find.",
+      "duration": 43.6,
+      "storyboard": "claude",
+      "tag": "vid-20261117-154837-en-the-tulip-mania-myth",
+      "status": "queued",
+      "created": "2026-11-17T15:54+05:30"
     }
   ],
   "version": 2

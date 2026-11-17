@@ -77,6 +77,28 @@
       "video_id": "20261117-052034-en-the-sperm-whale-that-sank-th",
       "status": "produced",
       "created": "2026-11-17T06:02+05:30"
+    },
+    {
+      "canonical_en": "Why did America have two different Thanksgivings in 1939?",
+      "question": "How did one country end up eating Thanksgiving dinner on two different Thursdays?",
+      "hook": "In 1939, America had two Thanksgivings, one week apart.",
+      "angle": "The cause was not religion or tradition. It was shopping. November 1939 had five Thursdays, retailers feared a short Christmas season, and FDR moved the holiday. States split, families split, and the joke name was 'Franksgiving'.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261117-154143-en-the-1939-franksgiving-split",
+      "status": "produced",
+      "created": "2026-11-17T15:48+05:30"
+    },
+    {
+      "canonical_en": "Did tulip mania really bankrupt the Dutch, or is the famous bubble mostly a myth?",
+      "question": "Did the famous tulip bubble really make people go broke?",
+      "hook": "History's craziest bubble bankrupted nobody we can find.",
+      "angle": "A versus of the legend and the archives. The legend, popularized in an 1841 book: chimney sweeps trading houses for bulbs, then the whole country ruined. The archives, as historian Anne Goldgar found: buyers were mostly wealthy merchants, she found no bankruptcy caused by tulips, and the real damage was broken promises and reputations. Prices really did spike and crash in Feb 1637.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261117-154837-en-the-tulip-mania-myth",
+      "status": "produced",
+      "created": "2026-11-17T15:54+05:30"
     }
   ]
 }
