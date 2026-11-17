@@ -186,3 +186,24 @@ def test_sample_storyboards_pass_the_plan_check(lang, tmp_path):
     (tmp_path / "story.json").write_text((ROOT / "prompts" / f"sample_story_{lang}.json").read_text(encoding="utf-8"),
                                          encoding="utf-8")
     assert toon2d.check(tmp_path, "9:16") == []    # no warnings at all: every sentence covered, every cue found
+
+
+def test_variety_rules_flag_long_and_repeated_shots():
+    T = toon2d.timing_from_timeline(TL, 4.5)     # sentences: 0.15-1.2, 1.4-2.0, 2.3-3.3, 3.4-4.0
+    ok = {"shots": [{"kind": "closeup", "s": [0], "who": "a"}, {"kind": "wide", "s": [1], "chars": [{"id": "a"}]},
+                    {"kind": "closeup", "s": [2, 3], "who": "a"}]}
+    assert toon2d.variety_problems(ok, T) == []
+    same = {"shots": [{"kind": "closeup", "s": [0], "who": "a", "set": "home"},
+                      {"kind": "closeup", "s": [1], "who": "a", "set": "home"}]}
+    assert "same kind, set and character" in toon2d.variety_problems(same, T)[0]
+    T["sentences"][3]["end"] = 9.0
+    long_ = {"shots": [{"kind": "wide", "s": [0, 1, 2, 3]}]}
+    assert "give each sentence its own shot" in toon2d.variety_problems(long_, T)[0]
+
+
+def test_calm_mode_and_quiet_mix_are_on_by_default():
+    cfg = load_config()
+    assert cfg["toon2d"]["calm"] is True and cfg["toon2d"]["music_db"] <= -20 and 0.1 <= cfg["voice"]["gap_seconds"] <= 0.3
+    assert toon2d._env("9:16", True, calm=True)["RM_CALM"] == "1"
+    from pipeline import voice
+    assert round(voice.pace_wpm([{"words": [{}] * 70, "end": 30.0}])) == 140

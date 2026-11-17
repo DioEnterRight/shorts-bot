@@ -7,6 +7,7 @@ import numpy as np, skia
 W, H, FPS = 1920, 1080, 30  # world design space: sets are drawn in 1920x1080 coordinates
 # shorts-bot: RM_ASPECT=9:16 views the same world through a vertical 1080x1920 frame (portrait layouts in shots.py).
 PORTRAIT = os.environ.get("RM_ASPECT", "16:9") == "9:16"
+CALM = os.environ.get("RM_CALM") == "1"  # shorts-bot: no whip pans or camera shakes (steady, unhurried motion)
 FW, FH = (1080, 1920) if PORTRAIT else (W, H)  # visible frame in design units at zoom 1
 RES = int(os.environ.get("RM_RES", "1080"))  # 1080 (final) or 720 (2.25x faster); the short side in portrait
 if PORTRAIT: OW, OH = (720, 1280) if RES == 720 else (1080, 1920)

@@ -29,6 +29,7 @@ def test_offline_end_to_end(lang, tmp_state, monkeypatch, tmp_path):
     from pipeline import produce
     monkeypatch.setattr(produce, "OUT", tmp_path / "out")
     cfg = produce.load_config()
+    cfg["video"]["style"] = "toon2d"   # the 3D path has its own tests
     cfg["toon2d"]["resolution"] = 720 if lang == "hi" else 1080   # 720 is quick, but QC wants 1080: expect a clear error
     if lang == "hi":
         with pytest.raises(RuntimeError, match="not 1080x1920"):

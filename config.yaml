@@ -19,7 +19,9 @@ channel:
     - Weird history and mysteries (strange events, odd laws, lucky accidents)
     - Light true crime (heists, frauds, escapes; nothing graphic)
 
-video:                    # vertical 1080x1920, drawn by toon2d (see `toon2d:` below)
+video:                    # vertical 1080x1920
+  style: cartoon3d        # cartoon3d = Claude builds a 2D-cards-in-3D world per Short (falls back to toon2d)
+                          # toon2d    = flat 2D cartoon from one small storyboard (far fewer tokens)
   target_seconds: 35      # Claude aims for this length (30-45 works best)
   fps: 30
 
@@ -36,8 +38,8 @@ languages:
     tts_lang: en-us
     voice: am_michael       # Kokoro voice (fallback). Others: am_adam, am_onyx, bm_george
     edge_voice: en-US-AndrewNeural   # edge-tts voice (primary). Others: en-US-GuyNeural, en-US-ChristopherNeural
-    edge_rate: "+10%"
-    speed: 1.12
+    edge_rate: "+0%"         # Shorts pace, target 160-180 wpm: check "Speaking pace" in the run log
+    speed: 0.95             # Kokoro: ~184 wpm while speaking, ~171 with the pauses
     words_per_second: 2.7   # Kokoro speaking rate at speed 1.0 (used for script length)
   hi:
     name: Hindi (natural Hinglish)
@@ -45,8 +47,8 @@ languages:
     tts_lang: hi
     voice: hm_omega         # Kokoro (fallback): hm_omega, hm_psi (male), hf_alpha, hf_beta (female)
     edge_voice: hi-IN-MadhurNeural   # edge-tts (primary): hi-IN-MadhurNeural (male) or hi-IN-SwaraNeural (female)
-    edge_rate: "+5%"
-    speed: 1.05
+    edge_rate: "+0%"
+    speed: 0.95
     words_per_second: 2.5
 
 allocation:
@@ -101,13 +103,22 @@ voice:
   engine: edge            # edge = Microsoft edge-tts with real word timings (falls back to Kokoro by itself)
                           # kokoro = always Kokoro. Test-mode runs always use Kokoro (offline).
   edge_retries: 3         # tries per line before the whole video switches to Kokoro
-  gap_seconds: 0.08       # pause between lines
+  gap_seconds: 0.2        # short pause between sentences (each line is one sentence)
 
 # Which Claude writes ideas and scripts (Claude Code CLI, your subscription).
 claude:
   model: opus                 # pinned: never depend on the account's default model
   fallback_model: sonnet      # used automatically if Opus is overloaded
   effort: high
+
+# Mixed 3D + 2D Shorts (.claude/skills/cartoon-audio-short). The run log prints "Claude usage: ..." per call;
+# compare /usage in Claude Code before and after a run to see the share of your weekly limit.
+cartoon3d:
+  model: opus
+  effort: high
+  max_turns: 80
+  claude_timeout_minutes: 60
+  render_timeout_minutes: 150   # CPU WebGL, ~4 s per frame: a 35 s Short is ~30-60 min on GitHub
 
 # How videos are drawn: the 2D ink cartoon engine (toon2d/, adapted from ReachMora 2D Long-Form).
 toon2d:
@@ -116,7 +127,9 @@ toon2d:
   story_attempts: 2         # Claude attempts (2nd one gets the plan-check problems); then the auto storyboard
   captions: true            # burned-in word captions on Shorts
   long_captions: false      # and on the weekly long video
-  music_db: -17             # music bed vs voice
+  calm: true                # steady pacing: no whip pans, no camera shakes
+  music_db: -20             # music bed vs voice (quiet: the voice always wins)
+  sfx_db: -13               # sound effects vs voice
   resolution: 1080          # 1080 or 720 (720 renders ~2x faster)
   timeout_minutes: 40
 

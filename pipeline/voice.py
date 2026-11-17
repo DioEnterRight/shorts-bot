@@ -84,6 +84,28 @@ def synthesize(cfg, script, lp, workdir, allow_edge=True):
     return (*_synthesize_kokoro(cfg, script, lp, workdir), "kokoro")
 
 
+def kokoro_fit(cfg, text, path, seconds, lp):
+    """Speak text with Kokoro, sped up just enough to fit `seconds`, padded with silence to exactly that length."""
+    from kokoro_onnx import Kokoro
+    k = Kokoro(str(MODELS / "kokoro.onnx"), str(MODELS / "voices.bin"))
+    for speed in (1.0, 1.1, 1.2, 1.3, 1.4):
+        a, sr = k.create(text, voice=lp["voice"], speed=speed, lang=lp["tts_lang"])
+        a = np.asarray(a, dtype=np.float32)
+        if len(a) / sr <= seconds - 0.3:
+            break
+    else:
+        raise RuntimeError(f"Text does not fit in {seconds:.1f}s even at speed 1.4")
+    out = np.zeros(int(seconds * sr), dtype=np.float32); out[int(.15 * sr):int(.15 * sr) + len(a)] = a
+    sf.write(str(path), out, sr)
+    return path
+
+
+def pace_wpm(timeline):
+    """Words per minute over the whole voice track, pauses included (target 160-180 for Shorts)."""
+    words = sum(len(line["words"]) for line in timeline)
+    return words / max(timeline[-1]["end"], 1e-6) * 60
+
+
 def _synthesize_kokoro(cfg, script, lp, workdir):
     from kokoro_onnx import Kokoro
 
