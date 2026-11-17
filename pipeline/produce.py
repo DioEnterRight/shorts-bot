@@ -10,7 +10,7 @@ import shutil
 import sys
 
 from . import allocation, analytics, brain, ideas, languages, qc, toon2d, voice
-from .common import DATA, OUT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify
+from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify
 
 
 def recent_sequence(history, key, default):
@@ -71,8 +71,11 @@ def produce_one(cfg, history, stats, test, language=None, theme=None):
 
     voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
     (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
+    sample = None
+    if test:  # a hand-made storyboard for the sample script, so test videos look like real ones
+        sample = json.loads((ROOT / "prompts" / f"sample_story_{lp['code']}.json").read_text(encoding="utf-8"))
     final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
-                                      brain.call_claude, brain.extract_json, use_claude=not test)
+                                      brain.call_claude, brain.extract_json, use_claude=not test, sample=sample)
     duration = qc.check(final, fps=cfg["video"]["fps"])
     shutil.move(final, work / "final.mp4")
     final = work / "final.mp4"

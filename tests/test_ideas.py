@@ -111,3 +111,10 @@ def test_prompts_carry_the_story_shape(cfg):
     script = (ideas.ROOT / "prompts" / "script.md").read_text(encoding="utf-8")
     for step in ("HOOK", "SETTING", "ESCALATION", "PIVOT", "TWIST / PAYOFF"):
         assert step in script
+
+
+def test_ideas_follow_the_reachmora_topic_menu(cfg):
+    assert "Money stories, scams and cons" in cfg["channel"]["niche"]
+    p = ideas.build_prompt(cfg, "story", {"code": "en", "name": "English"}, [], "No data yet.")
+    assert "at least 4 different niches" in p and '"series"' in p and '"format"' in p
+    assert "Psychology and human behaviour" in p   # the menu reaches the prompt

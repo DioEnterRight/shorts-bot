@@ -29,12 +29,15 @@ mention, copy or imitate any specific creator, their characters, titles or catch
   everyday comparison ("that's six years of rent").
 - Never describe what the viewer already sees. No filler, no "like and subscribe", no repeated phrasing.
 - If the idea is a legend, say so in the script ("legend says"). When science is unsettled, say so.
+- If the video gives money tactics, add one natural line like "this isn't financial advice, it's
+  just how the math works". Never tell viewers to buy a specific stock, coin or product.
 - NO medical advice, nothing dangerous to copy, no real living people as the butt of a joke, no
   brands, no copyrighted characters, nothing sexual, nothing graphic.
 
 ## Facts
 Before writing, verify the 2-4 key claims with web search (prefer primary or reputable
-sources: universities, journals, health agencies, museums, space agencies). If a claim
+sources: universities, journals, health agencies, museums, court records, company filings,
+reputable newspapers). If a claim
 cannot be verified, drop it. When science is unsettled, say so ("scientists think").
 List what you checked in "facts_checked" (claim -> source domain).
 

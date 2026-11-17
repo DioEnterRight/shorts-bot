@@ -260,7 +260,9 @@ class Title(Shot):
     def build_bg(self, c): SETS["black"](c, {"color": self.spec.get("bg", "#000000")}); self.info = {}
 
     def world(self, c, t):
-        self.draw_bg(c); txt = self.spec.get("text", ""); sub = self.spec.get("sub")
+        self.draw_bg(c); sub = self.spec.get("sub")
+        # shorts-bot: a spoken title without "text" types its own sentence instead of staying black
+        txt = self.spec.get("text") or " ".join(self.tl.S[i]["text"] for i in self.sh["sents"])
         if self.sh["sents"]:
             a, b = self.tl.sent_span(self.sh["sents"][0]); b = self.tl.sent_span(self.sh["sents"][-1])[1]; t0, d = a, max(.3, b - a - .15)
         else: t0, d = self.t0 + .15, .45

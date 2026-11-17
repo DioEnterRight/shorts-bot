@@ -43,7 +43,7 @@ def test_offline_end_to_end(lang, tmp_state, monkeypatch, tmp_path):
     a = next(s for s in info["streams"] if s["codec_type"] == "audio")
     assert (v["width"], v["height"], v["avg_frame_rate"]) == (1080, 1920, "30/1")
     assert abs(float(v["duration"]) - float(a["duration"])) < 0.15
-    assert meta["language"] == lang and meta["storyboard"] == "auto" and meta["voice_engine"] == "kokoro"
+    assert meta["language"] == lang and meta["storyboard"] == "sample" and meta["voice_engine"] == "kokoro"
     tl = json.loads((work / "timeline.json").read_text())
     assert len(tl) == len(script["scenes"]) and all(x["end"] > x["start"] for x in tl)
     frames = []   # shots really differ from each other
