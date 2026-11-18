@@ -72,3 +72,19 @@ def test_engine_loads_models_and_cheat_sheet_points_at_them():
     assert "Never open" in api and "await model(" in api
     setup = (KIT / "tools" / "setup.sh").read_text(encoding="utf-8")
     assert 'cp -r "$KIT/models"' in setup and 'cp "$KIT/API.md"' in setup and "GLTFLoader.js" in setup
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_finish_turns_full_range_jpeg_frames_into_tv_range_yuv420p(tmp_path):
+    from PIL import Image
+    (tmp_path / "frames").mkdir(); (tmp_path / "out").mkdir()
+    for i in range(12):   # yuvj420p (full-range) JPEGs, like Chrome's toDataURL frames
+        Image.new("RGB", (108, 192), (20 * i, 120, 255 - 20 * i)).save(tmp_path / "frames" / f"f{i:04d}.jpg", quality=90)
+    sr = 48000; t = np.arange(int(sr * .4)) / sr
+    _wav(tmp_path / "mix_raw.wav", 0.3 * np.sin(2 * np.pi * 220 * t))
+    for f in ("finish.sh", "frames_rgb.py"):
+        shutil.copy(KIT / "tools" / f, tmp_path / f)
+    subprocess.run(["bash", "finish.sh", "final"], cwd=tmp_path, check=True, capture_output=True)
+    got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=pix_fmt",
+                          "-of", "csv=p=0", str(tmp_path / "out" / "final.mp4")], capture_output=True, text=True).stdout.strip()
+    assert got == "yuv420p"

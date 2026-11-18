@@ -82,9 +82,29 @@ def _check_story(project, frames):
         raise RuntimeError(f"cartoon3d: story.js TOTAL is {m.group(1) if m else 'missing'}, expected {frames}")
 
 
+def _env():
+    return dict(os.environ, CHROME=os.environ.get("CHROME", "/usr/bin/google-chrome"))
+
+
+def preflight(project):
+    """Render 2 frames of the kit example and encode them exactly like finish.sh, before Claude spends tokens.
+    A broken Chrome/ffmpeg toolchain then fails in seconds instead of after the Claude build and an hour of render."""
+    pre = project / "preflight"
+    (pre / "frames").mkdir(parents=True); (pre / "out").mkdir()
+    run(["node", "render.mjs", str(pre / "frames"), "0-1", "1"], cwd=project, env=_env(), timeout=300)
+    run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "sine=f=220:d=0.5", "-ar", "48000", str(pre / "mix_raw.wav")])
+    for f in ("finish.sh", "frames_rgb.py"):
+        shutil.copy(project / f, pre / f)
+    run(["bash", "finish.sh", "final"], cwd=pre, timeout=300)
+    shutil.rmtree(pre)
+
+
 def _finish(project, frames, timeout):
-    env = dict(os.environ, CHROME=os.environ.get("CHROME", "/usr/bin/google-chrome"))
-    run(["bash", "render_all.sh", str(frames)], cwd=project, env=env, timeout=timeout)
+    try:
+        run(["bash", "render_all.sh", str(frames)], cwd=project, env=_env(), timeout=timeout)
+    except Exception as e:   # a crashed Chrome or a timeout: keep the frames already made, render only the rest
+        log(f"cartoon3d: render failed ({e}); resuming once", "WARN")
+        run(["bash", "render_all.sh", str(frames)], cwd=project, env=dict(_env(), RESUME="1"), timeout=timeout)
     run(["python3", "audio.py"], cwd=project, timeout=600)
     run(["python3", "mix.py", "voice.mp3", "music.wav", "sfx.wav"], cwd=project, timeout=600)
     run(["bash", "finish.sh", "final"], cwd=project, timeout=1200)
@@ -107,6 +127,7 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
     c3 = cfg["cartoon3d"]
     project = Path(tempfile.mkdtemp(prefix="cartoon3d-"))   # outside the repo: no CLAUDE.md, skills or hooks loaded
     _setup(project, voice_path)
+    preflight(project)
     (project / "script.txt").write_text("\n".join(sc["line"] for sc in script["scenes"]) + "\n", encoding="utf-8")
     frames = timing_files(timeline, duration, project / "work")
     log(f"cartoon3d: Claude builds the world for {frames} frames")
