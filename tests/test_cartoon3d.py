@@ -54,3 +54,23 @@ def test_failed_3d_falls_back_to_2d(tmp_state, monkeypatch, tmp_path):
                                                                        language="en", theme="explainer"), None))
     work, meta, *_ = produce.produce_one(cfg, {"videos": []}, {"allocation": {}}, test=False, language="en", theme="explainer")
     assert "2d" in calls and meta["storyboard"] == "claude"
+
+
+def test_3d_file_failing_qc_falls_back_to_2d(tmp_state, monkeypatch, tmp_path):
+    cfg = load_config()
+    monkeypatch.setattr(produce, "OUT", tmp_path / "out")
+    monkeypatch.setattr(produce.voice, "synthesize", lambda *a, **k: (tmp_path / "v.wav", [{"start": 0, "end": 1, "words": []}], 30.0, "edge"))
+    bad3d = tmp_path / "3d.mp4"; bad3d.write_bytes(b"3d")
+    good2d = tmp_path / "2d.mp4"; good2d.write_bytes(b"2d")
+    monkeypatch.setattr(produce.cartoon3d, "render", lambda *a, **k: bad3d)
+    monkeypatch.setattr(produce.toon2d, "render", lambda *a, **k: (good2d, "claude"))
+
+    def qc(path, **k):
+        if path == bad3d:
+            raise RuntimeError("Quality check failed: video codec h264/yuvj420p")
+        return 30.0
+    monkeypatch.setattr(produce.qc, "check", qc)
+    monkeypatch.setattr(produce, "make_script", lambda *a, **k: (dict(SCRIPT, topic="t", description="d", hashtags=[],
+                                                                       language="en", theme="explainer"), None))
+    work, meta, *_ = produce.produce_one(cfg, {"videos": []}, {"allocation": {}}, test=False, language="en", theme="explainer")
+    assert meta["storyboard"] == "claude" and (work / "final.mp4").read_bytes() == b"2d"
