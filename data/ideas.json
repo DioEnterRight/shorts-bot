@@ -99,6 +99,17 @@
       "video_id": "20261117-154837-en-the-tulip-mania-myth",
       "status": "produced",
       "created": "2026-11-17T15:54+05:30"
+    },
+    {
+      "canonical_en": "Why do scam emails seem deliberately badly written and unbelievable?",
+      "question": "If scammers want your money, why are their emails so obviously fake?",
+      "hook": "That terrible scam email is a genius filter.",
+      "angle": "Flips the usual 'scammers are dumb' joke. A 2012 Microsoft Research paper argues that the silly story is a sieve: anyone who replies to something that absurd has already screened themselves in as an easy target, so the scammer doesn't waste hours on skeptics.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261118-140127-en-why-scam-emails-are-badly-wr",
+      "status": "produced",
+      "created": "2026-11-18T15:01+05:30"
     }
   ]
 }
