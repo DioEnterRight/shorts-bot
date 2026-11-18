@@ -1,6 +1,7 @@
 import * as THREE from './lib/three.module.js';
 import * as T from './toon.js';
 import * as P from './paint.js';
+import { GLTFLoader } from './lib/GLTFLoader.js';
 import { SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt } from './story.js';
 
 const W = 1080, H = 1920;
@@ -67,6 +68,26 @@ const tbox = (w, h, d, t = 2) => {
   for (let f = 0; f < 6; f++) for (let k = 0; k < 4; k++) { const i = f * 4 + k; uv.setXY(i, uv.getX(i) * dims[f][0] / t, uv.getY(i) * dims[f][1] / t); }
   return g;
 };
+
+// ---------- 3D models (KayKit, CC0): names and sizes in models/CATALOG.md ----------
+const MODELS = await (await fetch('models/index.json')).json();
+const gltfLoader = new GLTFLoader(), modelCache = {};
+/** await model('city/building_A', x, y, z, { scale, rotY, tint, parent }) -> THREE.Group.
+ *  Re-shaded with the toon material (keeps the model's palette texture) so the ink pass outlines it like everything else. */
+async function model(name, x = 0, y = 0, z = 0, { scale = 1, rotY = 0, tint = null, parent = scene } = {}) {
+  const file = MODELS[name];
+  if (!file) throw new Error(`unknown model '${name}' (see models/CATALOG.md)`);
+  modelCache[file] ??= gltfLoader.loadAsync(`models/${file}`);
+  const g = (await modelCache[file]).scene.clone(true);
+  g.traverse((o) => {
+    if (!o.isMesh) return;
+    const m = o.material;
+    o.material = toon({ map: m.map || null, color: tint || (m.map ? '#ffffff' : m.color) });
+    o.castShadow = o.receiveShadow = true;
+  });
+  g.position.set(x, y, z); g.rotation.y = rotY; g.scale.setScalar(scale); parent.add(g);
+  return g;
+}
 
 // ---------- sky ----------
 const skyU = { top: { value: new THREE.Color() }, hor: { value: new THREE.Color() }, sunDir: { value: new THREE.Vector3() }, sunCol: { value: new THREE.Color() }, sunSize: { value: 0 } };

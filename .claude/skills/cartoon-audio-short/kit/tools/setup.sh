@@ -12,6 +12,9 @@ cp "$KIT"/example/soldier/audio.py "$P/audio.py"            # starting point: re
 cp "$KIT"/tools/*.mjs "$KIT"/tools/*.py "$KIT"/tools/*.sh "$P/" 2>/dev/null || true; rm -f "$P/setup.sh"
 # three.js r160 (module build). npm first, then a sparse git clone (works where only GitHub is reachable).
 [ -f "$KIT/vendor/three.module.js" ] && cp "$KIT/vendor/three.module.js" "$P/web/lib/"   # vendored r160 (MIT)
+cp "$KIT/vendor/GLTFLoader.js" "$KIT/vendor/BufferGeometryUtils.js" "$P/web/lib/"          # r160 addons (MIT)
+cp -r "$KIT/models" "$P/web/models"                                                        # KayKit models (CC0)
+cp "$KIT/API.md" "$P/API.md"                                                               # engine cheat sheet
 if [ ! -f "$P/web/lib/three.module.js" ]; then
   ( cd /tmp && rm -rf _three && mkdir _three && cd _three && npm pack three@0.160.0 >/dev/null 2>&1 && tar xzf three-0.160.0.tgz && cp package/build/three.module.js "$P/web/lib/" ) \
   || ( cd /tmp && rm -rf _t3 && git clone -q --depth 1 --filter=blob:none --sparse --branch r160 https://github.com/mrdoob/three.js _t3 && cd _t3 && git sparse-checkout set build && cp build/three.module.js "$P/web/lib/" )

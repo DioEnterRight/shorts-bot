@@ -15,7 +15,7 @@ Makes **one 2D cartoon Short a day** (Instagram Reels + YouTube Shorts) and **on
 - **Sundays ~10 AM IST — Long video.** The week's best English Short becomes a researched ~5-minute 16:9 video,
   uploaded to YouTube as **private** (set `longform → privacy: public` once you like them).
 - **Sundays** the bot also rewrites its own `data/playbook.md` from real view stats.
-- Always keeps 2 spare Shorts so a bad day never misses a post.
+- Keeps 1 ready Short (`buffer`), so each daily run makes one; if a 3D build fails, that Short is made in 2D.
 
 ## ▶️ Buttons (GitHub → Actions tab)
 

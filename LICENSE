@@ -11,4 +11,7 @@ Third-party parts keep their own terms and credits:
 - toon2d/fonts: SIL Open Font License / Apache 2.0 (see the licence files there).
 - .claude/skills/cartoon-audio-short/kit: the cartoon-short-kit (credit kept, see its CREDITS.md), with
   vendored three.js r160 (MIT) and toon.ts from mromidev/claude-animated-shorts (MIT).
+- .claude/skills/cartoon-audio-short/kit/models: KayKit asset packs by Kay Lousberg (kaylousberg.com), CC0
+  (models/LICENSE-KayKit-CC0.txt). kit/vendor/GLTFLoader.js and BufferGeometryUtils.js: three.js r160, MIT.
+- .claude/skills/threejs: secondsky/claude-skills, MIT (its LICENSE file).
 - .claude/skills: each other skill keeps its own licence (MIT unless its folder says otherwise).

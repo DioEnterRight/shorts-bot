@@ -1,4 +1,5 @@
-models/
+# Kokoro voice model (downloaded at run time); the 3D kit models under .claude/skills are tracked
+/models/
 out/
 __pycache__/
 *.pyc

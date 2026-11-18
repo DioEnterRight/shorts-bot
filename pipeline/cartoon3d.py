@@ -49,6 +49,9 @@ def build_prompt(script, frames, language):
     lines = "\n".join(f"{i + 1}. {sc['line']}   [show: {sc.get('visual', '')}]" for i, sc in enumerate(script["scenes"]))
     return f"""Make the picture for a vertical cartoon Short with the cartoon-audio-short skill.
 Read {SKILL} and follow Stage 4 (4.2 to 4.7). Stages 1-3 are done and the voiceover is final.
+Token budget matters: read API.md (engine cheat sheet) and web/models/CATALOG.md (3D models) instead of the engine
+sources. Never open web/lib/*, web/toon.js or web/toonbase.js. Use real models via model() for buildings, vehicles,
+furniture, food, money and props; primitives for terrain and custom set pieces.
 
 This folder is the project, already set up by setup.sh: voice.mp3, script.txt, web/ (engine + the soldier example
 as a starting point to rewrite), and work/words.json + work/phrases.json with EXACT word timings (do not run
@@ -93,6 +96,9 @@ def _finish(project, frames, timeout):
 
 def _setup(project, voice_path):
     run(["bash", str(KIT / "tools" / "setup.sh"), str(project)], timeout=600)
+    skills = project / ".claude" / "skills"   # project skills Claude can load on demand (only names cost tokens)
+    for name in ("cartoon-audio-short", "threejs"):
+        shutil.copytree(ROOT / ".claude" / "skills" / name, skills / name, ignore=shutil.ignore_patterns("models", "kit"))
     run(["ffmpeg", "-v", "error", "-y", "-i", str(voice_path), "-ar", "48000", "-ac", "1", str(project / "voice.mp3")])
 
 
