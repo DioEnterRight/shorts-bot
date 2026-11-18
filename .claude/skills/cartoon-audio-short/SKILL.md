@@ -83,6 +83,10 @@ Make one row per shot: frames, words, setting, light, camera move, characters/po
 - The twist line gets a sting (music stops, low hit, push-in with roll). The last shot's physical payoff lands on the final word.
 
 ### 4.3 World (`web/main.js`)
+**Read `API.md` instead of the engine sources** (never open `web/lib/*`, `web/toon.js` or `web/toonbase.js`).
+**Use real 3D models** where they fit: `await model('city/building_A', x, y, z, { scale: 5 })` loads a KayKit
+CC0 model with toon shading and ink. Names and sizes are in `web/models/CATALOG.md` (city, furniture,
+restaurant and dungeon packs: buildings, cars, rooms, kitchens, food, coins, chests, gold, barrels, candles).
 Keep the engine sections: toon materials, ink contract, `add`/`tbox`, sky, lights, cards, render targets/post, `applyLight`, `drawActors`, `swapForNd`, `renderFrame`. Replace the example world between `// ---------- world ----------` and `// ---------- cards ----------`, plus the story parts of `worldState()`.
 - Build from primitives with painted canvas textures (`paint.js`: planks, beams, rotten wood, stone, moss/ivy, grass, dirt, plaster, roof tiles, marble, banners, carved text). Write new painters in the same flat-with-dark-seams style.
 - Use `tbox` for constant texel density, a 2-step toon gradient, and fog = horizon colour.

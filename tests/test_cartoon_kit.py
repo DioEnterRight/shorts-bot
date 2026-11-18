@@ -51,3 +51,24 @@ def test_render_all_script_is_valid_bash():
     subprocess.run(["bash", "-n", str(KIT / "tools/render_all.sh")], check=True)
     subprocess.run(["bash", "-n", str(KIT / "tools/finish.sh")], check=True)
     subprocess.run(["bash", "-n", str(KIT / "tools/setup.sh")], check=True)
+
+
+def test_model_library_is_complete_and_cc0():
+    import json
+    models = KIT / "models"
+    index = json.loads((models / "index.json").read_text(encoding="utf-8"))
+    assert len(index) > 300 and all((models / f).exists() for f in index.values())
+    assert {"city/building_A", "dungeon/chest_gold", "dungeon/coin_stack_large", "furniture/couch"} <= set(index)
+    assert "CC0" in (models / "LICENSE-KayKit-CC0.txt").read_text(encoding="utf-8")
+    cat = (models / "CATALOG.md").read_text(encoding="utf-8")
+    assert "city 5" in cat and "chest_gold" in cat and len(cat) < 12000   # small enough to read every run
+
+
+def test_engine_loads_models_and_cheat_sheet_points_at_them():
+    main = (KIT / "engine" / "main.js").read_text(encoding="utf-8")
+    assert "import { GLTFLoader } from './lib/GLTFLoader.js'" in main and "async function model(" in main
+    assert "from './three.module.js'" in (KIT / "vendor" / "GLTFLoader.js").read_text(encoding="utf-8")
+    api = (KIT / "API.md").read_text(encoding="utf-8")
+    assert "Never open" in api and "await model(" in api
+    setup = (KIT / "tools" / "setup.sh").read_text(encoding="utf-8")
+    assert 'cp -r "$KIT/models"' in setup and 'cp "$KIT/API.md"' in setup and "GLTFLoader.js" in setup

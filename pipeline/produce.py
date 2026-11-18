@@ -82,6 +82,7 @@ def produce_one(cfg, history, stats, test, language=None, theme=None):
             else:
                 final = cartoon3d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"], brain.call_claude)
                 storyboard = "3d"
+            qc.check(final, fps=cfg["video"]["fps"])   # a bad 3D file falls back to 2D instead of failing the run
         except Exception as e:  # noqa: BLE001 - the day's Short still ships, in 2D
             log(f"cartoon3d failed ({str(e)[:300]}); making this Short in 2D", "WARN")
             final = None

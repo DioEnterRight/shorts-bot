@@ -116,7 +116,7 @@ claude:
 cartoon3d:
   model: opus
   effort: high
-  max_turns: 80
+  max_turns: 50
   claude_timeout_minutes: 60
   render_timeout_minutes: 150   # CPU WebGL, ~4 s per frame: a 35 s Short is ~30-60 min on GitHub
 
@@ -165,4 +165,4 @@ publish:
   hashtags_max: 5
 
 # How many finished videos to keep ready as backup (protects against a bad day).
-buffer: 2
+buffer: 1   # ready Shorts to keep: 1 = the daily run makes one (each 3D Short costs a lot of tokens)
