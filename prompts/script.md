@@ -68,6 +68,7 @@ Reply with ONLY one JSON object, no markdown fences, no comments, exactly this s
   "title": "title in the video's language, max 70 chars, curiosity, no clickbait lies",
   "description": "1-2 sentences in the video's language",
   "hashtags": ["#tag1", "#tag2", "#tag3"],
+  "mood": "mystery | upbeat | dramatic | calm | tense  (the background music for this story)",
   "facts_checked": ["claim -> source.com"],
   "scenes": [
     {{"line": "spoken words", "visual": "what we see", "overlay": "", "emphasis": "word"}}

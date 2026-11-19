@@ -10,6 +10,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -65,11 +66,13 @@ Script, one line per beat, with what each beat should show:
 
 Do:
 - work/PLAN.md, then rewrite web/story.js (export TOTAL = {frames}), the world in web/main.js, the cast in
-  web/roman.js (rebuild web/toon.js), motion, and the cue table in audio.py. Build a NEW world, cast and poses
+  web/roman.js (rebuild web/toon.js), motion, and the SFX cue table in audio.py (no music: the pipeline adds a
+  mood-matched bed itself, so skip every music line). Build a NEW world, cast and poses
   for this story: original characters only, no real named living people, no logos or brand mascots.
 - Change the background, camera angle and character pose or cast every 3-4 seconds so every point is shown.
 - Steady, smooth, unhurried motion: no whip pans, no jittery shakes, no fast-forward or time-lapse jumps.
 - Look check: at most 2 rounds of `node render.mjs stills/a "<frames>"` + `python3 sheet.py`, fix what is wrong.
+- Captions are burned in by the pipeline: keep the bottom 30% of the frame free of important action.
 - Do NOT render all frames, do NOT run mix.py or finish.sh (the pipeline does that after you).
 When everything is written and the last contact sheet looks right, reply with one word: DONE"""
 
@@ -100,19 +103,40 @@ def preflight(project):
     run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "sine=f=220:d=0.5", "-ar", "48000", str(pre / "mix_raw.wav")])
     for f in ("finish.sh", "frames_rgb.py"):
         shutil.copy(project / f, pre / f)
-    run(["bash", "finish.sh", "final"], cwd=pre, timeout=300)
+    shutil.copytree(project / "fonts", pre / "fonts")
+    (pre / "work").mkdir()
+    (pre / "work" / "words.json").write_text(json.dumps([{"w": "Caption", "s": 0.0, "e": 0.03}, {"w": "check", "s": 0.03, "e": 0.06}]), encoding="utf-8")
+    run(["bash", "finish.sh", "final"], cwd=pre, env=dict(os.environ, CAPTIONS="1"), timeout=300)
     shutil.rmtree(pre)
 
 
-def _finish(project, frames, timeout):
+MOODS = ("mystery", "upbeat", "dramatic", "calm", "tense")
+
+
+def mood_of(script):
+    m = str(script.get("mood", "")).strip().lower()
+    return m if m in MOODS else "mystery"
+
+
+def _music(project, mood, seconds):
+    """Replace the kit's brass-march stem with the 2D engine's mood bed (same synths the 2D Shorts use)."""
+    code = ("import sys, soundfile as sf; from engine.audio import music_bed, SR; "
+            "m = music_bed(float(sys.argv[2]), sys.argv[1], [])[:int(float(sys.argv[2]) * SR)]; sf.write(sys.argv[3], m, SR)")
+    run([sys.executable, "-c", code, mood, str(seconds), str(project / "music.wav")], cwd=ROOT / "toon2d", timeout=300)
+
+
+def _finish(project, frames, timeout, cfg, mood="mystery"):
+    t2 = cfg["toon2d"]
     try:
         run(["bash", "render_all.sh", str(frames)], cwd=project, env=_env(), timeout=timeout)
     except Exception as e:   # a crashed Chrome or a timeout: keep the frames already made, render only the rest
         log(f"cartoon3d: render failed ({e}); resuming once", "WARN")
         run(["bash", "render_all.sh", str(frames)], cwd=project, env=dict(_env(), RESUME="1"), timeout=timeout)
     run(["python3", "audio.py"], cwd=project, timeout=600)
-    run(["python3", "mix.py", "voice.mp3", "music.wav", "sfx.wav"], cwd=project, timeout=600)
-    run(["bash", "finish.sh", "final"], cwd=project, timeout=1200)
+    _music(project, mood, frames / FPS)
+    run(["python3", "mix.py", "voice.mp3", "music.wav", "sfx.wav",
+         "--music-db", str(t2.get("music_db", -20)), "--sfx-db", str(t2.get("sfx_db", -13))], cwd=project, timeout=600)
+    run(["bash", "finish.sh", "final"], cwd=project, env=dict(os.environ, CAPTIONS="1" if t2.get("captions", True) else "0"), timeout=1200)
     out = project / "out" / "final.mp4"
     if not out.exists():
         raise RuntimeError("cartoon3d: finish.sh produced no video")
@@ -125,6 +149,8 @@ def _setup(project, voice_path):
     for name in ("cartoon-audio-short", "threejs"):
         shutil.copytree(ROOT / ".claude" / "skills" / name, skills / name, ignore=shutil.ignore_patterns("models", "kit"))
     run(["ffmpeg", "-v", "error", "-y", "-i", str(voice_path), "-ar", "48000", "-ac", "1", str(project / "voice.mp3")])
+    (project / "fonts").mkdir()
+    shutil.copy(ROOT / "toon2d" / "fonts" / "Kalam-Bold.ttf", project / "fonts" / "Kalam-Bold.ttf")   # caption font (OFL, see toon2d/CREDITS.md)
 
 
 def render(cfg, script, timeline, voice_path, duration, work, language, call_claude):
@@ -142,7 +168,7 @@ def render(cfg, script, timeline, voice_path, duration, work, language, call_cla
     if "DONE" not in reply:
         log(f"cartoon3d: Claude did not report DONE: {reply[-300:]}", "WARN")
     _check_story(project, frames)
-    out = _finish(project, frames, int(c3.get("render_timeout_minutes", 150)) * 60)
+    out = _finish(project, frames, int(c3.get("render_timeout_minutes", 150)) * 60, cfg, mood_of(script))
     shutil.copytree(project / "work", work / "cartoon3d_work", dirs_exist_ok=True)
     return out
 
@@ -155,4 +181,4 @@ def render_example(cfg, work, voice_fn):
     voice_fn(SOLDIER, voice_wav, total / FPS)
     _setup(project, voice_wav)
     preflight(project)   # same cheap check as a real run, so a TEST run proves it on the runner for free
-    return _finish(project, total, int(cfg["cartoon3d"].get("render_timeout_minutes", 150)) * 60)
+    return _finish(project, total, int(cfg["cartoon3d"].get("render_timeout_minutes", 150)) * 60, cfg)

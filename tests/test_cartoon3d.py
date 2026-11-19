@@ -94,8 +94,16 @@ def test_real_render_path_end_to_end_with_a_stand_in_for_claude(tmp_path):
         return "DONE"
 
     cfg = load_config()
-    script = {"title": "T", "scenes": [{"line": "Hello world.", "visual": "a wave"}]}
+    script = {"title": "T", "mood": "upbeat", "scenes": [{"line": "Hello world.", "visual": "a wave"}]}
     out = cartoon3d.render(cfg, script, tl, wav, 1.2, tmp_path / "work", "en", fake_claude)
     got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=pix_fmt,width,height,nb_frames",
                           "-of", "csv=p=0", str(out)], capture_output=True, text=True).stdout.strip()
     assert got == "1080,1920,yuv420p,36", got
+    # captions are burned into the picture (lime current word in the lower third) and the music sits far below the voice
+    from PIL import Image
+    png = tmp_path / "cap.png"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "0.3", "-i", str(out), "-frames:v", "1", str(png)], check=True)
+    im = Image.open(png).convert("RGB")
+    lime = sum(1 for y in range(int(.72 * 1920), int(.84 * 1920), 2) for x in range(0, 1080, 2)
+               if 140 < (p := im.getpixel((x, y)))[0] < 215 and p[1] > 200 and p[2] < 130)
+    assert lime > 300, lime
