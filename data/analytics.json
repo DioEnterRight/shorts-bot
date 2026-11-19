@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
         "ig": 0
       }
@@ -48,7 +48,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -77,7 +77,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -130,14 +130,14 @@
         "ig_shares": 0,
         "ig_saves": 2,
         "ig_avg_watch_ms": 15429,
-        "yt_views": 982,
+        "yt_views": 984,
         "yt_likes": 23,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
-        "yt": 982,
+        "yt": 984,
         "ig": 355
       }
     },
@@ -159,14 +159,14 @@
         "ig_shares": 0,
         "ig_saves": 1,
         "ig_avg_watch_ms": 10864,
-        "yt_views": 841,
-        "yt_likes": 10,
+        "yt_views": 938,
+        "yt_likes": 13,
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
-        "yt": 841,
+        "yt": 938,
         "ig": 168
       }
     },
@@ -181,22 +181,51 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 156,
-        "ig_reach": 118,
+        "ig_views": 157,
+        "ig_reach": 119,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 14877,
-        "yt_views": 378,
-        "yt_likes": 7,
+        "ig_avg_watch_ms": 14761,
+        "yt_views": 1164,
+        "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T04:54+05:30",
+      "last_update": "2026-11-19T16:46+05:30",
       "views": {
-        "yt": 378,
-        "ig": 156
+        "yt": 1164,
+        "ig": 157
+      }
+    },
+    "20261119-045408-en-how-a-gold-duplication-glitc": {
+      "video_id": "20261119-045408-en-how-a-gold-duplication-glitc",
+      "language": "en",
+      "topic": "How a gold duplication glitch causes hyperinflation in a game world",
+      "theme": "roblox_story",
+      "title": "The Glitch That Made Everyone Broke",
+      "hook_type": "paradox",
+      "hook_line": "Pip's glitch made him infinitely rich, and totally broke.",
+      "duration": 37.57,
+      "published_at": "2026-11-19T16:40+05:30",
+      "metrics": {
+        "ig_views": 0,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 1,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-19T16:46+05:30",
+      "views": {
+        "yt": 1,
+        "ig": 0
       }
     }
   },
@@ -209,12 +238,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 3,
+          "en": 4,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-19T04:54+05:30"
+      "computed_at": "2026-11-19T16:46+05:30"
     }
   },
-  "updated": "2026-11-19T04:54+05:30"
+  "updated": "2026-11-19T16:46+05:30"
 }

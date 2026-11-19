@@ -302,6 +302,22 @@
       "yt_video_id": "5lDXaejx5k8",
       "yt_state": "posted",
       "published_at": "2026-11-19T16:40+05:30"
+    },
+    {
+      "id": "20261119-164610-en-the-stamp-trick-behind-the-f",
+      "title": "The Stamp Trick Behind the First Ponzi",
+      "topic": "The stamp trick behind the first Ponzi scheme",
+      "canonical_en": "The first Ponzi scheme was built on a real, legal trick with postage coupons, so why did it become a fraud?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_cons",
+      "hook_type": "paradox",
+      "hook_line": "History's biggest scam began with a trick that really worked.",
+      "duration": 39.42,
+      "storyboard": "3d",
+      "tag": "vid-20261119-164610-en-the-stamp-trick-behind-the-f",
+      "status": "queued",
+      "created": "2026-11-19T17:56+05:30"
     }
   ],
   "version": 2

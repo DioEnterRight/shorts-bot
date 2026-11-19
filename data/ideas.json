@@ -121,6 +121,17 @@
       "video_id": "20261119-045408-en-how-a-gold-duplication-glitc",
       "status": "produced",
       "created": "2026-11-19T05:01+05:30"
+    },
+    {
+      "canonical_en": "The first Ponzi scheme was built on a real, legal trick with postage coupons, so why did it become a fraud?",
+      "question": "What was Charles Ponzi actually pretending to do with people's money?",
+      "hook": "The world's most famous scam began with a trick that actually worked.",
+      "angle": "Everyone knows the word 'Ponzi', but almost nobody knows the stamps. Postal reply coupons were cheap in war-torn Europe and could be swapped for pricier US stamps, which is real arbitrage. Ponzi promised 50% in 45 days. Doing the trade would have meant moving mountains of paper coupons, so he paid old investors with new investors' money instead. Auditors later found only about $30-60 worth of coupons.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261119-164610-en-the-stamp-trick-behind-the-f",
+      "status": "produced",
+      "created": "2026-11-19T17:56+05:30"
     }
   ]
 }
