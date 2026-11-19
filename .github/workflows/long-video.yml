@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   long:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ffmpeg 6.1.1 here = the ffmpeg our tests run on (ubuntu-latest moved the toolchain under us)
     timeout-minutes: 180   # Opus research + script, storyboard, ~20-40 min render for 5 min at 1080p
     env:
       GH_TOKEN: ${{ github.token }}

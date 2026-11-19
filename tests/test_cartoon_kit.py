@@ -1,5 +1,6 @@
 """cartoon-audio-short skill kit: files present, vendored libs, and the 50 % level lock in mix.py."""
 import importlib.util
+import os
 import shutil
 import subprocess
 import wave
@@ -88,3 +89,23 @@ def test_finish_turns_full_range_jpeg_frames_into_tv_range_yuv420p(tmp_path):
     got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=pix_fmt",
                           "-of", "csv=p=0", str(tmp_path / "out" / "final.mp4")], capture_output=True, text=True).stdout.strip()
     assert got == "yuv420p"
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_finish_survives_a_failing_qa_contact_sheet(tmp_path):
+    """The runner's newer ffmpeg refused the contact-sheet JPEG and that killed a good 3D encode: QA must never be fatal."""
+    from PIL import Image
+    (tmp_path / "frames").mkdir(); (tmp_path / "out").mkdir(); (tmp_path / "bin").mkdir()
+    for i in range(2):
+        Image.new("RGB", (108, 192), (90, 120, 200)).save(tmp_path / "frames" / f"f{i:04d}.jpg")
+    sr = 48000; t = np.arange(int(sr * .4)) / sr
+    _wav(tmp_path / "mix_raw.wav", 0.3 * np.sin(2 * np.pi * 220 * t))
+    for f in ("finish.sh", "frames_rgb.py"):
+        shutil.copy(KIT / "tools" / f, tmp_path / f)
+    real = shutil.which("ffmpeg")
+    shim = tmp_path / "bin" / "ffmpeg"   # fails exactly the contact-sheet command, like the runner's ffmpeg did
+    shim.write_text(f'#!/bin/bash\ncase "$*" in *tile=*) exit 234;; esac\nexec {real} "$@"\n')
+    shim.chmod(0o755)
+    env = dict(os.environ, PATH=f"{tmp_path / 'bin'}:{os.environ['PATH']}")
+    subprocess.run(["bash", "finish.sh", "final"], cwd=tmp_path, check=True, capture_output=True, env=env)
+    assert (tmp_path / "out" / "final.mp4").exists()

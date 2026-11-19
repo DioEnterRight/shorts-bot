@@ -74,3 +74,28 @@ def test_3d_file_failing_qc_falls_back_to_2d(tmp_state, monkeypatch, tmp_path):
                                                                        language="en", theme="explainer"), None))
     work, meta, *_ = produce.produce_one(cfg, {"videos": []}, {"allocation": {}}, test=False, language="en", theme="explainer")
     assert meta["storyboard"] == "claude" and (work / "final.mp4").read_bytes() == b"2d"
+
+
+@pytest.mark.slow
+def test_real_render_path_end_to_end_with_a_stand_in_for_claude(tmp_path):
+    """The whole paid path (setup, preflight, story check, Chrome frames, audio, mix, encode) with zero tokens:
+    the fake 'Claude' just retargets the kit's example story to the right length."""
+    import re
+    import subprocess
+
+    wav = tmp_path / "voice.wav"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "sine=f=180:d=1.2", "-ar", "24000", str(wav)], check=True)
+    tl = [{"words": [{"word": "Hello", "start": .1, "end": .5}, {"word": "world.", "start": .5, "end": 1.1}]}]
+
+    def fake_claude(prompt, **kw):
+        story = __import__("pathlib").Path(kw["cwd"]) / "web" / "story.js"
+        text = re.sub(r"TOTAL\s*=\s*\d+", "TOTAL = 36", story.read_text(encoding="utf-8"), count=1)
+        story.write_text(text + "\n// rewritten by the stand-in\n", encoding="utf-8")
+        return "DONE"
+
+    cfg = load_config()
+    script = {"title": "T", "scenes": [{"line": "Hello world.", "visual": "a wave"}]}
+    out = cartoon3d.render(cfg, script, tl, wav, 1.2, tmp_path / "work", "en", fake_claude)
+    got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=pix_fmt,width,height,nb_frames",
+                          "-of", "csv=p=0", str(out)], capture_output=True, text=True).stdout.strip()
+    assert got == "1080,1920,yuv420p,36", got
