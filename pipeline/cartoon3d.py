@@ -9,6 +9,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import tempfile
 from pathlib import Path
 
@@ -89,6 +90,10 @@ def _env():
 def preflight(project):
     """Render 2 frames of the kit example and encode them exactly like finish.sh, before Claude spends tokens.
     A broken Chrome/ffmpeg toolchain then fails in seconds instead of after the Claude build and an hour of render."""
+    ff = subprocess.run(["ffmpeg", "-version"], capture_output=True, text=True).stdout.splitlines()[0]
+    osname = next((l.split("=", 1)[1].strip('"') for l in Path("/etc/os-release").read_text().splitlines()
+                   if l.startswith("PRETTY_NAME=")), "unknown OS") if Path("/etc/os-release").exists() else "unknown OS"
+    log(f"cartoon3d toolchain: {osname}; {ff}")
     pre = project / "preflight"
     (pre / "frames").mkdir(parents=True); (pre / "out").mkdir()
     run(["node", "render.mjs", str(pre / "frames"), "0-1", "1"], cwd=project, env=_env(), timeout=300)
@@ -149,4 +154,5 @@ def render_example(cfg, work, voice_fn):
     voice_wav = work / "soldier_voice.wav"
     voice_fn(SOLDIER, voice_wav, total / FPS)
     _setup(project, voice_wav)
+    preflight(project)   # same cheap check as a real run, so a TEST run proves it on the runner for free
     return _finish(project, total, int(cfg["cartoon3d"].get("render_timeout_minutes", 150)) * 60)

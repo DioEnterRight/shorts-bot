@@ -16,4 +16,6 @@ case "$GOT" in yuv420p|yuv420p,tv|yuv420p,unknown) ;; *) echo "finish.sh: output
 ffprobe -v error -show_entries format=duration -show_entries stream=width,height,r_frame_rate -of compact "$F"
 echo "--- QA (empty = no black/frozen spans)"; ffmpeg -i "$F" -vf "freezedetect=n=0.0005:d=0.4,blackdetect=d=0.05" -an -f null - 2>&1 | grep -E "freeze_start|black_start" || true
 ffmpeg -i "$F" -af ebur128 -f null - 2>&1 | grep -E "^\s+I:" | tail -1
-ffmpeg -v error -y -i "$F" -vf "fps=2,scale=180:-1,tile=10x4" -frames:v 1 out/qa_sheet.jpg; echo "$F"
+# contact sheet is only for a human to glance at: never let it fail the video (newer ffmpeg's mjpeg refuses TV-range input unless -strict unofficial)
+ffmpeg -v error -y -i "$F" -vf "fps=2,scale=180:-1,tile=10x4" -frames:v 1 -strict unofficial out/qa_sheet.jpg || echo "finish.sh: qa sheet skipped"
+echo "$F"
