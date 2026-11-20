@@ -2,7 +2,7 @@ name: Post video
 
 on:
   schedule:
-    - cron: "27 13 * * *"   # every day ~18:57 India time (GitHub may run it a few minutes late)
+        - cron: "57 9 * * *"   # every day ~18:57 India time (GitHub may run it a few minutes late)
   workflow_dispatch: {}
 
 concurrency:
