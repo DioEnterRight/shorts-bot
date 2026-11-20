@@ -338,8 +338,14 @@
       "duration": 36.73,
       "storyboard": "3d",
       "tag": "vid-20261120-045059-en-why-one-soda-cost-five-cents",
-      "status": "queued",
-      "created": "2026-11-20T05:53+05:30"
+      "status": "published",
+      "created": "2026-11-20T05:53+05:30",
+      "ig_media_id": "18018000767756002",
+      "ig_link": "https://www.instagram.com/reel/Df91JfzHDVi/",
+      "ig_state": "posted",
+      "yt_video_id": "mJzUUaPVBpc",
+      "yt_state": "posted",
+      "published_at": "2026-11-20T19:36+05:30"
     }
   ],
   "version": 2
