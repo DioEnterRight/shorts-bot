@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Level-locked mix:  python3 mix.py voice.mp3 music.wav sfx.wav  ->  mix_raw.wav
-Music sits at exactly 50 % of the voice (-6 dB, gated RMS). SFX at 50 % too, with peaks capped at 0.7x the voice peak.
+"""Level-locked mix:  python3 mix.py voice.mp3 music.wav sfx.wav [--music-db -20] [--sfx-db -13]  ->  mix_raw.wav
+Music and SFX default to 50 % of the voice (-6 dB, gated RMS); the flags set another level below the voice. SFX peaks stay under 0.7x the voice peak.
 No ducking or compression: the voice is untouched and one linear gain per stem keeps the ratio fixed."""
 import subprocess, sys, wave
 import numpy as np
@@ -22,14 +22,14 @@ def gated_rms(x, gate_db=-40.0):
 
 db = lambda r: 20 * np.log10(max(r, 1e-12))
 
-def main(vp, mp, sp, out="mix_raw.wav"):
+def main(vp, mp, sp, out="mix_raw.wav", music_db=-6.0, sfx_db=-6.0):
     v, m, s = load(vp), load(mp), load(sp)
     n = len(v); m = np.pad(m, (0, max(0, n - len(m))))[:n]; s = np.pad(s, (0, max(0, n - len(s))))[:n]
     vr, vpk = gated_rms(v), float(np.abs(v).max())
     if vr < 1e-5: raise SystemExit("voice is silent")
-    m *= 0.5 * vr / gated_rms(m)
+    m *= 10 ** (music_db / 20) * vr / gated_rms(m)
     if np.abs(s).max() > 0:
-        s *= 0.5 * vr / gated_rms(s)
+        s *= 10 ** (sfx_db / 20) * vr / gated_rms(s)
         if np.abs(s).max() > 0.7 * vpk: s *= 0.7 * vpk / np.abs(s).max()
     print(f"voice {db(vr):.1f} dBFS | music {db(gated_rms(m)) - db(vr):+.1f} dB vs voice | "
           f"sfx {db(gated_rms(s)) - db(vr) if np.abs(s).max() > 0 else float('-inf'):+.1f} dB vs voice, peak {np.abs(s).max() / vpk:.2f}x voice peak")
@@ -42,5 +42,10 @@ def main(vp, mp, sp, out="mix_raw.wav"):
     print(out)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4: raise SystemExit(__doc__)
-    main(*sys.argv[1:4])
+    a = sys.argv[1:]
+    opt = {}
+    for flag, key in (("--music-db", "music_db"), ("--sfx-db", "sfx_db")):
+        if flag in a:
+            i = a.index(flag); opt[key] = float(a[i + 1]); del a[i:i + 2]
+    if len(a) < 3: raise SystemExit(__doc__)
+    main(*a[:3], **opt)

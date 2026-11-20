@@ -109,3 +109,57 @@ def test_finish_survives_a_failing_qa_contact_sheet(tmp_path):
     env = dict(os.environ, PATH=f"{tmp_path / 'bin'}:{os.environ['PATH']}")
     subprocess.run(["bash", "finish.sh", "final"], cwd=tmp_path, check=True, capture_output=True, env=env)
     assert (tmp_path / "out" / "final.mp4").exists()
+
+
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="needs ffmpeg")
+def test_mix_levels_can_be_set_below_the_voice(tmp_path, capsys):
+    spec = importlib.util.spec_from_file_location("kitmix", KIT / "tools" / "mix.py")
+    mix = importlib.util.module_from_spec(spec); spec.loader.exec_module(mix)
+    sr = 48000; t = np.arange(sr * 3) / sr
+    for n, x in (("v.wav", 0.3 * np.sin(2 * np.pi * 220 * t) * (t % 1 < .7)), ("m.wav", 0.9 * np.sin(2 * np.pi * 110 * t)),
+                 ("s.wav", 0.2 * np.sin(2 * np.pi * 880 * t) * (t % 1 < .1))):
+        _wav(tmp_path / n, x)
+    mix.main(str(tmp_path / "v.wav"), str(tmp_path / "m.wav"), str(tmp_path / "s.wav"), str(tmp_path / "o.wav"), music_db=-20, sfx_db=-13)
+    line = capsys.readouterr().out
+    assert "music -20.0 dB vs voice" in line and "sfx -13.0 dB vs voice" in line
+
+
+def _frames_rgb():
+    spec = importlib.util.spec_from_file_location("frames_rgb", KIT / "tools" / "frames_rgb.py")
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    return m
+
+
+def test_caption_chunks_follow_the_spoken_words():
+    fr = _frames_rgb()
+    words = [{"w": w, "s": s, "e": s + .2} for w, s in (("One", 0), ("man", .3), ("sold", .6), ("the", 1.0), ("tower", 1.3))]
+    chunks = fr.caption_chunks(words)
+    assert [c[2] for c in chunks] == [["One", "man", "sold"], ["the", "tower"]]
+    assert fr.caption_at(chunks, .1) == (["One", "man", "sold"], 0)
+    assert fr.caption_at(chunks, .7) == (["One", "man", "sold"], 2)
+    assert fr.caption_at(chunks, 1.35) == (["the", "tower"], 1)
+    assert fr.caption_at(chunks, 5.0) is None
+
+
+def test_caption_is_drawn_at_the_lower_third_and_fails_fast_without_inputs(tmp_path):
+    from PIL import Image
+    fr = _frames_rgb()
+    font = ROOT / "toon2d" / "fonts" / "Kalam-Bold.ttf"
+    im = Image.new("RGB", (1080, 1920), (40, 60, 120))
+    fr.draw_caption(im, ["Hello", "rich", "world"], 1, str(font))
+    ys = [y for y in range(1920) for x in range(0, 1080, 6) if im.getpixel((x, y)) != (40, 60, 120)]
+    assert ys and 0.6 * 1920 < min(ys) and max(ys) < 0.9 * 1920       # inside the Shorts-safe lower third
+    assert any(im.getpixel((x, y)) == fr.LIME for y in range(1400, 1700, 2) for x in range(0, 1080, 2))   # current word is lime
+    Image.new("RGB", (64, 64)).save(tmp_path / "f0000.jpg")
+    env = dict(__import__("os").environ, CAPTIONS="1")
+    r = subprocess.run(["python3", str(KIT / "tools" / "frames_rgb.py"), str(tmp_path), "1"], cwd=tmp_path, env=env, capture_output=True)
+    assert r.returncode != 0 and b"missing" in r.stderr
+
+
+def test_mood_and_music_come_from_the_2d_engine(tmp_path):
+    import soundfile as sf
+    from pipeline import cartoon3d
+    assert cartoon3d.mood_of({"mood": " Tense "}) == "tense" and cartoon3d.mood_of({"mood": "polka"}) == "mystery" and cartoon3d.mood_of({}) == "mystery"
+    cartoon3d._music(tmp_path, "upbeat", 2.0)
+    x, sr = sf.read(tmp_path / "music.wav")
+    assert sr == 48000 and abs(len(x) - 96000) <= 1 and abs(x).max() > 0.01
