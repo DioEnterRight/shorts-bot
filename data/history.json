@@ -324,6 +324,22 @@
       "yt_video_id": "-0955w6NzNQ",
       "yt_state": "posted",
       "published_at": "2026-11-19T19:20+05:30"
+    },
+    {
+      "id": "20261120-045059-en-why-one-soda-cost-five-cents",
+      "title": "Why a Soda Cost 5 Cents for 70 Years",
+      "topic": "Why one soda cost five cents for seventy years",
+      "canonical_en": "Why did a bottle of Coca-Cola cost exactly 5 cents from 1886 to about 1959, through two world wars and the Depression?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "For seventy years, inflation couldn't touch one soda.",
+      "duration": 36.73,
+      "storyboard": "3d",
+      "tag": "vid-20261120-045059-en-why-one-soda-cost-five-cents",
+      "status": "queued",
+      "created": "2026-11-20T05:53+05:30"
     }
   ],
   "version": 2

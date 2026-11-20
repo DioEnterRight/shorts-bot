@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
         "ig": 0
       }
@@ -48,7 +48,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -77,7 +77,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -123,22 +123,25 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 355,
-        "ig_reach": 290,
-        "ig_likes": 5,
+        "ig_views": 359,
+        "ig_reach": 293,
+        "ig_likes": 6,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 15429,
+        "ig_avg_watch_ms": 15301,
         "yt_views": 984,
         "yt_likes": 23,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 62.0,
+        "yt_avg_view_sec": 26,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
         "yt": 984,
-        "ig": 355
+        "ig": 359
       }
     },
     "20261117-154837-en-the-tulip-mania-myth": {
@@ -152,22 +155,25 @@
       "duration": 43.6,
       "published_at": "2026-11-17T20:02+05:30",
       "metrics": {
-        "ig_views": 168,
-        "ig_reach": 144,
+        "ig_views": 170,
+        "ig_reach": 145,
         "ig_likes": 5,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10864,
-        "yt_views": 938,
+        "ig_avg_watch_ms": 11086,
+        "yt_views": 981,
         "yt_likes": 13,
         "yt_comments": 1,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 110.2,
+        "yt_avg_view_sec": 48,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
-        "yt": 938,
-        "ig": 168
+        "yt": 981,
+        "ig": 170
       }
     },
     "20261118-140127-en-why-scam-emails-are-badly-wr": {
@@ -181,22 +187,22 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 157,
-        "ig_reach": 119,
-        "ig_likes": 0,
+        "ig_views": 159,
+        "ig_reach": 120,
+        "ig_likes": 1,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 14761,
-        "yt_views": 1164,
+        "ig_avg_watch_ms": 14683,
+        "yt_views": 1183,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
-        "yt": 1164,
-        "ig": 157
+        "yt": 1183,
+        "ig": 159
       }
     },
     "20261119-045408-en-how-a-gold-duplication-glitc": {
@@ -210,22 +216,51 @@
       "duration": 37.57,
       "published_at": "2026-11-19T16:40+05:30",
       "metrics": {
-        "ig_views": 0,
-        "ig_reach": 0,
-        "ig_likes": 0,
+        "ig_views": 538,
+        "ig_reach": 380,
+        "ig_likes": 3,
         "ig_comments": 0,
-        "ig_shares": 0,
-        "ig_saves": 0,
-        "ig_avg_watch_ms": 0,
-        "yt_views": 1,
-        "yt_likes": 0,
+        "ig_shares": 1,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 17218,
+        "yt_views": 894,
+        "yt_likes": 43,
+        "yt_comments": 1,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-20T04:50+05:30",
+      "views": {
+        "yt": 894,
+        "ig": 538
+      }
+    },
+    "20261119-164610-en-the-stamp-trick-behind-the-f": {
+      "video_id": "20261119-164610-en-the-stamp-trick-behind-the-f",
+      "language": "en",
+      "topic": "The stamp trick behind the first Ponzi scheme",
+      "theme": "explainer",
+      "title": "The Stamp Trick Behind the First Ponzi",
+      "hook_type": "paradox",
+      "hook_line": "History's biggest scam began with a trick that really worked.",
+      "duration": 39.42,
+      "published_at": "2026-11-19T19:20+05:30",
+      "metrics": {
+        "ig_views": 329,
+        "ig_reach": 230,
+        "ig_likes": 4,
+        "ig_comments": 0,
+        "ig_shares": 1,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 18908,
+        "yt_views": 462,
+        "yt_likes": 15,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-19T16:46+05:30",
+      "last_update": "2026-11-20T04:50+05:30",
       "views": {
-        "yt": 1,
-        "ig": 0
+        "yt": 462,
+        "ig": 329
       }
     }
   },
@@ -238,12 +273,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 4,
+          "en": 5,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-19T16:46+05:30"
+      "computed_at": "2026-11-20T04:50+05:30"
     }
   },
-  "updated": "2026-11-19T16:46+05:30"
+  "updated": "2026-11-20T04:50+05:30"
 }

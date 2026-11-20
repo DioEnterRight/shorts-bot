@@ -132,6 +132,17 @@
       "video_id": "20261119-164610-en-the-stamp-trick-behind-the-f",
       "status": "produced",
       "created": "2026-11-19T17:56+05:30"
+    },
+    {
+      "canonical_en": "Why did a bottle of Coca-Cola cost exactly 5 cents from 1886 to about 1959, through two world wars and the Depression?",
+      "question": "How did one soda keep the same 5-cent price for seventy years while every other price went up?",
+      "hook": "For seventy years, inflation couldn't touch one soda.",
+      "angle": "Three physical traps kept the price stuck. In 1899 the company agreed to sell syrup to bottlers at a fixed price with no end date (reportedly partly to get two lawyers out of the office). It painted '5 cents' on walls all over the country. And by 1950 it owned most of the US vending machines, which only took a nickel. The company even asked the Treasury for a 7.5-cent coin. Shown as a generic red soda with no logo.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261120-045059-en-why-one-soda-cost-five-cents",
+      "status": "produced",
+      "created": "2026-11-20T05:53+05:30"
     }
   ]
 }
