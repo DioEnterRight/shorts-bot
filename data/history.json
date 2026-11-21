@@ -360,8 +360,14 @@
       "duration": 34.44,
       "storyboard": "3d",
       "tag": "vid-20261121-045053-en-the-department-store-that-ba",
-      "status": "queued",
-      "created": "2026-11-21T05:55+05:30"
+      "status": "published",
+      "created": "2026-11-21T05:55+05:30",
+      "ig_media_id": "17947223289380656",
+      "ig_link": "https://www.instagram.com/reel/DgACAXPGTHb/",
+      "ig_state": "posted",
+      "yt_video_id": "TKRFzmXBeyI",
+      "yt_state": "posted",
+      "published_at": "2026-11-21T16:07+05:30"
     }
   ],
   "version": 2
