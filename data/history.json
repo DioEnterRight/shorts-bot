@@ -346,6 +346,22 @@
       "yt_video_id": "mJzUUaPVBpc",
       "yt_state": "posted",
       "published_at": "2026-11-20T19:36+05:30"
+    },
+    {
+      "id": "20261121-045053-en-the-department-store-that-ba",
+      "title": "The Store That Died From Telling the Truth",
+      "topic": "The department store that banned fake sales and lost almost a billion dollars",
+      "canonical_en": "Why did a store that stopped faking discounts lose almost a billion dollars in one year (JCPenney 2012)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "A store stopped lying about prices, and its customers ran away.",
+      "duration": 34.44,
+      "storyboard": "3d",
+      "tag": "vid-20261121-045053-en-the-department-store-that-ba",
+      "status": "queued",
+      "created": "2026-11-21T05:55+05:30"
     }
   ],
   "version": 2

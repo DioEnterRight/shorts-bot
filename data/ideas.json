@@ -143,6 +143,17 @@
       "video_id": "20261120-045059-en-why-one-soda-cost-five-cents",
       "status": "produced",
       "created": "2026-11-20T05:53+05:30"
+    },
+    {
+      "canonical_en": "Why did a store that stopped faking discounts lose almost a billion dollars in one year (JCPenney 2012)?",
+      "question": "Why did shoppers abandon a store the moment it stopped faking its sales?",
+      "hook": "A store stopped lying about prices. Its customers ran away.",
+      "angle": "Instead of the usual 'stores trick you' story, the honest store is the one that gets punished. The video shows the anchoring effect through a real business that tested it at full scale, just before Black Friday week.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261121-045053-en-the-department-store-that-ba",
+      "status": "produced",
+      "created": "2026-11-21T05:55+05:30"
     }
   ]
 }
