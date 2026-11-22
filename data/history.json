@@ -368,6 +368,22 @@
       "yt_video_id": "TKRFzmXBeyI",
       "yt_state": "posted",
       "published_at": "2026-11-21T16:07+05:30"
+    },
+    {
+      "id": "20261122-044424-en-the-1963-salad-oil-swindle",
+      "title": "The Salad Oil That Was Mostly Water",
+      "topic": "The 1963 salad oil swindle",
+      "canonical_en": "How did one trader borrow millions against tanks of salad oil that were mostly water, and why did almost nobody notice when it collapsed in November 1963?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_cons",
+      "hook_type": "paradox",
+      "hook_line": "A man borrowed millions on salad oil that wasn't there.",
+      "duration": 34.08,
+      "storyboard": "3d",
+      "tag": "vid-20261122-044424-en-the-1963-salad-oil-swindle",
+      "status": "queued",
+      "created": "2026-11-22T06:06+05:30"
     }
   ],
   "version": 2

@@ -1,12 +1,23 @@
-- Hook in the first 2 seconds: a visceral "what happens if" or "why does your body" question.
-- One idea per video. Cut every 3-5 seconds.
-- Put the viewer in it: "you", "your".
-- One deadpan joke near the end; end on a line that loops back to the hook.
-- No performance data yet (as of 2026-11-14): keep testing human-body "why" hooks against "what if" hooks.
-- Debunk a common myth in line 2 ("most people think...") to add a twist before the real explanation.
-- Verify every claim with a search before writing; when science is unsettled, say "scientists think" instead of stating it as fact.
-- Keep one setting and [GUY] in most scenes so the video makes sense with the sound off.
-- Max 2 inside-the-body cutaways per video.
-- Use everyday objects (sponge, soap, rubber duck) as visual props to keep pictures instantly recognizable.
-- Avoid numbers unless verified.
-- Review this playbook against real stats once views, retention and likes data exist, and double down on the top hook types.
+- Paradox hooks win: all 5 top videos opened with a stated paradox (a soda inflation couldn't touch, an honest store that lost customers, a scam trick that worked). Make paradox the default hook.
+- Body 'why' question hooks are the worst performers (some got 0 IG views). Stop using 'Why does your...' openers. If a body topic is used, turn it into a paradox stated as fact.
+- State the hook as a flat, surprising fact in under 12 words. Never open with a question.
+- Best topics so far are money, business, cons and weird history with one clear mechanism (pricing, scams, fake sales, holidays). Lean into these and the 'Greatest Cons' series.
+- One idea per video. Cut every 3-5 seconds, with 8-13 beats of one sentence each.
+- Aim for 34-39 seconds. The top videos sit there, and 42-44 second videos kept fewer viewers.
+- Line 2 sets time, place and one concrete detail. Real dates and places make history stories feel true.
+- Every big number needs an everyday or today's-money comparison, and only use numbers that are verified. When sources disagree, use the safe floor ('over 150 million').
+- Myth-busting hooks that deny something ('bankrupted nobody') did poorly. Debunk inside the video, but open with the surprising truth instead.
+- Put the viewer in it with 'you' where it fits naturally, but a strong character story (trader, store, kid in a game) can carry a video without it.
+- Put one exaggeration joke in the middle, deadpan, with a visual that's absurd but clear.
+- The pivot line ('You see,' / 'But when') explains the mechanism with a household object (a dressing bottle, a soda machine, a stamp).
+- End on a short ironic line that loops back to the hook, so the replay feels natural.
+- Keep the recurring host acting out roles in most scenes, so the video makes sense with the sound off.
+- Max 4 overlays: the year, the key mechanism word, the big number and the time jump.
+- Use everyday props (bottles, receipts, dominoes, newspapers) so each picture reads instantly.
+- Max 2 cutaways (tanks, the inside of the body, machines) per video.
+- Verify every claim with a search before writing. Say 'legend says' or 'scientists think' when it's unproven or unsettled.
+- Shares and saves are still tiny. Test a final line people want to send to a friend (an ironic moral, a 'that's why' reveal).
+- IG average watch was highest (over 21 seconds) on the soda and honest-store videos: a clear cause and effect plus a twist ending. Copy that structure.
+- Game-world economics (the gold glitch) did well on both platforms. Keep one game or story-world economics video in the rotation.
+- Holiday and date anniversaries (Franksgiving, the November 1963 cons) earn saves, so plan around calendar dates.
+- Review this playbook every week against views, average watch, shares and saves, and double down on the top 2 hook and topic pairs.

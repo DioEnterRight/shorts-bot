@@ -154,6 +154,17 @@
       "video_id": "20261121-045053-en-the-department-store-that-ba",
       "status": "produced",
       "created": "2026-11-21T05:55+05:30"
+    },
+    {
+      "canonical_en": "How did one trader borrow millions against tanks of salad oil that were mostly water, and why did almost nobody notice when it collapsed in November 1963?",
+      "question": "How do you borrow millions against oil you don't have?",
+      "hook": "A man borrowed millions on salad oil that didn't exist.",
+      "angle": "This is a heist with no break-in. Inspectors dipped a tube into each tank, but hidden compartments kept a thin layer of real oil right where they measured, with water or nothing below. Banks lent against warehouse receipts, the receipts were backed by those tanks, and the tanks were fake. The scandal broke on Nov 19, 1963, and three days later JFK was shot, so it fell to the back pages. The anniversary is this week.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261122-044424-en-the-1963-salad-oil-swindle",
+      "status": "produced",
+      "created": "2026-11-22T06:06+05:30"
     }
   ]
 }

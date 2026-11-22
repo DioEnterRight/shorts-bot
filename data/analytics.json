@@ -20,8 +20,20 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
+        "ig": 0
+      },
+      "metrics_day7": {
+        "ig_views": 0,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0
+      },
+      "views_day7": {
         "ig": 0
       }
     },
@@ -48,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -77,7 +89,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -106,7 +118,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -123,14 +135,14 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 361,
-        "ig_reach": 295,
-        "ig_likes": 6,
+        "ig_views": 366,
+        "ig_reach": 299,
+        "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 15203,
-        "yt_views": 986,
+        "ig_avg_watch_ms": 15085,
+        "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -138,10 +150,10 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
-        "yt": 986,
-        "ig": 361
+        "yt": 988,
+        "ig": 366
       }
     },
     "20261117-154837-en-the-tulip-mania-myth": {
@@ -155,25 +167,25 @@
       "duration": 43.6,
       "published_at": "2026-11-17T20:02+05:30",
       "metrics": {
-        "ig_views": 173,
-        "ig_reach": 146,
-        "ig_likes": 5,
+        "ig_views": 179,
+        "ig_reach": 149,
+        "ig_likes": 6,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 11037,
-        "yt_views": 979,
+        "ig_avg_watch_ms": 10793,
+        "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 90.7,
+        "yt_avg_view_pct": 89.6,
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
-        "yt": 979,
-        "ig": 173
+        "yt": 980,
+        "ig": 179
       }
     },
     "20261118-140127-en-why-scam-emails-are-badly-wr": {
@@ -187,25 +199,25 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 161,
-        "ig_reach": 122,
-        "ig_likes": 1,
+        "ig_views": 166,
+        "ig_reach": 126,
+        "ig_likes": 2,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 14256,
+        "ig_avg_watch_ms": 13956,
         "yt_views": 1189,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 66.1,
+        "yt_avg_view_pct": 66.4,
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
         "yt": 1189,
-        "ig": 161
+        "ig": 166
       }
     },
     "20261119-045408-en-how-a-gold-duplication-glitc": {
@@ -219,22 +231,25 @@
       "duration": 37.57,
       "published_at": "2026-11-19T16:40+05:30",
       "metrics": {
-        "ig_views": 1444,
-        "ig_reach": 1099,
-        "ig_likes": 7,
+        "ig_views": 1456,
+        "ig_reach": 1104,
+        "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17540,
-        "yt_views": 1257,
+        "ig_avg_watch_ms": 17505,
+        "yt_views": 1272,
         "yt_likes": 41,
         "yt_comments": 1,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 81.3,
+        "yt_avg_view_sec": 30,
+        "yt_subs_gained": 2
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
-        "yt": 1257,
-        "ig": 1444
+        "yt": 1272,
+        "ig": 1456
       }
     },
     "20261119-164610-en-the-stamp-trick-behind-the-f": {
@@ -248,22 +263,25 @@
       "duration": 39.42,
       "published_at": "2026-11-19T19:20+05:30",
       "metrics": {
-        "ig_views": 557,
-        "ig_reach": 386,
-        "ig_likes": 7,
+        "ig_views": 567,
+        "ig_reach": 389,
+        "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 19014,
-        "yt_views": 1220,
+        "ig_avg_watch_ms": 18938,
+        "yt_views": 1226,
         "yt_likes": 25,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 73.3,
+        "yt_avg_view_sec": 29,
+        "yt_subs_gained": 1
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
-        "yt": 1220,
-        "ig": 557
+        "yt": 1226,
+        "ig": 567
       }
     },
     "20261120-045059-en-why-one-soda-cost-five-cents": {
@@ -277,22 +295,51 @@
       "duration": 36.73,
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
-        "ig_views": 2146,
-        "ig_reach": 1360,
-        "ig_likes": 35,
+        "ig_views": 2185,
+        "ig_reach": 1384,
+        "ig_likes": 36,
         "ig_comments": 0,
-        "ig_shares": 0,
+        "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 22075,
-        "yt_views": 1271,
-        "yt_likes": 31,
+        "ig_avg_watch_ms": 21788,
+        "yt_views": 1694,
+        "yt_likes": 34,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-21T04:50+05:30",
+      "last_update": "2026-11-22T04:44+05:30",
       "views": {
-        "yt": 1271,
-        "ig": 2146
+        "yt": 1694,
+        "ig": 2185
+      }
+    },
+    "20261121-045053-en-the-department-store-that-ba": {
+      "video_id": "20261121-045053-en-the-department-store-that-ba",
+      "language": "en",
+      "topic": "The department store that banned fake sales and lost almost a billion dollars",
+      "theme": "explainer",
+      "title": "The Store That Died From Telling the Truth",
+      "hook_type": "paradox",
+      "hook_line": "A store stopped lying about prices, and its customers ran away.",
+      "duration": 34.44,
+      "published_at": "2026-11-21T16:07+05:30",
+      "metrics": {
+        "ig_views": 1505,
+        "ig_reach": 1051,
+        "ig_likes": 22,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 24403,
+        "yt_views": 1631,
+        "yt_likes": 35,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-22T04:44+05:30",
+      "views": {
+        "yt": 1631,
+        "ig": 1505
       }
     }
   },
@@ -305,12 +352,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 6,
+          "en": 8,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-21T04:50+05:30"
+      "computed_at": "2026-11-22T04:44+05:30"
     }
   },
-  "updated": "2026-11-21T04:50+05:30"
+  "updated": "2026-11-22T04:44+05:30"
 }
