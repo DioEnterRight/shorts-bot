@@ -382,8 +382,14 @@
       "duration": 34.08,
       "storyboard": "3d",
       "tag": "vid-20261122-044424-en-the-1963-salad-oil-swindle",
-      "status": "queued",
-      "created": "2026-11-22T06:06+05:30"
+      "status": "published",
+      "created": "2026-11-22T06:06+05:30",
+      "ig_media_id": "17985876942120618",
+      "ig_link": "https://www.instagram.com/reel/DgCm01oDTlL/",
+      "ig_state": "posted",
+      "yt_video_id": "SAs2SAVSzf4",
+      "yt_state": "posted",
+      "published_at": "2026-11-22T16:08+05:30"
     }
   ],
   "version": 2,
