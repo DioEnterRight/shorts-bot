@@ -386,5 +386,16 @@
       "created": "2026-11-22T06:06+05:30"
     }
   ],
-  "version": 2
+  "version": 2,
+  "longform": [
+    {
+      "id": "20261122-long-why-one-soda-cost-five-cents",
+      "topic": "Why one soda cost five cents for seventy years",
+      "source_short": "20261120-045059-en-why-one-soda-cost-five-cents",
+      "yt_id": "zDDvSpmHmZ4",
+      "privacy": "private",
+      "tag": "long-20261122-long-why-one-soda-cost-five-cents",
+      "created": "2026-11-22T11:41+05:30"
+    }
+  ]
 }
