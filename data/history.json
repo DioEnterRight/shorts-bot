@@ -390,6 +390,22 @@
       "yt_video_id": "SAs2SAVSzf4",
       "yt_state": "posted",
       "published_at": "2026-11-22T16:08+05:30"
+    },
+    {
+      "id": "20261123-044748-en-the-hope-diamond-sent-by-mai",
+      "title": "The Hope Diamond Was Mailed for $2.44",
+      "topic": "The Hope Diamond sent by mail in 1958",
+      "canonical_en": "In 1958 the Hope Diamond was sent from New York to the Smithsonian in a plain brown package by registered mail, for $2.44 in postage.",
+      "language": "en",
+      "theme": "story",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "The world's most famous diamond was mailed for two dollars forty-four.",
+      "duration": 42.21,
+      "storyboard": "3d",
+      "tag": "vid-20261123-044748-en-the-hope-diamond-sent-by-mai",
+      "status": "queued",
+      "created": "2026-11-23T06:00+05:30"
     }
   ],
   "version": 2,

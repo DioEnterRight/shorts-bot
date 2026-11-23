@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
         "ig": 0
       },
@@ -60,8 +60,25 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
+        "yt": 68,
+        "ig": 0
+      },
+      "metrics_day7": {
+        "ig_views": 0,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 68,
+        "yt_likes": 1,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "views_day7": {
         "yt": 68,
         "ig": 0
       }
@@ -89,8 +106,25 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
+        "yt": 466,
+        "ig": 0
+      },
+      "metrics_day7": {
+        "ig_views": 0,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 466,
+        "yt_likes": 11,
+        "yt_comments": 1,
+        "yt_privacy": "public"
+      },
+      "views_day7": {
         "yt": 466,
         "ig": 0
       }
@@ -118,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -135,13 +169,13 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 366,
-        "ig_reach": 299,
+        "ig_views": 367,
+        "ig_reach": 300,
         "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 15085,
+        "ig_avg_watch_ms": 15036,
         "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
@@ -150,10 +184,10 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
         "yt": 988,
-        "ig": 366
+        "ig": 367
       }
     },
     "20261117-154837-en-the-tulip-mania-myth": {
@@ -167,25 +201,25 @@
       "duration": 43.6,
       "published_at": "2026-11-17T20:02+05:30",
       "metrics": {
-        "ig_views": 179,
-        "ig_reach": 149,
+        "ig_views": 180,
+        "ig_reach": 150,
         "ig_likes": 6,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10793,
+        "ig_avg_watch_ms": 10665,
         "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 89.6,
+        "yt_avg_view_pct": 89.8,
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
         "yt": 980,
-        "ig": 179
+        "ig": 180
       }
     },
     "20261118-140127-en-why-scam-emails-are-badly-wr": {
@@ -199,14 +233,14 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 166,
-        "ig_reach": 126,
+        "ig_views": 169,
+        "ig_reach": 128,
         "ig_likes": 2,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13956,
-        "yt_views": 1189,
+        "ig_avg_watch_ms": 13779,
+        "yt_views": 1188,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -214,10 +248,10 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
-        "yt": 1189,
-        "ig": 166
+        "yt": 1188,
+        "ig": 169
       }
     },
     "20261119-045408-en-how-a-gold-duplication-glitc": {
@@ -231,25 +265,25 @@
       "duration": 37.57,
       "published_at": "2026-11-19T16:40+05:30",
       "metrics": {
-        "ig_views": 1456,
-        "ig_reach": 1104,
+        "ig_views": 1458,
+        "ig_reach": 1105,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17505,
-        "yt_views": 1272,
+        "ig_avg_watch_ms": 17476,
+        "yt_views": 1286,
         "yt_likes": 41,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 81.3,
+        "yt_avg_view_pct": 80.8,
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
-        "yt": 1272,
-        "ig": 1456
+        "yt": 1286,
+        "ig": 1458
       }
     },
     "20261119-164610-en-the-stamp-trick-behind-the-f": {
@@ -263,14 +297,14 @@
       "duration": 39.42,
       "published_at": "2026-11-19T19:20+05:30",
       "metrics": {
-        "ig_views": 567,
-        "ig_reach": 389,
+        "ig_views": 574,
+        "ig_reach": 390,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18938,
-        "yt_views": 1226,
+        "ig_avg_watch_ms": 18787,
+        "yt_views": 1225,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -278,10 +312,10 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
-        "yt": 1226,
-        "ig": 567
+        "yt": 1225,
+        "ig": 574
       }
     },
     "20261120-045059-en-why-one-soda-cost-five-cents": {
@@ -295,22 +329,25 @@
       "duration": 36.73,
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
-        "ig_views": 2185,
-        "ig_reach": 1384,
+        "ig_views": 2191,
+        "ig_reach": 1388,
         "ig_likes": 36,
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21788,
-        "yt_views": 1694,
+        "ig_avg_watch_ms": 21743,
+        "yt_views": 1922,
         "yt_likes": 34,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 96.2,
+        "yt_avg_view_sec": 35,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
-        "yt": 1694,
-        "ig": 2185
+        "yt": 1922,
+        "ig": 2191
       }
     },
     "20261121-045053-en-the-department-store-that-ba": {
@@ -324,22 +361,51 @@
       "duration": 34.44,
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
-        "ig_views": 1505,
-        "ig_reach": 1051,
+        "ig_views": 1534,
+        "ig_reach": 1073,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24403,
-        "yt_views": 1631,
+        "ig_avg_watch_ms": 24257,
+        "yt_views": 1875,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-22T04:44+05:30",
+      "last_update": "2026-11-23T04:47+05:30",
       "views": {
-        "yt": 1631,
-        "ig": 1505
+        "yt": 1875,
+        "ig": 1534
+      }
+    },
+    "20261122-044424-en-the-1963-salad-oil-swindle": {
+      "video_id": "20261122-044424-en-the-1963-salad-oil-swindle",
+      "language": "en",
+      "topic": "The 1963 salad oil swindle",
+      "theme": "explainer",
+      "title": "The Salad Oil That Was Mostly Water",
+      "hook_type": "paradox",
+      "hook_line": "A man borrowed millions on salad oil that wasn't there.",
+      "duration": 34.08,
+      "published_at": "2026-11-22T16:08+05:30",
+      "metrics": {
+        "ig_views": 1924,
+        "ig_reach": 1280,
+        "ig_likes": 15,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 18616,
+        "yt_views": 1456,
+        "yt_likes": 28,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-23T04:47+05:30",
+      "views": {
+        "yt": 1456,
+        "ig": 1924
       }
     }
   },
@@ -352,12 +418,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 8,
+          "en": 9,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-22T04:44+05:30"
+      "computed_at": "2026-11-23T04:47+05:30"
     }
   },
-  "updated": "2026-11-22T04:44+05:30"
+  "updated": "2026-11-23T04:47+05:30"
 }

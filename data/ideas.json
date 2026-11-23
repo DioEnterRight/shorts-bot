@@ -165,6 +165,17 @@
       "video_id": "20261122-044424-en-the-1963-salad-oil-swindle",
       "status": "produced",
       "created": "2026-11-22T06:06+05:30"
+    },
+    {
+      "canonical_en": "In 1958 the Hope Diamond was sent from New York to the Smithsonian in a plain brown package by registered mail, for $2.44 in postage.",
+      "question": "Why would anyone mail the world's most famous diamond like a birthday card?",
+      "hook": "The world's most famous diamond was mailed for two dollars forty-four.",
+      "angle": "This is security psychology shown as a story. Armed guards and armoured cars announce 'something valuable is here'. A dull brown parcel announces nothing. The real lesson is that being boring can be the best disguise.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261123-044748-en-the-hope-diamond-sent-by-mai",
+      "status": "produced",
+      "created": "2026-11-23T06:00+05:30"
     }
   ]
 }
