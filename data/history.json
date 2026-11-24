@@ -426,8 +426,14 @@
       "duration": 30.7,
       "storyboard": "3d",
       "tag": "vid-20261124-050419-en-why-100-bills-outnumber-1-bi",
-      "status": "queued",
-      "created": "2026-11-24T06:04+05:30"
+      "status": "published",
+      "created": "2026-11-24T06:04+05:30",
+      "ig_media_id": "18128294569907532",
+      "ig_link": "https://www.instagram.com/reel/DgHxRgajO5I/",
+      "ig_state": "posted",
+      "yt_video_id": "BCm9YV1KHDg",
+      "yt_state": "posted",
+      "published_at": "2026-11-24T16:15+05:30"
     }
   ],
   "version": 2,
