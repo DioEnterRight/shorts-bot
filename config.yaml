@@ -114,7 +114,7 @@ claude:
 # Mixed 3D + 2D Shorts (.claude/skills/cartoon-audio-short). The run log prints "Claude usage: ..." per call;
 # compare /usage in Claude Code before and after a run to see the share of your weekly limit.
 cartoon3d:
-  builder: claude             # claude  = Claude Opus writes the whole 3D project (~$5 API-equivalent per Short)
+  builder: freellm             # claude  = Claude Opus writes the whole 3D project (~$5 API-equivalent per Short)
                               # freellm = your FreeLLMAPI writes a JSON storyboard, code builds the 3D world (free).
                               #           Switch after FREELLM_SETUP.md steps 1-3 (secret FREELLMAPI_KEYS + Test FreeLLMAPI green).
   claude_rescue: false        # true = if the free builder fails, let Claude build that Short instead of falling to 2D
