@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -192,7 +192,7 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 15036,
+        "ig_avg_watch_ms": 14991,
         "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
@@ -201,8 +201,28 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
+        "yt": 988,
+        "ig": 367
+      },
+      "metrics_day7": {
+        "ig_views": 367,
+        "ig_reach": 300,
+        "ig_likes": 7,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 2,
+        "ig_avg_watch_ms": 14991,
+        "yt_views": 988,
+        "yt_likes": 23,
+        "yt_comments": 0,
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 62.1,
+        "yt_avg_view_sec": 26,
+        "yt_subs_gained": 0
+      },
+      "views_day7": {
         "yt": 988,
         "ig": 367
       }
@@ -224,7 +244,7 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10665,
+        "ig_avg_watch_ms": 10601,
         "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
@@ -233,7 +253,7 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 980,
         "ig": 180
@@ -256,7 +276,7 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13779,
+        "ig_avg_watch_ms": 13680,
         "yt_views": 1187,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -265,7 +285,7 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 1187,
         "ig": 169
@@ -288,7 +308,7 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17460,
+        "ig_avg_watch_ms": 17445,
         "yt_views": 1290,
         "yt_likes": 41,
         "yt_comments": 1,
@@ -297,7 +317,7 @@
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 1290,
         "ig": 1458
@@ -320,7 +340,7 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18728,
+        "ig_avg_watch_ms": 18683,
         "yt_views": 1225,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -329,7 +349,7 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
         "yt": 1225,
         "ig": 574
@@ -346,14 +366,14 @@
       "duration": 36.73,
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
-        "ig_views": 2191,
+        "ig_views": 2193,
         "ig_reach": 1388,
         "ig_likes": 36,
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21717,
-        "yt_views": 1968,
+        "ig_avg_watch_ms": 21672,
+        "yt_views": 1973,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -361,10 +381,10 @@
         "yt_avg_view_sec": 33,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
-        "yt": 1968,
-        "ig": 2191
+        "yt": 1973,
+        "ig": 2193
       }
     },
     "20261121-045053-en-the-department-store-that-ba": {
@@ -384,8 +404,8 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24217,
-        "yt_views": 1920,
+        "ig_avg_watch_ms": 24195,
+        "yt_views": 1930,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -393,9 +413,9 @@
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
-        "yt": 1920,
+        "yt": 1930,
         "ig": 1534
       }
     },
@@ -410,22 +430,22 @@
       "duration": 34.08,
       "published_at": "2026-11-22T16:08+05:30",
       "metrics": {
-        "ig_views": 1941,
+        "ig_views": 1942,
         "ig_reach": 1294,
         "ig_likes": 15,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18533,
-        "yt_views": 1493,
+        "ig_avg_watch_ms": 18508,
+        "yt_views": 1500,
         "yt_likes": 29,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
-        "yt": 1493,
-        "ig": 1941
+        "yt": 1500,
+        "ig": 1942
       }
     },
     "20261123-044748-en-the-hope-diamond-sent-by-mai": {
@@ -439,22 +459,51 @@
       "duration": 42.21,
       "published_at": "2026-11-23T16:24+05:30",
       "metrics": {
-        "ig_views": 1899,
-        "ig_reach": 1355,
+        "ig_views": 1903,
+        "ig_reach": 1360,
         "ig_likes": 24,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21640,
-        "yt_views": 1261,
+        "ig_avg_watch_ms": 21581,
+        "yt_views": 1293,
         "yt_likes": 34,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-24T05:04+05:30",
+      "last_update": "2026-11-24T18:10+05:30",
       "views": {
-        "yt": 1261,
-        "ig": 1899
+        "yt": 1293,
+        "ig": 1903
+      }
+    },
+    "20261124-050419-en-why-100-bills-outnumber-1-bi": {
+      "video_id": "20261124-050419-en-why-100-bills-outnumber-1-bi",
+      "language": "en",
+      "topic": "Why $100 bills outnumber $1 bills",
+      "theme": "explainer",
+      "title": "Why Hundreds Outnumber One-Dollar Bills",
+      "hook_type": "paradox",
+      "hook_line": "There are more hundred-dollar bills in the world than ones.",
+      "duration": 30.7,
+      "published_at": "2026-11-24T16:15+05:30",
+      "metrics": {
+        "ig_views": 2126,
+        "ig_reach": 1312,
+        "ig_likes": 13,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 20732,
+        "yt_views": 933,
+        "yt_likes": 34,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-24T18:10+05:30",
+      "views": {
+        "yt": 933,
+        "ig": 2126
       }
     }
   },
@@ -467,12 +516,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 10,
+          "en": 11,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-24T05:04+05:30"
+      "computed_at": "2026-11-24T18:10+05:30"
     }
   },
-  "updated": "2026-11-24T05:04+05:30"
+  "updated": "2026-11-24T18:10+05:30"
 }

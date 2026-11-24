@@ -434,6 +434,22 @@
       "yt_video_id": "BCm9YV1KHDg",
       "yt_state": "posted",
       "published_at": "2026-11-24T16:15+05:30"
+    },
+    {
+      "id": "20261124-181038-en-d-b-cooper-s-untraceable-the",
+      "title": "The Heist Loot Nobody Could Spend",
+      "topic": "D.B. Cooper's untraceable-then-traceable ransom",
+      "canonical_en": "Why D.B. Cooper's $200,000 ransom was almost impossible to spend, and why only $5,800 of it has ever been found",
+      "language": "en",
+      "theme": "explainer",
+      "category": "true_crime",
+      "hook_type": "paradox",
+      "hook_line": "America's most famous hijacker got away with money he couldn't spend.",
+      "duration": 34.78,
+      "storyboard": "3d",
+      "tag": "vid-20261124-181038-en-d-b-cooper-s-untraceable-the",
+      "status": "queued",
+      "created": "2026-11-24T18:54+05:30"
     }
   ],
   "version": 2,

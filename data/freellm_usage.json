@@ -1,0 +1,11 @@
+{
+  "2026-11": {
+    "calls": 4,
+    "prompt_tokens": 26308,
+    "completion_tokens": 8589,
+    "by_model": {
+      "groq/qwen/qwen3.8-27b": 2,
+      "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 2
+    }
+  }
+}

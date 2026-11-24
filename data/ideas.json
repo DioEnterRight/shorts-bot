@@ -187,6 +187,17 @@
       "video_id": "20261124-050419-en-why-100-bills-outnumber-1-bi",
       "status": "produced",
       "created": "2026-11-24T06:04+05:30"
+    },
+    {
+      "canonical_en": "Why D.B. Cooper's $200,000 ransom was almost impossible to spend, and why only $5,800 of it has ever been found",
+      "question": "D.B. Cooper got away with $200,000. So why did almost none of it ever show up?",
+      "hook": "America's most famous hijacker got away with money he couldn't spend.",
+      "angle": "Today is the 55th anniversary (Nov 24, 1971). Instead of asking who he was, we follow the money: before handing it over, the FBI and Seattle First National Bank photographed the serial number of every one of the 10,000 twenty-dollar bills on microfilm, so every bill was traceable.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261124-181038-en-d-b-cooper-s-untraceable-the",
+      "status": "produced",
+      "created": "2026-11-24T18:54+05:30"
     }
   ]
 }
