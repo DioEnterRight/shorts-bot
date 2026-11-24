@@ -27,7 +27,8 @@ def test_state_push_failures_are_not_swallowed():
     for f in WF.glob("*.yml"):
         txt = f.read_text()
         assert "git push || true" not in txt and "pull --rebase -q || true" not in txt, f
-        assert "tools/save_state.sh" in txt, f
+        if yaml.safe_load(txt)["permissions"].get("contents") == "write":   # read-only checks save nothing
+            assert "tools/save_state.sh" in txt, f
     script = (ROOT / "tools" / "save_state.sh").read_text()
     assert "set -euo pipefail" in script and "exit 1" in script
 
@@ -39,7 +40,7 @@ def test_language_selector():
 
 def test_schedules_unchanged():
     assert load("make-video.yml")[True]["schedule"][0]["cron"] == "33 22 * * *"
-    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "27 13 * * *"
+    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "57 9 * * *"   # 15:27 IST, set by Dexter
 
 
 def test_scheduled_run_is_never_test_mode():

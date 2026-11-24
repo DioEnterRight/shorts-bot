@@ -57,6 +57,11 @@ cameras and a sound-cue table, checks one or two contact sheets, and the bot ren
 than toon2d: every Claude call logs `Claude usage: ...`, and `/usage` in Claude Code before and after a run shows
 the share of your weekly limit. Too much? Set `style: toon2d`. Test mode renders the kit's soldier example.
 
+**Free 3D builder (`cartoon3d → builder: freellm`).** Claude still writes the idea and script; your FreeLLMAPI
+(started inside the job from the `FREELLMAPI_KEYS` secret, like roblox-stories-bot) plans the 3D world as a small JSON
+storyboard, code checks and compiles it, then the same renderer draws it. Setup, quality design and free-tier
+safety: [FREELLM_SETUP.md](FREELLM_SETUP.md).
+
 ## 🇮🇳 English + Hindi
 
 Every video is one language. Hindi is written fresh as natural Hinglish (Devanagari, with everyday English
