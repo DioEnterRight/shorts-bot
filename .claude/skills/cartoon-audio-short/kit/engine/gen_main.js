@@ -4,7 +4,8 @@ import * as THREE from './lib/three.module.js';
 import * as T from './toon.js';
 import * as P from './paint.js';
 import { GLTFLoader } from './lib/GLTFLoader.js';
-import { DATA, SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt } from './story.js';
+import { DATA, SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt, propAt } from './story.js';
+import * as PF from './prefabs.js';
 
 const W = 1080, H = 1920;
 const canvas = document.getElementById('c');
@@ -120,14 +121,34 @@ const GROUND = {
   dark: () => toon({ color: '#2a2a33' }), dirt: () => M.dirt,
 };
 const stages = [];
+const ff = new FontFace('Kalam', 'url(fonts/Kalam-Bold.ttf)'); await ff.load(); document.fonts.add(ff);   // text on signs, notes, bills
+PF.init(toon);
 for (const sc of DATA.scenes) {
-  const g = new THREE.Group(); g.visible = false; scene.add(g); stages.push(g);
-  const ground = add(new THREE.PlaneGeometry(500, 500), (GROUND[sc.ground] || GROUND.grass)(), 0, 0, 0, g, { cast: false });
-  ground.rotation.x = -Math.PI / 2;
+  const g = new THREE.Group(); g.visible = false; scene.add(g); stages.push(g); g.userData.props = [];
+  if (sc.ground === 'sky') {   // in the air: a sea of clouds far below, no ground plane
+    for (let i = 0; i < 26; i++) { const c = PF.make('cloud'); const a = i * 2.4, r = 14 + (i * 37) % 60; c.position.set(Math.cos(a) * r, -16 - (i % 4) * 3, Math.sin(a) * r - 20); c.scale.setScalar(2 + (i % 3)); g.add(c); }
+  } else {
+    const ground = add(new THREE.PlaneGeometry(500, 500), (GROUND[sc.ground] || GROUND.grass)(), 0, 0, 0, g, { cast: false });
+    ground.rotation.x = -Math.PI / 2;
+  }
   if (sc.wall) add(box(120, 40, 1), toon({ color: sc.wall }), 0, 20, -16, g, { cast: false });
-  for (const p of sc.props) await model(p.model, p.x, 0, p.z, { scale: p.scale, rotY: p.rotY, tint: p.tint || null, parent: g });
+  for (const p of sc.props) {
+    let o;
+    if (p.prefab) { o = PF.make(p.prefab, p.opts || {}); o.position.set(p.x, p.y || 0, p.z); o.rotation.y = p.rotY; o.scale.setScalar(p.scale); g.add(o); }
+    else o = await model(p.model, p.x, p.y || 0, p.z, { scale: p.scale, rotY: p.rotY, tint: p.tint || null, parent: g });
+    o.userData.base = { x: p.x, y: p.y || 0, z: p.z, ry: p.rotY, s: p.scale }; o.userData.anim = p.anim || null;
+    g.userData.props.push(o);
+  }
 }
-const worldState = (W_) => { stages.forEach((g, i) => { g.visible = i === W_.stage; }); };
+const worldState = (W_, f) => {
+  stages.forEach((g, i) => { g.visible = i === W_.stage; });
+  for (const o of stages[W_.stage].userData.props) {
+    const b = o.userData.base, A = propAt(f, o.userData.anim);
+    o.visible = A.show; o.position.set(b.x + A.dx, b.y + A.dy, b.z + A.dz);
+    o.rotation.set(A.rx, b.ry + A.ry, A.rz); o.scale.setScalar(b.s * A.s);
+    if (o.userData.grow) o.userData.grow(A.k);
+  }
+};
 
 // ---------- cards ----------
 const CW = 1200, CH = 2000, CM = 2.25; // canvas px, card height in metres (design 600x1000 -> 2.25 m)
@@ -253,7 +274,7 @@ window.renderFrame = (f) => {
   applyLight(L);
   camera.position.set(...C.pos); camera.up.set(0, 1, 0); camera.lookAt(...C.look); camera.rotateZ(rx(C.roll || 0));
   camera.fov = C.fov; camera.updateProjectionMatrix(); camera.updateMatrixWorld();
-  const W_ = worldAt(f); worldState(W_);
+  const W_ = worldAt(f); worldState(W_, f);
   placeSun(L, new THREE.Vector3(...(C.shadowAt || C.look)));
   drawActors([...actorsAt(f, T), ...fxAt(f, T)], camera);
   sky.position.copy(camera.position);

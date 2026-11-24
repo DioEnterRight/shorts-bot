@@ -14,7 +14,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from . import freellm, storyboard3d
+from . import freellm, reel_qc, storyboard3d
 from .common import ROOT, log, run
 
 KIT = ROOT / ".claude" / "skills" / "cartoon-audio-short" / "kit"
@@ -177,7 +177,7 @@ def _stills_ok(project, frames):
     shutil.rmtree(d)
 
 
-def _ask(cfg, budget, msgs, n, models):
+def _ask(cfg, budget, msgs, n, models, lines):
     """One storyboard request plus up to freellm.repair_rounds fix-ups. -> (clean scenes, raw storyboard, problems)."""
     rounds = int(cfg.get("freellm", {}).get("repair_rounds", 2))
     best = None
@@ -185,7 +185,7 @@ def _ask(cfg, budget, msgs, n, models):
         reply = freellm.chat(cfg, msgs, budget)
         try:
             raw = freellm.extract_json(reply)
-            clean, problems = storyboard3d.normalize(raw, n, models)
+            clean, problems = storyboard3d.normalize(raw, n, models, lines)
         except ValueError as e:
             raw, clean, problems = None, None, [f"your reply was not usable: {e}"]
         log(f"cartoon3d: storyboard attempt {attempt + 1}: {len(problems)} problem(s)" + (f" - {problems[0]}" if problems else ""))
@@ -201,17 +201,17 @@ def _ask(cfg, budget, msgs, n, models):
     return best
 
 
-def free_storyboard(cfg, script, spans, fps=FPS):
-    """Draft -> fix-ups -> art-director review. The review is kept only when it is at least as clean as the draft."""
-    budget = freellm.Budget(cfg)
+def free_storyboard(cfg, script, spans, budget, fps=FPS):
+    """Director draft -> fix-ups -> director's review. The review is kept only when it is at least as clean as the draft."""
     models, n = storyboard3d.parse_catalog(), len(spans)
-    clean, raw, problems = _ask(cfg, budget, storyboard3d.build_messages(script, spans, fps), n, models)
+    lines = [sc["line"] for sc in script["scenes"]]
+    clean, raw, problems = _ask(cfg, budget, storyboard3d.build_messages(script, spans, fps), n, models, lines)
     if cfg.get("freellm", {}).get("review", True):
         try:
-            c2, r2, p2 = _ask(cfg, budget, storyboard3d.review_messages(script, spans, raw, fps), n, models)
+            c2, r2, p2 = _ask(cfg, budget, storyboard3d.review_messages(script, spans, raw, fps), n, models, lines)
             if len(p2) <= len(problems):
                 clean, raw, problems = c2, r2, p2
-                log("cartoon3d: art-director review accepted")
+                log("cartoon3d: director's review accepted")
             else:
                 log("cartoon3d: review came back worse; keeping the draft", "WARN")
         except RuntimeError as e:   # budget or provider trouble: the checked draft is still good
@@ -221,8 +221,79 @@ def free_storyboard(cfg, script, spans, fps=FPS):
     return clean, raw
 
 
+def _scene_stills(project, frames_list, name):
+    d = project / name
+    shutil.rmtree(d, ignore_errors=True)
+    run(["node", "render.mjs", str(d), ",".join(map(str, frames_list)), "1"], cwd=project, env=_env(), timeout=900)
+    return [d / f"f{f:04d}.jpg" for f in frames_list]
+
+
+def _build(project, scenes, spans, frames, words):
+    data = storyboard3d.compile_data(scenes, spans, frames, FPS, words)
+    storyboard3d.write_project(project, data)
+    return data
+
+
+def visual_pass(cfg, budget, project, script, spans, frames, words, scenes, raw):
+    """Look at one real still per scene with a free vision model; rewrite only weak scenes; keep the rewrite only if the
+    re-rendered stills score better. -> (data, scenes, raw, review or None)."""
+    data = _build(project, scenes, spans, frames, words)
+    if not cfg.get("reel_qc", {}).get("visual_review", True):
+        return data, scenes, raw, None
+    brief = (storyboard3d.DIRECTOR / "quality-control" / "visual-review.md").read_text(encoding="utf-8")
+    try:
+        sheet = reel_qc.contact_sheet(_scene_stills(project, reel_qc.scene_frames(data), "qc_stills"))
+        review = reel_qc.preview_review(cfg, budget, sheet, script, brief)
+    except RuntimeError as e:
+        log(f"reel QC: visual review skipped, no vision model answered ({str(e)[:200]})", "WARN")
+        return data, scenes, raw, None
+    log(f"reel QC: preview scores {[s['score'] for s in review['scenes']]} - {review['summary'][:160]}")
+    weak = reel_qc.weak_scenes(review, int(cfg.get("reel_qc", {}).get("max_fix_scenes", 4)))
+    if not weak:
+        return data, scenes, raw, review
+    ids = [w["n"] for w in weak]
+    log(f"reel QC: fixing weak scene(s) {ids}: " + "; ".join(f"{w['n']}: {w['issue']}" for w in weak)[:400])
+    try:
+        n, lines = len(spans), [sc["line"] for sc in script["scenes"]]
+        _, r2, _ = _ask(cfg, budget, storyboard3d.fix_messages(script, spans, raw, weak), n, storyboard3d.parse_catalog(), lines)
+        merged = json.loads(json.dumps(raw))
+        names = {str(c.get("name", "")).lower() for c in merged.get("cast") or []}
+        merged["cast"] = (merged.get("cast") or []) + [c for c in r2.get("cast") or [] if str(c.get("name", "")).lower() not in names][:4 - len(names)]
+        for i in ids:
+            if i - 1 < len(r2.get("scenes") or []):
+                merged["scenes"][i - 1] = r2["scenes"][i - 1]
+        s2, problems = storyboard3d.normalize(merged, n, storyboard3d.parse_catalog(), lines)
+        if storyboard3d.fatal(problems, n):
+            raise RuntimeError("fixed storyboard is unusable")
+        data2 = _build(project, s2, spans, frames, words)
+        sheet2 = reel_qc.contact_sheet(_scene_stills(project, reel_qc.scene_frames(data2), "qc_stills2"))
+        review2 = reel_qc.preview_review(cfg, budget, sheet2, script, brief)
+    except (RuntimeError, ValueError) as e:
+        log(f"reel QC: scene fix skipped ({str(e)[:200]}); keeping the reviewed version", "WARN")
+        return _build(project, scenes, spans, frames, words), scenes, raw, review
+    before, after = reel_qc.review_mean(review, ids), reel_qc.review_mean(review2, ids)
+    if after is not None and before is not None and after > before:
+        log(f"reel QC: fix verified on re-rendered stills, weak scenes {before:.1f} -> {after:.1f}")
+        return data2, s2, merged, review2
+    log(f"reel QC: fix did not score better ({before} -> {after}); keeping the earlier version", "WARN")
+    return _build(project, scenes, spans, frames, words), scenes, raw, review
+
+
+def _report(rep, title, work):
+    md = reel_qc.report_markdown(rep, title)
+    d = work / "cartoon3d_work"; d.mkdir(parents=True, exist_ok=True)
+    (d / "quality_report.md").write_text(md, encoding="utf-8")
+    (d / "quality_report.json").write_text(json.dumps(rep, indent=1, ensure_ascii=False), encoding="utf-8")
+    log(f"reel QC: score {rep['score']}/100 - {rep['verdict']}; categories {rep['categories']}; critical {rep['critical'] or 'none'}")
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as f:
+            f.write(md + "\n")
+
+
 def render_free(cfg, script, timeline, voice_path, duration, work):
-    """The free LLM only writes a JSON storyboard; code validates it, compiles it and renders it with the static engine."""
+    """The free LLM directs a JSON storyboard; code validates and compiles it, a vision pass checks real stills, the static
+    engine renders it, and the final inspector scores the MP4 (critical defects -> the caller falls back to 2D)."""
     c3 = cfg["cartoon3d"]
     if not freellm.configured(cfg):
         raise RuntimeError("cartoon3d builder=freellm but FreeLLMAPI is not running (FREELLMAPI_KEYS secret missing?)")
@@ -233,15 +304,20 @@ def render_free(cfg, script, timeline, voice_path, duration, work):
     preflight(project)
     frames = timing_files(timeline, duration, project / "work")
     spans = storyboard3d.spans_from_timeline(timeline, frames, FPS)
-    scenes, raw = free_storyboard(cfg, script, spans)
-    data = storyboard3d.compile_data(scenes, spans, frames, FPS)
-    storyboard3d.write_project(project, data)
+    words = storyboard3d.scene_words(timeline)
+    budget = freellm.Budget(cfg)
+    scenes, raw = free_storyboard(cfg, script, spans, budget)
+    data, scenes, raw, review = visual_pass(cfg, budget, project, script, spans, frames, words, scenes, raw)
     (work / "cartoon3d_work").mkdir(parents=True, exist_ok=True)
     (work / "cartoon3d_work" / "storyboard.json").write_text(json.dumps({"raw": raw, "used": scenes}, indent=1, ensure_ascii=False), encoding="utf-8")
     _stills_ok(project, frames)
     out = _finish(project, frames, int(c3.get("render_timeout_minutes", 150)) * 60, cfg, mood_of(script),
                   sfx_events=storyboard3d.sfx_events(scenes, spans, FPS))
     shutil.copytree(project / "work", work / "cartoon3d_work", dirs_exist_ok=True)
+    rep = reel_qc.inspect_final(out, data, words, review, captions=cfg.get("toon2d", {}).get("captions", True))
+    _report(rep, script["title"], work)
+    if rep["critical"]:
+        raise RuntimeError("reel QC rejected the 3D video: " + "; ".join(rep["critical"]))
     return out
 
 
