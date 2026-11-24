@@ -90,11 +90,19 @@ To go back to Claude building the 3D world: `builder: claude`.
 5. **Code check + fix-ups**: unknown props, wrong values or missing scenes go back to the model (up to 2 times).
 6. **Art-director review**: a second pass checks every scene against the narration and fixes weak ones. It is
    kept only if it is at least as clean as the draft.
+7. **Reel director skill** (`.claude/skills/reel-director/`): the model directs like a filmmaker (story purpose per scene,
+   hand-built story objects such as jets, parachutes, banknotes with serial numbers, evidence boards, labels with the key
+   number, reveals timed to the spoken word, reaction beats, a camera shot + move chosen for each scene's purpose).
+8. **Visual QC on real pixels**: one still per scene goes to a free **vision** model, weak scenes are rewritten, re-rendered and
+   re-checked; the fix stays only if it scores better. After the render, an inspector checks the MP4 (black/frozen frames,
+   loudness, captions, sync, shot variety) and writes a score out of 100 into the run's job summary. Critical defects make
+   that Short 2D. A vision-capable key (the `google` Gemini key) is needed for the visual review; without one it is skipped
+   and the report says "not inspected".
 
 ## Free-tier safety (never pays, never runs away)
 
 - Only free keys go in the secret (table above). The bot itself has no paid API anywhere in this path.
-- Max **10 requests per video** (`freellm.max_calls_per_video`).
+- Max **16 requests per video** (`freellm.max_calls_per_video`); a normal video uses 4-8.
 - Max **30M tokens per month** (`freellm.monthly_token_cap`). Usage is saved in `data/freellm_usage.json` (calls,
   tokens, which models). After the cap, 3D Shorts are made in 2D until next month. This ledger is needed because the
   FreeLLMAPI container starts fresh in every run and forgets its own counters.
@@ -109,8 +117,10 @@ To go back to Claude building the 3D world: `builder: claude`.
 | `models` | `["auto:smart"]` | Tried in order. To pin a favourite: `["gemini-2.5-pro", "auto:smart"]` (exact ids are in the Test FreeLLMAPI log) |
 | `review` | `true` | The art-director second pass (1-3 extra requests) |
 | `repair_rounds` | `2` | Fix-up rounds when code finds mistakes |
-| `max_calls_per_video` | `10` | Hard request cap per video |
+| `max_calls_per_video` | `16` | Hard request cap per video |
 | `monthly_token_cap` | `30000000` | Monthly token cap |
+| `reel_qc.visual_review` | `true` | Vision check of one still per scene + fix of weak scenes (2-5 extra requests) |
+| `reel_qc.max_fix_scenes` | `4` | Most scenes rewritten per video |
 
 Experiment `[Guessing]`: `models: ["fusion", "auto:smart"]` makes FreeLLMAPI ask a panel of ~4 models and a judge
 for every request. It might plan better, but it uses about 5x the quota and its JSON is less predictable.

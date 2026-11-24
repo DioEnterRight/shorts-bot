@@ -94,6 +94,7 @@ def test_real_render_path_end_to_end_with_a_stand_in_for_claude(tmp_path):
         return "DONE"
 
     cfg = load_config()
+    cfg["cartoon3d"]["builder"] = "claude"   # this test covers the Claude-built path, whatever config.yaml says
     script = {"title": "T", "mood": "upbeat", "scenes": [{"line": "Hello world.", "visual": "a wave"}]}
     out = cartoon3d.render(cfg, script, tl, wav, 1.2, tmp_path / "work", "en", fake_claude)
     got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=pix_fmt,width,height,nb_frames",

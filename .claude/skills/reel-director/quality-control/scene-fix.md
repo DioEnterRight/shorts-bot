@@ -1,0 +1,1 @@
+The production supervisor looked at the rendered stills and found these weak scenes. Rewrite ONLY those scenes so the picture clearly shows the narration line, following the supervisor's fix and the director brief. Keep every other scene, the cast list and the story exactly as they are, and return the complete storyboard JSON (all scenes, same order).

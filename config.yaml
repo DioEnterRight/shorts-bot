@@ -134,8 +134,14 @@ freellm:
   temperature: 0.5
   max_tokens: 8000
   timeout_seconds: 300
-  max_calls_per_video: 10     # hard cap on requests for one video (retries included)
+  max_calls_per_video: 16     # hard cap on requests for one video (retries included; QC adds 2-4)
   monthly_token_cap: 30000000 # once this month's total (data/freellm_usage.json) passes this, the free builder pauses (2D)
+
+# Reel director QC (.claude/skills/reel-director): checks the free-built 3D Shorts on real pixels.
+reel_qc:
+  visual_review: true         # a free vision model scores one still per scene against its line before the long render;
+                              # weak scenes are rewritten and kept only if the re-rendered stills score better
+  max_fix_scenes: 4           # at most this many scenes rewritten per video
 
 # How videos are drawn: the 2D ink cartoon engine (toon2d/, adapted from ReachMora 2D Long-Form).
 toon2d:

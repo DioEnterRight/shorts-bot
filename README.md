@@ -60,7 +60,9 @@ the share of your weekly limit. Too much? Set `style: toon2d`. Test mode renders
 **Free 3D builder (`cartoon3d → builder: freellm`).** Claude still writes the idea and script; your FreeLLMAPI
 (started inside the job from the `FREELLMAPI_KEYS` secret, like roblox-stories-bot) plans the 3D world as a small JSON
 storyboard, code checks and compiles it, then the same renderer draws it. Setup, quality design and free-tier
-safety: [FREELLM_SETUP.md](FREELLM_SETUP.md).
+safety: [FREELLM_SETUP.md](FREELLM_SETUP.md). Creative direction and QC come from the **reel-director** skill
+([.claude/skills/reel-director/SKILL.md](.claude/skills/reel-director/SKILL.md)): story objects, cue-timed reveals, purposeful
+camera, a vision check of real stills with targeted fixes, and a 100-point report in each run's job summary.
 
 ## 🇮🇳 English + Hindi
 

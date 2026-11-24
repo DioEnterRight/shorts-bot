@@ -33,12 +33,12 @@ def test_catalog_and_prompt_list_real_models():
     assert msgs[0]["role"] == "system" and "exactly 1 entries" in p and "Hello there." in p and "a man waves" in p
     assert "chest_gold" in p and '"who"' in p
     r = sb.review_messages({"title": "T", "scenes": [{"line": "Hello there."}]}, [(0, 59)], GOOD)[1]["content"]
-    assert "strict art director" in r and "city/streetlight" in r
+    assert "strict film director" in r and "city/streetlight" in r
 
 
 def test_the_prompt_example_is_itself_a_valid_storyboard():
-    clean, problems = sb.normalize(sb.EXAMPLE, 2, MODELS)
-    assert problems == [] and clean[0]["cast"][0]["look"] == "worker"
+    clean, problems = sb.normalize(sb.EXAMPLE, 2, MODELS, ["Then the cash appeared.", "Both bills had the same number."])
+    assert problems == [] and clean[1]["cast"][0]["look"] == "woman_teal" and clean[0]["props"][1]["prefab"] == "cash_pile"
 
 
 def test_cast_roster_keeps_characters_consistent():
@@ -54,7 +54,7 @@ def test_normalize_is_tolerant_but_reports_every_problem():
                       cast=[{"who": "vic", "expr": "grin!!", "arm": "hand"}], camera="drone", sfx="boing"), cast=[{"name": "vic", "look": "alien"}])
     clean, problems = sb.normalize(bad, 1, MODELS)
     c = clean[0]
-    assert (c["ground"], c["light"], c["camera"], c["sfx"]) == ("street", "day", "medium", "")
+    assert (c["ground"], c["light"], c["shot"], c["sfx"]) == ("street", "day", "medium", "")
     assert [p["model"] for p in c["props"]] == ["city/bench", "city/bush"] and c["cast"][0]["look"] in sb.LOOKS
     for word in ("lava", "neon", "nope/x", "nowhere", "alien", "drone", "boing", "hand"):
         assert any(word in p for p in problems), word
@@ -67,7 +67,7 @@ def test_normalize_flags_wrong_scene_count_repeats_and_empty_props():
     _, problems = sb.normalize(board(scene()), 6, MODELS)
     assert sb.fatal(problems, 6)
     _, problems = sb.normalize(board(scene(props=[{"model": "city/bush"}])), 1, MODELS)
-    assert any("add 2-6 props" in p for p in problems)
+    assert any("add 2-6 objects" in p for p in problems)
     with pytest.raises(ValueError):
         sb.normalize({"nope": 1}, 1, MODELS)
 
@@ -206,7 +206,8 @@ def test_review_is_kept_only_when_not_worse(tmp_state, monkeypatch):
     for review, expect in ((better, "city/bench"), (worse, "city/streetlight")):
         srv = FakeLLM([(200, json.dumps(GOOD)), (200, json.dumps(review))])
         try:
-            clean, raw = cartoon3d.free_storyboard(cfg_for(srv.url, monkeypatch, repair_rounds=0), script, spans)
+            cfg = cfg_for(srv.url, monkeypatch, repair_rounds=0)
+            clean, raw = cartoon3d.free_storyboard(cfg, script, spans, freellm.Budget(cfg))
             assert [p["model"] for p in clean[0]["props"]][1] == expect and len(srv.seen) == 2
         finally:
             srv.close()
@@ -237,8 +238,9 @@ def test_free_builder_end_to_end_with_a_fake_free_model(tmp_state, monkeypatch, 
         cfg = cfg_for(srv.url, monkeypatch)
         script = {"title": "T", "mood": "upbeat", "scenes": [{"line": "Hello world.", "visual": "a man waves"}]}
         out = cartoon3d.render_free(cfg, script, tl, wav, 1.2, tmp_path / "work")
-        assert len(srv.seen) == 3 and "Fix these problems" in srv.seen[1]["messages"][-1]["content"]
-        assert "strict art director" in srv.seen[2]["messages"][-1]["content"]
+        assert len(srv.seen) == 4 and "Fix these problems" in srv.seen[1]["messages"][-1]["content"]
+        assert isinstance(srv.seen[3]["messages"][0]["content"], list)   # 4th request: the visual review with the contact sheet
+        assert "strict film director" in srv.seen[2]["messages"][-1]["content"]
         assert "nope/x" in srv.seen[1]["messages"][-1]["content"]
     finally:
         srv.close()
