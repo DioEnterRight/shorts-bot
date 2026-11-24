@@ -450,6 +450,22 @@
       "tag": "vid-20261124-181038-en-d-b-cooper-s-untraceable-the",
       "status": "discarded",
       "created": "2026-11-24T18:54+05:30"
+    },
+    {
+      "id": "20261124-223947-en-the-italian-bank-that-takes",
+      "title": "The Bank Whose Vault Is Full of Cheese",
+      "topic": "The Italian bank that takes Parmesan as loan collateral",
+      "canonical_en": "Why does an Italian bank keep hundreds of thousands of wheels of Parmesan in its vaults as loan collateral?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "This bank's vault is full of cheese, not gold.",
+      "duration": 33.7,
+      "storyboard": "claude",
+      "tag": "vid-20261124-223947-en-the-italian-bank-that-takes",
+      "status": "queued",
+      "created": "2026-11-24T22:53+05:30"
     }
   ],
   "version": 2,

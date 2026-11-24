@@ -198,6 +198,17 @@
       "video_id": "20261124-181038-en-d-b-cooper-s-untraceable-the",
       "status": "produced",
       "created": "2026-11-24T18:54+05:30"
+    },
+    {
+      "canonical_en": "Why does an Italian bank keep hundreds of thousands of wheels of Parmesan in its vaults as loan collateral?",
+      "question": "Why does a real bank lend money against wheels of cheese?",
+      "hook": "This bank's vault is full of cheese, not gold.",
+      "angle": "Since 1953, the Italian bank Credem has accepted Parmigiano Reggiano as collateral. A cheesemaker has to wait two years for the cheese to age before they can sell it, so the bank lends them cash now and ages the wheels in its own warehouse. It's a real lesson in how collateral works.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261124-223947-en-the-italian-bank-that-takes",
+      "status": "produced",
+      "created": "2026-11-24T22:53+05:30"
     }
   ]
 }
