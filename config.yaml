@@ -189,4 +189,4 @@ publish:
   hashtags_max: 5
 
 # How many finished videos to keep ready as backup (protects against a bad day).
-buffer: 1   # ready Shorts to keep: 1 = the daily run makes one (each 3D Short costs a lot of tokens)
+buffer: 2   # ready Shorts to keep: 1 = the daily run makes one (each 3D Short costs a lot of tokens)
