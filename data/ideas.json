@@ -209,6 +209,17 @@
       "video_id": "20261124-223947-en-the-italian-bank-that-takes",
       "status": "produced",
       "created": "2026-11-24T22:53+05:30"
+    },
+    {
+      "canonical_en": "Why did India once print a special rupee that was only allowed to be spent outside India, in the Gulf (1959)?",
+      "question": "India ने 1959 में ऐसा रुपया क्यों छापा जो सिर्फ Dubai, Qatar और Kuwait में चलता था, India में नहीं?",
+      "hook": "एक ज़माने में Dubai की करेंसी Indian रुपया थी।",
+      "angle": "Most people have never heard of the Gulf rupee. The 'oh, THAT's why' is gold smuggling: Indian rupees in the Gulf were swapped for gold, the gold was smuggled into India, and the rupees came home and drained India's foreign exchange. So India printed a different-coloured rupee that couldn't come back.",
+      "language": "hi",
+      "theme": "explainer",
+      "video_id": "20261125-005148-hi-the-gulf-rupee-of-1959",
+      "status": "produced",
+      "created": "2026-11-25T01:33+05:30"
     }
   ]
 }

@@ -472,6 +472,22 @@
       "yt_video_id": "EaDGiCM0X7c",
       "yt_state": "posted",
       "published_at": "2026-11-24T23:47+05:30"
+    },
+    {
+      "id": "20261125-005148-hi-the-gulf-rupee-of-1959",
+      "title": "वो रुपया जो India में नहीं चलता था",
+      "topic": "The Gulf rupee of 1959",
+      "canonical_en": "Why did India once print a special rupee that was only allowed to be spent outside India, in the Gulf (1959)?",
+      "language": "hi",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "एक ज़माने में Dubai की currency हमारा रुपया थी।",
+      "duration": 38.13,
+      "storyboard": "3d",
+      "tag": "vid-20261125-005148-hi-the-gulf-rupee-of-1959",
+      "status": "queued",
+      "created": "2026-11-25T01:33+05:30"
     }
   ],
   "version": 2,
