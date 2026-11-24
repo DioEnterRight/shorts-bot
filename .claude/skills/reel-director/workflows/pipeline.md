@@ -5,9 +5,14 @@
 3. **Director draft** (free model, `auto:smart`): the director brief + the script + the engine vocabulary -> JSON storyboard with a
    story summary, a plan line per scene, a recurring cast, and per scene: purpose, concept, set, objects (with text, size,
    animation, cue word, hero flag), people (expression, arm, entry, reaction on a word), shot, move, focus.
-4. **Code checks** everything against what the engine can draw. Mistakes go back to the model (up to 2 rounds); the last round
-   keeps safe defaults.
-5. **Director's review** (free model) improves weak scenes on paper; kept only if it is at least as clean.
+4. **Code checks** everything against what the engine can draw. Small slips (synonyms like "center" or "close_up", an
+   unknown animation) get safe values from code. Only serious problems (wrong scene count, an empty scene, a repeated set)
+   go back to the model, as a small request that returns just the changed scenes (up to 2 rounds).
+5. **Director's review** (free model) improves weak scenes on paper, again as a small "changed scenes only" request; kept only
+   if it is at least as clean.
+
+Every step after the draft is optional: if a free provider times out, rate-limits or rejects a request as too large, the
+best storyboard so far is kept and the 3D video is still made. Only a missing or unusable draft falls back to 2D.
 6. **Compile**: every shot is framed by fitting its subjects into 9:16, long scenes get 1-2 extra angles chosen for variety,
    reveals and reactions are placed on the frame where their word is spoken, follow shots track jets and parachutes.
 7. **Visual review**: one still per scene is rendered (about 2 s each), a numbered contact sheet goes to a free vision model.

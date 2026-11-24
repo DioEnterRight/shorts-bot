@@ -142,7 +142,7 @@ def test_visual_fix_is_kept_only_when_the_rerender_scores_better(monkeypatch, tm
                     reel_qc.parse_review({"scenes": [{"n": 1, "score": 8, "shows_line": True}, {"n": 2, "score": second, "shows_line": True}]}, 2)])
     monkeypatch.setattr(reel_qc, "preview_review", lambda *a, **k: next(reviews))
     monkeypatch.setattr(cartoon3d, "_scene_stills", lambda project, frames, name: [_still(tmp_path / f"{name}{i}.jpg", "gray") for i in range(len(frames))])
-    monkeypatch.setattr(cartoon3d, "_ask", lambda *a, **k: (None, fixed, []))
+    monkeypatch.setattr(cartoon3d, "_improve", lambda *a, **k: (fixed, sb.normalize(fixed, 2, MODELS, LINES)[0], []))
     monkeypatch.setattr(sb, "write_project", lambda *a, **k: None)
     script = {"title": "T", "scenes": [{"line": LINES[0]}, {"line": LINES[1]}]}
     data, scenes, raw, review = cartoon3d.visual_pass(load_config(), None, tmp_path, script, spans, 200, WORDS, clean, BOARD)
@@ -203,3 +203,39 @@ def test_free_builder_with_visual_qc_end_to_end(tmp_state, monkeypatch, tmp_path
     got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height,pix_fmt", "-of", "csv=p=0", str(out)],
                          capture_output=True, text=True).stdout.strip()
     assert got == "1080,1920,yuv420p"
+
+
+def test_flaky_provider_after_a_good_draft_still_gives_a_3d_storyboard(tmp_state, monkeypatch):
+    """Regression for the 24 Nov run: draft fine (minor slips like slot 'center'), then every repair/review request 502s.
+    Before, that threw the draft away and the Short became 2D."""
+    draft = json.loads(json.dumps(BOARD))
+    draft["scenes"][0]["props"][0]["at"] = "center"              # alias, quietly fixed
+    draft["scenes"][1]["shot"] = "close_up"                       # alias
+    draft["scenes"][1]["props"][1]["anim"] = "wiggle"             # minor: becomes 'none', no repair request needed
+    srv = FakeLLM([(200, json.dumps(draft)), (502, "")])
+    try:
+        cfg = cfg_for(srv.url, monkeypatch)
+        script = {"title": "T", "scenes": [{"line": LINES[0]}, {"line": LINES[1]}]}
+        spans = sb.spans_from_timeline([{"words": w} for w in WORDS], 200)
+        clean, raw = cartoon3d.free_storyboard(cfg, script, spans, freellm.Budget(cfg))
+    finally:
+        srv.close()
+    assert clean[0]["props"][0]["at"] in sb.SLOTS and clean[1]["shot"] == "close" and clean[1]["props"][1]["anim"] == "none"
+    assert len(srv.seen) >= 2 and not any("Fix the problems" in str(m) for s in srv.seen for m in s["messages"])   # no repair for minor slips
+
+
+def test_serious_problems_get_a_small_patch_request_and_patches_merge():
+    one = json.loads(json.dumps(BOARD)); one["scenes"][1]["props"] = [{"prefab": "label", "text": "x"}]
+    _, problems = sb.normalize(one, 2, MODELS, LINES)
+    assert sb.serious(problems) and all("not one of" not in p for p in sb.serious(problems))
+    msgs = sb.patch_messages({"title": "T", "scenes": [{"line": LINES[0]}, {"line": LINES[1]}]}, [(0, 89), (90, 179)], one, problems)
+    body = msgs[1]["content"]
+    assert "ONLY the scenes you change" in body and "Kit models" not in body and len(body) < 12000
+    fixed = sb.merge_patch(one, {"scenes": {"2": BOARD["scenes"][1]}, "cast": [{"name": "boss", "look": "boss"}]})
+    assert fixed["scenes"][0] == one["scenes"][0] and fixed["scenes"][1] == BOARD["scenes"][1] and fixed["cast"][-1]["name"] == "boss"
+    assert sb.merge_patch(one, {"scenes": [dict(BOARD["scenes"][1], n=2)]})["scenes"][1] == BOARD["scenes"][1]
+    assert sb.merge_patch(one, {"scenes": {}}) == one
+    three = dict(one, scenes=one["scenes"] + [one["scenes"][1]])            # draft with one scene too many
+    assert sb.merge_patch(three, {"scenes": BOARD["scenes"]}, 2)["scenes"] == BOARD["scenes"]
+    with pytest.raises(ValueError):
+        sb.merge_patch(one, {"oops": 1})

@@ -169,7 +169,7 @@ def test_client_moves_to_the_next_model_on_quota_exceeded_or_auth_errors(tmp_sta
         srv.close()
     srv = FakeLLM([(401, "")])
     try:
-        with pytest.raises(RuntimeError, match="HTTP 401") as e:
+        with pytest.raises(RuntimeError, match="HTTP 401") as e:   # wrong key: stop at once, no other model tried
             freellm.chat(cfg_for(srv.url, monkeypatch), MSG, freellm.Budget(load_config()))
         assert len(srv.seen) == 1 and "sk-test-123" not in str(e.value)
     finally:
@@ -238,7 +238,7 @@ def test_free_builder_end_to_end_with_a_fake_free_model(tmp_state, monkeypatch, 
         cfg = cfg_for(srv.url, monkeypatch)
         script = {"title": "T", "mood": "upbeat", "scenes": [{"line": "Hello world.", "visual": "a man waves"}]}
         out = cartoon3d.render_free(cfg, script, tl, wav, 1.2, tmp_path / "work")
-        assert len(srv.seen) == 4 and "Fix these problems" in srv.seen[1]["messages"][-1]["content"]
+        assert len(srv.seen) == 4 and "Fix the problems" in srv.seen[1]["messages"][-1]["content"]
         assert isinstance(srv.seen[3]["messages"][0]["content"], list)   # 4th request: the visual review with the contact sheet
         assert "strict film director" in srv.seen[2]["messages"][-1]["content"]
         assert "nope/x" in srv.seen[1]["messages"][-1]["content"]

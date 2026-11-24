@@ -1,4 +1,4 @@
-Review this storyboard as a strict film director and production supervisor, then return the improved complete storyboard.
+Review this storyboard as a strict film director and production supervisor, then return only the scenes you improve.
 
 Check every scene, and fix only what is weak (keep scenes that already work exactly as they are):
 1. **Shows the line**: with the sound off, would a viewer understand this narration line from the objects, people and text? A topic illustration is not enough; the EVENT of the line must be visible.

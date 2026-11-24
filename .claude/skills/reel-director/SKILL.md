@@ -18,7 +18,7 @@ The daily pipeline uses it automatically when `config.yaml -> cartoon3d.builder:
 | Step | Code | Skill file used |
 |---|---|---|
 | Director draft: story, plan, cast, scenes | `pipeline/storyboard3d.py build_messages` | `creative-direction/director-brief.md` (system prompt) |
-| Code checks (unknown objects, cue not spoken, text too long, shot rules, repeats) + up to 2 repair rounds | `storyboard3d.normalize`, `cartoon3d._ask` | - |
+| Code checks (unknown objects, cue not spoken, text too long, shot rules, repeats); serious problems get up to 2 small patch requests, a failed request keeps the best version | `storyboard3d.normalize`, `cartoon3d.free_storyboard` | - |
 | Director's review of the whole storyboard (kept only if not worse) | `storyboard3d.review_messages` | `quality-control/storyboard-review.md` |
 | Compile: fitted framing, coverage cuts every <= 3.9 s, camera keys, rack focus, follow shots, cue frames | `storyboard3d.compile_data` | - |
 | **Visual review on real stills** (one per scene, contact sheet, free vision model) | `reel_qc.preview_review` | `quality-control/visual-review.md` |

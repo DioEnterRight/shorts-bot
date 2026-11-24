@@ -177,47 +177,62 @@ def _stills_ok(project, frames):
     shutil.rmtree(d)
 
 
-def _ask(cfg, budget, msgs, n, models, lines):
-    """One storyboard request plus up to freellm.repair_rounds fix-ups. -> (clean scenes, raw storyboard, problems)."""
-    rounds = int(cfg.get("freellm", {}).get("repair_rounds", 2))
-    best = None
-    for attempt in range(rounds + 1):
-        reply = freellm.chat(cfg, msgs, budget)
+def _draft(cfg, budget, script, spans, models, lines):
+    """The director's first storyboard. -> (raw, clean, problems). Raises when no usable storyboard comes back."""
+    n, last = len(spans), None
+    for attempt in range(2):   # a second try only when the reply was not usable JSON
+        reply = freellm.chat(cfg, storyboard3d.build_messages(script, spans), budget)
         try:
             raw = freellm.extract_json(reply)
             clean, problems = storyboard3d.normalize(raw, n, models, lines)
+            if not storyboard3d.fatal(problems, n):
+                log(f"cartoon3d: director draft: {len(problems)} problem(s)" + (f" - {problems[0]}" if problems else ""))
+                return raw, clean, problems
+            last = problems[0]
         except ValueError as e:
-            raw, clean, problems = None, None, [f"your reply was not usable: {e}"]
-        log(f"cartoon3d: storyboard attempt {attempt + 1}: {len(problems)} problem(s)" + (f" - {problems[0]}" if problems else ""))
-        if clean and not storyboard3d.fatal(problems, n) and (best is None or len(problems) < len(best[2])):
-            best = (clean, raw, problems)
-        if clean and not problems:
-            break
-        if attempt < rounds:
-            msgs = msgs + [{"role": "assistant", "content": reply},
-                           {"role": "user", "content": "Fix these problems and reply with the complete corrected JSON object only:\n- " + "\n- ".join(problems)}]
-    if best is None:
-        raise RuntimeError("cartoon3d: the free model did not give a usable storyboard")
-    return best
+            last = str(e)
+        log(f"cartoon3d: draft {attempt + 1} not usable ({last})", "WARN")
+    raise RuntimeError(f"cartoon3d: the free model did not give a usable storyboard ({last})")
+
+
+def _improve(cfg, budget, msgs, raw, n, models, lines, what):
+    """One patch request (changed scenes only) applied to raw. -> (raw2, clean2, problems2), or None when it failed:
+    the caller keeps what it has, so a flaky provider never costs the whole 3D video."""
+    try:
+        patch = freellm.extract_json(freellm.chat(cfg, msgs, budget))
+        raw2 = storyboard3d.merge_patch(raw, patch, n)
+        clean2, problems2 = storyboard3d.normalize(raw2, n, models, lines)
+    except (RuntimeError, ValueError) as e:
+        log(f"cartoon3d: {what} skipped ({str(e)[:200]}); keeping the current storyboard", "WARN")
+        return None
+    if storyboard3d.fatal(problems2, n):
+        log(f"cartoon3d: {what} came back broken; keeping the current storyboard", "WARN")
+        return None
+    return raw2, clean2, problems2
 
 
 def free_storyboard(cfg, script, spans, budget, fps=FPS):
-    """Director draft -> fix-ups -> director's review. The review is kept only when it is at least as clean as the draft."""
+    """Director draft -> repairs of serious problems -> director's review. Each later step is kept only if it is not worse."""
     models, n = storyboard3d.parse_catalog(), len(spans)
     lines = [sc["line"] for sc in script["scenes"]]
-    clean, raw, problems = _ask(cfg, budget, storyboard3d.build_messages(script, spans, fps), n, models, lines)
+    raw, clean, problems = _draft(cfg, budget, script, spans, models, lines)
+    for r in range(int(cfg.get("freellm", {}).get("repair_rounds", 2))):
+        bad = storyboard3d.serious(problems)
+        if not bad:
+            break
+        got = _improve(cfg, budget, storyboard3d.patch_messages(script, spans, raw, problems, fps), raw, n, models, lines, f"repair {r + 1}")
+        if not got:
+            break
+        if len(storyboard3d.serious(got[2])) <= len(bad):
+            raw, clean, problems = got
+            log(f"cartoon3d: repair {r + 1}: {len(problems)} problem(s) left")
     if cfg.get("freellm", {}).get("review", True):
-        try:
-            c2, r2, p2 = _ask(cfg, budget, storyboard3d.review_messages(script, spans, raw, fps), n, models, lines)
-            if len(p2) <= len(problems):
-                clean, raw, problems = c2, r2, p2
-                log("cartoon3d: director's review accepted")
-            else:
-                log("cartoon3d: review came back worse; keeping the draft", "WARN")
-        except RuntimeError as e:   # budget or provider trouble: the checked draft is still good
-            log(f"cartoon3d: review skipped ({str(e)[:200]})", "WARN")
+        got = _improve(cfg, budget, storyboard3d.review_messages(script, spans, raw, fps), raw, n, models, lines, "director's review")
+        if got and len(storyboard3d.serious(got[2])) <= len(storyboard3d.serious(problems)) and len(got[2]) <= len(problems):
+            raw, clean, problems = got
+            log("cartoon3d: director's review accepted")
     if problems:
-        log(f"cartoon3d: using the storyboard with {len(problems)} small fix(es) made by code: {problems[:3]}", "WARN")
+        log(f"cartoon3d: {len(problems)} small issue(s) fixed by code defaults: {problems[:3]}")
     return clean, raw
 
 
@@ -253,23 +268,21 @@ def visual_pass(cfg, budget, project, script, spans, frames, words, scenes, raw)
         return data, scenes, raw, review
     ids = [w["n"] for w in weak]
     log(f"reel QC: fixing weak scene(s) {ids}: " + "; ".join(f"{w['n']}: {w['issue']}" for w in weak)[:400])
+    n, lines, models = len(spans), [sc["line"] for sc in script["scenes"]], storyboard3d.parse_catalog()
+    got = _improve(cfg, budget, storyboard3d.fix_messages(script, spans, raw, weak), raw, n, models, lines, "scene fix")
     try:
-        n, lines = len(spans), [sc["line"] for sc in script["scenes"]]
-        _, r2, _ = _ask(cfg, budget, storyboard3d.fix_messages(script, spans, raw, weak), n, storyboard3d.parse_catalog(), lines)
-        merged = json.loads(json.dumps(raw))
-        names = {str(c.get("name", "")).lower() for c in merged.get("cast") or []}
-        merged["cast"] = (merged.get("cast") or []) + [c for c in r2.get("cast") or [] if str(c.get("name", "")).lower() not in names][:4 - len(names)]
-        for i in ids:
-            if i - 1 < len(r2.get("scenes") or []):
-                merged["scenes"][i - 1] = r2["scenes"][i - 1]
-        s2, problems = storyboard3d.normalize(merged, n, storyboard3d.parse_catalog(), lines)
-        if storyboard3d.fatal(problems, n):
-            raise RuntimeError("fixed storyboard is unusable")
+        if not got:
+            raise RuntimeError("no fix")
+        merged, base = got[0], storyboard3d.merge_patch(raw, {"scenes": {}}, n)
+        for i in range(n):   # only the weak scenes may change
+            if i + 1 not in ids:
+                merged["scenes"][i] = base["scenes"][i]
+        s2, _ = storyboard3d.normalize(merged, n, models, lines)
         data2 = _build(project, s2, spans, frames, words)
         sheet2 = reel_qc.contact_sheet(_scene_stills(project, reel_qc.scene_frames(data2), "qc_stills2"))
         review2 = reel_qc.preview_review(cfg, budget, sheet2, script, brief)
     except (RuntimeError, ValueError) as e:
-        log(f"reel QC: scene fix skipped ({str(e)[:200]}); keeping the reviewed version", "WARN")
+        log(f"reel QC: scene fix not applied ({str(e)[:200]}); keeping the reviewed version", "WARN")
         return _build(project, scenes, spans, frames, words), scenes, raw, review
     before, after = reel_qc.review_mean(review, ids), reel_qc.review_mean(review2, ids)
     if after is not None and before is not None and after > before:

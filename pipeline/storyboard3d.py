@@ -115,20 +115,40 @@ def parse_catalog():
     return out
 
 
+# variants and building pieces left out of the prompt to keep requests small (still accepted if a model uses them)
+PROMPT_SKIP = re.compile(r"withoutBase|^road_|^base$|^floor|^wall|^door|_half|_corner|rubble|_(chopped|pieces|slices?|trash|top|bottom|uncooked|dirty)$"
+                         r"|^jar_[B-D]|^jar_A_(medium|small)|^bottle_[BC]|^candle_(melted|thin)|_decorated_[B-Z]|_broken$|^stairs")
+
+
 def catalog_text():
     """Compact model list for the prompt: height in metres after the pack's scale is applied."""
     packs = {}
     for name, (_, h, _) in parse_catalog().items():
         pack, n = name.split("/")
-        packs.setdefault(pack, []).append(f"{n} {h * PACK_SCALE.get(pack, 1):.1f}")
+        if not PROMPT_SKIP.search(n):
+            packs.setdefault(pack, []).append(f"{n} {h * PACK_SCALE.get(pack, 1):.1f}")
     return "\n".join(f"{p} (name height_m): " + ", ".join(v) for p, v in packs.items())
 
 
 # ---------------------------------------------------------------- validation
+# words free models often use instead of ours ("" = use the default quietly)
+ALIASES = {"center": "", "centre": "", "middle": "", "mid": "", "front": "near_right", "foreground": "near_left", "background": "back",
+           "behind": "back", "distance": "far", "horizon": "far", "close_up": "close", "closeup": "close", "extreme_close_up": "extreme_close",
+           "ecu": "extreme_close", "establishing_shot": "establishing", "wide_shot": "wide", "medium_shot": "medium", "full": "wide",
+           "over_the_shoulder": "over_shoulder", "ots": "over_shoulder", "low_angle": "low", "high_angle": "high", "birds_eye": "high",
+           "dolly_in": "push_in", "zoom_in": "push_in", "push": "push_in", "dolly_out": "pull_out", "zoom_out": "pull_out", "pull": "pull_out",
+           "pan": "track", "pan_left": "track", "pan_right": "track", "tracking": "track", "dolly": "track", "static": "hold", "still": "hold",
+           "crane": "crane_up", "tilt": "tilt_up", "appear": "pop", "fade_in": "pop", "scale_in": "pop", "bounce": "drop", "fall_in": "drop",
+           "rotate": "spin", "hover": "float", "bob": "float", "fly_by": "fly", "flyby": "fly", "descend": "fall", "night_time": "night",
+           "daytime": "day", "sunset": "golden", "sunrise": "golden", "interior": "indoor", "inside": "indoor", "outdoor": "day"}
+
+
 def _enum(val, allowed, default, what, problems, where):
     v = str(val if val is not None else "").strip().lower().replace(" ", "_").replace("-", "_")
     if v in allowed:
         return v
+    if v in ALIASES and (ALIASES[v] in allowed or ALIASES[v] == ""):
+        return ALIASES[v] or default
     if v:
         problems.append(f"{where}: {what} '{val}' is not one of {', '.join(allowed)}")
     return default
@@ -276,6 +296,40 @@ def normalize(sb, n_scenes, models, lines=None):
         if (a["shot"], a["move"]) == (b["shot"], b["move"]):
             problems.append(f"scene {i + 1} uses the same shot and move as scene {i}: choose a different one for its purpose")
     return clean, problems[:16]
+
+
+SERIOUS = ("need exactly", "add 2-6 objects", "not usable", "repeats the set")
+
+
+def serious(problems):
+    """Problems worth another model request. Everything else already has a safe value chosen by code."""
+    return [p for p in problems if any(k in p for k in SERIOUS)]
+
+
+def merge_patch(raw, patch, n=None):
+    """Apply a reply that holds only changed scenes ({"scenes": {"3": {...}}} or a list of {"n": 3, ...}) to a storyboard.
+    A reply with a full scenes list of n entries replaces the scenes. n = scenes the narration needs (the draft may be off)."""
+    out = json.loads(json.dumps(raw))
+    sc = patch.get("scenes") if isinstance(patch, dict) else None
+    n = n or len(out["scenes"])
+    have = out.get("scenes") or [{}]
+    out["scenes"] = (have + [have[-1]] * n)[:n]   # line the draft up with the narration before patching
+    if isinstance(sc, list) and len(sc) == n and not any(isinstance(x, dict) and "n" in x for x in sc):
+        out["scenes"] = sc
+    elif isinstance(sc, dict):
+        for k, v in sc.items():
+            if str(k).isdigit() and 1 <= int(k) <= n and isinstance(v, dict):
+                out["scenes"][int(k) - 1] = v
+    elif isinstance(sc, list):
+        for v in sc:
+            if isinstance(v, dict) and str(v.get("n", "")).isdigit() and 1 <= int(v["n"]) <= n:
+                out["scenes"][int(v["n"]) - 1] = {k: x for k, x in v.items() if k != "n"}
+    else:
+        raise ValueError("reply has no 'scenes'")
+    names = {str(c.get("name", "")).lower() for c in out.get("cast") or []}
+    out["cast"] = (out.get("cast") or []) + [c for c in (patch.get("cast") or []) if isinstance(c, dict)
+                                             and str(c.get("name", "")).lower() not in names][:max(0, 4 - len(names))]
+    return out
 
 
 def fatal(problems, n_scenes):
@@ -722,15 +776,50 @@ Example of 2 scenes from a different story:
     return [{"role": "system", "content": _skill("creative-direction/director-brief.md")}, {"role": "user", "content": user}]
 
 
+PATCH = """Reply with ONE JSON object only, holding ONLY the scenes you change (full scene entries, numbered from 1):
+{"scenes": {"3": { ...complete scene 3... }, "5": { ...complete scene 5... }}, "cast": [only new characters, if any]}
+Reply {"scenes": {}} if nothing needs to change."""
+
+
+def _compact_schema(n, catalog):
+    """Field list without the long object lists; the kit catalog only when the problems need it."""
+    full = _schema(n)
+    head = full[:full.index("Hand-built story objects")]
+    pre = "Story objects (prefab): " + ", ".join(PREFABS)
+    return head + pre + (("\n\nKit models (pack (name height_m)):\n" + catalog_text()) if catalog else "")
+
+
+def patch_messages(script, spans, storyboard, problems, fps=30):
+    """Small repair request: the current storyboard + the problems code found -> changed scenes only."""
+    need_catalog = any("unknown object" in p for p in problems)
+    user = f"""Fix the problems in this storyboard. Change only what the problems need.
+
+{_header(script, spans, fps)}
+
+Storyboard:
+{json.dumps(storyboard, ensure_ascii=False, separators=(",", ":"))}
+
+Problems:
+- """ + "\n- ".join(problems) + f"""
+
+{_compact_schema(len(spans), need_catalog)}
+
+{PATCH}"""
+    return [{"role": "system", "content": "You are the film director of a cartoon Shorts channel. You fix storyboards precisely and reply with JSON only."},
+            {"role": "user", "content": user}]
+
+
 def review_messages(script, spans, draft, fps=30):
     user = f"""{_skill("quality-control/storyboard-review.md")}
 
 {_header(script, spans, fps)}
 
 Storyboard to review:
-{json.dumps(draft, ensure_ascii=False)}
+{json.dumps(draft, ensure_ascii=False, separators=(",", ":"))}
 
-{_schema(len(spans))}"""
+{_compact_schema(len(spans), True)}
+
+{PATCH}"""
     return [{"role": "system", "content": _skill("creative-direction/director-brief.md")}, {"role": "user", "content": user}]
 
 
@@ -745,7 +834,9 @@ Weak scenes:
 {_header(script, spans, fps)}
 
 Current storyboard:
-{json.dumps(storyboard, ensure_ascii=False)}
+{json.dumps(storyboard, ensure_ascii=False, separators=(",", ":"))}
 
-{_schema(len(spans))}"""
+{_compact_schema(len(spans), True)}
+
+{PATCH}"""
     return [{"role": "system", "content": _skill("creative-direction/director-brief.md")}, {"role": "user", "content": user}]
