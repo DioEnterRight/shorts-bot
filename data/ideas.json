@@ -176,6 +176,17 @@
       "video_id": "20261123-044748-en-the-hope-diamond-sent-by-mai",
       "status": "produced",
       "created": "2026-11-23T06:00+05:30"
+    },
+    {
+      "canonical_en": "Why are there now more $100 bills in existence than $1 bills?",
+      "question": "You almost never see a hundred-dollar bill, so why are there more of them than ones?",
+      "hook": "There are more hundreds than ones.",
+      "angle": "A versus format: the $1 bill wears out in a wallet, while the $100 hides under mattresses and in vaults worldwide. Up to about 80% of $100s are estimated to be outside the US, used as a 'safe' savings currency.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261124-050419-en-why-100-bills-outnumber-1-bi",
+      "status": "produced",
+      "created": "2026-11-24T06:04+05:30"
     }
   ]
 }

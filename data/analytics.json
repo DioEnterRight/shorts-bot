@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,8 +152,25 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
+        "yt": 5,
+        "ig": 0
+      },
+      "metrics_day7": {
+        "ig_views": 0,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 5,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "views_day7": {
         "yt": 5,
         "ig": 0
       }
@@ -184,7 +201,7 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "yt": 988,
         "ig": 367
@@ -216,7 +233,7 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "yt": 980,
         "ig": 180
@@ -240,7 +257,7 @@
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 13779,
-        "yt_views": 1188,
+        "yt_views": 1187,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -248,9 +265,9 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
-        "yt": 1188,
+        "yt": 1187,
         "ig": 169
       }
     },
@@ -271,18 +288,18 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17476,
-        "yt_views": 1286,
+        "ig_avg_watch_ms": 17460,
+        "yt_views": 1290,
         "yt_likes": 41,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 80.8,
+        "yt_avg_view_pct": 80.6,
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
-        "yt": 1286,
+        "yt": 1290,
         "ig": 1458
       }
     },
@@ -303,7 +320,7 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18787,
+        "ig_avg_watch_ms": 18728,
         "yt_views": 1225,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -312,7 +329,7 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
         "yt": 1225,
         "ig": 574
@@ -335,18 +352,18 @@
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21743,
-        "yt_views": 1922,
-        "yt_likes": 34,
+        "ig_avg_watch_ms": 21717,
+        "yt_views": 1968,
+        "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 96.2,
-        "yt_avg_view_sec": 35,
+        "yt_avg_view_pct": 89.8,
+        "yt_avg_view_sec": 33,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
-        "yt": 1922,
+        "yt": 1968,
         "ig": 2191
       }
     },
@@ -362,20 +379,23 @@
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
         "ig_views": 1534,
-        "ig_reach": 1073,
+        "ig_reach": 1076,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24257,
-        "yt_views": 1875,
+        "ig_avg_watch_ms": 24217,
+        "yt_views": 1920,
         "yt_likes": 35,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 81.7,
+        "yt_avg_view_sec": 28,
+        "yt_subs_gained": 2
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
-        "yt": 1875,
+        "yt": 1920,
         "ig": 1534
       }
     },
@@ -390,22 +410,51 @@
       "duration": 34.08,
       "published_at": "2026-11-22T16:08+05:30",
       "metrics": {
-        "ig_views": 1924,
-        "ig_reach": 1280,
+        "ig_views": 1941,
+        "ig_reach": 1294,
         "ig_likes": 15,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18616,
-        "yt_views": 1456,
-        "yt_likes": 28,
+        "ig_avg_watch_ms": 18533,
+        "yt_views": 1493,
+        "yt_likes": 29,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-23T04:47+05:30",
+      "last_update": "2026-11-24T05:04+05:30",
       "views": {
-        "yt": 1456,
-        "ig": 1924
+        "yt": 1493,
+        "ig": 1941
+      }
+    },
+    "20261123-044748-en-the-hope-diamond-sent-by-mai": {
+      "video_id": "20261123-044748-en-the-hope-diamond-sent-by-mai",
+      "language": "en",
+      "topic": "The Hope Diamond sent by mail in 1958",
+      "theme": "story",
+      "title": "The Hope Diamond Was Mailed for $2.44",
+      "hook_type": "paradox",
+      "hook_line": "The world's most famous diamond was mailed for two dollars forty-four.",
+      "duration": 42.21,
+      "published_at": "2026-11-23T16:24+05:30",
+      "metrics": {
+        "ig_views": 1899,
+        "ig_reach": 1355,
+        "ig_likes": 24,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 21640,
+        "yt_views": 1261,
+        "yt_likes": 34,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-24T05:04+05:30",
+      "views": {
+        "yt": 1261,
+        "ig": 1899
       }
     }
   },
@@ -418,12 +467,12 @@
       "diagnostics": {
         "reason": "not enough data yet (need 4 per language)",
         "counts": {
-          "en": 9,
+          "en": 10,
           "hi": 1
         }
       },
-      "computed_at": "2026-11-23T04:47+05:30"
+      "computed_at": "2026-11-24T05:04+05:30"
     }
   },
-  "updated": "2026-11-23T04:47+05:30"
+  "updated": "2026-11-24T05:04+05:30"
 }

@@ -412,6 +412,22 @@
       "yt_video_id": "5ffkw3m2LfA",
       "yt_state": "posted",
       "published_at": "2026-11-23T16:24+05:30"
+    },
+    {
+      "id": "20261124-050419-en-why-100-bills-outnumber-1-bi",
+      "title": "Why Hundreds Outnumber One-Dollar Bills",
+      "topic": "Why $100 bills outnumber $1 bills",
+      "canonical_en": "Why are there now more $100 bills in existence than $1 bills?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "There are more hundred-dollar bills in the world than ones.",
+      "duration": 30.7,
+      "storyboard": "3d",
+      "tag": "vid-20261124-050419-en-why-100-bills-outnumber-1-bi",
+      "status": "queued",
+      "created": "2026-11-24T06:04+05:30"
     }
   ],
   "version": 2,
