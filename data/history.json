@@ -494,6 +494,22 @@
       "yt_video_id": "YkukbnVXTqA",
       "yt_state": "posted",
       "published_at": "2026-11-25T01:57+05:30"
+    },
+    {
+      "id": "20261125-020110-hi-india-s-1991-gold-pledge-in",
+      "title": "जब India ने अपना सोना गिरवी रखा",
+      "topic": "India's 1991 gold pledge in borrowed boxes",
+      "canonical_en": "Why did India have to fly its own gold to London in 1991, in boxes it had to borrow?",
+      "language": "hi",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "India ने अपना सोना गिरवी रखा, उधार के boxes में।",
+      "duration": 40.17,
+      "storyboard": "3d",
+      "tag": "vid-20261125-020110-hi-india-s-1991-gold-pledge-in",
+      "status": "queued",
+      "created": "2026-11-25T02:48+05:30"
     }
   ],
   "version": 2,

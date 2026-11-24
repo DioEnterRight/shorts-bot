@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -201,7 +201,7 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 988,
         "ig": 369
@@ -253,7 +253,7 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 980,
         "ig": 182
@@ -305,7 +305,7 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1188,
         "ig": 173
@@ -333,11 +333,11 @@
         "yt_likes": 41,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 80.6,
+        "yt_avg_view_pct": 80.4,
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1290,
         "ig": 1459
@@ -369,7 +369,7 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1225,
         "ig": 575
@@ -397,11 +397,11 @@
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 89.8,
-        "yt_avg_view_sec": 33,
+        "yt_avg_view_pct": 89.1,
+        "yt_avg_view_sec": 32,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1973,
         "ig": 2194
@@ -425,17 +425,17 @@
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 24152,
-        "yt_views": 1930,
+        "yt_views": 1931,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 81.7,
+        "yt_avg_view_pct": 82.2,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
-        "yt": 1930,
+        "yt": 1931,
         "ig": 1535
       }
     },
@@ -460,9 +460,12 @@
         "yt_views": 1500,
         "yt_likes": 29,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 82.4,
+        "yt_avg_view_sec": 28,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1500,
         "ig": 1943
@@ -491,7 +494,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1297,
         "ig": 1904
@@ -520,7 +523,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
         "yt": 1397,
         "ig": 2221
@@ -537,22 +540,51 @@
       "duration": 33.7,
       "published_at": "2026-11-24T23:47+05:30",
       "metrics": {
-        "ig_views": 184,
-        "ig_reach": 124,
+        "ig_views": 210,
+        "ig_reach": 156,
         "ig_likes": 2,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13480,
-        "yt_views": 151,
-        "yt_likes": 5,
+        "ig_avg_watch_ms": 22579,
+        "yt_views": 401,
+        "yt_likes": 21,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T00:51+05:30",
+      "last_update": "2026-11-25T02:00+05:30",
       "views": {
-        "yt": 151,
-        "ig": 184
+        "yt": 401,
+        "ig": 210
+      }
+    },
+    "20261125-005148-hi-the-gulf-rupee-of-1959": {
+      "video_id": "20261125-005148-hi-the-gulf-rupee-of-1959",
+      "language": "hi",
+      "topic": "The Gulf rupee of 1959",
+      "theme": "explainer",
+      "title": "वो रुपया जो India में नहीं चलता था",
+      "hook_type": "paradox",
+      "hook_line": "एक ज़माने में Dubai की currency हमारा रुपया थी।",
+      "duration": 38.13,
+      "published_at": "2026-11-25T01:57+05:30",
+      "metrics": {
+        "ig_views": 1,
+        "ig_reach": 0,
+        "ig_likes": 1,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 0,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-25T02:00+05:30",
+      "views": {
+        "yt": 0,
+        "ig": 1
       }
     }
   },
@@ -569,8 +601,8 @@
           "hi": 1
         }
       },
-      "computed_at": "2026-11-25T00:51+05:30"
+      "computed_at": "2026-11-25T02:00+05:30"
     }
   },
-  "updated": "2026-11-25T00:51+05:30"
+  "updated": "2026-11-25T02:00+05:30"
 }

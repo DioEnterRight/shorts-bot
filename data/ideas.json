@@ -220,6 +220,17 @@
       "video_id": "20261125-005148-hi-the-gulf-rupee-of-1959",
       "status": "produced",
       "created": "2026-11-25T01:33+05:30"
+    },
+    {
+      "canonical_en": "Why did India have to fly its own gold to London in 1991, in boxes it had to borrow?",
+      "question": "1991 में India को अपना सोना London क्यों भेजना पड़ा, और boxes भी उधार क्यों लेने पड़े?",
+      "hook": "1991 में India ने अपना सोना plane में भरकर London भेज दिया।",
+      "angle": "Most videos stop at 'India almost went bankrupt'. This one follows the actual gold: about 47 tonnes sent in four batches in July 1991, the gold boxes borrowed from the Bank of England, the van that broke down in Mumbai, and why the lenders wanted the gold kept outside India. It explains what pledging means (it was a loan, not a sale) and stays out of politics.",
+      "language": "hi",
+      "theme": "explainer",
+      "video_id": "20261125-020110-hi-india-s-1991-gold-pledge-in",
+      "status": "produced",
+      "created": "2026-11-25T02:48+05:30"
     }
   ]
 }
