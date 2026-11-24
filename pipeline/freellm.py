@@ -112,6 +112,8 @@ def chat(cfg, messages, budget, attempts=3):
                     json_mode = False   # this route has no JSON mode; the prompt still demands JSON
                     continue
                 errors.append(f"{model}: HTTP {e.code} {detail[:120]}")
+                if e.code in (401, 403):   # the gateway key is wrong: no model will work
+                    raise RuntimeError(f"FreeLLMAPI refused the key (HTTP {e.code})") from None
                 if e.code not in RETRY or "quota_exceeded" in detail:
                     break
             except (urllib.error.URLError, TimeoutError, KeyError, IndexError, ValueError) as e:
