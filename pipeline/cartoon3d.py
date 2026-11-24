@@ -14,6 +14,7 @@ import sys
 import tempfile
 from pathlib import Path
 
+from . import freellm, storyboard3d
 from .common import ROOT, log, run
 
 KIT = ROOT / ".claude" / "skills" / "cartoon-audio-short" / "kit"
@@ -125,14 +126,25 @@ def _music(project, mood, seconds):
     run([sys.executable, "-c", code, mood, str(seconds), str(project / "music.wav")], cwd=ROOT / "toon2d", timeout=300)
 
 
-def _finish(project, frames, timeout, cfg, mood="mystery"):
+def _sfx(project, events, seconds):
+    """sfx.wav from [[t, name], ...] with the 2D engine's synthesized effects (silence when there are none)."""
+    code = ("import sys, json, numpy as np, soundfile as sf; from engine import audio as A; "
+            "ev = json.loads(sys.argv[1]); buf = np.zeros((int(float(sys.argv[2]) * A.SR), 2)); "
+            "[A.place(buf, A.SFX[n](), t, 0.8) for t, n in ev]; sf.write(sys.argv[3], buf.astype(np.float32), A.SR)")
+    run([sys.executable, "-c", code, json.dumps(events), str(seconds), str(project / "sfx.wav")], cwd=ROOT / "toon2d", timeout=300)
+
+
+def _finish(project, frames, timeout, cfg, mood="mystery", sfx_events=None):
     t2 = cfg["toon2d"]
     try:
         run(["bash", "render_all.sh", str(frames)], cwd=project, env=_env(), timeout=timeout)
     except Exception as e:   # a crashed Chrome or a timeout: keep the frames already made, render only the rest
         log(f"cartoon3d: render failed ({e}); resuming once", "WARN")
         run(["bash", "render_all.sh", str(frames)], cwd=project, env=dict(_env(), RESUME="1"), timeout=timeout)
-    run(["python3", "audio.py"], cwd=project, timeout=600)
+    if sfx_events is None:
+        run(["python3", "audio.py"], cwd=project, timeout=600)   # Claude's build: its own cue table writes sfx.wav
+    else:
+        _sfx(project, sfx_events, frames / FPS)
     _music(project, mood, frames / FPS)
     run(["python3", "mix.py", "voice.mp3", "music.wav", "sfx.wav",
          "--music-db", str(t2.get("music_db", -20)), "--sfx-db", str(t2.get("sfx_db", -13))], cwd=project, timeout=600)
@@ -153,9 +165,96 @@ def _setup(project, voice_path):
     shutil.copy(ROOT / "toon2d" / "fonts" / "Kalam-Bold.ttf", project / "fonts" / "Kalam-Bold.ttf")   # caption font (OFL, see toon2d/CREDITS.md)
 
 
+def _stills_ok(project, frames):
+    """Render 3 frames of the generated world and make sure they are real pictures (page errors exit non-zero in render.mjs)."""
+    from PIL import Image, ImageStat
+    d = project / "stills_check"
+    spec = ",".join(str(int(frames * k)) for k in (0.1, 0.5, 0.9))
+    run(["node", "render.mjs", str(d), spec, "1"], cwd=project, env=_env(), timeout=600)
+    for f in sorted(d.glob("*.jpg")):
+        if max(ImageStat.Stat(Image.open(f).convert("L")).stddev) < 6:
+            raise RuntimeError(f"generated world renders a blank picture ({f.name})")
+    shutil.rmtree(d)
+
+
+def _ask(cfg, budget, msgs, n, models):
+    """One storyboard request plus up to freellm.repair_rounds fix-ups. -> (clean scenes, raw storyboard, problems)."""
+    rounds = int(cfg.get("freellm", {}).get("repair_rounds", 2))
+    best = None
+    for attempt in range(rounds + 1):
+        reply = freellm.chat(cfg, msgs, budget)
+        try:
+            raw = freellm.extract_json(reply)
+            clean, problems = storyboard3d.normalize(raw, n, models)
+        except ValueError as e:
+            raw, clean, problems = None, None, [f"your reply was not usable: {e}"]
+        log(f"cartoon3d: storyboard attempt {attempt + 1}: {len(problems)} problem(s)" + (f" - {problems[0]}" if problems else ""))
+        if clean and not storyboard3d.fatal(problems, n) and (best is None or len(problems) < len(best[2])):
+            best = (clean, raw, problems)
+        if clean and not problems:
+            break
+        if attempt < rounds:
+            msgs = msgs + [{"role": "assistant", "content": reply},
+                           {"role": "user", "content": "Fix these problems and reply with the complete corrected JSON object only:\n- " + "\n- ".join(problems)}]
+    if best is None:
+        raise RuntimeError("cartoon3d: the free model did not give a usable storyboard")
+    return best
+
+
+def free_storyboard(cfg, script, spans, fps=FPS):
+    """Draft -> fix-ups -> art-director review. The review is kept only when it is at least as clean as the draft."""
+    budget = freellm.Budget(cfg)
+    models, n = storyboard3d.parse_catalog(), len(spans)
+    clean, raw, problems = _ask(cfg, budget, storyboard3d.build_messages(script, spans, fps), n, models)
+    if cfg.get("freellm", {}).get("review", True):
+        try:
+            c2, r2, p2 = _ask(cfg, budget, storyboard3d.review_messages(script, spans, raw, fps), n, models)
+            if len(p2) <= len(problems):
+                clean, raw, problems = c2, r2, p2
+                log("cartoon3d: art-director review accepted")
+            else:
+                log("cartoon3d: review came back worse; keeping the draft", "WARN")
+        except RuntimeError as e:   # budget or provider trouble: the checked draft is still good
+            log(f"cartoon3d: review skipped ({str(e)[:200]})", "WARN")
+    if problems:
+        log(f"cartoon3d: using the storyboard with {len(problems)} small fix(es) made by code: {problems[:3]}", "WARN")
+    return clean, raw
+
+
+def render_free(cfg, script, timeline, voice_path, duration, work):
+    """The free LLM only writes a JSON storyboard; code validates it, compiles it and renders it with the static engine."""
+    c3 = cfg["cartoon3d"]
+    if not freellm.configured(cfg):
+        raise RuntimeError("cartoon3d builder=freellm but FreeLLMAPI is not running (FREELLMAPI_KEYS secret missing?)")
+    if len(timeline) != len(script["scenes"]):
+        raise RuntimeError("cartoon3d: voice timeline and script scenes do not match")
+    project = Path(tempfile.mkdtemp(prefix="cartoon3d-"))
+    _setup(project, voice_path)
+    preflight(project)
+    frames = timing_files(timeline, duration, project / "work")
+    spans = storyboard3d.spans_from_timeline(timeline, frames, FPS)
+    scenes, raw = free_storyboard(cfg, script, spans)
+    data = storyboard3d.compile_data(scenes, spans, frames, FPS)
+    storyboard3d.write_project(project, data)
+    (work / "cartoon3d_work").mkdir(parents=True, exist_ok=True)
+    (work / "cartoon3d_work" / "storyboard.json").write_text(json.dumps({"raw": raw, "used": scenes}, indent=1, ensure_ascii=False), encoding="utf-8")
+    _stills_ok(project, frames)
+    out = _finish(project, frames, int(c3.get("render_timeout_minutes", 150)) * 60, cfg, mood_of(script),
+                  sfx_events=storyboard3d.sfx_events(scenes, spans, FPS))
+    shutil.copytree(project / "work", work / "cartoon3d_work", dirs_exist_ok=True)
+    return out
+
+
 def render(cfg, script, timeline, voice_path, duration, work, language, call_claude):
     """Returns the finished mp4 path. Raises on any failure (the caller falls back to toon2d)."""
     c3 = cfg["cartoon3d"]
+    if c3.get("builder", "claude") == "freellm":
+        try:
+            return render_free(cfg, script, timeline, voice_path, duration, work)
+        except Exception as e:
+            if not c3.get("claude_rescue", False):
+                raise
+            log(f"cartoon3d: free builder failed ({str(e)[:300]}); Claude builds this one", "WARN")
     project = Path(tempfile.mkdtemp(prefix="cartoon3d-"))   # outside the repo: no CLAUDE.md, skills or hooks loaded
     _setup(project, voice_path)
     preflight(project)

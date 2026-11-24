@@ -74,6 +74,12 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python -m pipeline.analytics
 
+      - name: Start FreeLLMAPI inside this job (free 3D builder)
+        if: env.TEST != 'true'
+        env:
+          FREELLMAPI_KEYS: ${{ secrets.FREELLMAPI_KEYS }}
+        run: bash tools/start_freellmapi.sh
+
       - name: Make the video
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
