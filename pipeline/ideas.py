@@ -114,8 +114,8 @@ def rank_key(idea):
     return sum(vals) + 0.5 * float(s.get("originality", 5))
 
 
-def choose(candidates, past, threshold):
-    """Returns (best idea or None, rejected [(idea, reason)])."""
+def choose(candidates, past, threshold, keep=None):
+    """Returns (best idea or None, rejected [(idea, reason)]). keep: a list that receives the other good ideas."""
     kept, rejected = [], []
     for idea in candidates:
         text = idea.get("canonical_en", "").strip()
@@ -129,10 +129,32 @@ def choose(candidates, past, threshold):
             continue
         kept.append(idea)
     kept.sort(key=rank_key, reverse=True)
+    if keep is not None:
+        keep += kept[1:]
     return (kept[0] if kept else None), rejected
 
 
+BACKLOG_DAYS, BACKLOG_MAX = 7, 40   # one brainstorm pitches ~8 ideas: the unused good ones wait here (saves Claude calls)
+
+
+def from_backlog(ledger, language, theme, past, threshold):
+    """the best still-original backlog idea for this language + theme, or None"""
+    cut = (now_ist() - dt.timedelta(days=BACKLOG_DAYS)).isoformat(timespec="minutes")
+    fresh = [i for i in ledger.get("backlog", []) if i.get("language") == language and i.get("theme") == theme
+             and i.get("added", "") >= cut]
+    best, _ = choose(fresh, past, threshold)
+    return best
+
+
 def record(ledger, idea, language, theme, video_id, status="produced"):
+    """the idea is used: log it, take it off the backlog, park its brainstorm's other good ideas there"""
+    backlog = [i for i in ledger.get("backlog", []) if i.get("canonical_en") != idea["canonical_en"]]
+    for extra in idea.pop("_spare", []):
+        if all(extra["canonical_en"] != i.get("canonical_en") for i in backlog):
+            backlog.append({**extra, "language": language, "theme": theme, "added": now_ist().isoformat(timespec="minutes")})
+    ledger["backlog"] = backlog[-BACKLOG_MAX:]
+
+
     ledger["ideas"].append({
         "canonical_en": idea["canonical_en"], "question": idea.get("question"), "hook": idea.get("hook"),
         "angle": idea.get("angle"), "language": language, "theme": theme, "video_id": video_id,
@@ -158,6 +180,10 @@ def generate(cfg, history, theme, lp, performance, call_claude, extract_json):
     threshold = float(icfg.get("similarity_threshold", 0.5))
     ledger = load()
     past = past_ideas(history, ledger, lp["code"], icfg.get("dedupe_across_languages", True))
+    saved = from_backlog(ledger, lp["code"], theme, past, threshold)
+    if saved:
+        log(f"Idea from the backlog (no Claude call): {saved['canonical_en']}")
+        return saved
     prompt = build_prompt(cfg, theme, lp, past, performance)
     rejected_all = []
     for attempt in range(1, 3):
@@ -172,11 +198,12 @@ def generate(cfg, history, theme, lp, performance, call_claude, extract_json):
             log(f"  Claude's idea reply was not valid JSON ({str(e)[:80]}); asking again", "WARN")
             rejected_all.append(({"canonical_en": "(unreadable reply)"}, str(e)[:100]))
             continue
-        best, rejected = choose(reply.get("ideas", []), past, threshold)
+        spare = []
+        best, rejected = choose(reply.get("ideas", []), past, threshold, spare)
         for idea, why in rejected:
             log(f"  rejected: {idea.get('canonical_en', '?')} -> {why}")
         rejected_all += rejected
         if best:
-            log(f"Idea: {best['canonical_en']}  (angle: {best.get('angle', '')[:80]})")
-            return best
+            log(f"Idea: {best['canonical_en']}  (angle: {best.get('angle', '')[:80]}); {len(spare)} more for the backlog")
+            return {**best, "_spare": spare}
     raise RuntimeError("No original idea survived the duplicate filter")

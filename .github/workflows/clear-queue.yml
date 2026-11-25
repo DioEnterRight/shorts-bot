@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
 
 concurrency:
-  group: shorts-bot
+  group: shorts-post
   cancel-in-progress: false
 
 permissions:

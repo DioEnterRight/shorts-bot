@@ -104,9 +104,9 @@ def main():
     history = load_history()
     stats = analytics.load()
     queued = [v for v in history["videos"] if v.get("status") == "queued"]
-    todo = [args.language or "en"] if args.test else [args.language] if args.language else schedule.to_make(cfg, queued)
+    todo = [args.language or "en"] if args.test else [args.language] if args.language else schedule.to_make(cfg, queued, now_ist())
     if not todo:
-        log(f"Queue already holds a full day of slots ({len(queued)} ready). Nothing to make today.")
+        log(f"The next uploads are covered ({len(queued)} ready). Nothing to make now.")
         return
     log(f"Videos ready: {len(queued)}. Making {len(todo)}: {', '.join(todo)}")
 
@@ -157,7 +157,8 @@ def queue(history, work, meta, script, idea):
     ideas.record(led, idea or {"canonical_en": meta["canonical_en"]}, meta["language"], meta["theme"], meta["id"])
     ideas.save(led)
     if script.get("playbook_update", "").strip():
-        (DATA / "playbook.md").write_text(script["playbook_update"].strip() + "\n", encoding="utf-8")
+        (DATA / "playbook.md").write_text(f"<!-- reviewed {now_ist():%Y-%m-%d} -->\n" + script["playbook_update"].strip() + "\n",
+                                          encoding="utf-8")
         log("Playbook updated")
 
 

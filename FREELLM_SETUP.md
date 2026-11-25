@@ -1,9 +1,9 @@
-# FreeLLMAPI: the free director + judge
+# FreeLLMAPI: the free judge (and optional director)
 
-Claude writes the idea and the script. Your **FreeLLMAPI** (free models only) then does the kit's director and judge
-jobs for every Short: it writes the shot plan (`.claude/skills/animated-shorts-kit/references/09_PLAN_FORMAT.md`), fixes
-it when the kit's checks find problems, and scores the preview's contact sheets (`references/10_JUDGE.md`).
-Without the secret, Claude does those jobs instead (more Claude usage, same video).
+Claude writes the idea, the script and the shot plan. Your **FreeLLMAPI** (free models only) scores the preview's
+contact sheets (`.claude/skills/animated-shorts-kit/references/10_JUDGE.md`) with a vision model. With
+`studio.director: freellm` it also writes and repairs the shot plan (`references/09_PLAN_FORMAT.md`) for free.
+Without the secret the judge is skipped (Claude still directs).
 
 You can do every step on your phone (GitHub app or github.com in the browser).
 

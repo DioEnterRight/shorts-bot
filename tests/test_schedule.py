@@ -1,43 +1,63 @@
-"""Daily slots from config.yaml schedule: what to make, what to post when."""
+"""Upload slots from config.yaml schedule: what to make, what to post when."""
 import datetime as dt
 
 import pytest
 
 from pipeline import schedule
-from pipeline.common import IST
 
+IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 CFG = {"languages": {"enabled": ["en", "hi"]},
-       "schedule": [{"time": "19:00", "language": "en"}, {"time": "09:00", "language": "hi"}, {"time": "14:00", "language": "en"}]}
-at = lambda h, m=0: dt.datetime(2026, 11, 26, h, m, tzinfo=IST)
+       "schedule": {"every_minutes": 60, "first": "00:30", "language": "en", "language_at": {"09:30": "hi"},
+                    "make_ahead": 2, "make_per_run": 1}}
 
 
-def test_slots_sorted_and_validated():
-    assert schedule.slots(CFG) == [("09:00", "hi"), ("14:00", "en"), ("19:00", "en")]
-    for bad in ({"time": "9:00", "language": "hi"}, {"time": "25:00", "language": "en"}, {"time": "09:00", "language": "fr"}):
-        with pytest.raises(ValueError):
-            schedule.slots({**CFG, "schedule": [bad]})
+def at(h, m, day=26):
+    return dt.datetime(2026, 11, day, h, m, tzinfo=IST)
+
+
+def test_slots():
+    s = schedule.slots(CFG)
+    assert len(s) == 24 and s[:2] == [("00:30", "en"), ("01:30", "en")] and s[9] == ("09:30", "hi")
+    three = {**CFG, "schedule": {"every_minutes": 300, "first": "09:00", "language": "en", "language_at": {"09:00": "hi"}}}
+    assert schedule.slots(three) == [("04:00", "en"), ("09:00", "hi"), ("14:00", "en"), ("19:00", "en")]
+
+
+@pytest.mark.parametrize("bad", [{"every_minutes": 5}, {"first": "9:00"}, {"language": "fr"},
+                                 {"language_at": {"09:00": "hi"}}, {"language_at": {"09:30": "fr"}}])
+def test_bad_schedule_fails_fast(bad):
     with pytest.raises(ValueError):
-        schedule.slots({**CFG, "schedule": []})
+        schedule.slots({**CFG, "schedule": {**CFG["schedule"], **bad}})
+    with pytest.raises(ValueError):
+        schedule.slots({**CFG, "schedule": [{"time": "09:00", "language": "hi"}]})   # the old list format
 
 
-def test_make_tops_up_one_day_per_language():
-    assert schedule.to_make(CFG, []) == ["hi", "en", "en"]
-    assert schedule.to_make(CFG, [{"language": "en"}]) == ["hi", "en"]
-    assert schedule.to_make(CFG, [{"language": "hi"}, {"language": "en"}, {"language": "en"}, {"language": "en"}]) == []
+def test_to_make_keeps_next_uploads_ready():
+    assert schedule.to_make(CFG, [], at(7, 50)) == ["en"]                      # next: 08:30 en, 09:30 hi
+    assert schedule.to_make(CFG, [{"language": "en"}], at(7, 50)) == ["hi"]
+    assert schedule.to_make(CFG, [{"language": "en"}, {"language": "hi"}], at(7, 50)) == []
+    big = {**CFG, "schedule": {**CFG["schedule"], "make_per_run": 3}}
+    assert schedule.to_make(big, [], at(8, 50)) == ["hi", "en"]
+    assert schedule.to_make(big, [], at(23, 50)) == ["en", "en"]                 # wraps past midnight
 
 
-def test_due_slot_and_catch_up():
-    assert schedule.due(CFG, set(), at(8, 59)) is None
-    assert schedule.due(CFG, set(), at(9, 7)) == ("2026-11-26 09:00", "hi")
-    assert schedule.due(CFG, {"2026-11-26 09:00"}, at(13, 37)) is None
-    assert schedule.due(CFG, set(), at(11, 37)) == ("2026-11-26 09:00", "hi")         # late (up to 3 h) is still posted
-    assert schedule.due(CFG, set(), at(14, 7)) == ("2026-11-26 14:00", "en")          # older than 3 h: skipped, video waits
-    assert schedule.due(CFG, {"2026-11-25 19:00"}, at(0, 7)) is None                   # yesterday never comes back
+def test_due():
+    assert schedule.due(CFG, set(), at(9, 20)) == ("2026-11-26 08:30", "en")    # still inside its hour
+    assert schedule.due(CFG, set(), at(9, 37)) == ("2026-11-26 09:30", "hi")
+    assert schedule.due(CFG, {"2026-11-26 09:30"}, at(10, 7)) is None
+    assert schedule.due(CFG, set(), at(0, 7)) == ("2026-11-25 23:30", "en")     # yesterday's last slot
+    daily = {**CFG, "schedule": {"every_minutes": 1440, "first": "09:00", "language": "hi"}}
+    assert schedule.due(daily, set(), at(11, 37)) == ("2026-11-26 09:00", "hi")  # late (up to 3 h) is still posted
+    assert schedule.due(daily, set(), at(12, 7)) is None
 
 
-def test_work_now_sees_half_posted_videos():
-    h = {"videos": [{"status": "queued", "slot": "2026-11-26 09:00"}]}
+def test_work_now():
+    h = {"videos": [{"status": "queued", "slot": None}]}
     assert schedule.work_now(CFG, h, at(9, 37)) is True
-    h = {"videos": [{"status": "published", "slot": "2026-11-26 09:00"}]}
-    assert schedule.work_now(CFG, h, at(9, 37)) is False and schedule.work_now(CFG, h, at(14, 7)) is True
-    assert schedule.work_now(CFG, {"videos": [], "missed_slots": ["2026-11-26 09:00"]}, at(9, 37)) is False
+    h = {"videos": [{"status": "published", "slot": "2026-11-26 09:30"}, {"status": "queued", "slot": None}]}
+    assert schedule.work_now(CFG, h, at(9, 37)) is False and schedule.work_now(CFG, h, at(10, 37)) is True
+
+
+def test_make_gate():
+    assert schedule.make_now(CFG, {"videos": []}, at(7, 50)) is True
+    ready = {"videos": [{"status": "queued", "language": "en"}, {"status": "queued", "language": "hi"}]}
+    assert schedule.make_now(CFG, ready, at(7, 50)) is False

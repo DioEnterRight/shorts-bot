@@ -102,7 +102,14 @@ def _section(path, heading):
 def director_brief():
     chars = "\n".join(l for l in (KIT / "library/characters/CHARACTERS.md").read_text().splitlines() if l.startswith("| ") and "`" in l)
     spots = "\n".join(f"- {k}: {v['what']} (widest shot {v['max']})" for k, v in planc.SPOTS.items())
-    models = (KIT / "library/environments/MODELS.md").read_text(encoding="utf-8")
+    models, pack = [], None   # MODELS.md minus building parts (they are not props)
+    for line in (KIT / "library/environments/MODELS.md").read_text(encoding="utf-8").splitlines():
+        m = re.match(r"## (\w+) \(", line)
+        pack = m.group(1) if m else pack
+        if pack and not line.startswith("#") and re.search(r"\w+ [\d.]+x", line):
+            line = ", ".join(e for e in line.split(", ") if f"{pack}/{e.split(' ')[0]}" in planc.MODEL_INDEX)
+        models.append(line)
+    models = "\n".join(models)
     return "\n\n".join([
         (KIT / "references/09_PLAN_FORMAT.md").read_text(encoding="utf-8"),
         "## Camera rules (03_CAMERA_GRAMMAR.md)\n" + _section("references/03_CAMERA_GRAMMAR.md", "5. Rules for our camera"),
@@ -119,11 +126,10 @@ def _ask(cfg, messages, director, budget, call_claude, work):
     who, model = director
     if who == "freellm":
         return freellm.extract_json(freellm.chat(cfg, messages, budget))
-    text = "\n\n".join(m["content"] if isinstance(m["content"], str) else m["content"][0]["text"] for m in messages)
-    brief = Path(work) / f"director_brief_{abs(hash(text)) % 10**8}.md"   # long prompts go by file (argv is capped at 128 KB)
-    brief.write_text(text, encoding="utf-8")
-    return freellm.extract_json(call_claude(f"Read the file {brief} and do exactly what it asks. Reply with ONLY the JSON object.",
-                                            tools="Read", max_turns=6, effort="high", model=model))
+    system = next(m["content"] for m in messages if m["role"] == "system")
+    ask = "\n\n".join(m["content"] for m in messages if m["role"] != "system")
+    return freellm.extract_json(call_claude(ask, max_turns=1, effort=cfg["studio"].get("claude_effort", "medium"),
+                                            model=model, system=system))
 
 
 def direct(cfg, script, beats, director, budget, call_claude, work, plan=None, notes=None):
@@ -141,9 +147,9 @@ def direct(cfg, script, beats, director, budget, call_claude, work, plan=None, n
 
 
 def directors(cfg, budget, call_claude):
-    """the escalation chain: [(director, repair rounds)]. FreeLLMAPI first (free), then Claude, then Claude's best model."""
+    """the escalation chain: [(director, repair rounds)]. studio.director first (freellm or claude), then Claude's rescue model."""
     st, chain = cfg["studio"], []
-    if budget is not None:
+    if budget is not None and st.get("director", "claude") == "freellm":
         chain.append((("freellm", None), int(st.get("repair_rounds", 3))))
     if call_claude is not None:
         if st.get("director") == "claude":
@@ -425,10 +431,11 @@ def watch(video, outdir):
 
 
 def judge(cfg, script, beats, sheets, motion, budget, call_claude=None):
-    """05_AGENT_TEAM judge on the contact sheets, by the same model family that directs (FreeLLMAPI vision, or Claude
-    reading the sheet images). -> {"scores": {...}, "fix": [...]} or None when it is off or no model answers."""
-    if not cfg["studio"].get("judge", True) or (budget is None and call_claude is None):
-        return None
+    """05_AGENT_TEAM judge on the contact sheets: FreeLLMAPI vision (free), or Claude reading the sheet images when
+    studio.claude_judge is on. -> {"scores": {...}, "fix": [...]} or None when it is off or no model answers."""
+    st = cfg["studio"]
+    if not st.get("judge", True) or (budget is None and (call_claude is None or not st.get("claude_judge", False))):
+        return None   # no free vision model: skip it unless claude_judge (Claude reading 8 images costs many tokens)
     brief = (KIT / "references/10_JUDGE.md").read_text(encoding="utf-8")
     text = f"{brief}\n\nShort: \"{script['title']}\"\n{beat_table(script, beats)}\n\nmotion.txt:\n{motion[:3000]}"
     try:
@@ -458,8 +465,8 @@ def make(cfg, script, timeline, voice_wav, work, call_claude=None, plan=None):
     vdir = setup_video(vid, script, timeline, voice_wav)
     beats = planc.read_timeline(vdir)
     offline = plan is not None
-    budget = None   # None = Claude directs (studio.director: claude, no FreeLLMAPI running, or its monthly cap reached)
-    if not offline and st.get("director", "freellm") == "freellm" and freellm.configured(cfg):
+    budget = None   # FreeLLMAPI: directs when studio.director is freellm, and judges (free vision) either way
+    if not offline and freellm.configured(cfg):
         try:
             budget = freellm.Budget(cfg)
         except RuntimeError as e:

@@ -1,6 +1,6 @@
 # Our pipeline — the kit inside shorts-bot
 Repo `DioEnterRight/shorts-bot`. Channel **Cons & Coins** (money, scams, heists, business, psychology), 3 Shorts a
-day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:00 English, India time). 100 % cloud: GitHub Actions makes, renders and posts; no local machine needed.
+slot of config.yaml `schedule:` (now: every hour from 00:30, English, 09:30 Hindi/Hinglish, India time). 100 % cloud: GitHub Actions makes, renders and posts; no local machine needed.
 
 ## Who does what
 | step | who | where |
@@ -19,9 +19,9 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
 | queue + post | GitHub Releases, Instagram + YouTube APIs | `pipeline/publish.py` |
 
 ## The daily run (`.github/workflows/make-video.yml`)
-1. One video per `schedule:` line still missing from the queue (`pipeline/schedule.py`), in slot order; theme from
+1. Hourly: one video for the next upload slot not yet covered by the queue (`pipeline/schedule.py`, `make_ahead`); theme from
    `themes` (explainer ~80 %, story ~20 %).
-2. Idea → script (11-16 beats, 45-65 s at 3.3-3.8 words/s) → voice.
+2. Idea → script (11-16 beats, 45-65 s; words = target_seconds x languages.<code>.words_per_second) → voice.
 3. `studio.make()`: timeline → director plan → normalize + compile → gates → autofix → (director / Claude rescue rounds) → preview → contact sheets → judge →
    maybe v2 → best version → final render → mix. Every version lands in `out/<video>/versions/vN/`
    (plan.json, gates.txt, judge.json, sheet_*.jpg, preview.mp4, rounds/round_NN.json = every director round with its
@@ -30,7 +30,8 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
    when its time comes (up to 3 h late), tying the video to the slot so retries never double-post.
 
 Render cost (measured, 2 CPUs): preview ~0.3 s/frame, full HD ~0.75 s/frame → a 55 s Short ≈ 10 min preview + 20 min final.
-Tokens: Claude for idea + script; director/judge on free models (`studio.director: freellm`) or Claude (`claude`), see GUIDE.md §5.
+Tokens: Claude for idea (backlog reused) + script + director (one tool-free call with our own system prompt); judge on a
+free FreeLLMAPI vision model. `studio.director: freellm` moves directing to free models too, see GUIDE.md §5.
 
 ## Config (`config.yaml`)
 `schedule` (one line per daily upload: time + language), `video.target_seconds` (45-65), `languages.*.words_per_second` (kit pace), `studio` (director, repair_rounds, judge,

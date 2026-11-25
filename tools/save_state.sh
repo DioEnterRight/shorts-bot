@@ -5,6 +5,7 @@ set -euo pipefail
 msg="$1"
 git config user.name "shorts-bot"
 git config user.email "shorts-bot@users.noreply.github.com"
+git config merge.jsonstate.driver "python3 tools/merge_state.py %O %A %B"   # Make + Post may save at once (.gitattributes)
 git add data
 if git diff --cached --quiet; then
   echo "No state changes to save."

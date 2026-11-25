@@ -17,10 +17,11 @@ import {SOLIDS} from '@story/solids';
 import {CART_K} from '../chars/charparts';
 const camV2 = (_f: number): any => { throw new Error('v2 camera compare removed in the engine'); };
 
-type Box = [number, number, number, number, number, number, string]; // x0 x1 y0 y1 z0 z1 name
+type Box = [number, number, number, number, number, number, string, [number, number]?]; // x0 x1 y0 y1 z0 z1 name [old-frame window]
 const B = (x0: number, x1: number, y0: number, y1: number, z0: number, z1: number, n: string): Box => [x0, x1, y0, y1, z0, z1, n];
 // solid set geometry the camera must not enter / that hides subjects (story: '@story/solids')
-const SET: Box[] = SOLIDS;
+const ALL_SET: Box[] = SOLIDS;
+const setAt = (f: number) => ALL_SET.filter((b) => !b[7] || (f >= b[7][0] && f < b[7][1]));   // a scene's props exist only in their scene
 const cartBoxOf = (c: {p: V3; ry?: number; sc?: number}): Box => { const r = c.ry ?? 0, k = (c.sc ?? 1) * CART_K, hx = k * (Math.abs(0.33 * Math.cos(r)) + Math.abs(0.24 * Math.sin(r))), hz = k * (Math.abs(0.33 * Math.sin(r)) + Math.abs(0.24 * Math.cos(r)));
   return [c.p[0] - hx, c.p[0] + hx, 0, 1.05 * k, c.p[2] - hz, c.p[2] + hz, 'cart']; };
 const V3v = (p: V3) => new THREE.Vector3(p[0], 1.0, p[2]);
@@ -49,6 +50,7 @@ export function check(step = 2, from = 0, to = TOTAL, v2 = false) {
     if (v2) { const o = camV2(oldF(rt)); c.p = o.p; c.anchor = c.anchor; cam.position.copy(o.p); cam.up.set(0, 1, 0); cam.lookAt(o.l); cam.rotateZ(o.roll); cam.fov = o.fov; cam.updateProjectionMatrix(); cam.updateMatrixWorld(true); }
     else applyCam(cam, c);
     const {s, t0, moving} = setupAt(rt) as ReturnType<typeof setupAt> & {moving?: boolean}, lt = rt - t0, settling = lt < (s.settle?.[1] ?? 0.45) && (s.settle?.[0] ?? 0) > 0.15, f = oldF(rt), st = stage(f), vel = velocities(f, st);
+    const SET = setAt(f);
     const add = (kind: string, msg: string) => out.push({f: fr, t: +rt.toFixed(2), key: c.key, kind, msg});
     const P = (v: THREE.Vector3) => v.clone().project(cam);
     const isIn = (n: THREE.Vector3, m = 0) => n.z < 1 && Math.abs(n.x) <= 1 - m && Math.abs(n.y) <= 1 - m;

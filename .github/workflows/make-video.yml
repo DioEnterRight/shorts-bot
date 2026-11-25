@@ -2,7 +2,7 @@ name: Make video
 
 on:
   schedule:
-    - cron: "33 22 * * *"   # every day ~04:03 India time (GitHub may run it a few minutes late)
+    - cron: "13 * * * *"   # every hour: keeps the next uploads ready (config.yaml schedule)
   workflow_dispatch:
     inputs:
       test:
@@ -16,7 +16,7 @@ on:
         options: [auto, en, hi]
 
 concurrency:
-  group: shorts-bot
+  group: shorts-make         # one Make at a time; posting has its own queue, so a long render never blocks a post
   cancel-in-progress: false
 
 permissions:
@@ -24,9 +24,26 @@ permissions:
   issues: write
 
 jobs:
+  gate:   # cheap: is a video needed for the next upload slots? (most hourly runs stop here in seconds)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      make: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.make == 'true' }}
+      stats: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.stats == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: gate
+        if: github.event_name != 'workflow_dispatch'
+        run: pip install -q pyyaml && python -m pipeline.schedule make
+
   make:
+    needs: gate
+    if: needs.gate.outputs.make == 'true' || needs.gate.outputs.stats == 'true'
     runs-on: ubuntu-24.04   # pinned: ffmpeg 6.1.1 here = the ffmpeg our tests run on (ubuntu-latest moved the toolchain under us)
-    timeout-minutes: 350   # one video per schedule line: Claude ~10-20 min + kit previews + full render ~30-60 min each
+    timeout-minutes: 120   # one video per run: Claude ~5 min + kit checks + render ~20-40 min
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
@@ -68,7 +85,7 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Collect stats from Instagram / YouTube
-        if: env.TEST != 'true'
+        if: env.TEST != 'true' && needs.gate.outputs.stats == 'true'   # once a day (04-05 IST) is plenty
         continue-on-error: true
         env:
           IG_PAGE_TOKEN: ${{ secrets.IG_PAGE_TOKEN }}
