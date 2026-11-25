@@ -713,8 +713,15 @@
       "duration": 56.05,
       "storyboard": "kit",
       "tag": "vid-20261126-033146-en-the-grocer-who-staged-a-crow",
-      "status": "queued",
-      "created": "2026-11-26T04:19+05:30"
+      "status": "published",
+      "created": "2026-11-26T04:19+05:30",
+      "slot": "2026-11-26 04:30",
+      "ig_media_id": "18146942677721062",
+      "ig_link": "https://www.instagram.com/reel/DgLtlkYhCNm/",
+      "ig_state": "posted",
+      "yt_video_id": "kVpn1MF2JxE",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T05:00+05:30"
     }
   ],
   "version": 2,
