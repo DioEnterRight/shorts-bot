@@ -83,7 +83,8 @@ ideas:
 voice:
   engine: edge            # edge = Microsoft edge-tts with real word timings (falls back to Kokoro by itself)
                           # kokoro = always Kokoro. Test-mode runs always use Kokoro (offline).
-  edge_retries: 3         # tries per line before the whole video switches to Kokoro
+  edge_retries: 6         # tries per line (backing off 3-40 s) before the whole video switches to Kokoro
+  edge_pause: 1.5         # seconds between lines: Microsoft throttles fast requests ("No audio was received")
   gap_seconds: 0.2        # short pause between sentences (each line is one sentence)
 
 # Which Claude writes ideas and scripts (Claude Code CLI, your subscription).
@@ -95,9 +96,14 @@ claude:
 # The video engine: the animated-shorts-kit head skill (.claude/skills/animated-shorts-kit), see references/08_OUR_PIPELINE.md.
 studio:
   director: freellm         # who writes + repairs the shot plan: freellm (free) or claude. Without FreeLLMAPI it uses Claude.
-  claude_model: sonnet      # only when Claude directs
-  repair_rounds: 3          # gate problems sent back to the director before the Short falls back to 2D
-  judge: true               # a free vision model scores the preview's contact sheets (10_JUDGE.md)
+  claude_model: sonnet      # only when Claude directs + judges (sonnet = cheaper, opus = best)
+  repair_rounds: 3          # rounds of remaining problems sent back to the director
+  autofix_rounds: 24        # before any model is asked: code retries failing camera keys / moves people (free, ~10 s each)
+  waive_max: 2              # gate glitches this short (checked frames, ~2 frames each) are waived the kit's way, with a reason
+  rescue: true              # when the free director can't pass the checks, Claude takes over (rescue_model) before 2D
+  rescue_model: opus
+  rescue_rounds: 2
+  judge: true               # scores the preview's contact sheets (10_JUDGE.md): FreeLLMAPI vision, or Claude when Claude directs
   good_enough: 8            # judge overall score (1-10) at which the fix round is skipped
   music_db: -13             # music bed vs voice (kit: 10-15 dB under the voice, never stops)
   sfx_db: -10               # sound effects vs voice (peaks capped under the voice)

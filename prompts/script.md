@@ -60,7 +60,7 @@ Reply with ONLY one JSON object, no markdown fences, no comments, exactly this s
   "mood": "mystery | upbeat | dramatic | calm | tense  (the background music for this story)",
   "facts_checked": ["claim -> source.com"],
   "scenes": [
-    {{"line": "spoken words", "visual": "what we see", "emphasis": "word"}}
+    {{"line": "spoken words", "visual": "what we see", "emphasis": "word", "caption": "Hindi videos only (see language rules); omit otherwise"}}
   ],
   "playbook_update": "{playbook_field_hint}"
 }}

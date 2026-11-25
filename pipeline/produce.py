@@ -8,6 +8,7 @@ import argparse
 import json
 import shutil
 import sys
+import time
 
 from . import allocation, analytics, brain, ideas, languages, qc, schedule, studio, toon2d, voice
 from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, run, save_history, slugify
@@ -55,7 +56,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
     log(f"=== Making {vid_id} ===")
 
     voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
-    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; kit target 200-230 = 3.3-3.8 words/s)")
+    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; target {float(lp['words_per_second']) * 60:.0f} = languages.{lp['code']}.words_per_second)")
     (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
     try:   # the head skill's studio (animated-shorts-kit); test mode uses the hand-made sample shot plan
         plan = json.loads((ROOT / "prompts" / "sample_plan.json").read_text(encoding="utf-8")) if test else None
@@ -66,7 +67,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
         if test:
             raise
         log(f"studio failed ({str(e)[:300]}); making this Short with the emergency 2D engine", "WARN")
-        final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
+        final, storyboard = toon2d.render(cfg, script, studio.caption_timeline(script, timeline), voice_path, vlen + 0.7, work, lp["code"],
                                           brain.call_claude, brain.extract_json, use_claude=True)
     duration = qc.check(final, fps=cfg["video"]["fps"])
     shutil.move(final, work / "final.mp4")
@@ -109,28 +110,55 @@ def main():
         return
     log(f"Videos ready: {len(queued)}. Making {len(todo)}: {', '.join(todo)}")
 
-    made = 0
+    made, failed = 0, []
     for language in todo:
-        work, meta, script, idea = produce_one(cfg, history, stats, args.test, language, args.theme)
-        made += 1
-        if args.release:
-            tag = f"vid-{meta['id']}"
-            run(["gh", "release", "create", tag, work / "final.mp4", work / "meta.json",
-                 "--title", meta["title"][:100], "--notes", meta["caption"][:2000]])
-            history["videos"].append({**{k: meta[k] for k in (
-                "id", "title", "topic", "canonical_en", "language", "theme", "category", "hook_type",
-                "hook_line", "duration", "storyboard")},
-                "tag": tag, "status": "queued", "created": now_ist().isoformat(timespec="minutes")})
-            save_history(history)
-            led = ideas.load()
-            ideas.record(led, idea or {"canonical_en": meta["canonical_en"]}, meta["language"], meta["theme"],
-                         meta["id"])
-            ideas.save(led)
-            if script.get("playbook_update", "").strip():
-                (DATA / "playbook.md").write_text(script["playbook_update"].strip() + "\n", encoding="utf-8")
-                log("Playbook updated")
-        log(f"Done: {work / 'final.mp4'}")
-    log(f"Made {made} video(s).")
+        try:   # one bad video (or a GitHub hiccup) must not cost the others
+            work, meta, script, idea = produce_one(cfg, history, stats, args.test, language, args.theme)
+            if args.release:
+                queue(history, work, meta, script, idea)
+            made += 1
+            log(f"Done: {work / 'final.mp4'}")
+        except Exception as e:  # noqa: BLE001
+            if args.test:
+                raise
+            failed.append(language)
+            log(f"FAILED ({language}): {str(e)[:400]}", "ERROR")
+    log(f"Made {made} video(s)." + (f" Failed: {', '.join(failed)}." if failed else ""))
+    if failed:
+        sys.exit(f"{len(failed)} video(s) failed: see the log above")
+
+
+def upload_release(tag, files, title, notes, tries=5):
+    """GitHub Release with retries: uploads.github.com sometimes answers 502/500. A half-made release is deleted
+    before the next try, so the tag never points at a release without its video."""
+    for attempt in range(1, tries + 1):
+        try:
+            run(["gh", "release", "create", tag, *files, "--title", title, "--notes", notes])
+            return
+        except RuntimeError as e:
+            if attempt == tries:
+                raise
+            wait = 20 * attempt
+            log(f"GitHub release upload failed (try {attempt}/{tries}: {str(e)[-200:]}); retrying in {wait} s", "WARN")
+            run(["gh", "release", "delete", tag, "--yes", "--cleanup-tag"], check=False)
+            time.sleep(wait)
+
+
+def queue(history, work, meta, script, idea):
+    """the finished video -> GitHub Release (the queue) + history + idea ledger + playbook"""
+    tag = f"vid-{meta['id']}"
+    upload_release(tag, [work / "final.mp4", work / "meta.json"], meta["title"][:100], meta["caption"][:2000])
+    history["videos"].append({**{k: meta[k] for k in (
+        "id", "title", "topic", "canonical_en", "language", "theme", "category", "hook_type",
+        "hook_line", "duration", "storyboard")},
+        "tag": tag, "status": "queued", "created": now_ist().isoformat(timespec="minutes")})
+    save_history(history)
+    led = ideas.load()
+    ideas.record(led, idea or {"canonical_en": meta["canonical_en"]}, meta["language"], meta["theme"], meta["id"])
+    ideas.save(led)
+    if script.get("playbook_update", "").strip():
+        (DATA / "playbook.md").write_text(script["playbook_update"].strip() + "\n", encoding="utf-8")
+        log("Playbook updated")
 
 
 if __name__ == "__main__":

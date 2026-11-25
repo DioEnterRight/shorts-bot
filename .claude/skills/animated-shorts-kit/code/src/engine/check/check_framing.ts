@@ -98,7 +98,7 @@ export function check(step = 2, from = 0, to = TOTAL, v2 = false) {
         const o = k === 'car' ? st.cars[+arg] : st.meters[+arg]; if (!o) { add('MISS', `${sub} missing`); continue; }
         const ctr = new THREE.Vector3(o.p[0], k === 'car' ? 0.9 : 1.1, o.p[2]), pn = P(ctr); grow(pn);
         if (k === 'car') { const r = (o as any).ry ?? 0; for (const x of [-2.1, 2.1]) for (const z of [-0.9, 0.9]) for (const y of [0, 1.66]) grow(P(new THREE.Vector3(o.p[0] + x * Math.cos(r) + z * Math.sin(r), y, o.p[2] - x * Math.sin(r) + z * Math.cos(r)))); } if (!isIn(pn, 0.05)) add('CROP', `${sub} centre out`);
-        if (!s.occOK) for (const sb of [...SET, ...CARS.filter((b) => !inside(ctr, b, 0.3))]) if (segHits(c.p, ctr, sb, 0.3)) { add('OCCL', `${sub} behind ${sb[6]}`); break; }
+        if (!s.occOK) for (const sb of [...SET, ...CARS].filter((b) => !inside(ctr, b, 0.3))) if (segHits(c.p, ctr, sb, 0.3)) { add('OCCL', `${sub} behind ${sb[6]}`); break; }   // a subject is never hidden by the box it sits in
       } else if (k === 'cart') {
         const j = +arg; subjCarts.add(j); const ct = st.carts[j]; if (!ct) { add('MISS', `cart ${j} missing`); continue; }
         const b = cartBoxOf(ct); for (const x of [b[0], b[1]]) for (const y of [b[2], b[3]]) for (const z of [b[4], b[5]]) grow(P(new THREE.Vector3(x, y, z)));
@@ -108,7 +108,7 @@ export function check(step = 2, from = 0, to = TOTAL, v2 = false) {
         const [pp, h] = propBox(k, arg);
         const ctr = new THREE.Vector3(...pp), pn = P(ctr); if (!isIn(pn, 0.05)) add('CROP', `${sub} centre out`);
         for (const d of [[h[0], 0, 0], [-h[0], 0, 0], [0, h[1], 0], [0, -h[1], 0]]) grow(P(ctr.clone().add(new THREE.Vector3(d[0], d[1], d[2]))));
-        for (const sb of [...SET, ...CARS.filter((b) => !inside(ctr, b, 0.3))]) if (segHits(c.p, ctr, sb, 0.3)) { add('OCCL', `${sub} behind ${sb[6]}`); break; }
+        for (const sb of [...SET, ...CARS].filter((b) => !inside(ctr, b, 0.3))) if (segHits(c.p, ctr, sb, 0.3)) { add('OCCL', `${sub} behind ${sb[6]}`); break; }   // a subject is never hidden by the box it sits in
       }
     }
     // text signs (ads / plaques) must not compete with the subject: flag a sign inside the frame that is nearly sharp

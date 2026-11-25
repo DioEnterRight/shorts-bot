@@ -81,7 +81,14 @@ def synthesize(cfg, script, lp, workdir, allow_edge=True):
             log(f"edge-tts failed ({e}); using Kokoro for this video", "WARN")
     elif engine not in ("edge", "kokoro"):
         raise ValueError(f"voice.engine must be edge or kokoro, not {engine!r}")
-    return (*_synthesize_kokoro(cfg, script, lp, workdir), "kokoro")
+    path, timeline, seconds = _synthesize_kokoro(cfg, script, lp, workdir)
+    target = float(lp.get("words_per_second", 3.4)) * 60   # kit pace; Kokoro alone speaks slower, so speed it up once
+    pace = pace_wpm(timeline)
+    if pace < target * 0.92:
+        speed = round(min(1.5, float(lp["speed"]) * target / pace), 2)
+        log(f"Kokoro pace {pace:.0f} wpm is under the kit pace {target:.0f}: again at speed {speed}")
+        path, timeline, seconds = _synthesize_kokoro(cfg, script, dict(lp, speed=speed), workdir)
+    return path, timeline, seconds, "kokoro"
 
 
 def kokoro_fit(cfg, text, path, seconds, lp):
@@ -211,7 +218,9 @@ def _decode_mp3(data):
 
 
 def edge_line(text, voice, rate, retries):
-    """One spoken line -> (samples at SR, marks). Retries with backoff, then raises."""
+    """One spoken line -> (samples at SR, marks). "No audio was received" is Microsoft throttling: back off longer
+    each try (3, 6, 12, 20, 30 s...), then raises."""
+    waits = [3, 6, 12, 20, 30, 40]
     for attempt in range(1, retries + 1):
         try:
             data, marks = asyncio.run(_edge_stream(text, voice, rate))
@@ -219,8 +228,8 @@ def edge_line(text, voice, rate, retries):
         except Exception as e:  # noqa: BLE001
             if attempt == retries:
                 raise
-            log(f"edge-tts attempt {attempt} failed ({e}); retrying", "WARN")
-            time.sleep(2 * attempt)
+            log(f"edge-tts attempt {attempt} failed ({e}); retrying in {waits[min(attempt, len(waits)) - 1]} s", "WARN")
+            time.sleep(waits[min(attempt, len(waits)) - 1])
 
 
 def _synthesize_edge(cfg, script, lp, workdir):
@@ -230,8 +239,10 @@ def _synthesize_edge(cfg, script, lp, workdir):
     pieces, timeline = [np.zeros(int(t * SR), dtype=np.float32)], []
     for i, sc in enumerate(script["scenes"]):
         log(f"Voice line {i + 1}/{len(script['scenes'])} (edge-tts)")
+        if i:
+            time.sleep(float(vc.get("edge_pause", 1.5)))   # spacing requests avoids Microsoft's throttling
         raw, marks = edge_line(sc["line"], lp["edge_voice"], lp.get("edge_rate", "+0%"),
-                               int(vc.get("edge_retries", 3)))
+                               int(vc.get("edge_retries", 6)))
         idx = np.where(np.abs(raw) > 0.01)[0]
         if len(idx) == 0 or len(raw) < SR * 0.2:
             raise RuntimeError(f"edge-tts line {i + 1} came out empty")

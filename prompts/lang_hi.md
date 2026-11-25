@@ -18,5 +18,8 @@ Write the way popular Indian Shorts creators actually TALK, not the way a textbo
 - Write numbers as digits only when short ("3 seconds"); never use abbreviations.
 - Title: catchy Hinglish, max 70 characters, can mix Devanagari and English words.
 - Hashtags: mix of Hindi-audience and topic tags (e.g. #hindi #facts #science).
-- "overlay" labels: max 3 words, Devanagari or a simple English word.
 - The "emphasis" word must be copied exactly as it appears in the line.
+- **Captions are Hinglish in Roman letters.** Every scene also gets "caption": the SAME line written the way Indians
+  type Hindi on WhatsApp / YouTube comments — Latin letters only, no Devanagari, simple spellings, same words in the
+  same order, one caption word per spoken word. Example: line "आपका stomach खाली होते ही brain को signal भेजता है" →
+  caption "aapka stomach khaali hote hi brain ko signal bhejta hai". The voice reads "line"; the screen shows "caption".

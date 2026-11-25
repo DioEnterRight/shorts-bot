@@ -5,6 +5,8 @@ English in the afternoon and evening — by itself, in the cloud. Your PC and ph
 
 ---
 
+**New here? Read [GUIDE.md](GUIDE.md)** — how to use the bot and what to change for your preferences.
+
 ## The rhythm (automatic)
 
 - **~4 AM IST, daily — Make video.** Makes one video per line of `schedule:` in config.yaml (in slot order, so the
@@ -53,16 +55,17 @@ Start at its `SKILL.md`; `references/08_OUR_PIPELINE.md` explains this repo.
 1. Claude: idea + script (one line = one beat).
 2. Free model (FreeLLMAPI) = **director**: a shot plan per beat (where people stand, what they do, where the camera goes,
    which word it lands on). Code compiles it onto the kit engine (Three.js + Remotion).
-3. The kit's **gates** check every frame (faces cut, people in walls, camera inside a shelf…); problems go back to the
-   director until they are 0.
+3. The kit's **gates** check every frame (faces cut, people in walls, camera inside a shelf…). Code repairs the director's
+   small mistakes and tries camera variations itself; what is left goes back to the director, and if the free model
+   can't finish, Claude (Opus) takes over.
 4. A preview renders; contact sheets every 0.5 s go to a free vision **judge**; one fix round; the higher score wins.
 5. Final render on the GitHub runner (CPU, ~20-40 min) + sound mix at -14 LUFS.
-If anything fails, that Short is made by the old flat 2D engine (`toon2d/`, emergency only), so a video always ships.
+Only if Claude's rescue also fails is that Short made by the old flat 2D engine (`toon2d/`), so a video always ships.
 
 ## 🇮🇳 English + Hindi
 
 Every video is one language. Hindi is written fresh as natural Hinglish (Devanagari, with everyday English
-words in Latin letters), never translated. Captions ship with their own fonts (Anton + Noto Sans Devanagari). Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
+words in Latin letters), never translated. The captions on screen are Hinglish in Roman letters. Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
 so if it fails the video uses Kokoro automatically.
 
 ## 🏷 AI labels
@@ -86,7 +89,7 @@ python -m pipeline.produce --test                  # sample story -> out/*/final
 | File | What |
 |---|---|
 | `history.json` | every Short (queued / published, per-platform state) |
-| `analytics.json` | views & stats per video + the language split |
+| `analytics.json` | views & stats per video |
 | `ideas.json` | every idea used (for "don't repeat yourself") |
 | `playbook.md` | lessons Claude rewrites on Sundays |
 

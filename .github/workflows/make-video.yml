@@ -113,6 +113,7 @@ jobs:
             out/*/versions/*/sheet_*.jpg
             out/*/versions/*/*.json
             out/*/versions/*/*.txt
+            out/*/versions/*/rounds/*.json
           if-no-files-found: ignore
           retention-days: 14
 

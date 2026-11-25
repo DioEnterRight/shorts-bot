@@ -6,6 +6,10 @@ people → `stage.ts` (PersonP + `seq()`), camera → continuous `TAKES` of `K()
 You are the DIRECTOR. You get the script as beats (one beat = one script line, with its exact words and seconds).
 Reply with ONLY the plan JSON.
 
+The compiler repairs small mistakes itself (a misspelled name or word, a taken slot, keys too close, a size too wide
+for the spot) and reports them as FIX lines; then code tries camera variations on any key the gates reject. You only
+hear about what is left — put your effort into the story: who is where, what they do, what the camera shows on which word.
+
 ## Shape
 ```json
 {

@@ -1,3 +1,4 @@
+import json
 import pytest
 
 from pipeline import brain, languages, voice
@@ -11,8 +12,9 @@ def lps(cfg):
 @pytest.mark.parametrize("code", ["en", "hi"])
 def test_samples_validate(cfg, sample, lps, code):
     s = brain.validate(sample(code), cfg, lps[code])
-    assert s["language"] == code and 8 <= len(s["scenes"]) <= 13
-    assert all(set(sc) == {"line", "visual", "overlay", "emphasis"} for sc in s["scenes"])
+    assert s["language"] == code and 11 <= len(s["scenes"]) <= 16
+    keys = {"line", "visual", "overlay", "emphasis"} | ({"caption"} if code == "hi" else set())
+    assert all(set(sc) == keys for sc in s["scenes"])
 
 
 def test_hindi_emphasis_with_matras_kept(cfg, sample, lps):
@@ -82,3 +84,16 @@ def test_hindi_routes_through_phonemes(lps):
     assert calls["is_phonemes"] is True and calls["voice"] == lps["hi"]["voice"]
     voice.speak(K(), "Your stomach", lps["en"])
     assert calls.get("lang") == "en-us"
+
+
+def test_hindi_script_needs_roman_hinglish_captions(cfg, sample):
+    from pipeline import brain, languages
+    lp = languages.profile(cfg, "hi")
+    s = sample("hi")
+    assert brain.validate(json.loads(json.dumps(s)), cfg, lp)["scenes"][0]["caption"].startswith("is aadmi")
+    for bad in ("", "इस aadmi"):
+        t = json.loads(json.dumps(s)); t["scenes"][2]["caption"] = bad
+        with pytest.raises(ValueError, match="Roman Hinglish"):
+            brain.validate(t, cfg, lp)
+    en = sample("en"); en["scenes"][0]["caption"] = "x"
+    assert "caption" not in brain.validate(en, cfg, languages.profile(cfg, "en"))["scenes"][0]
