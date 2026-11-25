@@ -38,9 +38,16 @@ def test_language_selector():
     assert on["workflow_dispatch"]["inputs"]["language"]["options"] == ["auto", "en", "hi"]
     assert "provider" not in on["workflow_dispatch"]["inputs"]
 
-def test_schedules_unchanged():
+def test_schedules():
     assert load("make-video.yml")[True]["schedule"][0]["cron"] == "33 22 * * *"
-    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "57 9 * * *"   # 15:27 IST, set by Dexter
+    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "7,37 * * * *"   # times live in config.yaml schedule
+
+
+def test_idle_post_runs_stop_at_the_gate():
+    st = steps(load("post-video.yml"))
+    gate = [i for i, x in enumerate(st) if x.get("id") == "gate"][0]
+    assert "pipeline.schedule" in st[gate]["run"]
+    assert all(x.get("if") == "steps.gate.outputs.due == 'true'" for x in st[gate + 1:] if "save_state" not in x.get("run", ""))
 
 
 def test_scheduled_run_is_never_test_mode():
@@ -61,17 +68,12 @@ def test_config_languages_and_themes(cfg):
         assert (ROOT / lp["prompt"]).exists()
     shares = {k: t["share"] for k, t in cfg["themes"].items()}
     assert abs(sum(shares.values()) - 1) < 1e-6 and 0.75 <= shares["explainer"] <= 0.85
-    assert cfg["allocation"]["floor"] == 0.2
 
 
-def test_choose_slot_with_and_without_stats(cfg):
-    cfg["allocation"]["mode"] = "adaptive"   # the view-learned split (weekly mode tested in test_allocation)
-    hist = {"videos": []}
-    assert produce.choose_slot(cfg, hist, {"allocation": {}}) == ("en", "explainer")
-    hist = {"videos": [{"created": f"2026-11-{d:02d}", "language": "en", "theme": "explainer"} for d in range(1, 5)]}
-    lang, _ = produce.choose_slot(cfg, hist, {"allocation": {"language": {"shares": {"en": 0.8, "hi": 0.2}}}})
-    assert lang == "hi"  # floor: 4 English in a row -> Hindi is due
-    assert produce.choose_slot(cfg, hist, {}, language="en", theme="story") == ("en", "story")
+def test_daily_schedule(cfg):
+    from pipeline import schedule
+    assert schedule.slots(cfg) == [("09:00", "hi"), ("14:00", "en"), ("19:00", "en")]
+    assert produce.choose_theme(cfg, {"videos": []}) == "explainer"
 
 
 def test_make_video_installs_the_kit_studio_and_keeps_versions():

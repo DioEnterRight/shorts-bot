@@ -24,9 +24,17 @@ video:                    # vertical 1080x1920, 30 fps
   fps: 30
 
 # ------------------------------------------------------------
+#  DAILY SCHEDULE  — one line per upload, India time (24h), one language per video.
+#  Add, remove or change lines any time: the Make run makes one video per line,
+#  the Post run (every 30 min) posts each line's video at its time.
+# ------------------------------------------------------------
+schedule:
+  - {time: "09:00", language: hi}    # morning
+  - {time: "14:00", language: en}    # afternoon
+  - {time: "19:00", language: en}    # evening
+
+# ------------------------------------------------------------
 #  LANGUAGES  — every video is in exactly ONE language.
-#  The bot learns from views which language does better and makes more of it,
-#  but never less than `allocation.floor` (20%) of either.
 # ------------------------------------------------------------
 languages:
   enabled: [en, hi]
@@ -48,22 +56,6 @@ languages:
     edge_rate: "+12%"
     speed: 1.05
     words_per_second: 3.2
-
-allocation:
-  # weekly = fixed plan: `main` language every day, plus `weekly_quota` videos per Mon-Sun week
-  #          (from `quota_day` on). adaptive = split learned from views (settings below).
-  mode: weekly
-  main: en
-  weekly_quota:
-    hi: 1
-  quota_day: wed
-  # --- adaptive mode only ---
-  floor: 0.2              # each language always gets at least 20% (so max 80% for the stronger one)
-  min_videos: 4           # per language, before views are allowed to move the split
-  min_age_days: 2         # ignore videos younger than this (views still coming in)
-  window_days: 30         # only compare recent videos
-  sensitivity: 1.5        # how hard performance pulls the split (higher = faster)
-  smoothing: 0.35         # how much of the new target is applied per day (0-1)
 
 # ------------------------------------------------------------
 #  THEMES  — explainers stay the majority; the rest are experiments.
@@ -147,7 +139,6 @@ disclosure:
   instagram_ai_label: true
 
 publish:
-  post_time_ist: "19:00"  # info only — real time is set in .github/workflows/post-video.yml
   instagram: true
   instagram_max_attempts: 2   # then you get a "post it by hand" notice and the queue moves on
   # youtube_mode:
@@ -157,6 +148,3 @@ publish:
   youtube_mode: api
   youtube_max_attempts: 2
   hashtags_max: 5
-
-# How many finished videos to keep ready as backup (protects against a bad day).
-buffer: 2   # ready Shorts to keep; the daily run makes at most what is missing

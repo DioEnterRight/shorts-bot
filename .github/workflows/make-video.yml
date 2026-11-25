@@ -26,7 +26,7 @@ permissions:
 jobs:
   make:
     runs-on: ubuntu-24.04   # pinned: ffmpeg 6.1.1 here = the ffmpeg our tests run on (ubuntu-latest moved the toolchain under us)
-    timeout-minutes: 300   # Claude idea+script ~10-20 min, kit previews ~2x5-10 min + full render ~20-40 min (CPU WebGL)
+    timeout-minutes: 350   # one video per schedule line: Claude ~10-20 min + kit previews + full render ~30-60 min each
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}

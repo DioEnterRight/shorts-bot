@@ -1,26 +1,28 @@
 # 🪙 Cons & Coins — daily Shorts & Reels bot
 
-Makes **one animated cartoon Short a day** (Instagram Reels + YouTube Shorts), by itself, in the cloud. Your PC and phone can be off. Cost: ₹0 (your Claude subscription + free tiers).
+Makes and posts **3 animated cartoon Shorts a day** (Instagram Reels + YouTube Shorts) — Hindi in the morning,
+English in the afternoon and evening — by itself, in the cloud. Your PC and phone can be off. Cost: ₹0 (your Claude subscription + free tiers).
 
 ---
 
 ## The rhythm (automatic)
 
-- **~4 AM IST, daily — Make video.** Picks the language (English every day, one Hindi video a week) and theme,
-  researches ~8 ideas, drops anything too close to an old video, writes and fact-checks a 45-65 s script in the kit's
+- **~4 AM IST, daily — Make video.** Makes one video per line of `schedule:` in config.yaml (in slot order, so the
+  morning video is ready first). For each: picks the theme, researches ~8 ideas, drops anything too close to an old video, writes and fact-checks a 45-65 s script in the kit's
   story formula, voices it (edge-tts, Kokoro as fallback), then the **animated-shorts-kit studio** directs, checks,
   previews, judges and renders a 1080x1920 cartoon (2D characters in a 3D toon world) with captions, music and SFX.
   Saved to **Releases**.
-- **Daily — Post video** (time = the cron in `post-video.yml`). Posts the oldest ready video to Instagram + YouTube.
+- **Every 30 min — Post video.** When a `schedule:` slot's time comes, posts that slot's video (right language) to
+  Instagram + YouTube. Idle runs stop in seconds. A slot can be up to 3 h late (e.g. a slow Make run); after that its
+  video waits for the next slot of that language.
 - **Sundays** the bot also rewrites its own `data/playbook.md` from real view stats.
-- Keeps 2 ready Shorts (`buffer`), so a bad day never leaves the channel empty.
 
 ## ▶️ Buttons (GitHub → Actions tab)
 
 | Button | What it does |
 |---|---|
 | **Make video** | Makes today's Short(s). **Test mode** (ticked by default: no keys, the sample story as an artifact) and **language** (`auto`, `en`, `hi`). |
-| **Post video** | Posts the oldest ready Short right now. |
+| **Post video** | Posts the oldest ready Short right now (outside the schedule). |
 | **Throw away ready videos** | Deletes the waiting Shorts so the next Make builds fresh ones. |
 | **Test FreeLLMAPI** | Checks the free-model keys (makes nothing). |
 
@@ -34,12 +36,11 @@ judge scores of each version. You are the final judge.
 | ⏸ Stop everything | `paused: true` |
 | Change topics | `channel → niche` |
 | Video length | `video → target_seconds` (45-65) |
-| Language plan | `allocation` (`mode: weekly`, `weekly_quota: {hi: 1}`; `mode: adaptive` = learn from views) |
+| Upload times / how many a day / which language | `schedule` — one line per upload: `- {time: "09:00", language: hi}` (India time, 24h) |
 | Explainer vs. story | `themes → <name> → share` |
 | Narrator / pace | `languages → en/hi → edge_voice`, `edge_rate`, `words_per_second` |
 | Who directs, repairs, judges | `studio` (+ `freellm`, see FREELLM_SETUP.md) |
 | Music / SFX level | `studio → music_db`, `sfx_db` |
-| Post time | the `cron:` line in `.github/workflows/post-video.yml` (UTC = IST − 5:30) |
 | YouTube auto vs manual | `publish → youtube_mode`: `api` / `manual` / `off` |
 
 ## 🎨 How a video is made — one head skill

@@ -9,8 +9,8 @@ import json
 import shutil
 import sys
 
-from . import allocation, analytics, brain, ideas, languages, qc, studio, toon2d, voice
-from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, parse_time, run, save_history, slugify
+from . import allocation, analytics, brain, ideas, languages, qc, schedule, studio, toon2d, voice
+from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, run, save_history, slugify
 
 
 def recent_sequence(history, key, default):
@@ -19,26 +19,11 @@ def recent_sequence(history, key, default):
     return [v.get(key, default) for v in made]
 
 
-def choose_slot(cfg, history, stats, language=None, theme=None):
-    """Which language and theme the next video gets (deterministic, see allocation.py)."""
-    s = allocation.settings(cfg)
-    alloc = cfg.get("allocation", {})
-    if not language and alloc.get("mode") == "weekly":
-        made = [(parse_time(v["created"]), v.get("language", "en")) for v in history["videos"]
-                if v.get("status") != "discarded" and v.get("created")]
-        language = allocation.weekly_pick(made, now_ist(), alloc["main"], alloc["weekly_quota"], alloc.get("quota_day", "wed"))
-    if not language:
-        shares = (stats.get("allocation", {}).get("language") or {}).get("shares")
-        langs = languages.enabled(cfg)
-        if not shares or set(shares) != set(langs):
-            shares = {k: 1 / len(langs) for k in langs}
-        language = allocation.pick(shares, recent_sequence(history, "language", "en"), floor=s["floor"])
-    if not theme:
-        tshares = {k: float(t.get("share", 0)) for k, t in cfg["themes"].items() if float(t.get("share", 0)) > 0}
-        tot = sum(tshares.values())
-        theme = allocation.pick({k: v / tot for k, v in tshares.items()},
-                                recent_sequence(history, "theme", "explainer"), window=20)
-    return language, theme
+def choose_theme(cfg, history):
+    """Which theme the next video gets (deterministic shares from config.yaml themes, see allocation.py)."""
+    tshares = {k: float(t.get("share", 0)) for k, t in cfg["themes"].items() if float(t.get("share", 0)) > 0}
+    tot = sum(tshares.values())
+    return allocation.pick({k: v / tot for k, v in tshares.items()}, recent_sequence(history, "theme", "explainer"), window=20)
 
 
 def disclosure(cfg):
@@ -56,9 +41,9 @@ def make_script(cfg, history, stats, lp, theme, test):
     return brain.write_script(cfg, idea, lp, theme, perf), idea
 
 
-def produce_one(cfg, history, stats, test, language=None, theme=None):
+def produce_one(cfg, history, stats, test, language, theme=None):
     stamp = now_ist().strftime("%Y%m%d-%H%M%S")
-    language, theme = choose_slot(cfg, history, stats, language, theme)
+    theme = theme or choose_theme(cfg, history)
     lp = languages.profile(cfg, language)
     log(f"Slot: language={language} theme={theme}")
     script, idea = make_script(cfg, history, stats, lp, theme, test)
@@ -105,8 +90,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--test", action="store_true", help="offline test (sample script, no Claude/keys)")
     ap.add_argument("--release", action="store_true", help="queue result as a GitHub Release")
-    ap.add_argument("--count", type=int, default=0, help="force how many to make")
-    ap.add_argument("--language", default=None, help="force a language (en / hi); default: learned split")
+    ap.add_argument("--language", default=None, help="make one video in this language (en / hi); default: what the schedule needs")
     ap.add_argument("--theme", default=None, help="force a theme from config.yaml -> themes")
     args = ap.parse_args()
 
@@ -119,18 +103,15 @@ def main():
     history = load_history()
     stats = analytics.load()
     queued = [v for v in history["videos"] if v.get("status") == "queued"]
-    need = args.count or max(0, int(cfg.get("buffer", 2)) - len(queued))
-    if args.test:
-        need = 1
-    need = min(need, 3)
-    if need == 0:
-        log(f"Buffer already full ({len(queued)} ready). Nothing to make today.")
+    todo = [args.language or "en"] if args.test else [args.language] if args.language else schedule.to_make(cfg, queued)
+    if not todo:
+        log(f"Queue already holds a full day of slots ({len(queued)} ready). Nothing to make today.")
         return
-    log(f"Videos ready: {len(queued)}. Making {need}.")
+    log(f"Videos ready: {len(queued)}. Making {len(todo)}: {', '.join(todo)}")
 
     made = 0
-    for _ in range(need):
-        work, meta, script, idea = produce_one(cfg, history, stats, args.test, args.language, args.theme)
+    for language in todo:
+        work, meta, script, idea = produce_one(cfg, history, stats, args.test, language, args.theme)
         made += 1
         if args.release:
             tag = f"vid-{meta['id']}"

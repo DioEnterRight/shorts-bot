@@ -1,13 +1,12 @@
-"""STATS: pulls views/likes/shares/watch-time into data/analytics.json and recomputes the
-language allocation. Missing permissions or API errors never stop video production.
+"""STATS: pulls views/likes/shares/watch-time into data/analytics.json (Claude reads it when writing ideas and
+scripts). Missing permissions or API errors never stop video production.
 
 data/analytics.json (versioned):
   videos[<id>]: video_id, language, topic, theme, published_at, last_update,
                 views {yt, ig}, views_day7 {yt, ig}, metrics {...all platform numbers...}
-  allocation.language: shares, diagnostics, computed_at
 """
-from . import allocation, instagram, youtube
-from .common import DATA, env, load_config, load_history, log, now_ist, parse_time, read_json, save_history, write_json
+from . import instagram, youtube
+from .common import DATA, env, load_history, log, now_ist, parse_time, read_json, save_history, write_json
 
 PATH = DATA / "analytics.json"
 VERSION = 1
@@ -17,7 +16,7 @@ def load():
     a = read_json(PATH, {})
     a.setdefault("version", VERSION)
     a.setdefault("videos", {})
-    a.setdefault("allocation", {})
+    a.pop("allocation", None)   # the old view-learned language split; languages now come from config.yaml schedule
     return a
 
 
@@ -57,29 +56,6 @@ def _views(m):
     if "ig_views" in m:
         out["ig"] = m["ig_views"]
     return out
-
-
-def records_for_allocation(a, now):
-    out = []
-    for rec in a["videos"].values():
-        if not rec.get("published_at"):
-            continue
-        age = (now - parse_time(rec["published_at"])).total_seconds() / 86400
-        out.append({"language": rec.get("language", "en"), "age_days": age, "views": _views(rec.get("metrics", {})),
-                    "views_day7": _views(rec["metrics_day7"]) if rec.get("metrics_day7") else None})
-    return out
-
-
-def update_allocation(a, cfg, now=None):
-    now = now or now_ist()
-    langs = list(cfg["languages"]["enabled"])
-    s = allocation.settings(cfg)
-    prev = (a["allocation"].get("language") or {}).get("shares")
-    shares, diag = allocation.language_shares(records_for_allocation(a, now), langs, s, prev)
-    a["allocation"]["language"] = {"shares": {k: round(v, 4) for k, v in shares.items()}, "diagnostics": diag,
-                                   "computed_at": now.isoformat(timespec="minutes")}
-    log(f"Language shares: {a['allocation']['language']['shares']} ({diag.get('reason')})")
-    return shares
 
 
 def collect(a, history):
@@ -126,7 +102,6 @@ def collect(a, history):
 
 
 def main():
-    cfg = load_config()
     history = load_history()
     a = load()
     if migrate_from_history(a, history):
@@ -134,7 +109,6 @@ def main():
     try:
         collect(a, history)
     finally:
-        update_allocation(a, cfg)
         save(a)
         save_history(history)
 

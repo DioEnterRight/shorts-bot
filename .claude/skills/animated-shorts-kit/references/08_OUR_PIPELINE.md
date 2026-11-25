@@ -1,6 +1,6 @@
 # Our pipeline — the kit inside shorts-bot
-Repo `DioEnterRight/shorts-bot`. Channel **Cons & Coins** (money, scams, heists, business, psychology), English every
-day + one Hindi (Hinglish) Short a week. 100 % cloud: GitHub Actions makes, renders and posts; no local machine needed.
+Repo `DioEnterRight/shorts-bot`. Channel **Cons & Coins** (money, scams, heists, business, psychology), 3 Shorts a
+day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:00 English, India time). 100 % cloud: GitHub Actions makes, renders and posts; no local machine needed.
 
 ## Who does what
 | step | who | where |
@@ -17,18 +17,20 @@ day + one Hindi (Hinglish) Short a week. 100 % cloud: GitHub Actions makes, rend
 | queue + post | GitHub Releases, Instagram + YouTube APIs | `pipeline/publish.py` |
 
 ## The daily run (`.github/workflows/make-video.yml`)
-1. Slot: language (`allocation`) and theme (`themes`: explainer ~80 %, story ~20 %).
+1. One video per `schedule:` line still missing from the queue (`pipeline/schedule.py`), in slot order; theme from
+   `themes` (explainer ~80 %, story ~20 %).
 2. Idea → script (11-16 beats, 45-65 s at 3.3-3.8 words/s) → voice.
 3. `studio.make()`: timeline → director plan → compile → gates (repair rounds) → preview → contact sheets → judge →
    maybe v2 → best version → final render → mix. Every version lands in `out/<video>/versions/vN/`
    (plan.json, gates.txt, judge.json, sheet_*.jpg, preview.mp4) and the sheets are uploaded as the run's `versions` artifact.
-4. QC (`pipeline/qc.py`), GitHub Release, history saved. Posting happens in `post-video.yml`.
+4. QC (`pipeline/qc.py`), GitHub Release, history saved. `post-video.yml` runs every 30 min and posts a slot's video
+   when its time comes (up to 3 h late), tying the video to the slot so retries never double-post.
 
 Render cost (measured, 2 CPUs): preview ~0.3 s/frame, full HD ~0.75 s/frame → a 55 s Short ≈ 10 min preview + 20 min final.
 Tokens: Claude only for idea + script; the director/judge use free models (`freellm.max_calls_per_video`, `monthly_token_cap`).
 
 ## Config (`config.yaml`)
-`video.target_seconds` (45-65), `languages.*.words_per_second` (kit pace), `studio` (director, repair_rounds, judge,
+`schedule` (one line per daily upload: time + language), `video.target_seconds` (45-65), `languages.*.words_per_second` (kit pace), `studio` (director, repair_rounds, judge,
 good_enough, music_db, sfx_db, render_timeout_minutes), `freellm` (models, caps), `toon2d` (emergency only).
 
 ## Working by hand (Claude Code)
