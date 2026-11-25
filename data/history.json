@@ -676,6 +676,22 @@
       "yt_video_id": "fyB4QnEOBZA",
       "yt_state": "posted",
       "published_at": "2026-11-26T03:07+05:30"
+    },
+    {
+      "id": "20261126-023244-en-victor-lustig-s-money-printi",
+      "title": "The Box That Printed Hundred-Dollar Bills",
+      "topic": "Victor Lustig's money printing box",
+      "canonical_en": "Victor Lustig sold a 'money printing box' to a sheriff and other victims for tens of thousands of dollars",
+      "language": "en",
+      "theme": "story",
+      "category": "money_cons",
+      "hook_type": "story",
+      "hook_line": "He sold a box that printed money, for real money.",
+      "duration": 59.48,
+      "storyboard": "kit",
+      "tag": "vid-20261126-023244-en-victor-lustig-s-money-printi",
+      "status": "queued",
+      "created": "2026-11-26T03:25+05:30"
     }
   ],
   "version": 2,
