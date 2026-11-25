@@ -16,7 +16,7 @@ import math
 import re
 from collections import Counter
 
-from .common import DATA, ROOT, log, now_ist, read_json, write_json
+from .common import DATA, ROOT, log, now_ist, read_json, skill_text, write_json
 
 PATH = DATA / "ideas.json"
 VERSION = 1
@@ -149,7 +149,7 @@ def build_prompt(cfg, theme, lp, past, performance):
         language_name=lp["name"], niche=cfg["channel"]["niche"].strip(),
         today=dt.date.today().isoformat(),
         avoid_list="\n".join(f"- {t}" for t in recent) or "(nothing yet)",
-        performance=performance)
+        performance=performance, story_formula=skill_text("references/02_STORY_FORMULA.md"))
 
 
 def generate(cfg, history, theme, lp, performance, call_claude, extract_json):

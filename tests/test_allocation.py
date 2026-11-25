@@ -103,12 +103,12 @@ def test_pick_forces_language_missing_from_history():
 
 
 def test_theme_mix_keeps_explainers_majority():
-    shares = {"explainer": 0.8, "story": 0.13, "roblox_story": 0.07}
+    shares = {"explainer": 0.8, "story": 0.13, "rare": 0.07}
     seq = []
     for _ in range(200):
         seq.append(al.pick(shares, seq, window=20))
     assert 0.75 <= seq.count("explainer") / 200 <= 0.85
-    assert seq.count("roblox_story") >= 8 and seq.count("story") >= 20
+    assert seq.count("rare") >= 8 and seq.count("story") >= 20
 
 
 # ---------------- weekly quota ----------------

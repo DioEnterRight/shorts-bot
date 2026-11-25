@@ -1,4 +1,4 @@
-"""QC and the full offline pipeline (sample script -> Kokoro -> auto storyboard -> toon2d render)."""
+"""QC and the full offline pipeline (sample script -> Kokoro -> sample shot plan -> kit gates -> preview -> render -> mix)."""
 import json
 import subprocess
 
@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from pipeline import qc
+from pipeline import qc, studio
 
 from .conftest import models_present
 
@@ -23,20 +23,13 @@ def test_qc_rejects_wrong_format(tmp_path):
 
 @pytest.mark.slow
 @pytest.mark.skipif(not models_present(), reason="Kokoro model not downloaded (python -m pipeline.fetch_models)")
-@pytest.mark.parametrize("lang", ["hi", "en"])
-def test_offline_end_to_end(lang, tmp_state, monkeypatch, tmp_path):
-    pytest.importorskip("skia")
+@pytest.mark.skipif(not (studio.CODE / "node_modules" / "remotion").exists(), reason="run npm ci in the kit's code/ first")
+def test_offline_end_to_end(tmp_state, monkeypatch, tmp_path):
     from pipeline import produce
     monkeypatch.setattr(produce, "OUT", tmp_path / "out")
     cfg = produce.load_config()
-    cfg["video"]["style"] = "toon2d"   # the 3D path has its own tests
-    cfg["toon2d"]["resolution"] = 720 if lang == "hi" else 1080   # 720 is quick, but QC wants 1080: expect a clear error
-    if lang == "hi":
-        with pytest.raises(RuntimeError, match="not 1080x1920"):
-            produce.produce_one(cfg, {"videos": []}, {"allocation": {}}, test=True, language=lang, theme="explainer")
-        return
     work, meta, script, _ = produce.produce_one(cfg, {"videos": []}, {"allocation": {}}, test=True,
-                                                language=lang, theme="explainer")
+                                                language="en", theme="story")
     final = work / "final.mp4"
     info = json.loads(subprocess.run(["ffprobe", "-v", "error", "-print_format", "json", "-show_streams",
                                       "-show_format", str(final)], capture_output=True, text=True).stdout)
@@ -44,10 +37,10 @@ def test_offline_end_to_end(lang, tmp_state, monkeypatch, tmp_path):
     a = next(s for s in info["streams"] if s["codec_type"] == "audio")
     assert (v["width"], v["height"], v["avg_frame_rate"]) == (1080, 1920, "30/1")
     assert abs(float(v["duration"]) - float(a["duration"])) < 0.15
-    assert meta["language"] == lang and meta["storyboard"] == "sample" and meta["voice_engine"] == "kokoro"
+    assert meta["storyboard"] == "kit" and meta["voice_engine"] == "kokoro"
+    assert (work / "versions" / "v1" / "plan.json").exists() and list((work / "versions" / "v1").glob("sheet_*.jpg"))
     tl = json.loads((work / "timeline.json").read_text())
-    assert len(tl) == len(script["scenes"]) and all(x["end"] > x["start"] for x in tl)
-    frames = []   # shots really differ from each other
+    frames = []   # beats really differ from each other
     for line in tl[:4]:
         out = tmp_path / f"f{len(frames)}.png"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{line['start'] + 0.6:.2f}", "-i", str(final),

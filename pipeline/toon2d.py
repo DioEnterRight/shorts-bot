@@ -1,6 +1,5 @@
-"""2D cartoon engine (toon2d/): Claude writes one story.json storyboard, the skia engine draws and mixes it.
-
-Vertical 9:16 for Shorts, 16:9 for the weekly long video. Claude never writes drawing code here, so a video
+"""EMERGENCY 2D engine (toon2d/), used only when the animated-shorts-kit studio fails: Claude writes one story.json
+storyboard, the skia engine draws and mixes it, vertical 9:16. Claude never writes drawing code here, so a video
 costs one short text-only Claude call. Timing comes from our own voice timeline (no speech model needed),
 and mouths follow pipeline/visemes.py instead of loudness.
 """

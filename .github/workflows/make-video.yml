@@ -26,11 +26,11 @@ permissions:
 jobs:
   make:
     runs-on: ubuntu-24.04   # pinned: ffmpeg 6.1.1 here = the ffmpeg our tests run on (ubuntu-latest moved the toolchain under us)
-    timeout-minutes: 240   # cartoon3d: Claude ~20-45 min + CPU render ~30-60 min; toon2d ~5-10 min
+    timeout-minutes: 300   # Claude idea+script ~10-20 min, kit previews ~2x5-10 min + full render ~20-40 min (CPU WebGL)
     env:
       GH_TOKEN: ${{ github.token }}
       TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test }}
-      CHROME: /usr/bin/google-chrome   # cartoon3d renders with the runner's Chrome (software WebGL)
+      CHROME: /usr/bin/google-chrome   # the kit studio renders with the runner's Chrome (software WebGL)
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +42,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
+          cache-dependency-path: .claude/skills/animated-shorts-kit/code/package-lock.json
 
       - name: Install ffmpeg + skia system libraries
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libegl1 libgl1   # skia (toon2d) needs EGL/GL
@@ -57,8 +59,9 @@ jobs:
           pip install -q -r requirements.txt
           python -m pipeline.fetch_models
 
-      - name: Install Playwright (cartoon3d renderer)
-        run: npm install -g playwright@1
+      - name: Install the kit studio (Remotion + Three.js)
+        run: npm ci --no-audit --no-fund
+        working-directory: .claude/skills/animated-shorts-kit/code
 
       - name: Install Claude Code
         if: env.TEST != 'true'
@@ -74,7 +77,7 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python -m pipeline.analytics
 
-      - name: Start FreeLLMAPI inside this job (free 3D builder)
+      - name: Start FreeLLMAPI inside this job (free director + judge)
         if: env.TEST != 'true'
         env:
           FREELLMAPI_KEYS: ${{ secrets.FREELLMAPI_KEYS }}
@@ -100,6 +103,18 @@ jobs:
           name: test-video
           path: out/*/final.mp4
           retention-days: 3
+
+      - name: Contact sheets of every version (you are the final judge)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: versions
+          path: |
+            out/*/versions/*/sheet_*.jpg
+            out/*/versions/*/*.json
+            out/*/versions/*/*.txt
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Save memory (history, stats, ideas, playbook)
         if: always() && env.TEST != 'true'

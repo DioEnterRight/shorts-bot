@@ -1,82 +1,92 @@
 {
-  "topic": "Why your stomach growls",
-  "canonical_en": "Why does your stomach growl when it is empty?",
-  "category": "other",
-  "hook_type": "why",
-  "title": "पेट गुड़गुड़ क्यों करता है? असली वजह 🤯",
-  "description": "पेट की ये आवाज़ भूख की नहीं, अंदर की सफ़ाई की है। जानिए कैसे।",
-  "hashtags": [
-    "#hindi",
-    "#facts",
-    "#science",
-    "#humanbody"
-  ],
-  "facts_checked": [
-    "Stomach growling comes from muscle contractions moving gas and fluid -> scientificamerican.com",
-    "Fasting stomach runs cleaning waves (migrating motor complex) -> ncbi.nlm.nih.gov",
-    "Ghrelin from the stomach signals hunger to the brain -> clevelandclinic.org"
-  ],
-  "scenes": [
-    {
-      "line": "आपका पेट हमेशा सबसे शांत जगह पर ही गुड़गुड़ क्यों करता है?",
-      "visual": "[GUY] sitting in a silent exam hall, cheeks red, everyone turning to stare at his loudly rumbling belly",
-      "overlay": "",
-      "emphasis": "गुड़गुड़"
-    },
-    {
-      "line": "असल में ये आवाज़ भूख की नहीं, cleaning की है।",
-      "visual": "a tiny cartoon cleaning crew with brooms and mops marching into a cosy stomach-shaped room",
-      "overlay": "",
-      "emphasis": "cleaning"
-    },
-    {
-      "line": "जब stomach खाली होता है, उसकी muscles लहर की तरह सिकुड़ती हैं।",
-      "visual": "cartoon cutaway of [GUY]'s stomach squeezing in a glowing wave from top to bottom",
-      "overlay": "muscles",
-      "emphasis": "muscles"
-    },
-    {
-      "line": "ये लहरें बचा हुआ खाना और gas आगे धकेलती हैं।",
-      "visual": "simple 3D diagram of the stomach with arrows pushing small bubbles and crumbs toward the intestine",
-      "overlay": "gas",
-      "emphasis": "gas"
-    },
-    {
-      "line": "खाली पेट में आवाज़ दबाने के लिए कुछ नहीं होता, तो echo बनता है।",
-      "visual": "a big empty cave shaped like a stomach with cartoon sound waves bouncing off its walls",
-      "overlay": "",
-      "emphasis": "echo"
-    },
-    {
-      "line": "साथ ही stomach एक hormone छोड़ता है, ghrelin।",
-      "visual": "close-up of the stomach wall releasing small glowing orange droplets into a blood vessel",
-      "overlay": "ghrelin",
-      "emphasis": "ghrelin"
-    },
-    {
-      "line": "Ghrelin खून के रास्ते brain तक पहुँचता है।",
-      "visual": "an orange droplet character riding a red blood cell like a scooter up a tube toward a big cartoon brain",
-      "overlay": "",
-      "emphasis": "brain"
-    },
-    {
-      "line": "और brain तुरंत आपको भूख का signal भेज देता है।",
-      "visual": "a cartoon brain lighting up and sending a bright lightning bolt down to a stomach icon",
-      "overlay": "signal",
-      "emphasis": "signal"
-    },
-    {
-      "line": "तो अगली बार exam में पेट बोले,",
-      "visual": "[GUY] in the exam hall holding his belly, nervously smiling at the examiner",
-      "overlay": "",
-      "emphasis": "exam"
-    },
-    {
-      "line": "समझ जाना, अंदर बस सफ़ाई चल रही है।",
-      "visual": "[GUY] giving a thumbs up while a tiny cartoon janitor waves from a cutaway window in his belly",
-      "overlay": "",
-      "emphasis": "सफ़ाई"
-    }
-  ],
-  "playbook_update": ""
+ "topic": "Shopping cart ka inventor",
+ "canonical_en": "Why did the inventor of the shopping cart pay people to push empty carts?",
+ "category": "business",
+ "hook_type": "strange_action",
+ "title": "उसने खाली carts घुमाने के पैसे दिए 🛒",
+ "description": "पहला shopping cart किसी को नहीं चाहिए था, तो उसके inventor ने भीड़ खरीद ली।",
+ "hashtags": [
+  "#hindi",
+  "#business",
+  "#facts"
+ ],
+ "mood": "upbeat",
+ "facts_checked": [
+  "Sylvan Goldman introduced the shopping cart in 1937 at Humpty Dumpty stores, Oklahoma City, and hired people to push carts -> oklahomahistory.net"
+ ],
+ "scenes": [
+  {
+   "line": "इस आदमी ने अजनबियों को पैसे दिए, बस अपनी दुकान में खाली carts घुमाने के लिए।",
+   "visual": "Goldman watching hired strangers push empty carts",
+   "overlay": "",
+   "emphasis": "carts"
+  },
+  {
+   "line": "बात है उन्नीस सौ सैंतीस की, Oklahoma City में Sylvan Goldman की एक छोटी सी grocery थी।",
+   "visual": "the corner grocery, Goldman at the door",
+   "overlay": "",
+   "emphasis": "grocery"
+  },
+  {
+   "line": "उसके customers बस उतना ही खरीदते थे जितना एक छोटी basket में आ जाए।",
+   "visual": "a tired shopper at the counter with one full basket",
+   "overlay": "",
+   "emphasis": "basket"
+  },
+  {
+   "line": "तो एक रात workshop में उसने एक folding chair पर पहिए और दो baskets लगा दीं।",
+   "visual": "Goldman building the first cart at night",
+   "overlay": "",
+   "emphasis": "पहिए"
+  },
+  {
+   "line": "अगली सुबह उसने बड़े गर्व से नए carts दरवाज़े पर लाइन में लगा दिए।",
+   "visual": "Goldman presenting the carts outside",
+   "overlay": "",
+   "emphasis": "गर्व"
+  },
+  {
+   "line": "किसी ने उन्हें छुआ तक नहीं। एक भी customer ने नहीं।",
+   "visual": "shoppers walking past the carts",
+   "overlay": "",
+   "emphasis": "छुआ"
+  },
+  {
+   "line": "आदमी बोले ये बेवकूफ़ी है, और औरतें बोलीं ये तो baby stroller जैसा है।",
+   "visual": "a man and a woman shaking their heads",
+   "overlay": "",
+   "emphasis": "stroller"
+  },
+  {
+   "line": "उसका अपना staff भी हँसा। तुम दुकान डुबो दोगे!",
+   "visual": "staff laughing, Goldman slumping",
+   "overlay": "",
+   "emphasis": "हँसा"
+  },
+  {
+   "line": "तो Goldman ने actors रखे, जो दिन भर भरे हुए carts लेकर घूमते रहे।",
+   "visual": "actors pushing full carts",
+   "overlay": "",
+   "emphasis": "actors"
+  },
+  {
+   "line": "एक customer ने नकल की। फिर दूसरे ने। फिर पूरी दुकान ने।",
+   "visual": "one, then two, then a crowd with carts",
+   "overlay": "",
+   "emphasis": "पूरी"
+  },
+  {
+   "line": "असल में लोग एक अच्छे idea से ज़्यादा भीड़ पर भरोसा करते हैं।",
+   "visual": "Goldman winking at the camera",
+   "overlay": "",
+   "emphasis": "भीड़"
+  },
+  {
+   "line": "आज हर supermarket में उसके carts हैं, और उसी मज़ाक ने उसे करोड़पति बना दिया।",
+   "visual": "Goldman outside the bank with a chest of gold",
+   "overlay": "",
+   "emphasis": "करोड़पति"
+  }
+ ],
+ "playbook_update": ""
 }

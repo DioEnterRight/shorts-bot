@@ -9,5 +9,5 @@
 ## shorts-bot changes
 Vertical 9:16 framing and layouts (`RM_ASPECT=9:16`), burned-in word captions (`RM_CAPTIONS=1`),
 word-timed mouth shapes from `visemes.json`, Unicode-aware cue matching, and pipeline wiring
-(`pipeline/toon2d.py`, `pipeline/longform.py`) by DioEnterRight.
+(`pipeline/toon2d.py`) by DioEnterRight. In shorts-bot it is the emergency engine only.
 Made by ReachMora: the original engine, kept with credit.

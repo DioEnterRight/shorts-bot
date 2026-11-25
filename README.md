@@ -1,30 +1,31 @@
 # 🪙 Cons & Coins — daily Shorts & Reels bot
 
-Makes **one 2D cartoon Short a day** (Instagram Reels + YouTube Shorts) and **one long English video a week**
-(YouTube), by itself, in the cloud. Your PC and phone can be off. Cost: ₹0 (your Claude subscription + free tiers).
+Makes **one animated cartoon Short a day** (Instagram Reels + YouTube Shorts), by itself, in the cloud. Your PC and phone can be off. Cost: ₹0 (your Claude subscription + free tiers).
 
 ---
 
 ## The rhythm (automatic)
 
 - **~4 AM IST, daily — Make video.** Picks the language (English every day, one Hindi video a week) and theme,
-  researches ~8 ideas, drops anything too close to an old video, writes and fact-checks the script, voices it
-  (edge-tts, Kokoro as fallback), then Claude writes one storyboard and the **toon2d** engine draws it: a vertical
-  1080x1920 cartoon with captions, music and sound. Saved to **Releases**.
-- **~7 PM IST, daily — Post video.** Posts the oldest ready video to Instagram + YouTube.
-- **Sundays ~10 AM IST — Long video.** The week's best English Short becomes a researched ~5-minute 16:9 video,
-  uploaded to YouTube as **private** (set `longform → privacy: public` once you like them).
+  researches ~8 ideas, drops anything too close to an old video, writes and fact-checks a 45-65 s script in the kit's
+  story formula, voices it (edge-tts, Kokoro as fallback), then the **animated-shorts-kit studio** directs, checks,
+  previews, judges and renders a 1080x1920 cartoon (2D characters in a 3D toon world) with captions, music and SFX.
+  Saved to **Releases**.
+- **Daily — Post video** (time = the cron in `post-video.yml`). Posts the oldest ready video to Instagram + YouTube.
 - **Sundays** the bot also rewrites its own `data/playbook.md` from real view stats.
-- Keeps 1 ready Short (`buffer`), so each daily run makes one; if a 3D build fails, that Short is made in 2D.
+- Keeps 2 ready Shorts (`buffer`), so a bad day never leaves the channel empty.
 
 ## ▶️ Buttons (GitHub → Actions tab)
 
 | Button | What it does |
 |---|---|
-| **Make video** | Makes today's Short(s). **Test mode** (ticked by default: no keys, sample video as an artifact) and **language** (`auto`, `en`, `hi`). |
+| **Make video** | Makes today's Short(s). **Test mode** (ticked by default: no keys, the sample story as an artifact) and **language** (`auto`, `en`, `hi`). |
 | **Post video** | Posts the oldest ready Short right now. |
-| **Long video (weekly)** | Makes the long video now. **test** = offline sample, no upload. **upload** off = keep the file only. |
 | **Throw away ready videos** | Deletes the waiting Shorts so the next Make builds fresh ones. |
+| **Test FreeLLMAPI** | Checks the free-model keys (makes nothing). |
+
+Every Make run uploads a **versions** artifact: the contact sheets (one frame every 0.5 s), shot plan, gate report and
+judge scores of each version. You are the final judge.
 
 ## ⚙️ Settings — `config.yaml`
 
@@ -32,48 +33,40 @@ Makes **one 2D cartoon Short a day** (Instagram Reels + YouTube Shorts) and **on
 |---|---|
 | ⏸ Stop everything | `paused: true` |
 | Change topics | `channel → niche` |
+| Video length | `video → target_seconds` (45-65) |
 | Language plan | `allocation` (`mode: weekly`, `weekly_quota: {hi: 1}`; `mode: adaptive` = learn from views) |
-| Explainer vs. other themes | `themes → <name> → share` |
-| Different narrator | `languages → en/hi → edge_voice` (Kokoro fallback: `voice`) |
-| Storyboard model, captions, music level | `toon2d` |
-| Long video length, privacy | `longform` (`minutes`, `privacy`, `enabled`) |
+| Explainer vs. story | `themes → <name> → share` |
+| Narrator / pace | `languages → en/hi → edge_voice`, `edge_rate`, `words_per_second` |
+| Who directs, repairs, judges | `studio` (+ `freellm`, see FREELLM_SETUP.md) |
+| Music / SFX level | `studio → music_db`, `sfx_db` |
 | Post time | the `cron:` line in `.github/workflows/post-video.yml` (UTC = IST − 5:30) |
 | YouTube auto vs manual | `publish → youtube_mode`: `api` / `manual` / `off` |
 
-## 🎨 How a video is drawn
+## 🎨 How a video is made — one head skill
 
-`toon2d/` is a flat 2D ink-on-paper cartoon engine (Python + skia, CPU only), adapted from ReachMora 2D
-Long-Form (credit in `toon2d/CREDITS.md`). Claude Sonnet writes one `story.json` per video: shot kinds like
-closeup, wide, walk, counter, chart, table, versus, map, list and a polaroid ending, cued to spoken words. It
-never writes drawing code, so a video costs one short Claude call. The engine checks the storyboard, Claude
-gets one repair round, and an automatic storyboard is the last fallback, so a video always ships. Mouths
-follow the words; Shorts get burned-in captions. A Short renders in ~2-4 min on the runner.
-Look at shots by hand: `cd toon2d && RM_ASPECT=9:16 python -m engine stills <video folder>/toon2d`.
+Everything lives in **`.claude/skills/animated-shorts-kit/`** — the head skill every AI follows (Claude and the free
+models): story formula, 20 characters, a 1930s downtown + grocery + workshop world with 27 named spots, 324 free 3D
+props (coins, gold, furniture, cars…), measured camera grammar, the shot-plan format, the checks and the judge.
+Start at its `SKILL.md`; `references/08_OUR_PIPELINE.md` explains this repo.
 
-**Mixed 3D + 2D Shorts (default: `video → style: cartoon3d`).** For every Short, Claude (Opus) runs the
-`cartoon-audio-short` skill on the runner: it builds a new inked, painted 3D world, original card characters, poses,
-cameras and a sound-cue table, checks one or two contact sheets, and the bot renders it in Chrome (CPU WebGL,
-~30-60 min) and mixes it. If anything fails, that Short is made in toon2d instead. This costs far more tokens
-than toon2d: every Claude call logs `Claude usage: ...`, and `/usage` in Claude Code before and after a run shows
-the share of your weekly limit. Too much? Set `style: toon2d`. Test mode renders the kit's soldier example.
-
-**Free 3D builder (`cartoon3d → builder: freellm`).** Claude still writes the idea and script; your FreeLLMAPI
-(started inside the job from the `FREELLMAPI_KEYS` secret, like roblox-stories-bot) plans the 3D world as a small JSON
-storyboard, code checks and compiles it, then the same renderer draws it. Setup, quality design and free-tier
-safety: [FREELLM_SETUP.md](FREELLM_SETUP.md). Creative direction and QC come from the **reel-director** skill
-([.claude/skills/reel-director/SKILL.md](.claude/skills/reel-director/SKILL.md)): story objects, cue-timed reveals, purposeful
-camera, a vision check of real stills with targeted fixes, and a 100-point report in each run's job summary.
+1. Claude: idea + script (one line = one beat).
+2. Free model (FreeLLMAPI) = **director**: a shot plan per beat (where people stand, what they do, where the camera goes,
+   which word it lands on). Code compiles it onto the kit engine (Three.js + Remotion).
+3. The kit's **gates** check every frame (faces cut, people in walls, camera inside a shelf…); problems go back to the
+   director until they are 0.
+4. A preview renders; contact sheets every 0.5 s go to a free vision **judge**; one fix round; the higher score wins.
+5. Final render on the GitHub runner (CPU, ~20-40 min) + sound mix at -14 LUFS.
+If anything fails, that Short is made by the old flat 2D engine (`toon2d/`, emergency only), so a video always ships.
 
 ## 🇮🇳 English + Hindi
 
 Every video is one language. Hindi is written fresh as natural Hinglish (Devanagari, with everyday English
-words in Latin letters), never translated. On-screen text stays in Roman letters (the cartoon fonts have no
-Devanagari). Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
+words in Latin letters), never translated. Captions ship with their own fonts (Anton + Noto Sans Devanagari). Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
 so if it fails the video uses Kokoro automatically.
 
 ## 🏷 AI labels
 
-YouTube's "altered or synthetic" flag is for realistic content; a 2D cartoon is exempt, so
+YouTube's "altered or synthetic" flag is for realistic content; a stylised cartoon is exempt, so
 `disclosure → youtube_synthetic: false`. Meta asks for disclosure of realistic-sounding audio, and the narrator
 is a synthetic voice, so `instagram_ai_label: true` stays on.
 
@@ -81,17 +74,17 @@ is a synthetic voice, so `instagram_ai_label: true` stays on.
 
 ```
 pip install -r requirements.txt pytest && python -m pipeline.fetch_models
+(cd .claude/skills/animated-shorts-kit/code && npm ci)
 pytest -m "not slow"                               # seconds, no keys
-pytest                                             # + full offline renders (several minutes)
-python -m pipeline.produce --test --language hi    # look at out/*/final.mp4
-python -m pipeline.longform --test                 # 16:9 sample long video
+pytest                                             # + kit gates and a full offline render (~30 min)
+python -m pipeline.produce --test                  # sample story -> out/*/final.mp4 (+ versions/)
 ```
 
 ## 🗂 Bot memory (`data/`)
 
 | File | What |
 |---|---|
-| `history.json` | every Short (queued / published, per-platform state) and every long video (`longform`) |
+| `history.json` | every Short (queued / published, per-platform state) |
 | `analytics.json` | views & stats per video + the language split |
 | `ideas.json` | every idea used (for "don't repeat yourself") |
 | `playbook.md` | lessons Claude rewrites on Sundays |
@@ -103,7 +96,8 @@ bot post twice). Before uploading, the bot also checks the account for the same 
 
 | Secret | For |
 |---|---|
-| `CLAUDE_CODE_OAUTH_TOKEN` | ideas, scripts, storyboards (`claude setup-token`) |
+| `CLAUDE_CODE_OAUTH_TOKEN` | ideas + scripts (`claude setup-token`) |
+| `FREELLMAPI_KEYS` | free director + judge (FREELLM_SETUP.md) |
 | `IG_USER_ID`, `IG_PAGE_TOKEN` | Instagram posting |
 | `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN` | YouTube upload + stats |
 
@@ -118,18 +112,7 @@ Open **Actions → the red ❌ run** → read the last lines.
 | `Missing secret/env var: X` | add secret X, spelled exactly |
 | `Cannot call API for app … on behalf of user` | Meta app: set a Privacy Policy URL, switch to Live, re-make `IG_PAGE_TOKEN` from the admin account |
 | `Claude Code call failed` | run `claude setup-token` again → update the secret |
-| `Storyboard problems: …` (warning) | fine: Claude's second try or the automatic storyboard was used |
+| `studio: … still fails the checks` / `studio failed` (warning) | that Short was made by the emergency 2D engine; look at the `versions` artifact |
 | `No video ready` | the Make run failed — fix it, then run Make video |
 | `Could not push bot state` / permission errors | Settings → Actions → General → Workflow permissions → **Read and write** |
 | `YouTube API uploads are staying private` (issue) | audit not approved yet → set `youtube_mode: manual` |
-
-## 🎨 Channel art
-
-`python tools/brand_art.py out/brand` redraws the profile pictures (1080x1080, Instagram + YouTube) and the
-YouTube banner (2560x1440) with the video engine, so they match the videos.
-
-## 🛠 Dev tools (for working on the bot with Claude Code)
-
-graphify (`uv tool install graphifyy`, then `graphify update .`; hooks in `.claude/settings.json` fail open in
-CI), ponytail skills (`/plugin marketplace add DietrichGebert/ponytail`, `/plugin install ponytail@ponytail`),
-and `tools/validate_skills.sh` (agentskills spec check).

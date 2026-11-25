@@ -74,15 +74,24 @@ def test_choose_slot_with_and_without_stats(cfg):
     assert produce.choose_slot(cfg, hist, {}, language="en", theme="story") == ("en", "story")
 
 
-def test_make_video_has_no_remotion_or_picture_steps():
-    text = (ROOT / ".github" / "workflows" / "make-video.yml").read_text(encoding="utf-8")
-    assert "remotion" not in text.lower() and "CF_API_TOKEN" not in text and "provider" not in text
-    assert any("requirements.txt" in s.get("run", "") for s in steps(load("make-video.yml")))
+def test_make_video_installs_the_kit_studio_and_keeps_versions():
+    wf = load("make-video.yml")
+    st = steps(wf)
+    kit = [x for x in st if x.get("working-directory") == ".claude/skills/animated-shorts-kit/code"]
+    assert kit and "npm ci" in kit[0]["run"]
+    assert any("requirements.txt" in x.get("run", "") for x in st)
+    up = [x for x in st if x.get("with", {}).get("name") == "versions"]
+    assert up and "always()" in up[0]["if"]
+    text = (WF / "make-video.yml").read_text(encoding="utf-8")
+    assert "playwright" not in text.lower() and "CF_API_TOKEN" not in text and not (WF / "long-video.yml").exists()
 
 
 def test_render_and_voice_config(cfg):
-    assert set(cfg) >= {"toon2d", "longform", "voice", "claude"} and not {"render", "visuals", "captions", "audio"} & set(cfg)
+    assert set(cfg) >= {"studio", "toon2d", "freellm", "voice", "claude"}
+    assert not {"longform", "cartoon3d", "reel_qc", "render", "visuals", "captions", "audio"} & set(cfg)
+    assert 45 <= cfg["video"]["target_seconds"] <= 65                     # kit story formula
+    assert -15 <= cfg["studio"]["music_db"] <= -10                        # kit: bed 10-15 dB under the voice
     assert cfg["voice"]["engine"] in ("edge", "kokoro")
     for code in cfg["languages"]["enabled"]:
-        assert cfg["languages"][code].get("edge_voice")
+        assert cfg["languages"][code].get("edge_voice") and 3.0 <= cfg["languages"][code]["words_per_second"] <= 3.8
     assert all(set(t) == {"share", "guidance"} for t in cfg["themes"].values())

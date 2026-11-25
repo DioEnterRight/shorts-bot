@@ -1,1 +1,0 @@
-The production supervisor looked at the rendered stills and found these weak scenes. Rewrite ONLY those scenes so the picture clearly shows the narration line, following the supervisor's fix and the director brief. Every other scene stays exactly as it is.
