@@ -598,8 +598,15 @@
       "duration": 63.4,
       "storyboard": "claude",
       "tag": "vid-20261125-181047-en-the-great-stock-exchange-fra",
-      "status": "queued",
-      "created": "2026-11-25T18:23+05:30"
+      "status": "published",
+      "created": "2026-11-25T18:23+05:30",
+      "slot": "2026-11-25 23:31 manual",
+      "ig_media_id": "18643230784032945",
+      "ig_link": "https://www.instagram.com/reel/DgLILUHsoxa/",
+      "ig_state": "posted",
+      "yt_video_id": "LP6klnBsDUI",
+      "yt_state": "posted",
+      "published_at": "2026-11-25T23:33+05:30"
     },
     {
       "id": "20261125-215007-hi-great-hanoi-rat-massacre-of",
