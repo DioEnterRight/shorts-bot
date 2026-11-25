@@ -165,6 +165,7 @@ def compile_checked(cfg, script, beats, vid, vdir, budget, call_claude, plan, la
 def render(vid, comp, out, timeout):
     """Remotion headless render (CPU WebGL). comp: Preview (540x960) or Video (1080x1920)."""
     args = ["npx", "remotion", "render", "src/index.ts", comp, str(out), "--codec", "h264", "--gl=swangle",
+            "--color-space=bt709",   # -> yuv420p TV range (the default writes full-range yuvj420p, which QC/Instagram reject)
             f"--concurrency={max(1, os.cpu_count() or 2)}", "--log=error"]
     chrome = os.environ.get("CHROME", "/usr/bin/google-chrome")
     if Path(chrome).exists():
