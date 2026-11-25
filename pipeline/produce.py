@@ -8,6 +8,7 @@ import argparse
 import json
 import shutil
 import sys
+import time
 
 from . import allocation, analytics, brain, ideas, languages, qc, schedule, studio, toon2d, voice
 from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, run, save_history, slugify
@@ -109,28 +110,55 @@ def main():
         return
     log(f"Videos ready: {len(queued)}. Making {len(todo)}: {', '.join(todo)}")
 
-    made = 0
+    made, failed = 0, []
     for language in todo:
-        work, meta, script, idea = produce_one(cfg, history, stats, args.test, language, args.theme)
-        made += 1
-        if args.release:
-            tag = f"vid-{meta['id']}"
-            run(["gh", "release", "create", tag, work / "final.mp4", work / "meta.json",
-                 "--title", meta["title"][:100], "--notes", meta["caption"][:2000]])
-            history["videos"].append({**{k: meta[k] for k in (
-                "id", "title", "topic", "canonical_en", "language", "theme", "category", "hook_type",
-                "hook_line", "duration", "storyboard")},
-                "tag": tag, "status": "queued", "created": now_ist().isoformat(timespec="minutes")})
-            save_history(history)
-            led = ideas.load()
-            ideas.record(led, idea or {"canonical_en": meta["canonical_en"]}, meta["language"], meta["theme"],
-                         meta["id"])
-            ideas.save(led)
-            if script.get("playbook_update", "").strip():
-                (DATA / "playbook.md").write_text(script["playbook_update"].strip() + "\n", encoding="utf-8")
-                log("Playbook updated")
-        log(f"Done: {work / 'final.mp4'}")
-    log(f"Made {made} video(s).")
+        try:   # one bad video (or a GitHub hiccup) must not cost the others
+            work, meta, script, idea = produce_one(cfg, history, stats, args.test, language, args.theme)
+            if args.release:
+                queue(history, work, meta, script, idea)
+            made += 1
+            log(f"Done: {work / 'final.mp4'}")
+        except Exception as e:  # noqa: BLE001
+            if args.test:
+                raise
+            failed.append(language)
+            log(f"FAILED ({language}): {str(e)[:400]}", "ERROR")
+    log(f"Made {made} video(s)." + (f" Failed: {', '.join(failed)}." if failed else ""))
+    if failed:
+        sys.exit(f"{len(failed)} video(s) failed: see the log above")
+
+
+def upload_release(tag, files, title, notes, tries=5):
+    """GitHub Release with retries: uploads.github.com sometimes answers 502/500. A half-made release is deleted
+    before the next try, so the tag never points at a release without its video."""
+    for attempt in range(1, tries + 1):
+        try:
+            run(["gh", "release", "create", tag, *files, "--title", title, "--notes", notes])
+            return
+        except RuntimeError as e:
+            if attempt == tries:
+                raise
+            wait = 20 * attempt
+            log(f"GitHub release upload failed (try {attempt}/{tries}: {str(e)[-200:]}); retrying in {wait} s", "WARN")
+            run(["gh", "release", "delete", tag, "--yes", "--cleanup-tag"], check=False)
+            time.sleep(wait)
+
+
+def queue(history, work, meta, script, idea):
+    """the finished video -> GitHub Release (the queue) + history + idea ledger + playbook"""
+    tag = f"vid-{meta['id']}"
+    upload_release(tag, [work / "final.mp4", work / "meta.json"], meta["title"][:100], meta["caption"][:2000])
+    history["videos"].append({**{k: meta[k] for k in (
+        "id", "title", "topic", "canonical_en", "language", "theme", "category", "hook_type",
+        "hook_line", "duration", "storyboard")},
+        "tag": tag, "status": "queued", "created": now_ist().isoformat(timespec="minutes")})
+    save_history(history)
+    led = ideas.load()
+    ideas.record(led, idea or {"canonical_en": meta["canonical_en"]}, meta["language"], meta["theme"], meta["id"])
+    ideas.save(led)
+    if script.get("playbook_update", "").strip():
+        (DATA / "playbook.md").write_text(script["playbook_update"].strip() + "\n", encoding="utf-8")
+        log("Playbook updated")
 
 
 if __name__ == "__main__":

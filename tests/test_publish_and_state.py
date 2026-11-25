@@ -236,3 +236,36 @@ def test_no_secret_values_in_repo_files():
     for p in list((root / "pipeline").rglob("*.py")) + list((root / ".github").rglob("*.yml")):
         txt = p.read_text(encoding="utf-8")
         assert "EAAB" not in txt and "ya29." not in txt and "sk-ant-" not in txt, p
+
+
+def test_release_upload_retries_github_hiccups(monkeypatch):
+    from pipeline import produce
+    calls = []
+
+    def fake_run(cmd, check=True, **kw):
+        calls.append(cmd[:3])
+        if cmd[:3] == ["gh", "release", "create"] and sum(c == ["gh", "release", "create"] for c in calls) < 3:
+            raise RuntimeError("Command failed (1): HTTP 502: Error creating policy")
+    monkeypatch.setattr(produce, "run", fake_run)
+    monkeypatch.setattr(produce.time, "sleep", lambda s: None)
+    produce.upload_release("vid-x", ["a.mp4"], "t", "n")
+    assert calls.count(["gh", "release", "create"]) == 3 and calls.count(["gh", "release", "delete"]) == 2
+
+
+def test_one_failed_video_does_not_cost_the_others(monkeypatch, tmp_state):
+    from pipeline import produce
+    made = []
+
+    def fake_one(cfg, history, stats, test, language, theme=None):
+        if language == "hi":
+            raise RuntimeError("HTTP 502")
+        made.append(language)
+        return tmp_state, {"id": "x"}, {}, None
+    monkeypatch.setattr(produce, "produce_one", fake_one)
+    monkeypatch.setattr(produce, "queue", lambda *a: None)
+    monkeypatch.setattr(produce.analytics, "load", lambda: {})
+    monkeypatch.setattr(produce.schedule, "to_make", lambda cfg, q: ["hi", "en", "en"])
+    monkeypatch.setattr(sys, "argv", ["produce", "--release"])
+    with pytest.raises(SystemExit, match="1 video"):
+        produce.main()
+    assert made == ["en", "en"]
