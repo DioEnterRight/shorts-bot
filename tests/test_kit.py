@@ -124,3 +124,16 @@ def test_sample_plan_passes_the_kit_gates(tmp_path, sample, plan):
     finally:
         import shutil
         shutil.rmtree(vdir, ignore_errors=True)
+
+
+def test_hindi_captions_are_roman_hinglish_on_the_voice_timings():
+    script = {"scenes": [{"line": "बात सच है", "caption": "baat sach hai"}, {"line": "ये भी", "caption": "ye bhi sach"}]}
+    timeline = [{"words": [{"word": "बात", "start": 0.0, "end": 0.3}, {"word": "सच", "start": 0.35, "end": 0.6},
+                           {"word": "है", "start": 0.65, "end": 0.9}]},
+                {"words": [{"word": "ये", "start": 1.2, "end": 1.4}, {"word": "भी", "start": 1.45, "end": 1.8}]}]
+    w = studio.caption_words(script, timeline)
+    assert [x["w"] for x in w] == ["baat", "sach", "hai", "ye", "bhi", "sach"]
+    assert w[1]["s"] == 0.35                                   # same count: exact voice timings
+    assert w[3]["s"] == 1.2 and w[-1]["e"] <= 1.8               # other count: spread over the line
+    assert [x["w"] for x in studio.caption_words({"scenes": [{"line": "hi there"}]},
+                                                 [{"words": [{"word": "hi", "start": 0, "end": 1}]}])] == ["hi"]

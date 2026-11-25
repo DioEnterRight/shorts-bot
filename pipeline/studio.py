@@ -15,6 +15,7 @@ import json
 import os
 import re
 import shutil
+import sys
 from pathlib import Path
 
 from . import freellm, sound
@@ -36,19 +37,48 @@ planc = _plan_module()
 
 
 # ---------------------------------------------------------------- 1. timeline
+def caption_timeline(script, timeline):
+    """the voice timeline with the words the screen shows: for Hindi the Roman Hinglish "caption" of each line laid on
+    that line's voice timings (1:1 when the counts match, else spread by word length); otherwise unchanged."""
+    out = []
+    for sc, line in zip(script["scenes"], timeline):
+        tts = [(w["word"], w["start"], w["end"]) for w in line["words"]]
+        cap, words = (sc.get("caption") or "").split(), []
+        if not cap or not tts:
+            words = tts
+        elif len(cap) == len(tts):
+            words = [(c, s, e) for c, (_, s, e) in zip(cap, tts)]
+        else:
+            a, b = tts[0][1], tts[-1][2]
+            tot, t = sum(len(c) + 1 for c in cap), a
+            for c in cap:
+                d = (b - a) * (len(c) + 1) / tot
+                words.append((c, t, t + d * 0.9))
+                t += d
+        out.append({**line, "words": [{"word": w, "start": round(s, 3), "end": round(e, 3)} for w, s, e in words]})
+    return out
+
+
+def caption_words(script, timeline):
+    """flat [{w, s, e}] for the kit's words.json"""
+    return [{"w": w["word"], "s": w["start"], "e": w["end"]} for line in caption_timeline(script, timeline) for w in line["words"]]
+
+
 def setup_video(vid, script, timeline, voice_wav):
     """src/videos/<vid>/timeline.ts from the voice. -> video dir. The picture ends 0.4 s after the last word (kit: 0.1-0.5)."""
     vdir = CODE / "src" / "videos" / vid
     shutil.rmtree(vdir, ignore_errors=True)
     vdir.mkdir(parents=True)
-    words = [{"w": w["word"], "s": round(w["start"], 3), "e": round(w["end"], 3)} for line in timeline for w in line["words"]]
+    if len(timeline) != len(script["scenes"]):
+        raise RuntimeError(f"voice has {len(timeline)} lines, script {len(script['scenes'])}")
+    words = caption_words(script, timeline)
     (vdir / "words.json").write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
-    (vdir / "script.txt").write_text("\n".join(f"[{planc.beat_name(i)}] {sc['line']}" for i, sc in enumerate(script["scenes"])),
-                                     encoding="utf-8")
+    (vdir / "script.txt").write_text("\n".join(f"[{planc.beat_name(i)}] {sc.get('caption') or sc['line']}"
+                                               for i, sc in enumerate(script["scenes"])), encoding="utf-8")
     end = words[-1]["e"] + 0.4
     run(["ffmpeg", "-v", "error", "-y", "-i", str(voice_wav), "-af", f"apad=whole_dur={end}", "-t", f"{end:.3f}",
          "-ar", "48000", "-ac", "1", str(vdir / "voice.wav")])
-    run(["python3", str(TOOLS / "timeline.py"), str(vdir / "script.txt"), str(vdir / "words.json"), str(vdir / "voice.wav"),
+    run([sys.executable, str(TOOLS / "timeline.py"), str(vdir / "script.txt"), str(vdir / "words.json"), str(vdir / "voice.wav"),
          str(vdir / "timeline.ts")])
     return vdir
 
@@ -178,20 +208,28 @@ def render(vid, comp, out, timeout):
 
 def watch(video, outdir):
     """the kit's 'watch the WHOLE preview': contact sheets every 0.5 s + motion.txt (CUT / POP / FREEZE)"""
-    run(["python3", str(TOOLS / "sheet.py"), str(video), str(outdir), "0.5"], timeout=900)
+    run([sys.executable, str(TOOLS / "sheet.py"), str(video), str(outdir), "0.5"], timeout=900)
     return sorted(Path(outdir).glob("sheet_*.jpg"))
 
 
-def judge(cfg, script, beats, sheets, motion, budget):
-    """05_AGENT_TEAM judge on the contact sheets. -> {"scores": {...}, "fix": [...]} or None when no vision model answers."""
-    if not cfg["studio"].get("judge", True) or budget is None:
+def judge(cfg, script, beats, sheets, motion, budget, call_claude=None):
+    """05_AGENT_TEAM judge on the contact sheets, by the same model family that directs (FreeLLMAPI vision, or Claude
+    reading the sheet images). -> {"scores": {...}, "fix": [...]} or None when it is off or no model answers."""
+    if not cfg["studio"].get("judge", True) or (budget is None and call_claude is None):
         return None
     brief = (KIT / "references/10_JUDGE.md").read_text(encoding="utf-8")
-    content = [{"type": "text", "text": f"{brief}\n\nShort: \"{script['title']}\"\n{beat_table(script, beats)}\n\nmotion.txt:\n{motion[:3000]}"}]
-    for s in sheets[:8]:
-        content.append({"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(s.read_bytes()).decode()}})
+    text = f"{brief}\n\nShort: \"{script['title']}\"\n{beat_table(script, beats)}\n\nmotion.txt:\n{motion[:3000]}"
     try:
-        res = freellm.extract_json(freellm.chat(cfg, [{"role": "user", "content": content}], budget))
+        if budget is None:
+            paths = "\n".join(str(s.resolve()) for s in sheets[:8])
+            res = freellm.extract_json(call_claude(f"{text}\n\nThe contact sheets (open each with the Read tool):\n{paths}",
+                                                   tools="Read", max_turns=12, effort="medium",
+                                                   model=cfg["studio"].get("claude_model")))
+        else:
+            content = [{"type": "text", "text": text}] + [
+                {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(s.read_bytes()).decode()}}
+                for s in sheets[:8]]
+            res = freellm.extract_json(freellm.chat(cfg, [{"role": "user", "content": content}], budget))
         overall = float(res["scores"]["overall"])
     except (RuntimeError, ValueError, KeyError, TypeError) as e:
         log(f"studio: judge skipped ({str(e)[:200]})", "WARN")
@@ -229,7 +267,7 @@ def make(cfg, script, timeline, voice_wav, work, call_claude=None, plan=None):
         preview = render(vid, "Preview", d / "preview.mp4", timeout)
         sheets = watch(preview, d)
         motion = (d / "motion.txt").read_text() if (d / "motion.txt").exists() else ""
-        verdict = None if offline else judge(cfg, script, beats, sheets, motion, budget)
+        verdict = None if offline else judge(cfg, script, beats, sheets, motion, budget, call_claude)
         if verdict:
             (d / "judge.json").write_text(json.dumps(verdict, indent=1, ensure_ascii=False), encoding="utf-8")
             log(f"studio: v{n} judge {verdict['scores']}")

@@ -11,7 +11,8 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
 | timeline.ts | code (kit `timeline.py`) | `pipeline/studio.py` |
 | shot plan (director) + repairs | FreeLLMAPI free model (`studio.director`), Claude when it is not running | `09_PLAN_FORMAT.md` |
 | compile + gates | code (`plan.py`, kit `gates.ts`) | `code/src/engine/` |
-| preview, contact sheets, judge, one fix round | Remotion + `sheet.py` + FreeLLMAPI vision | `10_JUDGE.md` |
+| preview, contact sheets, judge, one fix round | Remotion + `sheet.py` + the director's model (FreeLLMAPI vision or Claude) | `10_JUDGE.md` |
+| Hindi captions | Claude writes a Roman Hinglish `caption` per line; the studio lays it on the voice timings | `prompts/lang_hi.md` |
 | final render 1080x1920 + sound -14 LUFS | Remotion (CPU WebGL) + `pipeline/sound.py` | |
 | emergency: anything above fails | the old flat 2D engine | `toon2d/`, `pipeline/toon2d.py` |
 | queue + post | GitHub Releases, Instagram + YouTube APIs | `pipeline/publish.py` |
@@ -27,7 +28,7 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
    when its time comes (up to 3 h late), tying the video to the slot so retries never double-post.
 
 Render cost (measured, 2 CPUs): preview ~0.3 s/frame, full HD ~0.75 s/frame → a 55 s Short ≈ 10 min preview + 20 min final.
-Tokens: Claude only for idea + script; the director/judge use free models (`freellm.max_calls_per_video`, `monthly_token_cap`).
+Tokens: Claude for idea + script; director/judge on free models (`studio.director: freellm`) or Claude (`claude`), see GUIDE.md §5.
 
 ## Config (`config.yaml`)
 `schedule` (one line per daily upload: time + language), `video.target_seconds` (45-65), `languages.*.words_per_second` (kit pace), `studio` (director, repair_rounds, judge,

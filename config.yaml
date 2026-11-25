@@ -95,9 +95,9 @@ claude:
 # The video engine: the animated-shorts-kit head skill (.claude/skills/animated-shorts-kit), see references/08_OUR_PIPELINE.md.
 studio:
   director: freellm         # who writes + repairs the shot plan: freellm (free) or claude. Without FreeLLMAPI it uses Claude.
-  claude_model: sonnet      # only when Claude directs
+  claude_model: sonnet      # only when Claude directs + judges (sonnet = cheaper, opus = best)
   repair_rounds: 3          # gate problems sent back to the director before the Short falls back to 2D
-  judge: true               # a free vision model scores the preview's contact sheets (10_JUDGE.md)
+  judge: true               # scores the preview's contact sheets (10_JUDGE.md): FreeLLMAPI vision, or Claude when Claude directs
   good_enough: 8            # judge overall score (1-10) at which the fix round is skipped
   music_db: -13             # music bed vs voice (kit: 10-15 dB under the voice, never stops)
   sfx_db: -10               # sound effects vs voice (peaks capped under the voice)

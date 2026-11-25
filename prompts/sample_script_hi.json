@@ -19,73 +19,85 @@
    "line": "इस आदमी ने अजनबियों को पैसे दिए, बस अपनी दुकान में खाली carts घुमाने के लिए।",
    "visual": "Goldman watching hired strangers push empty carts",
    "overlay": "",
-   "emphasis": "carts"
+   "emphasis": "carts",
+   "caption": "is aadmi ne ajnabiyon ko paise diye, bas apni dukaan mein khaali carts ghumaane ke liye."
   },
   {
    "line": "बात है उन्नीस सौ सैंतीस की, Oklahoma City में Sylvan Goldman की एक छोटी सी grocery थी।",
    "visual": "the corner grocery, Goldman at the door",
    "overlay": "",
-   "emphasis": "grocery"
+   "emphasis": "grocery",
+   "caption": "baat hai unnees sau saintees ki, Oklahoma City mein Sylvan Goldman ki ek chhoti si grocery thi."
   },
   {
    "line": "उसके customers बस उतना ही खरीदते थे जितना एक छोटी basket में आ जाए।",
    "visual": "a tired shopper at the counter with one full basket",
    "overlay": "",
-   "emphasis": "basket"
+   "emphasis": "basket",
+   "caption": "uske customers bas utna hi khareedte the jitna ek chhoti basket mein aa jaaye."
   },
   {
    "line": "तो एक रात workshop में उसने एक folding chair पर पहिए और दो baskets लगा दीं।",
    "visual": "Goldman building the first cart at night",
    "overlay": "",
-   "emphasis": "पहिए"
+   "emphasis": "पहिए",
+   "caption": "to ek raat workshop mein usne ek folding chair par pahiye aur do baskets laga deen."
   },
   {
    "line": "अगली सुबह उसने बड़े गर्व से नए carts दरवाज़े पर लाइन में लगा दिए।",
    "visual": "Goldman presenting the carts outside",
    "overlay": "",
-   "emphasis": "गर्व"
+   "emphasis": "गर्व",
+   "caption": "agli subah usne bade garv se naye carts darwaaze par line mein laga diye."
   },
   {
    "line": "किसी ने उन्हें छुआ तक नहीं। एक भी customer ने नहीं।",
    "visual": "shoppers walking past the carts",
    "overlay": "",
-   "emphasis": "छुआ"
+   "emphasis": "छुआ",
+   "caption": "kisi ne unhein chhua tak nahin. ek bhi customer ne nahin."
   },
   {
    "line": "आदमी बोले ये बेवकूफ़ी है, और औरतें बोलीं ये तो baby stroller जैसा है।",
    "visual": "a man and a woman shaking their heads",
    "overlay": "",
-   "emphasis": "stroller"
+   "emphasis": "stroller",
+   "caption": "aadmi bole ye bewakoofi hai, aur auratein bolin ye to baby stroller jaisa hai."
   },
   {
    "line": "उसका अपना staff भी हँसा। तुम दुकान डुबो दोगे!",
    "visual": "staff laughing, Goldman slumping",
    "overlay": "",
-   "emphasis": "हँसा"
+   "emphasis": "हँसा",
+   "caption": "uska apna staff bhi hansa. tum dukaan duba doge!"
   },
   {
    "line": "तो Goldman ने actors रखे, जो दिन भर भरे हुए carts लेकर घूमते रहे।",
    "visual": "actors pushing full carts",
    "overlay": "",
-   "emphasis": "actors"
+   "emphasis": "actors",
+   "caption": "to Goldman ne actors rakhe, jo din bhar bhare hue carts lekar ghoomte rahe."
   },
   {
    "line": "एक customer ने नकल की। फिर दूसरे ने। फिर पूरी दुकान ने।",
    "visual": "one, then two, then a crowd with carts",
    "overlay": "",
-   "emphasis": "पूरी"
+   "emphasis": "पूरी",
+   "caption": "ek customer ne nakal ki. phir doosre ne. phir poori dukaan ne."
   },
   {
    "line": "असल में लोग एक अच्छे idea से ज़्यादा भीड़ पर भरोसा करते हैं।",
    "visual": "Goldman winking at the camera",
    "overlay": "",
-   "emphasis": "भीड़"
+   "emphasis": "भीड़",
+   "caption": "asal mein log ek achchhe idea se zyaada bheed par bharosa karte hain."
   },
   {
    "line": "आज हर supermarket में उसके carts हैं, और उसी मज़ाक ने उसे करोड़पति बना दिया।",
    "visual": "Goldman outside the bank with a chest of gold",
    "overlay": "",
-   "emphasis": "करोड़पति"
+   "emphasis": "करोड़पति",
+   "caption": "aaj har supermarket mein uske carts hain, aur usi mazaak ne use karodpati bana diya."
   }
  ],
  "playbook_update": ""

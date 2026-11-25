@@ -5,6 +5,8 @@ English in the afternoon and evening — by itself, in the cloud. Your PC and ph
 
 ---
 
+**New here? Read [GUIDE.md](GUIDE.md)** — how to use the bot and what to change for your preferences.
+
 ## The rhythm (automatic)
 
 - **~4 AM IST, daily — Make video.** Makes one video per line of `schedule:` in config.yaml (in slot order, so the
@@ -62,7 +64,7 @@ If anything fails, that Short is made by the old flat 2D engine (`toon2d/`, emer
 ## 🇮🇳 English + Hindi
 
 Every video is one language. Hindi is written fresh as natural Hinglish (Devanagari, with everyday English
-words in Latin letters), never translated. Captions ship with their own fonts (Anton + Noto Sans Devanagari). Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
+words in Latin letters), never translated. The captions on screen are Hinglish in Roman letters. Voices: edge-tts Andrew (English) and Madhur (Hindi); edge-tts is an unofficial Microsoft service,
 so if it fails the video uses Kokoro automatically.
 
 ## 🏷 AI labels
@@ -86,7 +88,7 @@ python -m pipeline.produce --test                  # sample story -> out/*/final
 | File | What |
 |---|---|
 | `history.json` | every Short (queued / published, per-platform state) |
-| `analytics.json` | views & stats per video + the language split |
+| `analytics.json` | views & stats per video |
 | `ideas.json` | every idea used (for "don't repeat yourself") |
 | `playbook.md` | lessons Claude rewrites on Sundays |
 

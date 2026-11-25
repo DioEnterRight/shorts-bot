@@ -66,7 +66,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
         if test:
             raise
         log(f"studio failed ({str(e)[:300]}); making this Short with the emergency 2D engine", "WARN")
-        final, storyboard = toon2d.render(cfg, script, timeline, voice_path, vlen + 0.7, work, lp["code"],
+        final, storyboard = toon2d.render(cfg, script, studio.caption_timeline(script, timeline), voice_path, vlen + 0.7, work, lp["code"],
                                           brain.call_claude, brain.extract_json, use_claude=True)
     duration = qc.check(final, fps=cfg["video"]["fps"])
     shutil.move(final, work / "final.mp4")

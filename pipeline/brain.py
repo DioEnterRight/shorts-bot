@@ -98,7 +98,7 @@ def validate(s, cfg, lp, theme="explainer"):
         sc["overlay"] = " ".join((sc.get("overlay") or "").split()[:3])[:28]
         if norm_text(sc.get("emphasis", "")) not in {norm_text(w) for w in sc["line"].split()}:
             sc["emphasis"] = ""
-        for k in [k for k in sc if k not in ("line", "visual", "overlay", "emphasis")]:
+        for k in [k for k in sc if k not in ("line", "visual", "overlay", "emphasis") + (("caption",) if lp["code"] == "hi" else ())]:
             del sc[k]
     visuals = [norm_text(sc["visual"]) for sc in scenes]
     if any(a == b for a, b in zip(visuals, visuals[1:])):
@@ -109,6 +109,11 @@ def validate(s, cfg, lp, theme="explainer"):
     text = " ".join(sc["line"] for sc in scenes)
     if not languages.script_ok(text, lp["code"]):
         raise ValueError(f"Narration is not in {lp['name']}")
+    for i, sc in enumerate(scenes):
+        if lp["code"] == "hi":   # the screen shows Roman Hinglish, the voice reads the Devanagari line
+            sc["caption"] = " ".join((sc.get("caption") or "").split())
+            if not sc["caption"] or re.search(r"[\u0900-\u097F]", sc["caption"]):
+                raise ValueError(f"Scene {i + 1}: \"caption\" must be the line in Roman Hinglish (Latin letters only)")
     words = len(text.split())
     lo, hi = word_budget(cfg, lp)
     if not (lo * 0.8 <= words <= hi * 1.15):
