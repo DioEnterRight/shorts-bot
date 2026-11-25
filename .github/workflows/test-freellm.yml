@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 
 concurrency:
-  group: shorts-bot
+  group: shorts-freellm-test
   cancel-in-progress: false
 
 permissions:

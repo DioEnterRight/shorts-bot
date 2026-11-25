@@ -13,13 +13,14 @@ const circB = (x: number, z: number, r: number, b: OB) => { const dx = x - b.x, 
   return Math.hypot(u - Math.max(-b.hl, Math.min(b.hl, u)), v - Math.max(-b.hw, Math.min(b.hw, v))) < r; };
 const bb = (a: OB, b: OB) => { for (const d of [a.ax, a.az, b.ax, b.az]) { const pr = (o: OB) => Math.abs(d[0] * o.ax[0] + d[1] * o.ax[1]) * o.hl + Math.abs(d[0] * o.az[0] + d[1] * o.az[1]) * o.hw;
   if (Math.abs((b.x - a.x) * d[0] + (b.z - a.z) * d[1]) > pr(a) + pr(b)) return false; } return true; };
-const SOL = LOGIC_SOLIDS;
+const ALL_SOL = LOGIC_SOLIDS as (typeof LOGIC_SOLIDS[number] & {7?: [number, number]})[];
 export type LogicIssue = {kind: string; f: number; shot: string; msg: string};
 /** all logic issues (old frames) */
 export function logic(): LogicIssue[] {
   const res: LogicIssue[] = [];
   const note = (k: string, f: number, d: string) => res.push({kind: k, f, shot: shotAt(f).name, msg: `${k} ${d}`});
 for (let f = 0; f < TOTAL; f++) {
+  const SOL = ALL_SOL.filter((b) => !b[7] || (f >= b[7][0] && f < b[7][1]));   // a scene's props exist only in their scene
   const st = stage(f), P = st.people, K = st.cars.map(carB), R = (w: string) => 0.2 * ((LOOKS as any)[w]?.scale ?? 1);
   P.forEach((a, j) => {
     for (let k = j + 1; k < P.length; k++) if (!a.inCar && !P[k].inCar && Math.hypot(a.p[0] - P[k].p[0], a.p[2] - P[k].p[2]) < R(a.who) + R(P[k].who)) note('PP', f, `${a.who}/${P[k].who}${a.bg || P[k].bg ? ' (bg)' : ''}`);

@@ -71,7 +71,7 @@ def world(tmp_state, monkeypatch, tmp_path):
     cfg["paused"] = False
     cfg["publish"].update({"instagram": True, "youtube_mode": "api", "instagram_max_attempts": 2})
     slot = (common.now_ist() - dt.timedelta(minutes=1)).strftime("%H:%M")
-    cfg["schedule"] = [{"time": slot, "language": "hi"}]   # due right now
+    cfg["schedule"] = {"every_minutes": 1440, "first": slot, "language": "hi"}   # due right now
     monkeypatch.setattr(publish, "load_config", lambda: cfg)
     return calls
 
@@ -264,7 +264,7 @@ def test_one_failed_video_does_not_cost_the_others(monkeypatch, tmp_state):
     monkeypatch.setattr(produce, "produce_one", fake_one)
     monkeypatch.setattr(produce, "queue", lambda *a: None)
     monkeypatch.setattr(produce.analytics, "load", lambda: {})
-    monkeypatch.setattr(produce.schedule, "to_make", lambda cfg, q: ["hi", "en", "en"])
+    monkeypatch.setattr(produce.schedule, "to_make", lambda cfg, q, now: ["hi", "en", "en"])
     monkeypatch.setattr(sys, "argv", ["produce", "--release"])
     with pytest.raises(SystemExit, match="1 video"):
         produce.main()

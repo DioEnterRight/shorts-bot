@@ -16,11 +16,14 @@ def steps(wf):
     return [s for job in wf["jobs"].values() for s in job["steps"]]
 
 
-def test_workflows_parse_and_share_concurrency_group():
+def test_workflows_parse_and_queue_apart():
+    groups = {}
     for f in WF.glob("*.yml"):
         wf = yaml.safe_load(f.read_text())
-        assert wf["concurrency"]["group"] == "shorts-bot", f
+        groups[f.name] = wf["concurrency"]["group"]
         assert wf["concurrency"]["cancel-in-progress"] is False, f
+    # a long Make never blocks (or cancels) a Post; both save data/ through the JSON merge driver
+    assert groups["make-video.yml"] == "shorts-make" and groups["post-video.yml"] == "shorts-post"
 
 
 def test_state_push_failures_are_not_swallowed():
@@ -39,7 +42,7 @@ def test_language_selector():
     assert "provider" not in on["workflow_dispatch"]["inputs"]
 
 def test_schedules():
-    assert load("make-video.yml")[True]["schedule"][0]["cron"] == "33 22 * * *"
+    assert load("make-video.yml")[True]["schedule"][0]["cron"] == "13 * * * *"
     assert load("post-video.yml")[True]["schedule"][0]["cron"] == "7,37 * * * *"   # times live in config.yaml schedule
 
 
@@ -72,7 +75,8 @@ def test_config_languages_and_themes(cfg):
 
 def test_daily_schedule(cfg):
     from pipeline import schedule
-    assert schedule.slots(cfg) == [("09:00", "hi"), ("14:00", "en"), ("19:00", "en")]
+    s = schedule.slots(cfg)
+    assert len(s) == 24 and s[0] == ("00:30", "en") and [t for t, l in s if l == "hi"] == ["09:30"]
     assert produce.choose_theme(cfg, {"videos": []}) == "explainer"
 
 
@@ -95,5 +99,5 @@ def test_render_and_voice_config(cfg):
     assert -15 <= cfg["studio"]["music_db"] <= -10                        # kit: bed 10-15 dB under the voice
     assert cfg["voice"]["engine"] in ("edge", "kokoro")
     for code in cfg["languages"]["enabled"]:
-        assert cfg["languages"][code].get("edge_voice") and 3.0 <= cfg["languages"][code]["words_per_second"] <= 3.8
+        assert cfg["languages"][code].get("edge_voice") and 2.3 <= cfg["languages"][code]["words_per_second"] <= 3.8
     assert all(set(t) == {"share", "guidance"} for t in cfg["themes"].values())

@@ -10,19 +10,19 @@ the next run uses it. No workflow file needs editing for normal changes.
 
 | Time (India) | Workflow | What it does |
 |---|---|---|
-| ~04:03 | **Make video** | Makes one video per `schedule:` line that is not already waiting in the queue, in slot order (so the morning Hindi one is first). Takes ~2–3 h for 3 videos. |
-| every 30 min | **Post video** | If a `schedule:` slot's time has come, posts that slot's video (right language) to Instagram + YouTube. Otherwise stops in seconds. |
+| every hour (:13) | **Make video** | Keeps the next `schedule.make_ahead` uploads ready: makes one video (right language) if they are not covered yet. ~45–70 min each. |
+| every 30 min | **Post video** | If a `schedule:` slot's time has come, posts that slot's video (right language) to Instagram + YouTube. Otherwise stops in seconds. Never waits for a Make run. |
 | Sundays | (inside Make) | Claude rewrites `data/playbook.md` from real view stats. |
 
 **How one video is made**
-1. **Idea** — Claude researches ~8 ideas on the web for the channel's topics and drops anything too close to an old video.
+1. **Idea** — Claude researches ~8 ideas on the web and drops anything too close to an old video. The best is used, the other good ones wait in a backlog (`data/ideas.json`, 7 days) so the next videos need no brainstorm call.
 2. **Script** — Claude writes and fact-checks it with the kit's story formula (45–65 s, hook in the first line, one line = one picture).
 3. **Voice** — edge-tts (Kokoro if edge fails), with exact word timings.
-4. **Director** — a free FreeLLMAPI model (or Claude, see §5) writes the *shot plan*: who stands where, what they do, where the camera goes and on which word it lands.
+4. **Director** — Claude (Sonnet, one cheap tool-free call ~10k tokens) writes the *shot plan*: who stands where, what they do, which props tell each line, where the camera goes and on which word it lands. (Or a free FreeLLMAPI model, see §5.)
 5. **Checks + repairs** — the kit tests every frame (faces cut off, people inside walls, the camera inside a shelf…).
    Repairs go cheapest first: code fixes the director's small mistakes, then tries camera variations itself, then the
-   director gets what is left, then **Claude (Opus) takes over** if the free model can't finish.
-6. **Preview + judge** — a small preview renders, a contact sheet (one frame every 0.5 s) is scored 1–10. Under 8 → one fix round; the higher score wins.
+   director gets what is left, then **Claude Opus takes over** if that can't finish.
+6. **Preview + judge** — a small preview renders, a contact sheet (one frame every 0.5 s) is scored 1–10 by a free FreeLLMAPI vision model. Under 8 → one fix round; the higher score wins.
 7. **Final** — 1080×1920 render on GitHub's computer, music + sound effects mixed at −14 LUFS, quality check, saved to **Releases**.
 8. Only if Claude's rescue also fails is the video drawn by the old flat 2D engine, so the slot never stays empty.
 
@@ -65,21 +65,26 @@ judge scores for every version. Open the `sheet_*.jpg` files to see the whole vi
 ### Uploads: times, how many, which language
 ```yaml
 schedule:
-  - {time: "09:00", language: hi}    # morning
-  - {time: "14:00", language: en}    # afternoon
-  - {time: "19:00", language: en}    # evening
+  every_minutes: 60          # one upload every hour = 24 a day
+  first: "00:30"             # first upload of the day; the rest follow every_minutes
+  language: en               # every upload is in this language...
+  language_at: {"09:30": hi} # ...except these times
+  make_ahead: 2              # keep the next 2 uploads ready
+  make_per_run: 1            # each hourly Make run makes at most 1
 ```
 - India time, 24-hour, always two digits (`"07:30"`, not `"7:30"` — the bot stops with a clear error on a typo).
-- **More videos a day:** add a line. **Fewer:** delete a line. **Swap languages:** change `hi` / `en`.
-- The Make run makes exactly one video per line, so 4 lines = 4 videos a day (more Claude usage and render time — keep it ≤ 4: the Make run has ~6 h).
-- A slot can post up to **3 h late** (slow Make run, GitHub delay). After that its video waits for the next slot of the same language.
+- **Fewer a day:** `every_minutes: 120` = 12 a day, `240` = 6, `480` = 3, `1440` = 1. **More Hindi:** add times to
+  `language_at`, e.g. `{"09:30": hi, "21:30": hi}` (each must be one of the upload times). **All Hindi:** `language: hi`.
+- One Make run makes one video (~45–70 min). Runs never overlap, so a Make run that takes over an hour makes fewer
+  than 24 a day: if posts start going out late or get skipped, use `every_minutes: 90` or `120`.
+- A slot can post up to one slot interval late (max 3 h). After that its video waits for the next slot of the same language.
 - If a Hindi slot has no Hindi video ready, the oldest English one is posted instead (and the log says so).
 
 ### Video length and talking speed
 | Want | Change |
 |---|---|
 | Longer / shorter videos | `video.target_seconds` (kit range 45–65) |
-| Faster / slower narrator | `languages.en.edge_rate` / `languages.hi.edge_rate` (e.g. `"+18%"`, `"+25%"`, `"+0%"`). Check "Speaking pace" in the Make log: the kit aims for 200–230 wpm |
+| Faster / slower narrator | `languages.en.edge_rate` / `languages.hi.edge_rate` (e.g. `"+0%"` calm, `"+10%"`, `"+18%"` fast). Check "Speaking pace" in the Make log. Also set `words_per_second` to the pace you hear (it sets the script length) |
 | Script fits the speed | `words_per_second` (kit: 3.3–3.8). Raise it together with `edge_rate`, or videos come out longer than `target_seconds` |
 
 ### Voices
@@ -139,34 +144,32 @@ Who does what today:
 |---|---|---|
 | Ideas (web research) | Claude | No — needs web search to check facts and originality; FreeLLMAPI has none |
 | Script + fact-check | Claude | No — same reason |
-| Director (shot plan) + repairs | FreeLLMAPI | Yes |
-| Judge (scores the preview) | follows the director | automatically |
+| Director (shot plan) + repairs | Claude Sonnet (one tool-free call, ~10k tokens) | Yes |
+| Judge (scores the preview) | FreeLLMAPI vision (free) | — (Claude only with `studio.claude_judge: true`) |
 | Emergency 2D storyboard | Claude (`toon2d.model`) | — |
 
-### FreeLLMAPI → Claude (better plans, more Claude usage)
-In `config.yaml`:
+### Claude director (the default: better props, placing and sizes)
 ```yaml
 studio:
   director: claude
-  claude_model: sonnet      # or opus for the best plans (uses more of your Claude limit)
+  claude_model: sonnet      # or opus for the best plans (more of your Claude limit)
+  claude_effort: medium     # low saves tokens, high thinks more
 ```
-That's all. The judge switches with it (Claude opens the contact-sheet images itself). The `FREELLMAPI_KEYS` secret
-can stay — it is simply not used. The "Start FreeLLMAPI" step still runs, harmlessly.
-`[Guessing]` Cost: roughly 50–150k extra Claude tokens per video (plan + up to 3 repairs + judge), × 3 videos a day.
+Each call sends only the kit's director brief + the beats (no tools, no Claude Code system prompt): `[Likely]` ~6k
+tokens in, ~4k out. Usually 1–2 calls a video (the code repairs most problems for free). Keep the `FREELLMAPI_KEYS`
+secret: FreeLLMAPI still judges the preview for free. Without it the judge is skipped (unless `studio.claude_judge: true`).
 
-### Claude → FreeLLMAPI (free, the default)
+### Claude → FreeLLMAPI director (free, weaker plans)
 ```yaml
 studio:
   director: freellm
 ```
-Needs the `FREELLMAPI_KEYS` secret (`FREELLM_SETUP.md`) with a **Google** key in it — that is the free model that can
-see images, so the judge works. Without a vision model the judge is skipped and the first version is used.
+Needs the `FREELLMAPI_KEYS` secret (`FREELLM_SETUP.md`). If the free model can't pass the checks, Claude Opus rescues.
 
 ### Automatic switches (you do nothing)
 - Free model can't pass the checks after `studio.repair_rounds` → Claude (`studio.rescue_model`, Opus) takes over for
   `studio.rescue_rounds` more rounds. Turn it off with `studio.rescue: false` (then it goes straight to 2D).
-- FreeLLMAPI not running (no secret, keys broken) → Claude directs that video.
-- FreeLLMAPI monthly cap reached (`freellm.monthly_token_cap`) → Claude directs until next month.
+- FreeLLMAPI not running (no secret, keys broken) or its monthly cap reached → Claude directs, the judge is skipped.
 - Too many requests for one video (`freellm.max_calls_per_video`) → that video falls back to the 2D engine.
 
 ### FreeLLMAPI knobs
@@ -190,7 +193,8 @@ see images, so the judge works. Without a vision model the judge is skipped and 
 | `Claude Code call failed` | `claude setup-token` again → update `CLAUDE_CODE_OAUTH_TOKEN` |
 | `Could not push bot state` | Settings → Actions → General → Workflow permissions → **Read and write** |
 | `YouTube API uploads are staying private` | YouTube API audit not approved yet → `publish.youtube_mode: manual` |
-| A slot was skipped | It was more than 3 h late; its video posts at the next slot of that language |
+| A slot was skipped | Its video was not ready in time (Make runs over an hour): raise `schedule.every_minutes` |
+| Same prop in every shot / floating blue slabs | Old videos only: props now live in their own scene, one model in ≤ 2 scenes, building parts are not props |
 
 ---
 

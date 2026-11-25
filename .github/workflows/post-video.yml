@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}      # the button: posts the oldest ready video right now
 
 concurrency:
-  group: shorts-bot
+  group: shorts-post
   cancel-in-progress: false
 
 permissions:

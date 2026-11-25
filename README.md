@@ -9,13 +9,10 @@ English in the afternoon and evening — by itself, in the cloud. Your PC and ph
 
 ## The rhythm (automatic)
 
-- **~4 AM IST, daily — Make video.** Makes one video per line of `schedule:` in config.yaml (in slot order, so the
-  morning video is ready first). For each: picks the theme, researches ~8 ideas, drops anything too close to an old video, writes and fact-checks a 45-65 s script in the kit's
-  story formula, voices it (edge-tts, Kokoro as fallback), then the **animated-shorts-kit studio** directs, checks,
-  previews, judges and renders a 1080x1920 cartoon (2D characters in a 3D toon world) with captions, music and SFX.
-  Saved to **Releases**.
+- **Every hour — Make video.** Keeps the next uploads of `schedule:` ready (one video per run, right language):
+  idea (or one from the backlog) → Claude script → voice → Claude director → kit checks → preview + free judge → final.
 - **Every 30 min — Post video.** When a `schedule:` slot's time comes, posts that slot's video (right language) to
-  Instagram + YouTube. Idle runs stop in seconds. A slot can be up to 3 h late (e.g. a slow Make run); after that its
+  Instagram + YouTube. Idle runs stop in seconds. A slot can be up to one slot interval late (max 3 h); after that its
   video waits for the next slot of that language.
 - **Sundays** the bot also rewrites its own `data/playbook.md` from real view stats.
 
@@ -38,7 +35,7 @@ judge scores of each version. You are the final judge.
 | ⏸ Stop everything | `paused: true` |
 | Change topics | `channel → niche` |
 | Video length | `video → target_seconds` (45-65) |
-| Upload times / how many a day / which language | `schedule` — one line per upload: `- {time: "09:00", language: hi}` (India time, 24h) |
+| Upload times / how many a day / which language | `schedule:` — `every_minutes` (60 = 24 a day), `first`, `language`, `language_at: {"09:30": hi}` (India time, 24h) |
 | Explainer vs. story | `themes → <name> → share` |
 | Narrator / pace | `languages → en/hi → edge_voice`, `edge_rate`, `words_per_second` |
 | Who directs, repairs, judges | `studio` (+ `freellm`, see FREELLM_SETUP.md) |

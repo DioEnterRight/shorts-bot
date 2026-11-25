@@ -34,7 +34,10 @@ ACTS = _union('chars/rig.tsx', 'ActName')
 WHO = _union('chars/charparts.ts', 'Who')
 EXPR = _union('chars/charparts.ts', 'Expr')
 SPOTS = {k: v for k, v in json.loads((SKILL / 'library' / 'environments' / 'spots.json').read_text()).items() if not k.startswith('_')}
-MODEL_INDEX = json.loads((CODE / 'public' / 'models' / 'index.json').read_text())
+# building parts are the sets' job, not props: as props they float as slabs (a lone wall, a window, a road tile)
+MAX_MODEL_SCENES = 2   # one model in at most 2 scenes: the same crate in every shot reads as lazy
+NOT_PROPS = re.compile(r'/(wall|floor|road|base|building|pillar|door|stairs|rubble|extractorhood|towelrail|kitchencounter|kitchencabinet)')
+MODEL_INDEX = {k: v for k, v in json.loads((CODE / 'public' / 'models' / 'index.json').read_text()).items() if not NOT_PROPS.search(k)}
 
 
 def _model_sizes():
@@ -73,18 +76,40 @@ def beat_name(i):
     return f'b{i + 1:02d}'
 
 
+def scenes(spots):
+    """beat -> scene id: a new scene starts whenever the spot changes (that is a cut)"""
+    out, n = [], -1
+    for i, sp in enumerate(spots):
+        n += i == 0 or sp != spots[i - 1]
+        out.append(f'{sp}#{n}')
+    return out
+
+
+def _live(p, keys=True):
+    """a prop's old-frame window in TS: from its scene's first beat to the next scene"""
+    a, b = p['live']
+    f0, f1 = f"S('{a}')", f"S('{b}')" if b else '1e9'
+    return f'f0: {f0}, f1: {f1}' if keys else f'{f0}, {f1}'
+
+
 class Plan:
     def __init__(self, plan, beats, waivers=None):
         self.plan, self.beats, self.waivers = plan, beats, waivers or []
         self.problems, self.warnings = [], []
         self.cast = {}
-        self.people_at = {}      # spot -> {slot: owner} for the whole video (the world stays the same between beats)
+        self.scene = scenes([b.get('spot') for b in plan['beats']])   # beat -> scene id (a run of beats at one spot)
+        self.people_at = {}      # (scene, slot) -> prop owner: a prop stays for its scene
         self.props = []          # [{name, model, p, ry, s, size}]
         self.sfx = []            # [[seconds, name]]
         self.keyref = []         # (beat, camera key) of every emitted K(), in order
         self.keymap = {}         # take name -> [[beat, camera key], ...]: gates report keys as <take><index>
 
     # ---------- helpers ----------
+    def scene_span(self, sc):
+        """[first beat name, beat name after the scene or None]: the old-frame window a scene's props exist in"""
+        idx = [i for i, s in enumerate(self.scene) if s == sc]
+        return [beat_name(idx[0]), beat_name(idx[-1] + 1) if idx[-1] + 1 < len(self.scene) else None]
+
     def bad(self, where, msg):
         self.problems.append(f'{where}: {msg}')
 
@@ -145,7 +170,7 @@ class Plan:
             self.cast[role] = who
 
     def check_props(self):
-        """props are part of the world: placed once, they stay for the whole video"""
+        """props belong to their scene (the run of beats at one spot): from its first beat to the cut away"""
         names = set()
         for bi, beat in enumerate(self.plan['beats']):
             for k, pr in enumerate(beat.get('props') or []):
@@ -168,12 +193,13 @@ class Plan:
                 ww, wd = _prop_extent(model, float(pr.get('scale', 1)), turn + az)
                 h = MODEL_SIZE.get(model, (1, 1, 1))[1] * k_
                 w, d = ww * 2, wd * 2   # world-axis footprint
-                if (spot, slot) in self.people_at:
-                    self.bad(where, f'slot {slot} at {spot} already holds {self.people_at[(spot, slot)]}'); continue
-                self.people_at[(spot, slot)] = 'prop ' + name
+                if (self.scene[bi], slot) in self.people_at:
+                    self.bad(where, f'slot {slot} at {spot} already holds {self.people_at[(self.scene[bi], slot)]}'); continue
+                self.people_at[(self.scene[bi], slot)] = 'prop ' + name
                 names.add(name)
                 self.props.append({'name': name, 'model': model, 'p': self.place(spot, slot), 'ry': math.radians(turn + az),
-                                   's': float(pr.get('scale', 1)), 'size': (w, h, d), 'beat': bi})
+                                   's': float(pr.get('scale', 1)), 'size': (w, h, d), 'beat': bi,
+                                   'live': self.scene_span(self.scene[bi])})
 
     def stage_beat(self, bi, beat):
         name, where0, out, here = beat_name(bi), f'beat {bi + 1}', [], {}
@@ -193,7 +219,7 @@ class Plan:
                 self.bad(where, f'{role} appears twice in one beat'); continue
             if slot not in SLOTS:
                 self.bad(where, f'unknown slot {slot!r} (choose from: {", ".join(SLOTS)})'); continue
-            owner = used.get(slot) or (self.people_at.get((spot, slot)) if str(self.people_at.get((spot, slot), '')).startswith('prop') else None)
+            owner = used.get(slot) or self.people_at.get((self.scene[bi], slot))
             if owner:
                 self.bad(where, f'slot {slot} is taken by {owner}'); continue
             used[slot] = role
@@ -402,7 +428,7 @@ export const FLASHES: Flash[] = [{', '.join(flashes)}];
 """
 
     def _set(self):
-        ms = ',\n  '.join(f"{{name: '{p['model']}', p: {p['p']}, ry: {round(p['ry'], 3)}, s: {p['s']}}}" for p in self.props)
+        ms = ',\n  '.join(f"{{name: '{p['model']}', p: {p['p']}, ry: {round(p['ry'], 3)}, s: {p['s']}, {_live(p)}}}" for p in self.props)
         return f"""// GENERATED by engine/tools/plan.py from plan.json: edit the plan, not this file.
 import React from 'react';
 import * as THREE from 'three';
@@ -410,26 +436,28 @@ import type {{Tod}} from '../../engine/look/look';
 import {{useMats, Set, type Mats}} from '../../engine/kits/grocery/store';
 import {{Town, StreetClock}} from '../../engine/kits/downtown/town';
 import {{Models, type ModelP}} from '../../engine/kits/models/Model';
+import {{S}} from '../../engine/core/clock';
 import type {{Stage}} from './stage';
 export const AUDIO: {{voice: string | null; bed: string | null}} = {{voice: null, bed: null}};   // the pipeline mixes the sound after the render
 export const useSetData = () => useMats();
-const MODELS: ModelP[] = [
+const MODELS: (ModelP & {{f0: number; f1: number}})[] = [   // f0-f1: old frames of the prop's scene
   {ms}
 ];
 type P = {{d: Mats; f: number; st: Stage; cam: THREE.Vector3; vel: (THREE.Vector3 | null)[]; tod: Tod}};
 export const SetBefore: React.FC<P> = ({{d, f, st, tod}}) => (<>
-  <Set m={{d}} f={{f}} /><Town tod={{tod}} /><StreetClock hours={{st.clock}} /><Models list={{MODELS}} />
+  <Set m={{d}} f={{f}} /><Town tod={{tod}} /><StreetClock hours={{st.clock}} /><Models list={{MODELS.filter((m) => f >= m.f0 && f < m.f1)}} />
 </>);
 export const SetAfter: React.FC<P> = () => null;
 """
 
     def _solids(self):
         boxes = ',\n  '.join(f"[{p['p'][0] - p['size'][0] / 2:.3f}, {p['p'][0] + p['size'][0] / 2:.3f}, 0, {p['size'][1]:.3f}, "
-                             f"{p['p'][2] - p['size'][2] / 2:.3f}, {p['p'][2] + p['size'][2] / 2:.3f}, 'prop {p['name']}']" for p in self.props)
+                             f"{p['p'][2] - p['size'][2] / 2:.3f}, {p['p'][2] + p['size'][2] / 2:.3f}, 'prop {p['name']}', [{_live(p, False)}]]" for p in self.props)
         return f"""// GENERATED by engine/tools/plan.py from plan.json: solids for the checkers (town + the plan's props) and gate waivers.
 import {{townSolids}} from '../../engine/kits/downtown/townData';
 import {{storeSolids}} from '../../engine/kits/grocery/storeData';
-type Box = [number, number, number, number, number, number, string];
+import {{S}} from '../../engine/core/clock';
+type Box = [number, number, number, number, number, number, string, [number, number]?];   // optional: old-frame window (a scene's prop)
 const PROP_SOLIDS: Box[] = [
   {boxes}
 ];
@@ -466,6 +494,8 @@ def _nearest_free(want, taken, allowed=None):
 
 def _model(name):
     name = str(name or '').strip().replace(' ', '_')
+    if NOT_PROPS.search('/' + name.split('/')[-1].lower()):
+        return None   # a building part: dropped, never fuzzy-matched to something else
     if name in MODEL_INDEX:
         return name
     low = {k.lower(): k for k in MODEL_INDEX}
@@ -541,16 +571,17 @@ def normalize(plan, beats):
         if s2 != sp:
             fix(f'beat {i + 1}', f'spot {sp!r} -> {s2}')
         spots_of.append(s2)
+    scene_of = scenes(spots_of)   # props live in one scene (a run of beats at one spot), not the whole video
     person_slots = {}
     for i, b in enumerate(B):
         for p in b.get('people') or []:
             if isinstance(p, dict):
                 for k in (p.get('at'), (p.get('walk') or {}).get('to') if isinstance(p.get('walk'), dict) else None):
                     if k in SLOTS:
-                        person_slots.setdefault(spots_of[i], set()).add(k)
+                        person_slots.setdefault(scene_of[i], set()).add(k)
 
-    # props first (all beats): they stay in the world, so people of every beat must see them
-    prop_at, prop_names, props_of, renames = {}, set(), [], []
+    # props first (all beats): a prop stays for its whole scene, so people of every beat of that scene must see it
+    prop_at, prop_names, props_of, renames, model_scenes = {}, set(), [], [], {}
     for i, b in enumerate(B):
         where0, spot = f'beat {i + 1}', spots_of[i]
         # props
@@ -564,6 +595,10 @@ def normalize(plan, beats):
                 fix(where, f'unknown model {pr.get("model")!r}: dropped'); continue
             if model != pr.get('model'):
                 fix(where, f'model {pr.get("model")!r} -> {model}')
+            seen = model_scenes.setdefault(model, set())
+            if scene_of[i] not in seen and len(seen) >= MAX_MODEL_SCENES:
+                fix(where, f'{model} is already in {len(seen)} scenes: dropped (vary the props)'); continue
+            seen.add(scene_of[i])
             raw = re.sub(r'[^a-z0-9_]', '_', str(pr.get('name') or model.split('/')[1]).lower()).strip('_') or 'prop'
             name = re.sub(r'^[^a-z]+', '', raw)[:18] or 'prop'
             base, c = name, 2
@@ -581,7 +616,7 @@ def normalize(plan, beats):
             except (TypeError, ValueError):
                 turn = 0
             want = pr.get('at') if pr.get('at') in SLOTS else 'back'
-            taken = set(prop_at.get(spot, {})) | person_slots.get(spot, set())
+            taken = set(prop_at.get(scene_of[i], {})) | person_slots.get(scene_of[i], set())
             big = _prop_half(model, scale, turn) > MAX_PROP_HALF
             allowed = [k for k in SLOTS if k.startswith('back')] if big else None
             slot = want if want not in taken and (not big or want.startswith('back')) else _nearest_free(want, taken, allowed)
@@ -596,7 +631,7 @@ def normalize(plan, beats):
                 fix(where, f'{model} is too big for slot {slot}: scale {s0} -> {scale}')
             if slot != pr.get('at'):
                 fix(where, f'slot {pr.get("at")!r} -> {slot}' + (' (taken)' if pr.get('at') in taken else ''))
-            prop_at.setdefault(spot, {})[slot] = name
+            prop_at.setdefault(scene_of[i], {})[slot] = name
             prop_names.add(name)
             props.append({'name': name, 'model': model, 'at': slot, 'turn': turn, 'scale': scale})
         props_of.append(props)
@@ -615,7 +650,7 @@ def normalize(plan, beats):
         b2['props'] = props
         # people
         people, here = [], {}
-        taken = set(prop_at.get(spot, {}))
+        taken = set(prop_at.get(scene_of[i], {}))
         for j, p in enumerate(b.get('people') or []):
             if not isinstance(p, dict):
                 continue
@@ -679,7 +714,7 @@ def normalize(plan, beats):
                 if kind == 'prop':
                     arg = rename.get(arg, arg)
                     ok = arg if arg in prop_names else _closest(arg, prop_names, 0.6)
-                    if ok and any(pp['name'] == ok for pp in props) or ok in prop_at.get(spot, {}).values():
+                    if ok and any(pp['name'] == ok for pp in props) or ok in prop_at.get(scene_of[i], {}).values():
                         on.append('prop:' + ok)
                     else:
                         fix(where, f'{s_!r} is not a prop here: dropped')
@@ -689,7 +724,7 @@ def normalize(plan, beats):
                 else:
                     fix(where, f'{s_!r} is not on stage here: dropped')
             if not on:
-                on = [p['role'] for p in people][:2] or [f'prop:{n_}' for n_ in prop_at.get(spot, {}).values()][:1]
+                on = [p['role'] for p in people][:2] or [f'prop:{n_}' for n_ in prop_at.get(scene_of[i], {}).values()][:1]
                 if not on:
                     fix(where, 'nothing to frame: key dropped'); continue
                 fix(where, f'framing -> {on}')
@@ -715,7 +750,7 @@ def normalize(plan, beats):
                 fix(where0, f'camera key at {t - beats[i]["start"]:.1f} s is under 0.8 s after the previous one: dropped'); continue
             kept.append(k)
         if not kept:
-            on = [p['role'] for p in people][:2] or [f'prop:{n_}' for n_ in prop_at.get(spot, {}).values()][:1]
+            on = [p['role'] for p in people][:2] or [f'prop:{n_}' for n_ in prop_at.get(scene_of[i], {}).values()][:1]
             if on:
                 fix(where0, 'no camera key: added one'); kept = [{'at': 'start', 'on': on, 'size': SIZES[min(3, mx)], 'angle': 10, 'height': 4,
                                                                  'fov': 40, 'push': 1.05, 'move': 'arc'}]

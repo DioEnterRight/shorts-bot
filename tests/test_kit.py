@@ -61,6 +61,25 @@ def test_sample_plan_compiles_in_both_languages(vdir, plan):
     assert all(0 <= t <= 60 and n in planc.SFX for t, n in json.loads(files["sfx.json"]))
 
 
+def test_props_live_in_their_scene_and_never_repeat_everywhere(vdir, plan):
+    """a prop exists only in its scene (a run of beats at one spot); one model in <= 2 scenes; building parts are dropped"""
+    assert planc.scenes(["a", "a", "b", "a"]) == ["a#0", "a#0", "b#1", "a#2"]
+    files, problems, _ = planc.compile_plan(plan, vdir)
+    assert problems == []
+    assert "f0: S('b05'), f1: S('b08')" in files["set.tsx"]          # chair: beats 5-7 at grocery_front
+    assert "f0: S('b12'), f1: 1e9" in files["set.tsx"]               # gold: the last scene runs to the end
+    assert "'prop cart', [S('b05'), S('b08')]" in files["solids.ts"]
+    p = copy.deepcopy(plan)
+    p["beats"][1]["props"] = [{"name": "cart2", "model": "furniture/chair_A_wood", "at": "left"}]         # 1st scene of it: kept
+    p["beats"][10]["props"] = [{"name": "cart3", "model": "furniture/chair_A_wood", "at": "right"}]       # 3rd scene: dropped
+    p["beats"][9]["props"] = [{"name": "win", "model": "restaurant/wall_window_closed", "at": "back"}]   # a wall: dropped
+    files, problems, warnings = planc.compile_plan(p, vdir)
+    assert problems == []
+    assert "cart3" not in files["solids.ts"] and "prop win" not in files["solids.ts"] and "cart2" in files["solids.ts"]
+    assert any("already in 2 scenes" in w for w in warnings) and any("wall_window" in w for w in warnings)
+    assert "wall_window" not in studio.director_brief()
+
+
 def test_director_mistakes_are_repaired_not_rejected(vdir, plan):
     """every mistake type the free models made on 25 Nov 2026 gets a FIX, not a rejected plan"""
     bad = copy.deepcopy(plan)
@@ -142,6 +161,8 @@ def test_director_chain_escalates_to_claude():
     assert studio.directors(cfg, None, lambda *a, **k: "") == [(("claude", "opus"), 2)]
     cfg["studio"].update(director="claude", claude_model="sonnet")
     assert studio.directors(cfg, None, lambda *a, **k: "") == [(("claude", "sonnet"), 3), (("claude", "opus"), 2)]
+    # FreeLLMAPI running (it still judges for free) does not put it in the director chain
+    assert studio.directors(cfg, object(), lambda *a, **k: "") == [(("claude", "sonnet"), 3), (("claude", "opus"), 2)]
     assert studio.directors({"studio": {**cfg["studio"], "rescue": False}}, None, None) == []
 
 

@@ -47,7 +47,7 @@ Exactly one beat per script line, in order.
 | `people[].look` | `"cam"` (talks to the viewer: hook, "you see", the wink), a role in the same beat, or `"auto"` (looks at the nearest person). |
 | `people[].walk` | optional: `{"to": slot, "start": time, "seconds": 0.6-4}` — walks from `at` to `to`. |
 | `people[].talk` | optional `true`: the mouth moves (quoted lines). |
-| `props[]` | `{"name": "chest", "model": "<pack/model>", "at": slot, "turn": degrees, "scale": 1}`. Models: `library/environments/MODELS.md`. A prop stays in that place for the whole video. Big props (> 1.5 m) only in back slots. |
+| `props[]` | `{"name": "chest", "model": "<pack/model>", "at": slot, "turn": degrees, "scale": 1}`. Models: `library/environments/MODELS.md`. A prop belongs to its **scene** (the run of beats at one spot): it is there from the scene's first beat until the camera cuts to another spot. Need it again later? Declare it again in that scene. Big props (> 1.5 m) only in back slots. |
 | `camera[]` | keys of the take. `on`: what to frame — roles, `"arms:<role>"` (gesture framing), `"hand:<role>"`, `"prop:<name>"`. `size`: ECU CU MCU MS FS WS EWS (not wider than the spot allows). `angle`: -75..75 degrees around the subject (0 = straight on, + = camera swings right). `height`: -10..45 degrees (4 = eye level, 8-15 = looking down, negative = low angle hero shot). Optional: `fov` 25-60 (default 40), `push` 1.0-1.2 (creep-in, default 1.05), `move` arc / pullpush / pan / dolly / whip (how the camera travels INTO this key, default arc), `roll` degrees (drama only). |
 | time | `"start"` (beat start), `"word:<word>"` (when that word is spoken; `"word:it#2"` = its 2nd time in the beat) or seconds from the beat start (`1.5`). Words must be words of THAT beat. |
 | `sfx` | `[time, sound]`: whoosh pop thud tick shutter scribble boom ding paper step sting. Few and meaningful (a reveal, an impact, the twist). |
@@ -67,3 +67,4 @@ Exactly one beat per script line, in order.
 9. **Hook beat**: the strangest image of the story, framed MS or MCU, someone looks at the camera or does the strange action.
 10. **Last beat**: the payoff lands on the final word (a push-in, a sting, the twist prop).
 11. Cartoon magic is fine (a chair becomes a cart). Original characters only; no real logos.
+12. **Props tell the line, nothing else.** 0-3 per scene, each the object the words name (money → coins/gold, a deal → a desk and papers, a heist → a safe or chest). No filler: no crate, plate or barrel unless the line is about it. One model in at most 2 scenes of the video; vary them. Scale 1 is the right size next to a person — change it only for a joke (giant coin).

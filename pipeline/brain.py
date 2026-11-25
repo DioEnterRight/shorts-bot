@@ -60,11 +60,13 @@ def claude_model_args(effort=None, model=None):
     return args
 
 
-def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None):
+def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None, system=None):
+    """prompt goes by stdin (no argv size cap). system = our own system prompt instead of Claude Code's big default one,
+    with no tools: a plain one-shot answer, the cheapest call there is."""
     env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
-    res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort, model),
-               *(["--allowedTools", tools] if tools else []), "--max-turns", str(max_turns)],
-              capture=True, check=False, cwd=cwd, timeout=timeout)
+    extra = ["--system-prompt", system, "--tools", ""] if system else (["--allowedTools", tools] if tools else [])
+    res = run(["claude", "-p", "--output-format", "json", *claude_model_args(effort, model), *extra,
+               "--max-turns", str(max_turns)], capture=True, check=False, cwd=cwd, timeout=timeout, input=prompt)
     if res.returncode != 0:
         print(res.stdout[-3000:], res.stderr[-3000:])
         raise RuntimeError("Claude Code call failed (check CLAUDE_CODE_OAUTH_TOKEN or usage limits)")
@@ -138,7 +140,8 @@ def build_prompt(cfg, idea, lp, theme, performance):
     lo, hi = word_budget(cfg, lp)
     playbook_path = DATA / "playbook.md"
     playbook = playbook_path.read_text(encoding="utf-8") if playbook_path.exists() else "(empty)"
-    sunday = now_ist().weekday() == 6
+    today = now_ist()
+    sunday = today.weekday() == 6 and f"reviewed {today:%Y-%m-%d}" not in playbook   # once per Sunday (Make runs hourly)
     shown = {k: idea.get(k) for k in ("canonical_en", "title", "question", "hook", "angle", "why_care", "payoff",
                                       "format", "series", "visual_moments", "fact_status", "research_basis")}
     return tpl.format(
