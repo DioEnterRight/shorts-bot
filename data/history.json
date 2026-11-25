@@ -690,8 +690,15 @@
       "duration": 59.48,
       "storyboard": "kit",
       "tag": "vid-20261126-023244-en-victor-lustig-s-money-printi",
-      "status": "queued",
-      "created": "2026-11-26T03:25+05:30"
+      "status": "published",
+      "created": "2026-11-26T03:25+05:30",
+      "slot": "2026-11-26 03:30",
+      "ig_media_id": "17965039965000655",
+      "ig_link": "https://www.instagram.com/reel/DgLnZfwRVp-/",
+      "ig_state": "posted",
+      "yt_video_id": "yjqRjTZBZuw",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T04:06+05:30"
     }
   ],
   "version": 2,
