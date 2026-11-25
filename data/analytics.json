@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -201,7 +201,7 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 988,
         "ig": 370
@@ -253,7 +253,7 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 980,
         "ig": 183
@@ -305,7 +305,7 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1188,
         "ig": 174
@@ -357,7 +357,7 @@
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1295,
         "ig": 1460
@@ -389,7 +389,7 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1227,
         "ig": 581
@@ -421,7 +421,7 @@
         "yt_avg_view_sec": 32,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1974,
         "ig": 2195
@@ -438,13 +438,13 @@
       "duration": 34.44,
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
-        "ig_views": 1540,
-        "ig_reach": 1082,
+        "ig_views": 1541,
+        "ig_reach": 1083,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24008,
+        "ig_avg_watch_ms": 23986,
         "yt_views": 1933,
         "yt_likes": 35,
         "yt_comments": 0,
@@ -453,10 +453,10 @@
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1933,
-        "ig": 1540
+        "ig": 1541
       }
     },
     "20261122-044424-en-the-1963-salad-oil-swindle": {
@@ -485,7 +485,7 @@
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
         "yt": 1506,
         "ig": 1944
@@ -509,14 +509,14 @@
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 21554,
-        "yt_views": 1313,
+        "yt_views": 1318,
         "yt_likes": 34,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 1313,
+        "yt": 1318,
         "ig": 1905
       }
     },
@@ -531,22 +531,22 @@
       "duration": 30.7,
       "published_at": "2026-11-24T16:15+05:30",
       "metrics": {
-        "ig_views": 2238,
+        "ig_views": 2239,
         "ig_reach": 1388,
         "ig_likes": 14,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 20447,
-        "yt_views": 1641,
+        "ig_avg_watch_ms": 20449,
+        "yt_views": 1646,
         "yt_likes": 33,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 1641,
-        "ig": 2238
+        "yt": 1646,
+        "ig": 2239
       }
     },
     "20261124-223947-en-the-italian-bank-that-takes": {
@@ -560,22 +560,22 @@
       "duration": 33.7,
       "published_at": "2026-11-24T23:47+05:30",
       "metrics": {
-        "ig_views": 437,
-        "ig_reach": 314,
-        "ig_likes": 3,
+        "ig_views": 484,
+        "ig_reach": 354,
+        "ig_likes": 4,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18613,
-        "yt_views": 1174,
+        "ig_avg_watch_ms": 17603,
+        "yt_views": 1175,
         "yt_likes": 36,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 1174,
-        "ig": 437
+        "yt": 1175,
+        "ig": 484
       }
     },
     "20261125-005148-hi-the-gulf-rupee-of-1959": {
@@ -589,22 +589,22 @@
       "duration": 38.13,
       "published_at": "2026-11-25T01:57+05:30",
       "metrics": {
-        "ig_views": 1491,
-        "ig_reach": 1096,
+        "ig_views": 1501,
+        "ig_reach": 1100,
         "ig_likes": 9,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 19023,
-        "yt_views": 189,
+        "ig_avg_watch_ms": 18945,
+        "yt_views": 191,
         "yt_likes": 1,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 189,
-        "ig": 1491
+        "yt": 191,
+        "ig": 1501
       }
     },
     "20261125-020110-hi-india-s-1991-gold-pledge-in": {
@@ -618,22 +618,22 @@
       "duration": 40.17,
       "published_at": "2026-11-25T10:36+05:30",
       "metrics": {
-        "ig_views": 565,
-        "ig_reach": 428,
-        "ig_likes": 4,
+        "ig_views": 702,
+        "ig_reach": 522,
+        "ig_likes": 6,
         "ig_comments": 0,
-        "ig_shares": 2,
+        "ig_shares": 3,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13725,
-        "yt_views": 45,
+        "ig_avg_watch_ms": 13820,
+        "yt_views": 63,
         "yt_likes": 0,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 45,
-        "ig": 565
+        "yt": 63,
+        "ig": 702
       }
     },
     "20261125-045516-en-the-great-diamond-hoax-of-18": {
@@ -647,24 +647,82 @@
       "duration": 37.38,
       "published_at": "2026-11-25T16:17+05:30",
       "metrics": {
-        "ig_views": 152,
-        "ig_reach": 88,
+        "ig_views": 157,
+        "ig_reach": 120,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13195,
-        "yt_views": 541,
-        "yt_likes": 9,
+        "ig_avg_watch_ms": 12449,
+        "yt_views": 1079,
+        "yt_likes": 18,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T17:31+05:30",
+      "last_update": "2026-11-25T20:56+05:30",
       "views": {
-        "yt": 541,
-        "ig": 152
+        "yt": 1079,
+        "ig": 157
+      }
+    },
+    "20261125-173157-hi-frederic-tudor-shipped-new-e": {
+      "video_id": "20261125-173157-hi-frederic-tudor-shipped-new-e",
+      "language": "hi",
+      "topic": "Frederic Tudor shipped New England ice to Calcutta",
+      "theme": "story",
+      "title": "जिसने तपते कलकत्ता को America की बर्फ़ बेची",
+      "hook_type": "paradox",
+      "hook_line": "एक आदमी ने तपते कलकत्ता को America की बर्फ़ बेची।",
+      "duration": 82.33,
+      "published_at": "2026-11-25T18:27+05:30",
+      "metrics": {
+        "ig_views": 180,
+        "ig_reach": 155,
+        "ig_likes": 3,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 15472,
+        "yt_views": 13,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-25T20:56+05:30",
+      "views": {
+        "yt": 13,
+        "ig": 180
+      }
+    },
+    "20261125-175928-en-tenino-s-wooden-depression-m": {
+      "video_id": "20261125-175928-en-tenino-s-wooden-depression-m",
+      "language": "en",
+      "topic": "Tenino's wooden Depression money",
+      "theme": "explainer",
+      "title": "The Town That Printed Money on Wood",
+      "hook_type": "paradox",
+      "hook_line": "A town printed wooden money, and it was too valuable to spend.",
+      "duration": 57.73,
+      "published_at": "2026-11-25T20:16+05:30",
+      "metrics": {
+        "ig_views": 139,
+        "ig_reach": 24,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 12066,
+        "yt_views": 374,
+        "yt_likes": 16,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-25T20:56+05:30",
+      "views": {
+        "yt": 374,
+        "ig": 139
       }
     }
   },
-  "updated": "2026-11-25T17:31+05:30"
+  "updated": "2026-11-25T20:56+05:30"
 }
