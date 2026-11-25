@@ -530,8 +530,14 @@
       "duration": 37.38,
       "storyboard": "3d",
       "tag": "vid-20261125-045516-en-the-great-diamond-hoax-of-18",
-      "status": "queued",
-      "created": "2026-11-25T05:36+05:30"
+      "status": "published",
+      "created": "2026-11-25T05:36+05:30",
+      "ig_media_id": "18002071859825415",
+      "ig_link": "https://www.instagram.com/reel/DgKWSuuChzf/",
+      "ig_state": "posted",
+      "yt_video_id": "JxaZFg5rouI",
+      "yt_state": "posted",
+      "published_at": "2026-11-25T16:17+05:30"
     }
   ],
   "version": 2,
