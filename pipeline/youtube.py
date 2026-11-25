@@ -58,13 +58,13 @@ def find_existing(title):
     return None
 
 
-def upload(video_path, meta, short=True, privacy="public"):
-    """Returns (video_id, privacyStatus). short=False: a normal long video (no #shorts in the title)."""
+def upload(video_path, meta, privacy="public"):
+    """Returns (video_id, privacyStatus)."""
     from googleapiclient.errors import HttpError
     from googleapiclient.http import MediaFileUpload
     yt = _client()
     body = {
-        "snippet": {"title": shorts_title(meta["title"]) if short else meta["title"][:100],
+        "snippet": {"title": shorts_title(meta["title"]),
                     "description": f"{meta['description']}\n\n{' '.join(meta['hashtags'])}",
                     "tags": [h.lstrip("#") for h in meta["hashtags"]], "categoryId": "27",
                     "defaultLanguage": meta.get("language", "en"),

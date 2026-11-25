@@ -2,8 +2,8 @@ name: Post video
 
 on:
   schedule:
-        - cron: "57 9 * * *"   # every day ~18:57 India time (GitHub may run it a few minutes late)
-  workflow_dispatch: {}
+    - cron: "7,37 * * * *"   # every 30 min; posts only when a config.yaml schedule slot is due (change times THERE)
+  workflow_dispatch: {}      # the button: posts the oldest ready video right now
 
 concurrency:
   group: shorts-bot
@@ -27,10 +27,18 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Is a slot due? (idle runs stop here in seconds)
+        id: gate
+        run: |
+          pip install -q pyyaml
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "due=true" >> "$GITHUB_OUTPUT"; else python -m pipeline.schedule; fi
+
       - name: Install ffmpeg
+        if: steps.gate.outputs.due == 'true'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - name: Install
+        if: steps.gate.outputs.due == 'true'
         run: pip install -q requests pyyaml google-api-python-client google-auth
 
       - name: Post to Instagram + YouTube
@@ -40,7 +48,8 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: python -m pipeline.publish
+        if: steps.gate.outputs.due == 'true'
+        run: python -m pipeline.publish ${{ github.event_name == 'workflow_dispatch' && '--now' || '' }}
 
       - name: Save memory
         if: always()

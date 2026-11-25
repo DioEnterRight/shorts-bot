@@ -15,6 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = ROOT / "out"
 MODELS = ROOT / "models"
+KIT = ROOT / ".claude" / "skills" / "animated-shorts-kit"   # the head skill: every rule the models follow lives there
 HISTORY = DATA / "history.json"
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 HISTORY_VERSION = 2
@@ -35,6 +36,11 @@ def redact(text):
 
 def log(msg, level="INFO"):
     print(f"[{dt.datetime.now(IST):%H:%M:%S}] {level:<5} {redact(msg)}", flush=True)
+
+
+def skill_text(rel):
+    """a file of the head skill (prompts quote the skill instead of copying its rules)"""
+    return (KIT / rel).read_text(encoding="utf-8")
 
 
 def load_config():

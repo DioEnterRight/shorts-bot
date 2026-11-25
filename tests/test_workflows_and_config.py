@@ -38,9 +38,16 @@ def test_language_selector():
     assert on["workflow_dispatch"]["inputs"]["language"]["options"] == ["auto", "en", "hi"]
     assert "provider" not in on["workflow_dispatch"]["inputs"]
 
-def test_schedules_unchanged():
+def test_schedules():
     assert load("make-video.yml")[True]["schedule"][0]["cron"] == "33 22 * * *"
-    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "57 9 * * *"   # 15:27 IST, set by Dexter
+    assert load("post-video.yml")[True]["schedule"][0]["cron"] == "7,37 * * * *"   # times live in config.yaml schedule
+
+
+def test_idle_post_runs_stop_at_the_gate():
+    st = steps(load("post-video.yml"))
+    gate = [i for i, x in enumerate(st) if x.get("id") == "gate"][0]
+    assert "pipeline.schedule" in st[gate]["run"]
+    assert all(x.get("if") == "steps.gate.outputs.due == 'true'" for x in st[gate + 1:] if "save_state" not in x.get("run", ""))
 
 
 def test_scheduled_run_is_never_test_mode():
@@ -61,28 +68,32 @@ def test_config_languages_and_themes(cfg):
         assert (ROOT / lp["prompt"]).exists()
     shares = {k: t["share"] for k, t in cfg["themes"].items()}
     assert abs(sum(shares.values()) - 1) < 1e-6 and 0.75 <= shares["explainer"] <= 0.85
-    assert cfg["allocation"]["floor"] == 0.2
 
 
-def test_choose_slot_with_and_without_stats(cfg):
-    cfg["allocation"]["mode"] = "adaptive"   # the view-learned split (weekly mode tested in test_allocation)
-    hist = {"videos": []}
-    assert produce.choose_slot(cfg, hist, {"allocation": {}}) == ("en", "explainer")
-    hist = {"videos": [{"created": f"2026-11-{d:02d}", "language": "en", "theme": "explainer"} for d in range(1, 5)]}
-    lang, _ = produce.choose_slot(cfg, hist, {"allocation": {"language": {"shares": {"en": 0.8, "hi": 0.2}}}})
-    assert lang == "hi"  # floor: 4 English in a row -> Hindi is due
-    assert produce.choose_slot(cfg, hist, {}, language="en", theme="story") == ("en", "story")
+def test_daily_schedule(cfg):
+    from pipeline import schedule
+    assert schedule.slots(cfg) == [("09:00", "hi"), ("14:00", "en"), ("19:00", "en")]
+    assert produce.choose_theme(cfg, {"videos": []}) == "explainer"
 
 
-def test_make_video_has_no_remotion_or_picture_steps():
-    text = (ROOT / ".github" / "workflows" / "make-video.yml").read_text(encoding="utf-8")
-    assert "remotion" not in text.lower() and "CF_API_TOKEN" not in text and "provider" not in text
-    assert any("requirements.txt" in s.get("run", "") for s in steps(load("make-video.yml")))
+def test_make_video_installs_the_kit_studio_and_keeps_versions():
+    wf = load("make-video.yml")
+    st = steps(wf)
+    kit = [x for x in st if x.get("working-directory") == ".claude/skills/animated-shorts-kit/code"]
+    assert kit and "npm ci" in kit[0]["run"]
+    assert any("requirements.txt" in x.get("run", "") for x in st)
+    up = [x for x in st if x.get("with", {}).get("name") == "versions"]
+    assert up and "always()" in up[0]["if"]
+    text = (WF / "make-video.yml").read_text(encoding="utf-8")
+    assert "playwright" not in text.lower() and "CF_API_TOKEN" not in text and not (WF / "long-video.yml").exists()
 
 
 def test_render_and_voice_config(cfg):
-    assert set(cfg) >= {"toon2d", "longform", "voice", "claude"} and not {"render", "visuals", "captions", "audio"} & set(cfg)
+    assert set(cfg) >= {"studio", "toon2d", "freellm", "voice", "claude"}
+    assert not {"longform", "cartoon3d", "reel_qc", "render", "visuals", "captions", "audio"} & set(cfg)
+    assert 45 <= cfg["video"]["target_seconds"] <= 65                     # kit story formula
+    assert -15 <= cfg["studio"]["music_db"] <= -10                        # kit: bed 10-15 dB under the voice
     assert cfg["voice"]["engine"] in ("edge", "kokoro")
     for code in cfg["languages"]["enabled"]:
-        assert cfg["languages"][code].get("edge_voice")
+        assert cfg["languages"][code].get("edge_voice") and 3.0 <= cfg["languages"][code]["words_per_second"] <= 3.8
     assert all(set(t) == {"share", "guidance"} for t in cfg["themes"].values())

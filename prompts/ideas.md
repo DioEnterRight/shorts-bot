@@ -29,9 +29,10 @@ People Who Never Text First", "What Happens to Your Money When a Bank Collapses"
 Every idea, explainer or story, is built like a tiny story with a twist:
 - ONE surprising, specific thing (a question, a mechanism or a true story), not a broad subject
   ("why casinos have no clocks", not "casinos").
-- A physical cause and effect we can SHOW in a flat 2D cartoon: objects, money changing hands,
-  a journey, a before and after, two people or choices compared. Avoid ideas
-  that are only abstract.
+- A physical cause and effect we can SHOW in our animated world: flat 2D cartoon people acting in a 3D
+  toon 1930s downtown (bank, newspaper, jeweler, diner, cinema, shops), a corner grocery and a workshop,
+  with props like coins, gold chests, money stacks, furniture and cars. Objects and money changing hands,
+  a crowd reacting, a before and after, two people or choices compared. Avoid ideas that are only abstract.
 - A clear everyman character (often "you", or one ordinary person in history) and stakes that
   escalate beat by beat.
 - A hook that states a paradox as fact ("A man sold the Eiffel Tower. Twice."), and a short ironic twist that ends the video.
@@ -45,6 +46,9 @@ Every idea, explainer or story, is built like a tiny story with a twist:
   real living people as the butt of a joke, anything dangerous to copy, graphic content, partisan
   politics, brands or other creators' characters, titles, series names or scenes. Explaining money
   concepts is fine when it stays educational.
+
+## The story formula every video follows (animated-shorts-kit / 02_STORY_FORMULA.md)
+{story_formula}
 
 ## Already made — do NOT repeat or closely resemble
 {avoid_list}

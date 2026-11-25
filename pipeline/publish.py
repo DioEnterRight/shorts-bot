@@ -1,4 +1,7 @@
-"""POST VIDEO: takes the oldest ready video and posts it.
+"""POST VIDEO: runs every 30 min; posts the video of the slot that is due (config.yaml `schedule:`, see schedule.py).
+
+  python -m pipeline.publish          # post the due slot, if any (the scheduled runs)
+  python -m pipeline.publish --now    # post the oldest ready video right now (the manual button)
 
 Per-platform state lives on each history entry and is saved after EVERY step, so a crash
 or a re-run never posts the same video twice:
@@ -13,7 +16,7 @@ import json
 import os
 import sys
 
-from . import instagram, youtube
+from . import instagram, schedule, youtube
 from .common import OUT, load_config, load_history, log, now_ist, parse_time, run, save_history
 
 IG_DONE = {"posted", "manual_notified"}
@@ -106,19 +109,47 @@ def post_youtube(v, meta, video, cfg, history):
         save_history(history)
 
 
+def pick(cfg, history, now, force=False):
+    """-> the video to post now, tied to its slot, or None when nothing is due."""
+    queued = sorted((v for v in history["videos"] if v.get("status") == "queued"), key=lambda x: x["created"])
+    busy = [v for v in queued if v.get("slot")]          # a slot whose posting failed half-way: finish it first
+    if busy:
+        return busy[0]
+    if force:
+        slot, lang = now.strftime("%Y-%m-%d %H:%M") + " manual", None
+    else:
+        hit = schedule.due(cfg, {v.get("slot") for v in history["videos"]} | set(history.get("missed_slots", [])), now)
+        if not hit:
+            log("No slot due right now.")
+            return None
+        slot, lang = hit
+    same = [v for v in queued if lang is None or v.get("language", "en") == lang]
+    if not same and queued:
+        log(f"No {lang} video ready for {slot}; posting the oldest ready one instead", "WARN")
+        same = queued
+    if not same:
+        history.setdefault("missed_slots", []).append(slot)
+        history["missed_slots"] = history["missed_slots"][-30:]
+        save_history(history)
+        open_issue_once(f"⚠️ No video ready on {now:%d %b}",
+                        f"Nothing was ready for the {slot} slot. Check the latest 'Make video' run under the Actions tab.")
+        sys.exit(f"No video ready for {slot}.")
+    v = same[0]
+    v["slot"] = slot
+    save_history(history)
+    return v
+
+
 def main():
     cfg = load_config()
     if cfg.get("paused"):
         log("Paused in config.yaml — not posting.")
         return
     history = load_history()
-    queued = [v for v in history["videos"] if v.get("status") == "queued"]
-    if not queued:
-        open_issue_once(f"⚠️ No video ready on {now_ist():%d %b}",
-                        "The bot had nothing to post today. Check the latest 'Make video' run under the Actions tab.")
-        sys.exit("No video ready to post.")
-    v = sorted(queued, key=lambda x: x["created"])[0]
-    log(f"Posting {v['id']} [{v.get('language', 'en')}/{v.get('theme', 'explainer')}]")
+    v = pick(cfg, history, now_ist(), force="--now" in sys.argv)
+    if v is None:
+        return
+    log(f"Posting {v['id']} [{v.get('language', 'en')}/{v.get('theme', 'explainer')}] for slot {v['slot']}")
     work = OUT / v["id"]
     work.mkdir(parents=True, exist_ok=True)
     run(["gh", "release", "download", v["tag"], "-p", "final.mp4", "-p", "meta.json", "-D", work, "--clobber"])

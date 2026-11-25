@@ -1,0 +1,702 @@
+{
+ "cast": {
+  "hero": "goldman",
+  "shopper": "shopper",
+  "gent": "shopper2",
+  "clerk": "youngman",
+  "actor1": "youngwoman",
+  "actor2": "man"
+ },
+ "beats": [
+  {
+   "spot": "grocery_inside",
+   "people": [
+    {
+     "role": "hero",
+     "at": "right",
+     "acts": [
+      [
+       "start",
+       "idle",
+       "smirk"
+      ],
+      [
+       1.2,
+       "point",
+       "smug"
+      ]
+     ],
+     "look": "actor1"
+    },
+    {
+     "role": "actor1",
+     "at": "far_left",
+     "acts": [
+      [
+       "start",
+       "push",
+       "happy"
+      ]
+     ],
+     "walk": {
+      "to": "left",
+      "start": 0.3,
+      "seconds": 2
+     }
+    },
+    {
+     "role": "actor2",
+     "at": "back",
+     "acts": [
+      [
+       "start",
+       "push",
+       "happy"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero"
+     ],
+     "size": "MS",
+     "angle": 15,
+     "height": 4
+    },
+    {
+     "at": 1.6,
+     "on": [
+      "actor1",
+      "actor2"
+     ],
+     "size": "FS",
+     "angle": -15,
+     "height": 6
+    }
+   ],
+   "why": "hook: the strange action",
+   "sfx": [
+    [
+     0.2,
+     "whoosh"
+    ]
+   ]
+  },
+  {
+   "spot": "grocery_front",
+   "people": [
+    {
+     "role": "hero",
+     "at": "center",
+     "acts": [
+      [
+       "start",
+       "present",
+       "proud"
+      ]
+     ],
+     "look": "cam"
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero"
+     ],
+     "size": "WS",
+     "angle": 10,
+     "height": 8
+    },
+    {
+     "at": 1.8,
+     "on": [
+      "hero"
+     ],
+     "size": "MS",
+     "angle": 5,
+     "height": 4,
+     "move": "pullpush"
+    }
+   ],
+   "why": "setting"
+  },
+  {
+   "spot": "grocery_inside",
+   "people": [
+    {
+     "role": "shopper",
+     "at": "center",
+     "acts": [
+      [
+       "start",
+       "tired",
+       "tired"
+      ],
+      [
+       1.4,
+       "shrug",
+       "sad"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "shopper"
+     ],
+     "size": "MS",
+     "angle": 10,
+     "height": 6
+    },
+    {
+     "at": 1.8,
+     "on": [
+      "shopper"
+     ],
+     "size": "MCU",
+     "angle": -5,
+     "height": 3
+    }
+   ],
+   "why": "the problem",
+   "props": [
+    {
+     "name": "basket",
+     "model": "restaurant/crate_tomatoes",
+     "at": "front_right",
+     "turn": 15,
+     "scale": 0.6
+    }
+   ]
+  },
+  {
+   "spot": "workshop",
+   "people": [
+    {
+     "role": "hero",
+     "at": "center",
+     "acts": [
+      [
+       "start",
+       "think",
+       "worried"
+      ],
+      [
+       1.5,
+       "eureka",
+       "surprised"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero"
+     ],
+     "size": "MS",
+     "angle": -15,
+     "height": 4,
+     "fov": 50
+    },
+    {
+     "at": 1.6,
+     "on": [
+      "arms:hero"
+     ],
+     "size": "MCU",
+     "angle": 0,
+     "height": 3,
+     "fov": 50
+    }
+   ],
+   "why": "the idea",
+   "flash": true,
+   "sfx": [
+    [
+     1.5,
+     "ding"
+    ]
+   ]
+  },
+  {
+   "spot": "grocery_front",
+   "people": [
+    {
+     "role": "hero",
+     "at": "left",
+     "acts": [
+      [
+       "start",
+       "present",
+       "proud"
+      ]
+     ],
+     "look": "cam"
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero",
+      "prop:cart"
+     ],
+     "size": "FS",
+     "angle": 10,
+     "height": 6
+    },
+    {
+     "at": 1.8,
+     "on": [
+      "hero",
+      "prop:cart"
+     ],
+     "size": "MS",
+     "angle": 20,
+     "height": 6
+    }
+   ],
+   "cut": true,
+   "flash": true,
+   "props": [
+    {
+     "name": "cart",
+     "model": "furniture/chair_A_wood",
+     "at": "right",
+     "turn": -20
+    }
+   ],
+   "why": "next morning"
+  },
+  {
+   "spot": "grocery_front",
+   "people": [
+    {
+     "role": "hero",
+     "at": "left",
+     "acts": [
+      [
+       "start",
+       "idle",
+       "worried"
+      ]
+     ]
+    },
+    {
+     "role": "shopper",
+     "at": "front_right",
+     "acts": [
+      [
+       "start",
+       "walk",
+       "neutral"
+      ]
+     ],
+     "walk": {
+      "to": "front_left",
+      "start": "start",
+      "seconds": 2.5
+     }
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero",
+      "shopper"
+     ],
+     "size": "FS",
+     "angle": 0,
+     "height": 5
+    },
+    {
+     "at": 1.5,
+     "on": [
+      "shopper"
+     ],
+     "size": "MS",
+     "angle": 10,
+     "height": 4
+    }
+   ],
+   "why": "nobody",
+   "sfx": [
+    [
+     0.5,
+     "step"
+    ]
+   ]
+  },
+  {
+   "spot": "grocery_front",
+   "people": [
+    {
+     "role": "hero",
+     "at": "left",
+     "acts": [
+      [
+       "start",
+       "slump",
+       "sad"
+      ]
+     ]
+    },
+    {
+     "role": "shopper",
+     "at": "front_left",
+     "acts": [
+      [
+       "start",
+       "shrug",
+       "smug"
+      ]
+     ]
+    },
+    {
+     "role": "gent",
+     "at": "far_right",
+     "acts": [
+      [
+       "start",
+       "cross",
+       "smirk"
+      ],
+      [
+       1.5,
+       "lookSide",
+       "smug"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "gent"
+     ],
+     "size": "MS",
+     "angle": -10,
+     "height": 4
+    },
+    {
+     "at": 1.8,
+     "on": [
+      "shopper"
+     ],
+     "size": "MS",
+     "angle": 20,
+     "height": 4
+    }
+   ],
+   "why": "mockery"
+  },
+  {
+   "spot": "grocery_inside",
+   "people": [
+    {
+     "role": "clerk",
+     "at": "left",
+     "acts": [
+      [
+       "start",
+       "cheer",
+       "grin"
+      ]
+     ]
+    },
+    {
+     "role": "hero",
+     "at": "right",
+     "acts": [
+      [
+       "start",
+       "slump",
+       "sad"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "clerk"
+     ],
+     "size": "MS",
+     "angle": 10,
+     "height": 4
+    },
+    {
+     "at": 1.6,
+     "on": [
+      "hero"
+     ],
+     "size": "MCU",
+     "angle": 15,
+     "height": 2
+    }
+   ],
+   "why": "even the staff laughs",
+   "sfx": [
+    [
+     0.1,
+     "pop"
+    ]
+   ]
+  },
+  {
+   "spot": "grocery_inside",
+   "people": [
+    {
+     "role": "hero",
+     "at": "right",
+     "acts": [
+      [
+       "start",
+       "cross",
+       "smirk"
+      ]
+     ],
+     "look": "actor1"
+    },
+    {
+     "role": "actor1",
+     "at": "far_left",
+     "acts": [
+      [
+       "start",
+       "push",
+       "happy"
+      ]
+     ],
+     "walk": {
+      "to": "left",
+      "start": 0.2,
+      "seconds": 2
+     }
+    },
+    {
+     "role": "actor2",
+     "at": "back",
+     "acts": [
+      [
+       "start",
+       "push",
+       "proud"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "actor2"
+     ],
+     "size": "MS",
+     "angle": 5,
+     "height": 5
+    },
+    {
+     "at": 2.0,
+     "on": [
+      "hero"
+     ],
+     "size": "MCU",
+     "angle": 15,
+     "height": 3
+    }
+   ],
+   "cut": true,
+   "why": "the trick"
+  },
+  {
+   "spot": "street",
+   "people": [
+    {
+     "role": "shopper",
+     "at": "left",
+     "acts": [
+      [
+       "start",
+       "bounce",
+       "happy"
+      ]
+     ]
+    },
+    {
+     "role": "gent",
+     "at": "right",
+     "acts": [
+      [
+       "start",
+       "cheer",
+       "grin"
+      ]
+     ]
+    },
+    {
+     "role": "actor1",
+     "at": "far_left",
+     "acts": [
+      [
+       "start",
+       "push",
+       "happy"
+      ]
+     ]
+    },
+    {
+     "role": "actor2",
+     "at": "far_right",
+     "acts": [
+      [
+       "start",
+       "push",
+       "happy"
+      ]
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "shopper"
+     ],
+     "size": "MS",
+     "angle": 10,
+     "height": 4
+    },
+    {
+     "at": 1.2,
+     "on": [
+      "shopper",
+      "gent",
+      "actor1",
+      "actor2"
+     ],
+     "size": "FS",
+     "angle": 0,
+     "height": 8,
+     "move": "pullpush"
+    }
+   ],
+   "why": "the crowd in threes"
+  },
+  {
+   "spot": "grocery_front",
+   "people": [
+    {
+     "role": "hero",
+     "at": "center",
+     "acts": [
+      [
+       "start",
+       "wink",
+       "wink"
+      ]
+     ],
+     "look": "cam"
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero"
+     ],
+     "size": "MS",
+     "angle": 0,
+     "height": 4
+    },
+    {
+     "at": 1.5,
+     "on": [
+      "hero"
+     ],
+     "size": "MCU",
+     "angle": 10,
+     "height": 3,
+     "push": 1.1
+    }
+   ],
+   "cut": true,
+   "why": "the turn: you see"
+  },
+  {
+   "spot": "bank",
+   "people": [
+    {
+     "role": "hero",
+     "at": "center",
+     "acts": [
+      [
+       "start",
+       "proud",
+       "proud"
+      ],
+      [
+       1.5,
+       "cheer",
+       "grin"
+      ]
+     ],
+     "look": "cam"
+    }
+   ],
+   "camera": [
+    {
+     "at": "start",
+     "on": [
+      "hero",
+      "prop:gold"
+     ],
+     "size": "FS",
+     "angle": 15,
+     "height": 6
+    },
+    {
+     "at": 1.8,
+     "on": [
+      "hero"
+     ],
+     "size": "MCU",
+     "angle": 0,
+     "height": 3
+    }
+   ],
+   "props": [
+    {
+     "name": "gold",
+     "model": "dungeon/chest_gold",
+     "at": "right",
+     "turn": -25
+    },
+    {
+     "name": "coins",
+     "model": "dungeon/coin_stack_large",
+     "at": "left",
+     "turn": 20
+    }
+   ],
+   "why": "payoff",
+   "sfx": [
+    [
+     1.5,
+     "ding"
+    ]
+   ]
+  }
+ ]
+}

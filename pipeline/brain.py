@@ -3,9 +3,9 @@ import json
 import re
 
 from . import languages
-from .common import DATA, ROOT, env, load_config, log, norm_text, now_ist, run
+from .common import DATA, ROOT, env, load_config, log, norm_text, now_ist, run, skill_text
 
-MIN_SCENES, MAX_SCENES = 6, 16
+MIN_SCENES, MAX_SCENES = 8, 18   # one beat = one line = one picture (kit: a scene change every 1-3.5 s)
 
 
 # ---------------- performance summary (from data/analytics.json) ----------------
@@ -63,7 +63,7 @@ def claude_model_args(effort=None, model=None):
 def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None):
     env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
     res = run(["claude", "-p", prompt, "--output-format", "json", *claude_model_args(effort, model),
-               "--allowedTools", tools, "--max-turns", str(max_turns)],
+               *(["--allowedTools", tools] if tools else []), "--max-turns", str(max_turns)],
               capture=True, check=False, cwd=cwd, timeout=timeout)
     if res.returncode != 0:
         print(res.stdout[-3000:], res.stderr[-3000:])
@@ -80,9 +80,9 @@ def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, c
 
 # ---------------- validation ----------------
 def word_budget(cfg, lp):
-    target = cfg["video"]["target_seconds"]
-    wps = float(lp.get("words_per_second", 2.7)) * float(lp["speed"])
-    return int(target * wps * 0.8), int(target * wps * 1.15)
+    """kit pace (02_STORY_FORMULA): 3.3-3.8 words/s, 45-65 s -> words for the target length"""
+    target, wps = cfg["video"]["target_seconds"], float(lp["words_per_second"])
+    return int(target * wps * 0.85), int(target * wps * 1.15)
 
 
 def validate(s, cfg, lp, theme="explainer"):
@@ -111,7 +111,7 @@ def validate(s, cfg, lp, theme="explainer"):
         raise ValueError(f"Narration is not in {lp['name']}")
     words = len(text.split())
     lo, hi = word_budget(cfg, lp)
-    if not (min(30, lo) <= words <= max(200, hi)):
+    if not (lo * 0.8 <= words <= hi * 1.15):
         raise ValueError(f"Bad word count: {words}")
     for k in ("topic", "title", "description"):
         if not s.get(k):
@@ -141,7 +141,7 @@ def build_prompt(cfg, idea, lp, theme, performance):
         theme_name=theme, theme_guidance=cfg["themes"][theme]["guidance"].strip(),
         language_rules=languages.prompt_text(lp),
         target_seconds=cfg["video"]["target_seconds"], min_words=lo, max_words=hi,
-        min_scenes=8, max_scenes=13,
+        min_scenes=11, max_scenes=16, story_formula=skill_text("references/02_STORY_FORMULA.md"),
         performance=performance, playbook=playbook,
         playbook_instruction=("Today is review day: in \"playbook_update\" write the FULL improved playbook "
                               "(max 25 bullet points, in English) based on the data above." if sunday else

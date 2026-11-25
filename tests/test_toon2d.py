@@ -1,4 +1,4 @@
-"""toon2d engine wiring: timing conversion, storyboard prompt/fallback, plan check, vertical render. Offline."""
+"""toon2d (the EMERGENCY 2D engine) wiring: timing conversion, storyboard prompt/fallback, plan check, vertical render. Offline."""
 import json
 import os
 import subprocess
@@ -88,48 +88,6 @@ def test_vertical_plan_and_stills(tmp_path):
     assert any("unknown kind" in p for p in toon2d.check(tmp_path, "9:16"))
 
 
-# ---------------- weekly long video ----------------
-def test_longform_picks_best_recent_english_short():
-    from datetime import datetime, timedelta, timezone
-    from pipeline import longform
-    now = datetime(2026, 11, 22, 10, 0, tzinfo=timezone(timedelta(hours=5, minutes=30)))
-    d = lambda days: (now - timedelta(days=days)).isoformat(timespec="minutes")  # noqa: E731
-    hist = {"videos": [
-        {"id": "a", "topic": "old", "language": "en", "status": "published", "created": d(20)},
-        {"id": "b", "topic": "hiccups", "language": "en", "status": "published", "created": d(3)},
-        {"id": "c", "topic": "meteors", "language": "en", "status": "published", "created": d(2)},
-        {"id": "h", "topic": "hindi", "language": "hi", "status": "published", "created": d(1)},
-        {"id": "x", "topic": "gone", "language": "en", "status": "discarded", "created": d(1)}]}
-    stats = {"videos": {"b": {"metrics": {"yt_views": 9000}}, "c": {"metrics": {"yt_views": 100}}}}
-    assert longform.pick_source(hist, stats, now, set())["id"] == "b"          # best by analytics
-    assert longform.pick_source(hist, {"videos": {}}, now, set())["id"] == "c"  # newest without data
-    assert longform.pick_source(hist, stats, now, {"hiccups"})["id"] == "c"     # never the same topic twice
-    with pytest.raises(RuntimeError):
-        longform.pick_source({"videos": hist["videos"][3:]}, stats, now, set())
-
-
-def test_longform_script_is_one_scene_per_sentence():
-    from pipeline import longform
-    longs = {"title": "T", "description": "D", "hashtags": ["#a"] * 12,
-             "chapters": [{"title": "One", "paragraphs": ["First one. Second one! Third?"] * 4},
-                          {"title": "Two", "paragraphs": ["Fourth one. Fifth one."] * 5}]}
-    s = longform.to_script(longs, {"topic": "x"})
-    assert len(s["scenes"]) == 22 and s["scenes"][1]["line"] == "Second one!"
-    assert s["outline"][1].startswith("Chapter 'Two': about sentences 12-21") and len(s["hashtags"]) == 10
-    with pytest.raises(ValueError):
-        longform.to_script({**longs, "chapters": longs["chapters"][:1]}, {"topic": "x"})
-
-
-def test_long_workflow_and_config():
-    import yaml
-    wf = yaml.safe_load((ROOT / ".github/workflows/long-video.yml").read_text())
-    assert wf["concurrency"]["group"] == "shorts-bot"
-    run_step = next(s for s in wf["jobs"]["long"]["steps"] if s.get("name", "").startswith("Make"))
-    assert "pipeline.longform" in run_step["run"] and "YT_REFRESH_TOKEN" in run_step["env"]
-    lc = load_config()["longform"]
-    assert lc["privacy"] in ("private", "unlisted", "public") and 3 <= lc["minutes"] <= 15
-
-
 class _Res:
     def __init__(self, rc, out): self.returncode, self.stdout, self.stderr = rc, out, ""
 
@@ -168,24 +126,6 @@ def test_render_falls_back_to_auto_story_when_claude_story_crashes(monkeypatch, 
     out, source = toon2d.render(load_config(), SCRIPT, TL, voice, 4.5, tmp_path, "en", None, None)
     assert source == "auto" and cmds == ["render", "render", "audio", "final"]
     assert json.loads((tmp_path / "toon2d" / "story.json").read_text(encoding="utf-8"))["cast"]["host"]
-
-
-@pytest.mark.parametrize("lang", ["en", "hi"])
-def test_sample_storyboards_pass_the_plan_check(lang, tmp_path):
-    pytest.importorskip("skia")
-    script = json.loads((ROOT / "prompts" / f"sample_script_{lang}.json").read_text(encoding="utf-8"))
-    tl, t = [], .2
-    for sc in script["scenes"]:
-        words = []
-        for w in sc["line"].split():
-            words.append({"word": w, "start": t, "end": t + .28}); t += .3
-        tl.append({"words": words}); t += .3
-    (tmp_path / "timing.json").write_text(json.dumps(toon2d.timing_from_timeline(tl, t), ensure_ascii=False), encoding="utf-8")
-    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(t),
-                    str(tmp_path / "voice.wav")], check=True)
-    (tmp_path / "story.json").write_text((ROOT / "prompts" / f"sample_story_{lang}.json").read_text(encoding="utf-8"),
-                                         encoding="utf-8")
-    assert toon2d.check(tmp_path, "9:16") == []    # no warnings at all: every sentence covered, every cue found
 
 
 def test_variety_rules_flag_long_and_repeated_shots():

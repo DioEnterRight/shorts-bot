@@ -100,17 +100,17 @@ def test_generate_gives_up_cleanly(tmp_state, cfg):
 
 
 def test_ideas_prompt_mentions_theme_language_and_history(cfg):
-    p = ideas.build_prompt(cfg, "roblox_story", {"code": "hi", "name": "Hindi (natural Hinglish)"},
+    p = ideas.build_prompt(cfg, "story", {"code": "hi", "name": "Hindi (natural Hinglish)"},
                            ["Why you get hiccups"], "No data yet.")
-    assert "roblox_story" in p and "Hinglish" in p and "Why you get hiccups" in p
+    assert "story" in p and "Hinglish" in p and "Why you get hiccups" in p
 
 
 def test_prompts_carry_the_story_shape(cfg):
     p = ideas.build_prompt(cfg, "explainer", {"code": "en", "name": "English"}, [], "No data yet.")
     assert "paradox stated as fact" in p and '"fact_status"' in p and '"twist": 1-10' in p
+    assert "Hook (first 1.7" in p and "He was right all along" in p   # the head skill's 02_STORY_FORMULA, quoted
     script = (ideas.ROOT / "prompts" / "script.md").read_text(encoding="utf-8")
-    for step in ("HOOK", "SETTING", "ESCALATION", "PIVOT", "TWIST / PAYOFF"):
-        assert step in script
+    assert "{story_formula}" in script and "{target_seconds}" in script
 
 
 def test_ideas_follow_the_reachmora_topic_menu(cfg):

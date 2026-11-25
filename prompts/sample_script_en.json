@@ -1,79 +1,92 @@
 {
-  "topic": "What happens if you swallow chewing gum",
-  "canonical_en": "What happens if you swallow chewing gum?",
-  "category": "other",
-  "hook_type": "what_if",
-  "title": "What Really Happens If You Swallow Gum?",
-  "description": "Does gum really stay in your stomach for seven years? Here is the real journey.",
-  "hashtags": [
-    "#science",
-    "#humanbody",
-    "#didyouknow"
-  ],
-  "facts_checked": [
-    "Gum base is not digested but usually passes through in a few days -> mayoclinic.org"
-  ],
-  "scenes": [
-    {
-      "line": "What happens if you swallow your chewing gum?",
-      "visual": "[GUY] freezing mid-gulp, eyes wide, a pink gum ball visible in his open mouth",
-      "overlay": "",
-      "emphasis": "swallow"
-    },
-    {
-      "line": "Everyone says it stays inside you for seven years.",
-      "visual": "a pink gum ball sitting in a tiny armchair inside a cosy stomach-shaped room with a calendar flipping pages",
-      "overlay": "7 years?",
-      "emphasis": "seven"
-    },
-    {
-      "line": "First, it slides down your esophagus like a pink submarine.",
-      "visual": "cartoon cutaway of [GUY]'s throat with a pink gum ball sliding down the food pipe",
-      "overlay": "esophagus",
-      "emphasis": "submarine"
-    },
-    {
-      "line": "Then it splashes into your stomach acid.",
-      "visual": "gum ball splashing into a bubbling green pool inside a cartoon stomach",
-      "overlay": "",
-      "emphasis": "acid"
-    },
-    {
-      "line": "The sugar and flavour dissolve almost instantly.",
-      "visual": "close-up of the gum ball fizzing as colourful sugar sparkles float away from it",
-      "overlay": "",
-      "emphasis": "dissolve"
-    },
-    {
-      "line": "But the rubbery gum base? Your body cannot break it down.",
-      "visual": "simple 3D diagram: a grey rubbery blob surrounded by tiny enzyme characters bouncing off it",
-      "overlay": "gum base",
-      "emphasis": "rubbery"
-    },
-    {
-      "line": "So your gut just pushes it along with everything else.",
-      "visual": "cartoon cutaway of winding intestines squeezing the grey blob forward like a conveyor belt",
-      "overlay": "",
-      "emphasis": "pushes"
-    },
-    {
-      "line": "A few days later, it leaves the building.",
-      "visual": "the grey blob wearing tiny sunglasses walking out of an exit door with a glowing EXIT shape",
-      "overlay": "",
-      "emphasis": "days"
-    },
-    {
-      "line": "Seven years was a myth all along.",
-      "visual": "[GUY] laughing with relief, holding a torn calendar page",
-      "overlay": "",
-      "emphasis": "myth"
-    },
-    {
-      "line": "Still, maybe don't swallow a whole pack at once.",
-      "visual": "[GUY] looking guilty at a pile of empty gum wrappers on the floor",
-      "overlay": "",
-      "emphasis": "pack"
-    }
-  ],
-  "playbook_update": ""
+ "topic": "The man who paid strangers to push shopping carts",
+ "canonical_en": "Why did the inventor of the shopping cart pay people to push empty carts?",
+ "category": "business",
+ "hook_type": "strange_action",
+ "title": "He Paid Strangers to Push Empty Carts",
+ "description": "Nobody wanted the first shopping cart, so its inventor hired a crowd. Here's why it worked.",
+ "hashtags": [
+  "#business",
+  "#history",
+  "#psychology"
+ ],
+ "mood": "upbeat",
+ "facts_checked": [
+  "Sylvan Goldman introduced the shopping cart in 1937 at Humpty Dumpty stores, Oklahoma City, and hired people to push carts -> oklahomahistory.net"
+ ],
+ "scenes": [
+  {
+   "line": "He paid strangers to push empty carts around his own store.",
+   "visual": "Goldman in his grocery watching two hired strangers push empty carts down the aisle",
+   "overlay": "",
+   "emphasis": "carts"
+  },
+  {
+   "line": "In nineteen thirty-seven, Sylvan Goldman ran a small grocery in Oklahoma City.",
+   "visual": "wide street shot of the corner grocery, Goldman proudly at the door",
+   "overlay": "",
+   "emphasis": "grocery"
+  },
+  {
+   "line": "His shoppers only bought what fit in one small basket, then they went home.",
+   "visual": "a tired shopper at the counter with one overflowing basket",
+   "overlay": "",
+   "emphasis": "basket"
+  },
+  {
+   "line": "So one night in his workshop, he bolted wheels and two baskets onto a folding chair.",
+   "visual": "Goldman at the workbench at night, building the first cart",
+   "overlay": "",
+   "emphasis": "wheels"
+  },
+  {
+   "line": "The next morning, he proudly lined up his shiny new carts by the front door.",
+   "visual": "Goldman presenting the carts outside the store",
+   "overlay": "",
+   "emphasis": "proudly"
+  },
+  {
+   "line": "Nobody touched them. Not one single shopper.",
+   "visual": "shoppers walking past the carts without looking",
+   "overlay": "",
+   "emphasis": "Nobody"
+  },
+  {
+   "line": "Men said they looked silly, and women said they looked like baby strollers.",
+   "visual": "a man and a woman shaking their heads at the carts",
+   "overlay": "",
+   "emphasis": "strollers"
+  },
+  {
+   "line": "Even his own staff laughed at him. You're ruining the store!",
+   "visual": "staff laughing, Goldman slumping",
+   "overlay": "",
+   "emphasis": "laughed"
+  },
+  {
+   "line": "So Goldman hired actors to push full carts up and down the aisles all day long.",
+   "visual": "actors pushing full carts, Goldman watching with a smirk",
+   "overlay": "",
+   "emphasis": "actors"
+  },
+  {
+   "line": "One shopper copied them. Then another. Then the whole store.",
+   "visual": "one, then two, then a crowd of shoppers with carts",
+   "overlay": "",
+   "emphasis": "whole"
+  },
+  {
+   "line": "You see, people trust a crowd much more than they trust a good idea.",
+   "visual": "Goldman winking at the camera in front of the busy store",
+   "overlay": "",
+   "emphasis": "crowd"
+  },
+  {
+   "line": "His carts rolled into every supermarket in America, and the joke made him a multimillionaire.",
+   "visual": "Goldman outside the bank with a chest of gold",
+   "overlay": "",
+   "emphasis": "multimillionaire"
+  }
+ ],
+ "playbook_update": ""
 }

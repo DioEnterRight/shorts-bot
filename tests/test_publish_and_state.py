@@ -1,4 +1,6 @@
+import datetime as dt
 import json
+import sys
 
 import pytest
 
@@ -48,7 +50,7 @@ def world(tmp_state, monkeypatch, tmp_path):
     def fake_run(cmd, check=True, capture=False, **kw):
         cmd = [str(c) for c in cmd]
         if cmd[:3] == ["gh", "release", "download"]:
-            d = out / "v1"
+            d = out / cmd[3].removeprefix("vid-")
             d.mkdir(parents=True, exist_ok=True)
             (d / "final.mp4").write_bytes(b"x")
             (d / "meta.json").write_text(json.dumps({"title": "T", "description": "D", "hashtags": ["#a"],
@@ -68,6 +70,8 @@ def world(tmp_state, monkeypatch, tmp_path):
     cfg = common.load_config()
     cfg["paused"] = False
     cfg["publish"].update({"instagram": True, "youtube_mode": "api", "instagram_max_attempts": 2})
+    slot = (common.now_ist() - dt.timedelta(minutes=1)).strftime("%H:%M")
+    cfg["schedule"] = [{"time": slot, "language": "hi"}]   # due right now
     monkeypatch.setattr(publish, "load_config", lambda: cfg)
     return calls
 
@@ -98,9 +102,8 @@ def test_happy_path(world, monkeypatch):
     publish.main()
     v = video()
     assert v["status"] == "published" and v["ig_state"] == "posted" and v["yt_state"] == "posted"
-    # second run: nothing queued -> exits, but must not re-post
-    with pytest.raises(SystemExit):
-        publish.main()
+    assert v["slot"].startswith(common.now_ist().strftime("%Y-%m-%d"))
+    publish.main()   # second run: today's slot is done -> nothing happens, nothing re-posted
     assert world["ig_publish"] == 1 and world["yt_upload"] == 1
 
 
@@ -171,11 +174,25 @@ def test_manual_youtube_mode(world, monkeypatch):
     assert video()["yt_state"] == "manual_notified" and world["notify_yt"] == 1
 
 
-def test_no_video_issue_not_duplicated(world, monkeypatch):
+def test_no_video_is_one_red_run_and_one_issue(world, monkeypatch):
     common.save_history({"videos": []})
     with pytest.raises(SystemExit):
         publish.main()
-    assert len(world["issues"]) == 1
+    publish.main()   # the missed slot is recorded: later runs stay quiet
+    assert len(world["issues"]) == 1 and common.load_history()["missed_slots"]
+
+
+def test_slot_language_and_manual_button(world, monkeypatch):
+    monkeypatch.setattr(instagram, "publish", ig_ok(world))
+    monkeypatch.setattr(youtube, "upload", yt_ok(world))
+    h = common.load_history()
+    h["videos"].insert(0, {"id": "e1", "tag": "vid-e1", "status": "queued", "created": "2026-11-15T04:00", "language": "en"})
+    common.save_history(h)
+    publish.main()   # the hi slot takes the hi video, not the older English one
+    assert [v.get("status") for v in common.load_history()["videos"]] == ["queued", "published"]
+    monkeypatch.setattr(sys, "argv", ["publish", "--now"])
+    publish.main()   # manual button: oldest ready one, no slot needed
+    assert common.load_history()["videos"][0]["slot"].endswith("manual")
 
 
 # ---------------- analytics ----------------
@@ -190,18 +207,15 @@ def test_analytics_migrates_and_survives_api_failures(tmp_state, monkeypatch, cf
         raise RuntimeError("permission missing")
     monkeypatch.setattr(instagram, "insights", boom)
     monkeypatch.setattr(youtube, "stats", boom)
-    monkeypatch.setattr(analytics, "load_config", lambda: cfg)
     analytics.main()
     a = json.loads((tmp_state / "analytics.json").read_text())
     assert a["version"] == 1 and a["videos"]["a"]["metrics"]["ig_views"] == 50
     assert a["videos"]["a"]["views"] == {"ig": 50} and a["videos"]["a"]["language"] == "en"
-    assert a["allocation"]["language"]["shares"] == {"en": 0.5, "hi": 0.5}
     assert "metrics" not in common.load_history()["videos"][0]
 
 
 def test_analytics_saves_when_nothing_published(tmp_state, monkeypatch, cfg):
     common.save_history({"videos": []})
-    monkeypatch.setattr(analytics, "load_config", lambda: cfg)
     analytics.main()
     assert (tmp_state / "analytics.json").exists()
 

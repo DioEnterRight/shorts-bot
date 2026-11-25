@@ -1,4 +1,4 @@
-# Kokoro voice model (downloaded at run time); the 3D kit models under .claude/skills are tracked
+# Kokoro voice model (downloaded at run time)
 /models/
 out/
 __pycache__/
@@ -6,4 +6,10 @@ __pycache__/
 .env
 client_secret*.json
 .pytest_cache/
-graphify-out/
+
+# kit studio: dependencies, per-run generated videos, local renders
+.claude/skills/animated-shorts-kit/code/node_modules/
+.claude/skills/animated-shorts-kit/code/out/
+.claude/skills/animated-shorts-kit/code/src/videos/*
+!.claude/skills/animated-shorts-kit/code/src/videos/01_example/
+!.claude/skills/animated-shorts-kit/code/src/videos/_template/

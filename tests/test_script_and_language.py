@@ -17,8 +17,8 @@ def test_samples_validate(cfg, sample, lps, code):
 
 def test_hindi_emphasis_with_matras_kept(cfg, sample, lps):
     s = brain.validate(sample("hi"), cfg, lps["hi"])
-    assert s["scenes"][0]["emphasis"] == "गुड़गुड़"
-    assert s["scenes"][-1]["emphasis"] == "सफ़ाई"
+    assert s["scenes"][3]["emphasis"] == "पहिए"
+    assert s["scenes"][-1]["emphasis"] == "करोड़पति"
 
 
 def test_rejects_same_picture_twice(cfg, sample, lps):
