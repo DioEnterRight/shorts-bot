@@ -667,8 +667,15 @@
       "duration": 42.72,
       "storyboard": "kit",
       "tag": "vid-20261126-012434-en-bank-vault-time-locks",
-      "status": "queued",
-      "created": "2026-11-26T02:06+05:30"
+      "status": "published",
+      "created": "2026-11-26T02:06+05:30",
+      "slot": "2026-11-26 02:30",
+      "ig_media_id": "18123594421995811",
+      "ig_link": "https://www.instagram.com/reel/DgLgqoFuZFd/",
+      "ig_state": "posted",
+      "yt_video_id": "fyB4QnEOBZA",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T03:07+05:30"
     }
   ],
   "version": 2,
