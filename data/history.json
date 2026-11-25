@@ -600,6 +600,38 @@
       "tag": "vid-20261125-181047-en-the-great-stock-exchange-fra",
       "status": "queued",
       "created": "2026-11-25T18:23+05:30"
+    },
+    {
+      "id": "20261125-215007-hi-great-hanoi-rat-massacre-of",
+      "title": "चूहे मारने का इनाम, और चूहे बढ़ गए | असली Cobra Effect",
+      "topic": "Great Hanoi Rat Massacre of 1902 (the real cobra effect)",
+      "canonical_en": "Why did paying a bounty for every rat killed in 1902 Hanoi end with people farming rats?",
+      "language": "hi",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "सरकार ने चूहे मारने के पैसे दिए, और चूहे बढ़ गए।",
+      "duration": 68.07,
+      "storyboard": "claude",
+      "tag": "vid-20261125-215007-hi-great-hanoi-rat-massacre-of",
+      "status": "queued",
+      "created": "2026-11-25T22:17+05:30"
+    },
+    {
+      "id": "20261125-221704-en-the-real-origin-of-the-name",
+      "title": "Black Friday Was Named as an Insult",
+      "topic": "The real origin of the name Black Friday",
+      "canonical_en": "Why is the biggest shopping day called Black Friday, and why is the 'stores finally get in the black' explanation a later rewrite?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "Black Friday was named by people who hated it.",
+      "duration": 50.02,
+      "storyboard": "kit",
+      "tag": "vid-20261125-221704-en-the-real-origin-of-the-name",
+      "status": "queued",
+      "created": "2026-11-25T23:12+05:30"
     }
   ],
   "version": 2,

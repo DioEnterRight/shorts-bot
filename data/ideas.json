@@ -275,6 +275,28 @@
       "video_id": "20261125-181047-en-the-great-stock-exchange-fra",
       "status": "produced",
       "created": "2026-11-25T18:23+05:30"
+    },
+    {
+      "canonical_en": "Why did paying a bounty for every rat killed in 1902 Hanoi end with people farming rats?",
+      "question": "सरकार ने हर मरे चूहे के पैसे दिए, तो शहर में चूहे और क्यों बढ़ गए?",
+      "hook": "सरकार ने चूहे मारने के पैसे दिए, और चूहे बढ़ गए।",
+      "angle": "This is the documented version of the famous 'cobra effect'. Historian Michael Vann found the records. The twist is that the Delhi cobra story Indian viewers know cannot be proven, but this one can.",
+      "language": "hi",
+      "theme": "explainer",
+      "video_id": "20261125-215007-hi-great-hanoi-rat-massacre-of",
+      "status": "produced",
+      "created": "2026-11-25T22:17+05:30"
+    },
+    {
+      "canonical_en": "Why is the biggest shopping day called Black Friday, and why is the 'stores finally get in the black' explanation a later rewrite?",
+      "question": "Why is the biggest shopping day of the year named after something dark?",
+      "hook": "Black Friday was named by people who hated it.",
+      "angle": "Almost everyone repeats the 'in the black' profit story. The documented origin is Philadelphia traffic police dreading the day-after-Thanksgiving crowds by the early-to-mid 1960s. Merchants hated the name and pushed 'Big Friday', which flopped. Decades later, around the late 1980s, retail took over the name with the friendlier accounting story. Published two days before Black Friday 2026.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261125-221704-en-the-real-origin-of-the-name",
+      "status": "produced",
+      "created": "2026-11-25T23:12+05:30"
     }
   ]
 }
