@@ -9,7 +9,8 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
 | script + fact-check | Claude | `pipeline/brain.py`, `prompts/script.md` (quotes 02) |
 | voice + exact word timings | edge-tts (Kokoro fallback) | `pipeline/voice.py` |
 | timeline.ts | code (kit `timeline.py`) | `pipeline/studio.py` |
-| shot plan (director) + repairs | FreeLLMAPI free model (`studio.director`), Claude when it is not running | `09_PLAN_FORMAT.md` |
+| shot plan (director) | FreeLLMAPI free model (`studio.director`), Claude when it is not running | `09_PLAN_FORMAT.md` |
+| repairs, cheapest first | 1. `plan.py` normalizer fixes mistakes 2. `studio.autofix` climbs camera variations / moves people (no model) 3. glitches of <= `waive_max` checked frames are waived in GATE_WAIVERS with a reason 4. the director gets what is left (`repair_rounds`) 5. Claude `rescue_model` takes over (`rescue_rounds`) 6. only then the 2D engine | `pipeline/studio.py` |
 | compile + gates | code (`plan.py`, kit `gates.ts`) | `code/src/engine/` |
 | preview, contact sheets, judge, one fix round | Remotion + `sheet.py` + the director's model (FreeLLMAPI vision or Claude) | `10_JUDGE.md` |
 | Hindi captions | Claude writes a Roman Hinglish `caption` per line; the studio lays it on the voice timings | `prompts/lang_hi.md` |
@@ -21,9 +22,10 @@ day from config.yaml `schedule:` (now: 09:00 Hindi/Hinglish, 14:00 English, 19:0
 1. One video per `schedule:` line still missing from the queue (`pipeline/schedule.py`), in slot order; theme from
    `themes` (explainer ~80 %, story ~20 %).
 2. Idea → script (11-16 beats, 45-65 s at 3.3-3.8 words/s) → voice.
-3. `studio.make()`: timeline → director plan → compile → gates (repair rounds) → preview → contact sheets → judge →
+3. `studio.make()`: timeline → director plan → normalize + compile → gates → autofix → (director / Claude rescue rounds) → preview → contact sheets → judge →
    maybe v2 → best version → final render → mix. Every version lands in `out/<video>/versions/vN/`
-   (plan.json, gates.txt, judge.json, sheet_*.jpg, preview.mp4) and the sheets are uploaded as the run's `versions` artifact.
+   (plan.json, gates.txt, judge.json, sheet_*.jpg, preview.mp4, rounds/round_NN.json = every director round with its
+   fixes and gate failures) and they are uploaded as the run's `versions` artifact, even when the build fails.
 4. QC (`pipeline/qc.py`), GitHub Release, history saved. `post-video.yml` runs every 30 min and posts a slot's video
    when its time comes (up to 3 h late), tying the video to the slot so retries never double-post.
 

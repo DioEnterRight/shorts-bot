@@ -19,10 +19,12 @@ the next run uses it. No workflow file needs editing for normal changes.
 2. **Script** — Claude writes and fact-checks it with the kit's story formula (45–65 s, hook in the first line, one line = one picture).
 3. **Voice** — edge-tts (Kokoro if edge fails), with exact word timings.
 4. **Director** — a free FreeLLMAPI model (or Claude, see §5) writes the *shot plan*: who stands where, what they do, where the camera goes and on which word it lands.
-5. **Checks** — the kit tests every frame (faces cut off, people inside walls, the camera inside a shelf…). Problems go back to the director, up to 3 rounds.
+5. **Checks + repairs** — the kit tests every frame (faces cut off, people inside walls, the camera inside a shelf…).
+   Repairs go cheapest first: code fixes the director's small mistakes, then tries camera variations itself, then the
+   director gets what is left, then **Claude (Opus) takes over** if the free model can't finish.
 6. **Preview + judge** — a small preview renders, a contact sheet (one frame every 0.5 s) is scored 1–10. Under 8 → one fix round; the higher score wins.
 7. **Final** — 1080×1920 render on GitHub's computer, music + sound effects mixed at −14 LUFS, quality check, saved to **Releases**.
-8. If anything in steps 4–7 fails, that video is drawn by the old flat 2D engine instead, so the slot never stays empty.
+8. Only if Claude's rescue also fails is the video drawn by the old flat 2D engine, so the slot never stays empty.
 
 ---
 
@@ -111,7 +113,8 @@ schedule:
 ### Quality vs. cost
 | Want | Change |
 |---|---|
-| Fewer bad videos falling back to 2D | `studio.repair_rounds` (3 → 4) |
+| Fewer bad videos falling back to 2D | `studio.rescue_rounds` (2 → 3), `studio.autofix_rounds` (24 → 32) |
+| Always the best director (more Claude usage) | `studio.director: claude` + `studio.claude_model: opus` |
 | Stricter judge (more fix rounds) | `studio.good_enough` (8 → 9) |
 | Faster, cheaper runs | `studio.judge: false` (skips the score + fix round) |
 | Claude script quality vs. usage | `claude.model` (`opus` best, `sonnet` cheaper), `claude.effort` (`high` / `medium`) |
@@ -160,6 +163,8 @@ Needs the `FREELLMAPI_KEYS` secret (`FREELLM_SETUP.md`) with a **Google** key in
 see images, so the judge works. Without a vision model the judge is skipped and the first version is used.
 
 ### Automatic switches (you do nothing)
+- Free model can't pass the checks after `studio.repair_rounds` → Claude (`studio.rescue_model`, Opus) takes over for
+  `studio.rescue_rounds` more rounds. Turn it off with `studio.rescue: false` (then it goes straight to 2D).
 - FreeLLMAPI not running (no secret, keys broken) → Claude directs that video.
 - FreeLLMAPI monthly cap reached (`freellm.monthly_token_cap`) → Claude directs until next month.
 - Too many requests for one video (`freellm.max_calls_per_video`) → that video falls back to the 2D engine.
@@ -178,7 +183,8 @@ see images, so the judge works. Without a vision model the judge is skipped and 
 | You see | Do this |
 |---|---|
 | A GitHub issue "No video ready" | Open the latest **Make video** run, read the red step. Fix, then press **Make video** |
-| Make log: `studio failed` / `still fails the checks` | That video was made by the 2D engine. Look at the **versions** download to see what the checks found |
+| Make log: `studio failed` / `still fails the checks` | That video was made by the 2D engine (even Claude's rescue failed). The **versions** download has every round (`rounds/round_NN.json`): the plan, what code fixed, what the checks still found |
+| Hindi voice: `edge-tts attempt … failed` | Microsoft throttling; the bot waits and retries 6× per line. If it still falls back to Kokoro, raise `voice.edge_pause` (1.5 → 3) |
 | Videos feel slow / fast | §4 talking speed |
 | Hindi captions in Devanagari | Only happens in old videos made before this change |
 | `Claude Code call failed` | `claude setup-token` again → update `CLAUDE_CODE_OAUTH_TOKEN` |

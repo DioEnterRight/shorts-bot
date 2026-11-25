@@ -55,11 +55,12 @@ Start at its `SKILL.md`; `references/08_OUR_PIPELINE.md` explains this repo.
 1. Claude: idea + script (one line = one beat).
 2. Free model (FreeLLMAPI) = **director**: a shot plan per beat (where people stand, what they do, where the camera goes,
    which word it lands on). Code compiles it onto the kit engine (Three.js + Remotion).
-3. The kit's **gates** check every frame (faces cut, people in walls, camera inside a shelf…); problems go back to the
-   director until they are 0.
+3. The kit's **gates** check every frame (faces cut, people in walls, camera inside a shelf…). Code repairs the director's
+   small mistakes and tries camera variations itself; what is left goes back to the director, and if the free model
+   can't finish, Claude (Opus) takes over.
 4. A preview renders; contact sheets every 0.5 s go to a free vision **judge**; one fix round; the higher score wins.
 5. Final render on the GitHub runner (CPU, ~20-40 min) + sound mix at -14 LUFS.
-If anything fails, that Short is made by the old flat 2D engine (`toon2d/`, emergency only), so a video always ships.
+Only if Claude's rescue also fails is that Short made by the old flat 2D engine (`toon2d/`), so a video always ships.
 
 ## 🇮🇳 English + Hindi
 
