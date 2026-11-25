@@ -653,6 +653,22 @@
       "yt_video_id": "0toP1GlKWgI",
       "yt_state": "posted",
       "published_at": "2026-11-26T02:02+05:30"
+    },
+    {
+      "id": "20261126-012434-en-bank-vault-time-locks",
+      "title": "The Lock That Even the Banker Can't Open",
+      "topic": "Bank vault time locks",
+      "canonical_en": "Why do bank vaults have time locks that even the bank manager can't open?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "true_crime",
+      "hook_type": "paradox",
+      "hook_line": "Some bank vaults can't be opened by the banker himself.",
+      "duration": 42.72,
+      "storyboard": "kit",
+      "tag": "vid-20261126-012434-en-bank-vault-time-locks",
+      "status": "queued",
+      "created": "2026-11-26T02:06+05:30"
     }
   ],
   "version": 2,

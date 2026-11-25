@@ -297,6 +297,229 @@
       "video_id": "20261125-221704-en-the-real-origin-of-the-name",
       "status": "produced",
       "created": "2026-11-25T23:12+05:30"
+    },
+    {
+      "canonical_en": "Why do bank vaults have time locks that even the bank manager can't open?",
+      "question": "Why do some bank vaults refuse to open for anyone, even the manager, until a set hour?",
+      "hook": "Some bank vaults can't be opened by the banker himself.",
+      "angle": "The time lock appeared in the 1870s after robbers forced managers to open vaults at gunpoint. A clock inside the door made opening impossible, so threats were pointless.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261126-012434-en-bank-vault-time-locks",
+      "status": "produced",
+      "created": "2026-11-26T02:06+05:30"
+    }
+  ],
+  "backlog": [
+    {
+      "canonical_en": "Why did a grocer pay people to push empty shopping carts in 1937?",
+      "title": "The Grocer Who Paid People to Push Empty Carts",
+      "question": "Why did a grocery store owner hire strangers to push empty carts around his store?",
+      "hook": "He paid strangers to push empty carts around his store.",
+      "angle": "Sylvan Goldman invented the shopping cart in 1937. Shoppers refused it, so he staged the crowd. It's a story of social proof told in a 1930s corner grocery.",
+      "why_care": "It explains why a basket makes you buy less and a cart makes you buy more. You'll notice it on your next shop.",
+      "payoff": "The carts were never the invention. The invention was making people feel it was normal.",
+      "visual_moments": [
+        "Customers wave away the strange wire cart",
+        "Hired shoppers stroll through the aisles with empty carts",
+        "Carts fill up and the till overflows with coins"
+      ],
+      "fact_status": "documented",
+      "category": "business",
+      "format": "explainer",
+      "series": "One Decision That Made a Company",
+      "hook_type": "story",
+      "research_basis": "evergreen, well-documented history (Oklahoma City, 1937)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 7,
+        "visual": 9,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why did a restaurant menu with no dollar signs make people spend more?",
+      "title": "The Missing Symbol on Your Menu",
+      "question": "Why do fancy menus drop the dollar sign, and does it really change what you order?",
+      "hook": "Restaurants quietly delete one symbol to make you spend more.",
+      "angle": "This is based on a Cornell study (Yang and Kimes, 2009) where numbers without '$' got higher spending. It's a small psychology story at a diner.",
+      "why_care": "You can spot the trick on your next menu, and it shows how tiny cues change what you pay.",
+      "payoff": "The price was always there. The pain of it was just removed.",
+      "visual_moments": [
+        "Two menus side by side: one with $ signs, one without",
+        "A diner customer's bill totals shown as two stacks of coins",
+        "The sign gets rubbed away from a menu board"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "versus",
+      "series": "Tricks Hidden in Plain Sight",
+      "hook_type": "paradox",
+      "research_basis": "evergreen; Cornell hospitality study, effect size modest, will frame as 'in one study'",
+      "scores": {
+        "curiosity": 7,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why did the US stop making pennies when each one cost more than one cent?",
+      "title": "The Coin That Cost More Than Itself",
+      "question": "Why did the penny cost more to make than it was worth, and why did that take so long to fix?",
+      "hook": "Every penny the mint made lost money.",
+      "angle": "A recent-news explainer on the end of US penny production in late 2025. It explains why zinc, labour and habit kept the coin alive.",
+      "why_care": "You see pennies everywhere, and the maths behind them is stranger than you think.",
+      "payoff": "It cost nearly four cents to make one cent, and we kept doing it for decades.",
+      "visual_moments": [
+        "A mint machine feeds a tall stack of coins into a hopper that costs more than it spits out",
+        "A shopkeeper rounds a bill to the nearest nickel",
+        "A jar of forgotten pennies in a kitchen"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "Money Oddities",
+      "hook_type": "paradox",
+      "research_basis": "recent news (US Treasury penny production end, late 2025); exact figures to verify before scripting",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why do gas prices end in nine-tenths of a cent?",
+      "title": "Why Gas Costs a Fraction of a Cent",
+      "question": "Why does gas cost $3.49 and nine-tenths of a cent, when no coin exists for that?",
+      "hook": "Gas costs a price you can't actually pay.",
+      "angle": "The 9/10 ending is traced back to 1930s fuel taxes charged in fractions of a cent per gallon. Stations then kept the fraction as a pricing habit that customers never question.",
+      "why_care": "You see the strange number every day and never asked why it's there.",
+      "payoff": "Nobody can pay the tenth of a cent. You just round up for the next ninety years.",
+      "visual_moments": [
+        "A 1930s pump with a hand-painted price sign",
+        "A tax collector slicing a coin into tenths",
+        "A driver counting out coins and getting stuck on the last fraction"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "Prices Explained",
+      "hook_type": "paradox",
+      "research_basis": "evergreen; origin tied to 1930s state fuel taxes, wording kept cautious",
+      "scores": {
+        "curiosity": 7,
+        "originality": 7,
+        "visual": 7,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why do companies love it when you never use a gift card?",
+      "title": "Why Stores Love Gift Cards You Forget",
+      "question": "Why do stores quietly win when you forget to spend a gift card?",
+      "hook": "A gift card is a loan you give a store for free.",
+      "angle": "This is a holiday-season explainer on 'breakage': unspent balances become pure profit. It's told as one person who stuffs a card in a drawer.",
+      "why_care": "It's gift season, and it shows how a present can turn into a free loan for the store.",
+      "payoff": "The best customer is the one who never comes back.",
+      "visual_moments": [
+        "A hand tucks a card into a messy drawer",
+        "A cashier takes cash and hands over a plastic card",
+        "A giant pile of unspent value piles up behind the store counter"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "How Companies Really Make Money",
+      "hook_type": "paradox",
+      "research_basis": "evergreen; seasonal gift-card timing (holiday shopping)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 6,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why do .99 prices work, and is the 'forcing clerks to open the register' origin story true?",
+      "title": "The Legend Behind the .99 Price",
+      "question": "Did the .99 price start as a trick to make clerks open the cash register?",
+      "hook": "Legend says the .99 price was invented to catch thieving clerks.",
+      "angle": "The cash-register story is a widely repeated legend, and the video frames it as 'legend says'. Then it shows what's documented: the left-digit effect in modern pricing studies.",
+      "why_care": "It covers both the story you've heard and the real reason it works on your brain.",
+      "payoff": "The honest reason is less clever: your eyes just stop reading after the first digit.",
+      "visual_moments": [
+        "A clerk at a 1930s register shoves a till drawer shut",
+        "Two price tags with $3.00 and $2.99 side by side",
+        "A shopper's eye blinks at the first digit only"
+      ],
+      "fact_status": "legend",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Myth or Money",
+      "hook_type": "myth_busting",
+      "research_basis": "evergreen; origin story is a legend, left-digit effect documented in studies",
+      "scores": {
+        "curiosity": 7,
+        "originality": 5,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
+    },
+    {
+      "canonical_en": "Why did the Concorde keep flying and being funded even when it was clearly losing money, and what is the sunk cost fallacy?",
+      "title": "The Plane Too Expensive to Abandon",
+      "question": "Why did two governments keep pouring money into the Concorde after it was clear it would never pay off?",
+      "hook": "Two governments kept paying for a plane they knew would lose money.",
+      "angle": "A real example of the sunk cost fallacy, told as one family refusing to sell a car they've repaired too many times. The Concorde is the big-scale mirror.",
+      "why_care": "Everyone has stayed in a bad plan because of what they've already spent, and this explains it.",
+      "payoff": "The more they spent, the harder it was to stop. Stopping would have been the cheapest part.",
+      "visual_moments": [
+        "A giant money stack feeds into a sleek jet's engine",
+        "A family garage with a mountain of repair bills around an old car",
+        "Two officials shake hands over an empty runway"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Why Smart People Make Dumb Choices",
+      "hook_type": "paradox",
+      "research_basis": "evergreen; Concorde is a textbook sunk cost example (UK and France funding), figures to verify",
+      "scores": {
+        "curiosity": 7,
+        "originality": 5,
+        "visual": 7,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-26T02:06+05:30"
     }
   ]
 }
