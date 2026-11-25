@@ -510,6 +510,22 @@
       "tag": "vid-20261125-020110-hi-india-s-1991-gold-pledge-in",
       "status": "queued",
       "created": "2026-11-25T02:48+05:30"
+    },
+    {
+      "id": "20261125-045516-en-the-great-diamond-hoax-of-18",
+      "title": "The Field Where Diamonds Grew Overnight",
+      "topic": "The Great Diamond Hoax of 1872",
+      "canonical_en": "How did two prospectors in 1872 fool top bankers and a leading New York jeweler with a field 'full of diamonds' they had planted themselves?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_cons",
+      "hook_type": "paradox",
+      "hook_line": "Two miners found a field of diamonds they'd planted themselves.",
+      "duration": 37.38,
+      "storyboard": "3d",
+      "tag": "vid-20261125-045516-en-the-great-diamond-hoax-of-18",
+      "status": "queued",
+      "created": "2026-11-25T05:36+05:30"
     }
   ],
   "version": 2,
