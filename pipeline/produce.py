@@ -55,7 +55,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
     log(f"=== Making {vid_id} ===")
 
     voice_path, timeline, vlen, voice_engine = voice.synthesize(cfg, script, lp, work, allow_edge=not test)
-    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; kit target 200-230 = 3.3-3.8 words/s)")
+    log(f"Speaking pace: {voice.pace_wpm(timeline):.0f} wpm ({voice_engine}; target {float(lp['words_per_second']) * 60:.0f} = languages.{lp['code']}.words_per_second)")
     (work / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False), encoding="utf-8")
     try:   # the head skill's studio (animated-shorts-kit); test mode uses the hand-made sample shot plan
         plan = json.loads((ROOT / "prompts" / "sample_plan.json").read_text(encoding="utf-8")) if test else None
