@@ -722,6 +722,22 @@
       "yt_video_id": "kVpn1MF2JxE",
       "yt_state": "posted",
       "published_at": "2026-11-26T05:00+05:30"
+    },
+    {
+      "id": "20261126-043124-en-menus-without-dollar-signs",
+      "title": "The Missing Symbol on Your Menu",
+      "topic": "Menus without dollar signs",
+      "canonical_en": "Why did a restaurant menu with no dollar signs make people spend more?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Some restaurants delete one tiny symbol, and customers quietly spend more.",
+      "duration": 51.76,
+      "storyboard": "kit",
+      "tag": "vid-20261126-043124-en-menus-without-dollar-signs",
+      "status": "queued",
+      "created": "2026-11-26T05:05+05:30"
     }
   ],
   "version": 2,

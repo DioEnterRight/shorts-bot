@@ -330,39 +330,20 @@
       "video_id": "20261126-033146-en-the-grocer-who-staged-a-crow",
       "status": "produced",
       "created": "2026-11-26T04:19+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why did a restaurant menu with no dollar signs make people spend more?",
-      "title": "The Missing Symbol on Your Menu",
       "question": "Why do fancy menus drop the dollar sign, and does it really change what you order?",
       "hook": "Restaurants quietly delete one symbol to make you spend more.",
       "angle": "This is based on a Cornell study (Yang and Kimes, 2009) where numbers without '$' got higher spending. It's a small psychology story at a diner.",
-      "why_care": "You can spot the trick on your next menu, and it shows how tiny cues change what you pay.",
-      "payoff": "The price was always there. The pain of it was just removed.",
-      "visual_moments": [
-        "Two menus side by side: one with $ signs, one without",
-        "A diner customer's bill totals shown as two stacks of coins",
-        "The sign gets rubbed away from a menu board"
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "versus",
-      "series": "Tricks Hidden in Plain Sight",
-      "hook_type": "paradox",
-      "research_basis": "evergreen; Cornell hospitality study, effect size modest, will frame as 'in one study'",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-043124-en-menus-without-dollar-signs",
+      "status": "produced",
+      "created": "2026-11-26T05:05+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why did the US stop making pennies when each one cost more than one cent?",
       "title": "The Coin That Cost More Than Itself",

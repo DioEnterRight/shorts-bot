@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -186,13 +186,13 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 370,
-        "ig_reach": 303,
+        "ig_views": 372,
+        "ig_reach": 305,
         "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 14890,
+        "ig_avg_watch_ms": 14826,
         "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
@@ -201,10 +201,10 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 988,
-        "ig": 370
+        "ig": 372
       },
       "metrics_day7": {
         "ig_views": 367,
@@ -238,13 +238,13 @@
       "duration": 43.6,
       "published_at": "2026-11-17T20:02+05:30",
       "metrics": {
-        "ig_views": 183,
-        "ig_reach": 151,
+        "ig_views": 184,
+        "ig_reach": 153,
         "ig_likes": 6,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10450,
+        "ig_avg_watch_ms": 10417,
         "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
@@ -253,10 +253,10 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 980,
-        "ig": 183
+        "ig": 184
       },
       "metrics_day7": {
         "ig_views": 182,
@@ -290,13 +290,13 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 174,
-        "ig_reach": 130,
+        "ig_views": 175,
+        "ig_reach": 131,
         "ig_likes": 2,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13357,
+        "ig_avg_watch_ms": 13285,
         "yt_views": 1188,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -305,10 +305,10 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1188,
-        "ig": 174
+        "ig": 175
       },
       "metrics_day7": {
         "ig_views": 174,
@@ -342,25 +342,25 @@
       "duration": 37.57,
       "published_at": "2026-11-19T16:40+05:30",
       "metrics": {
-        "ig_views": 1460,
-        "ig_reach": 1108,
+        "ig_views": 1461,
+        "ig_reach": 1109,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17406,
+        "ig_avg_watch_ms": 17392,
         "yt_views": 1295,
         "yt_likes": 41,
         "yt_comments": 1,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 80.4,
+        "yt_avg_view_pct": 80.3,
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1295,
-        "ig": 1460
+        "ig": 1461
       }
     },
     "20261119-164610-en-the-stamp-trick-behind-the-f": {
@@ -374,13 +374,13 @@
       "duration": 39.42,
       "published_at": "2026-11-19T19:20+05:30",
       "metrics": {
-        "ig_views": 582,
-        "ig_reach": 391,
+        "ig_views": 583,
+        "ig_reach": 392,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18365,
+        "ig_avg_watch_ms": 18332,
         "yt_views": 1227,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -389,10 +389,10 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1227,
-        "ig": 582
+        "ig": 583
       }
     },
     "20261120-045059-en-why-one-soda-cost-five-cents": {
@@ -406,25 +406,25 @@
       "duration": 36.73,
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
-        "ig_views": 2195,
-        "ig_reach": 1388,
+        "ig_views": 2196,
+        "ig_reach": 1390,
         "ig_likes": 36,
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21622,
+        "ig_avg_watch_ms": 21612,
         "yt_views": 1974,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 89.1,
+        "yt_avg_view_pct": 88.8,
         "yt_avg_view_sec": 32,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1974,
-        "ig": 2195
+        "ig": 2196
       }
     },
     "20261121-045053-en-the-department-store-that-ba": {
@@ -438,25 +438,25 @@
       "duration": 34.44,
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
-        "ig_views": 1542,
-        "ig_reach": 1084,
+        "ig_views": 1543,
+        "ig_reach": 1085,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 23963,
+        "ig_avg_watch_ms": 23946,
         "yt_views": 1933,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 82.2,
+        "yt_avg_view_pct": 81.8,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1933,
-        "ig": 1542
+        "ig": 1543
       }
     },
     "20261122-044424-en-the-1963-salad-oil-swindle": {
@@ -470,25 +470,25 @@
       "duration": 34.08,
       "published_at": "2026-11-22T16:08+05:30",
       "metrics": {
-        "ig_views": 1944,
-        "ig_reach": 1295,
+        "ig_views": 1946,
+        "ig_reach": 1299,
         "ig_likes": 15,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18472,
+        "ig_avg_watch_ms": 18452,
         "yt_views": 1506,
         "yt_likes": 29,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 82.4,
+        "yt_avg_view_pct": 81.7,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1506,
-        "ig": 1944
+        "ig": 1946
       }
     },
     "20261123-044748-en-the-hope-diamond-sent-by-mai": {
@@ -502,22 +502,25 @@
       "duration": 42.21,
       "published_at": "2026-11-23T16:24+05:30",
       "metrics": {
-        "ig_views": 1905,
-        "ig_reach": 1364,
+        "ig_views": 1909,
+        "ig_reach": 1368,
         "ig_likes": 24,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21554,
+        "ig_avg_watch_ms": 21531,
         "yt_views": 1318,
         "yt_likes": 34,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 65.9,
+        "yt_avg_view_sec": 28,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 1318,
-        "ig": 1905
+        "ig": 1909
       }
     },
     "20261124-050419-en-why-100-bills-outnumber-1-bi": {
@@ -531,22 +534,22 @@
       "duration": 30.7,
       "published_at": "2026-11-24T16:15+05:30",
       "metrics": {
-        "ig_views": 2241,
-        "ig_reach": 1390,
+        "ig_views": 2242,
+        "ig_reach": 1392,
         "ig_likes": 14,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 20437,
-        "yt_views": 1645,
+        "ig_avg_watch_ms": 20425,
+        "yt_views": 1649,
         "yt_likes": 33,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 1645,
-        "ig": 2241
+        "yt": 1649,
+        "ig": 2242
       }
     },
     "20261124-223947-en-the-italian-bank-that-takes": {
@@ -560,22 +563,22 @@
       "duration": 33.7,
       "published_at": "2026-11-24T23:47+05:30",
       "metrics": {
-        "ig_views": 530,
-        "ig_reach": 396,
+        "ig_views": 534,
+        "ig_reach": 398,
         "ig_likes": 4,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 17252,
-        "yt_views": 1179,
+        "ig_avg_watch_ms": 17203,
+        "yt_views": 1183,
         "yt_likes": 36,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 1179,
-        "ig": 530
+        "yt": 1183,
+        "ig": 534
       }
     },
     "20261125-005148-hi-the-gulf-rupee-of-1959": {
@@ -589,22 +592,22 @@
       "duration": 38.13,
       "published_at": "2026-11-25T01:57+05:30",
       "metrics": {
-        "ig_views": 1503,
-        "ig_reach": 1102,
+        "ig_views": 1506,
+        "ig_reach": 1103,
         "ig_likes": 9,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 18912,
-        "yt_views": 193,
+        "ig_avg_watch_ms": 18913,
+        "yt_views": 195,
         "yt_likes": 1,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 193,
-        "ig": 1503
+        "yt": 195,
+        "ig": 1506
       }
     },
     "20261125-020110-hi-india-s-1991-gold-pledge-in": {
@@ -618,22 +621,22 @@
       "duration": 40.17,
       "published_at": "2026-11-25T10:36+05:30",
       "metrics": {
-        "ig_views": 1358,
-        "ig_reach": 1042,
+        "ig_views": 1369,
+        "ig_reach": 1053,
         "ig_likes": 12,
         "ig_comments": 0,
         "ig_shares": 3,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 17176,
+        "ig_avg_watch_ms": 17150,
         "yt_views": 63,
         "yt_likes": 0,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 63,
-        "ig": 1358
+        "ig": 1369
       }
     },
     "20261125-045516-en-the-great-diamond-hoax-of-18": {
@@ -647,22 +650,22 @@
       "duration": 37.38,
       "published_at": "2026-11-25T16:17+05:30",
       "metrics": {
-        "ig_views": 163,
-        "ig_reach": 123,
+        "ig_views": 167,
+        "ig_reach": 124,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 12564,
-        "yt_views": 1132,
+        "ig_avg_watch_ms": 12489,
+        "yt_views": 1139,
         "yt_likes": 18,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 1132,
-        "ig": 163
+        "yt": 1139,
+        "ig": 167
       }
     },
     "20261125-173157-hi-frederic-tudor-shipped-new-e": {
@@ -676,22 +679,22 @@
       "duration": 82.33,
       "published_at": "2026-11-25T18:27+05:30",
       "metrics": {
-        "ig_views": 1315,
-        "ig_reach": 1100,
-        "ig_likes": 15,
+        "ig_views": 1326,
+        "ig_reach": 1110,
+        "ig_likes": 16,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 31254,
+        "ig_avg_watch_ms": 31040,
         "yt_views": 29,
         "yt_likes": 0,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
         "yt": 29,
-        "ig": 1315
+        "ig": 1326
       }
     },
     "20261125-175928-en-tenino-s-wooden-depression-m": {
@@ -705,22 +708,22 @@
       "duration": 57.73,
       "published_at": "2026-11-25T20:16+05:30",
       "metrics": {
-        "ig_views": 595,
-        "ig_reach": 415,
-        "ig_likes": 7,
+        "ig_views": 951,
+        "ig_reach": 687,
+        "ig_likes": 10,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 25825,
-        "yt_views": 1159,
-        "yt_likes": 42,
+        "ig_avg_watch_ms": 28537,
+        "yt_views": 1173,
+        "yt_likes": 43,
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 1159,
-        "ig": 595
+        "yt": 1173,
+        "ig": 951
       }
     },
     "20261125-181047-en-the-great-stock-exchange-fra": {
@@ -734,22 +737,22 @@
       "duration": 63.4,
       "published_at": "2026-11-25T23:33+05:30",
       "metrics": {
-        "ig_views": 3,
-        "ig_reach": 0,
+        "ig_views": 15,
+        "ig_reach": 5,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 33405,
-        "yt_views": 4,
-        "yt_likes": 1,
+        "ig_avg_watch_ms": 9314,
+        "yt_views": 22,
+        "yt_likes": 3,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 4,
-        "ig": 3
+        "yt": 22,
+        "ig": 15
       }
     },
     "20261125-215007-hi-great-hanoi-rat-massacre-of": {
@@ -763,24 +766,111 @@
       "duration": 68.07,
       "published_at": "2026-11-26T00:06+05:30",
       "metrics": {
-        "ig_views": 24,
-        "ig_reach": 19,
+        "ig_views": 53,
+        "ig_reach": 40,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13698,
-        "yt_views": 5,
-        "yt_likes": 1,
+        "ig_avg_watch_ms": 21213,
+        "yt_views": 28,
+        "yt_likes": 2,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T01:24+05:30",
+      "last_update": "2026-11-26T04:31+05:30",
       "views": {
-        "yt": 5,
-        "ig": 24
+        "yt": 28,
+        "ig": 53
+      }
+    },
+    "20261125-221704-en-the-real-origin-of-the-name": {
+      "video_id": "20261125-221704-en-the-real-origin-of-the-name",
+      "language": "en",
+      "topic": "The real origin of the name Black Friday",
+      "theme": "explainer",
+      "title": "Black Friday Was Named as an Insult",
+      "hook_type": "paradox",
+      "hook_line": "Black Friday was named by people who hated it.",
+      "duration": 50.02,
+      "published_at": "2026-11-26T02:02+05:30",
+      "metrics": {
+        "ig_views": 1346,
+        "ig_reach": 803,
+        "ig_likes": 7,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 23827,
+        "yt_views": 823,
+        "yt_likes": 40,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-26T04:31+05:30",
+      "views": {
+        "yt": 823,
+        "ig": 1346
+      }
+    },
+    "20261126-012434-en-bank-vault-time-locks": {
+      "video_id": "20261126-012434-en-bank-vault-time-locks",
+      "language": "en",
+      "topic": "Bank vault time locks",
+      "theme": "explainer",
+      "title": "The Lock That Even the Banker Can't Open",
+      "hook_type": "paradox",
+      "hook_line": "Some bank vaults can't be opened by the banker himself.",
+      "duration": 42.72,
+      "published_at": "2026-11-26T03:07+05:30",
+      "metrics": {
+        "ig_views": 1745,
+        "ig_reach": 1175,
+        "ig_likes": 14,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 24062,
+        "yt_views": 242,
+        "yt_likes": 8,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-26T04:31+05:30",
+      "views": {
+        "yt": 242,
+        "ig": 1745
+      }
+    },
+    "20261126-023244-en-victor-lustig-s-money-printi": {
+      "video_id": "20261126-023244-en-victor-lustig-s-money-printi",
+      "language": "en",
+      "topic": "Victor Lustig's money printing box",
+      "theme": "story",
+      "title": "The Box That Printed Hundred-Dollar Bills",
+      "hook_type": "story",
+      "hook_line": "He sold a box that printed money, for real money.",
+      "duration": 59.48,
+      "published_at": "2026-11-26T04:06+05:30",
+      "metrics": {
+        "ig_views": 51,
+        "ig_reach": 0,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 0,
+        "yt_views": 172,
+        "yt_likes": 3,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-26T04:31+05:30",
+      "views": {
+        "yt": 172,
+        "ig": 51
       }
     }
   },
-  "updated": "2026-11-26T01:24+05:30"
+  "updated": "2026-11-26T04:31+05:30"
 }
