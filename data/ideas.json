@@ -242,6 +242,39 @@
       "video_id": "20261125-045516-en-the-great-diamond-hoax-of-18",
       "status": "produced",
       "created": "2026-11-25T05:36+05:30"
+    },
+    {
+      "canonical_en": "How did a broke Boston man who was laughed at for shipping ice to the tropics end up selling ice in Calcutta, and why did it not melt on the way?",
+      "question": "चार महीने का समुद्री सफ़र, गर्मी 35 डिग्री, फिर भी बर्फ़ कलकत्ता पहुँची कैसे?",
+      "hook": "उसने बर्फ़ बेची... गर्मी से तपते कलकत्ता को।",
+      "angle": "Indian connection: the 1833 ship Tuscany reached Calcutta with about 100 of its 180 tons of ice still frozen. The mechanism is sawdust insulation, and a big block melts slowly. Before that, his first shipment melted in Martinique and Boston papers mocked him. That gives the full formula of stupid idea, laughter, worse, right all along.",
+      "language": "hi",
+      "theme": "story",
+      "video_id": "20261125-173157-hi-frederic-tudor-shipped-new-e",
+      "status": "produced",
+      "created": "2026-11-25T17:59+05:30"
+    },
+    {
+      "canonical_en": "When its only bank failed in 1931, a small town printed its own money on thin sheets of wood, so why did almost nobody cash it back in?",
+      "question": "What do you do when your town's only bank locks its doors with everyone's savings inside?",
+      "hook": "When the bank kept their money, a town made its own out of wood.",
+      "angle": "A Depression-era bank failure seen from one small town. The Chamber of Commerce let depositors trade up to 15% of their frozen savings for scrip printed on thin cedar and spruce. Collectors and tourists wanted the wooden bills as souvenirs, so most were never redeemed, and the Chamber later bought the failed bank's building.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261125-175928-en-tenino-s-wooden-depression-m",
+      "status": "produced",
+      "created": "2026-11-25T18:10+05:30"
+    },
+    {
+      "canonical_en": "How did a man in a fake officer's uniform announce that Napoleon was dead in 1814, send London stock prices soaring for one morning, and drag a naval war hero into the scandal?",
+      "question": "How much is one fake message worth on the stock market?",
+      "hook": "Napoleon died in 1814. For about one morning.",
+      "angle": "The first great fake-news stock scheme, 200 years before social media. A messenger in a red uniform arrives in Dover saying Napoleon is dead, bond prices shoot up, and the conspirators sell what they bought a few days earlier. By the afternoon it all falls apart. The twist is that one convicted man, a famous navy captain, may have been innocent.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261125-181047-en-the-great-stock-exchange-fra",
+      "status": "produced",
+      "created": "2026-11-25T18:23+05:30"
     }
   ]
 }

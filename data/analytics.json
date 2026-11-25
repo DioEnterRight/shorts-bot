@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -186,13 +186,13 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 369,
-        "ig_reach": 302,
+        "ig_views": 370,
+        "ig_reach": 303,
         "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 14923,
+        "ig_avg_watch_ms": 14890,
         "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
@@ -201,10 +201,10 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 988,
-        "ig": 369
+        "ig": 370
       },
       "metrics_day7": {
         "ig_views": 367,
@@ -238,13 +238,13 @@
       "duration": 43.6,
       "published_at": "2026-11-17T20:02+05:30",
       "metrics": {
-        "ig_views": 182,
+        "ig_views": 183,
         "ig_reach": 151,
         "ig_likes": 6,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10476,
+        "ig_avg_watch_ms": 10450,
         "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
@@ -253,10 +253,10 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 980,
-        "ig": 182
+        "ig": 183
       },
       "metrics_day7": {
         "ig_views": 182,
@@ -290,13 +290,13 @@
       "duration": 37.67,
       "published_at": "2026-11-18T15:04+05:30",
       "metrics": {
-        "ig_views": 173,
+        "ig_views": 174,
         "ig_reach": 130,
         "ig_likes": 2,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13400,
+        "ig_avg_watch_ms": 13357,
         "yt_views": 1188,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -305,10 +305,30 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
         "yt": 1188,
-        "ig": 173
+        "ig": 174
+      },
+      "metrics_day7": {
+        "ig_views": 174,
+        "ig_reach": 130,
+        "ig_likes": 2,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 13357,
+        "yt_views": 1188,
+        "yt_likes": 25,
+        "yt_comments": 0,
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 66.4,
+        "yt_avg_view_sec": 25,
+        "yt_subs_gained": 0
+      },
+      "views_day7": {
+        "yt": 1188,
+        "ig": 174
       }
     },
     "20261119-045408-en-how-a-gold-duplication-glitc": {
@@ -322,14 +342,14 @@
       "duration": 37.57,
       "published_at": "2026-11-19T16:40+05:30",
       "metrics": {
-        "ig_views": 1459,
-        "ig_reach": 1107,
+        "ig_views": 1460,
+        "ig_reach": 1108,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17417,
-        "yt_views": 1290,
+        "ig_avg_watch_ms": 17406,
+        "yt_views": 1295,
         "yt_likes": 41,
         "yt_comments": 1,
         "yt_privacy": "public",
@@ -337,10 +357,10 @@
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1290,
-        "ig": 1459
+        "yt": 1295,
+        "ig": 1460
       }
     },
     "20261119-164610-en-the-stamp-trick-behind-the-f": {
@@ -354,14 +374,14 @@
       "duration": 39.42,
       "published_at": "2026-11-19T19:20+05:30",
       "metrics": {
-        "ig_views": 575,
+        "ig_views": 581,
         "ig_reach": 390,
         "ig_likes": 8,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18658,
-        "yt_views": 1225,
+        "ig_avg_watch_ms": 18453,
+        "yt_views": 1227,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -369,10 +389,10 @@
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1225,
-        "ig": 575
+        "yt": 1227,
+        "ig": 581
       }
     },
     "20261120-045059-en-why-one-soda-cost-five-cents": {
@@ -386,14 +406,14 @@
       "duration": 36.73,
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
-        "ig_views": 2194,
+        "ig_views": 2195,
         "ig_reach": 1388,
         "ig_likes": 36,
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21643,
-        "yt_views": 1973,
+        "ig_avg_watch_ms": 21622,
+        "yt_views": 1974,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -401,10 +421,10 @@
         "yt_avg_view_sec": 32,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1973,
-        "ig": 2194
+        "yt": 1974,
+        "ig": 2195
       }
     },
     "20261121-045053-en-the-department-store-that-ba": {
@@ -418,14 +438,14 @@
       "duration": 34.44,
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
-        "ig_views": 1535,
-        "ig_reach": 1077,
+        "ig_views": 1540,
+        "ig_reach": 1082,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24138,
-        "yt_views": 1931,
+        "ig_avg_watch_ms": 24008,
+        "yt_views": 1933,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -433,10 +453,10 @@
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1931,
-        "ig": 1535
+        "yt": 1933,
+        "ig": 1540
       }
     },
     "20261122-044424-en-the-1963-salad-oil-swindle": {
@@ -450,14 +470,14 @@
       "duration": 34.08,
       "published_at": "2026-11-22T16:08+05:30",
       "metrics": {
-        "ig_views": 1943,
+        "ig_views": 1944,
         "ig_reach": 1295,
         "ig_likes": 15,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18486,
-        "yt_views": 1504,
+        "ig_avg_watch_ms": 18472,
+        "yt_views": 1506,
         "yt_likes": 29,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -465,10 +485,10 @@
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1504,
-        "ig": 1943
+        "yt": 1506,
+        "ig": 1944
       }
     },
     "20261123-044748-en-the-hope-diamond-sent-by-mai": {
@@ -482,22 +502,22 @@
       "duration": 42.21,
       "published_at": "2026-11-23T16:24+05:30",
       "metrics": {
-        "ig_views": 1904,
-        "ig_reach": 1362,
+        "ig_views": 1905,
+        "ig_reach": 1364,
         "ig_likes": 24,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
         "ig_avg_watch_ms": 21554,
-        "yt_views": 1300,
+        "yt_views": 1313,
         "yt_likes": 34,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1300,
-        "ig": 1904
+        "yt": 1313,
+        "ig": 1905
       }
     },
     "20261124-050419-en-why-100-bills-outnumber-1-bi": {
@@ -511,22 +531,22 @@
       "duration": 30.7,
       "published_at": "2026-11-24T16:15+05:30",
       "metrics": {
-        "ig_views": 2222,
-        "ig_reach": 1379,
+        "ig_views": 2238,
+        "ig_reach": 1388,
         "ig_likes": 14,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 20550,
-        "yt_views": 1486,
+        "ig_avg_watch_ms": 20447,
+        "yt_views": 1641,
         "yt_likes": 33,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1486,
-        "ig": 2222
+        "yt": 1641,
+        "ig": 2238
       }
     },
     "20261124-223947-en-the-italian-bank-that-takes": {
@@ -540,22 +560,22 @@
       "duration": 33.7,
       "published_at": "2026-11-24T23:47+05:30",
       "metrics": {
-        "ig_views": 226,
-        "ig_reach": 166,
-        "ig_likes": 2,
+        "ig_views": 437,
+        "ig_reach": 314,
+        "ig_likes": 3,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 22645,
-        "yt_views": 1133,
-        "yt_likes": 35,
+        "ig_avg_watch_ms": 18613,
+        "yt_views": 1174,
+        "yt_likes": 36,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 1133,
-        "ig": 226
+        "yt": 1174,
+        "ig": 437
       }
     },
     "20261125-005148-hi-the-gulf-rupee-of-1959": {
@@ -569,40 +589,82 @@
       "duration": 38.13,
       "published_at": "2026-11-25T01:57+05:30",
       "metrics": {
-        "ig_views": 1252,
-        "ig_reach": 817,
-        "ig_likes": 8,
+        "ig_views": 1491,
+        "ig_reach": 1096,
+        "ig_likes": 9,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 18048,
-        "yt_views": 64,
+        "ig_avg_watch_ms": 19023,
+        "yt_views": 189,
         "yt_likes": 1,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-25T04:54+05:30",
+      "last_update": "2026-11-25T17:31+05:30",
       "views": {
-        "yt": 64,
-        "ig": 1252
+        "yt": 189,
+        "ig": 1491
+      }
+    },
+    "20261125-020110-hi-india-s-1991-gold-pledge-in": {
+      "video_id": "20261125-020110-hi-india-s-1991-gold-pledge-in",
+      "language": "hi",
+      "topic": "India's 1991 gold pledge in borrowed boxes",
+      "theme": "explainer",
+      "title": "जब India ने अपना सोना गिरवी रखा",
+      "hook_type": "paradox",
+      "hook_line": "India ने अपना सोना गिरवी रखा, उधार के boxes में।",
+      "duration": 40.17,
+      "published_at": "2026-11-25T10:36+05:30",
+      "metrics": {
+        "ig_views": 565,
+        "ig_reach": 428,
+        "ig_likes": 4,
+        "ig_comments": 0,
+        "ig_shares": 2,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 13725,
+        "yt_views": 45,
+        "yt_likes": 0,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-25T17:31+05:30",
+      "views": {
+        "yt": 45,
+        "ig": 565
+      }
+    },
+    "20261125-045516-en-the-great-diamond-hoax-of-18": {
+      "video_id": "20261125-045516-en-the-great-diamond-hoax-of-18",
+      "language": "en",
+      "topic": "The Great Diamond Hoax of 1872",
+      "theme": "explainer",
+      "title": "The Field Where Diamonds Grew Overnight",
+      "hook_type": "paradox",
+      "hook_line": "Two miners found a field of diamonds they'd planted themselves.",
+      "duration": 37.38,
+      "published_at": "2026-11-25T16:17+05:30",
+      "metrics": {
+        "ig_views": 152,
+        "ig_reach": 88,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 13195,
+        "yt_views": 541,
+        "yt_likes": 9,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-25T17:31+05:30",
+      "views": {
+        "yt": 541,
+        "ig": 152
       }
     }
   },
-  "allocation": {
-    "language": {
-      "shares": {
-        "en": 0.5,
-        "hi": 0.5
-      },
-      "diagnostics": {
-        "reason": "not enough data yet (need 4 per language)",
-        "counts": {
-          "en": 11,
-          "hi": 1
-        }
-      },
-      "computed_at": "2026-11-25T04:54+05:30"
-    }
-  },
-  "updated": "2026-11-25T04:54+05:30"
+  "updated": "2026-11-25T17:31+05:30"
 }
