@@ -1,8 +1,8 @@
 {
   "2026-11": {
-    "calls": 43,
-    "prompt_tokens": 390808,
-    "completion_tokens": 127662,
+    "calls": 44,
+    "prompt_tokens": 399752,
+    "completion_tokens": 132923,
     "by_model": {
       "groq/qwen/qwen3.8-27b": 7,
       "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 2,
@@ -12,7 +12,7 @@
       "nvidia/poolside/laguna-xs-2.1": 7,
       "google/gemini-robotics-er-2-preview": 2,
       "google/gemini-2.5-flash-lite": 2,
-      "nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": 2,
+      "nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": 3,
       "ovh/Qwen3.5-397B-A17B": 1,
       "google/gemini-3.5-flash-lite": 1
     }

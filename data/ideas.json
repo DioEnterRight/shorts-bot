@@ -319,39 +319,20 @@
       "video_id": "20261126-023244-en-victor-lustig-s-money-printi",
       "status": "produced",
       "created": "2026-11-26T03:25+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why did a grocer pay people to push empty shopping carts in 1937?",
-      "title": "The Grocer Who Paid People to Push Empty Carts",
       "question": "Why did a grocery store owner hire strangers to push empty carts around his store?",
       "hook": "He paid strangers to push empty carts around his store.",
       "angle": "Sylvan Goldman invented the shopping cart in 1937. Shoppers refused it, so he staged the crowd. It's a story of social proof told in a 1930s corner grocery.",
-      "why_care": "It explains why a basket makes you buy less and a cart makes you buy more. You'll notice it on your next shop.",
-      "payoff": "The carts were never the invention. The invention was making people feel it was normal.",
-      "visual_moments": [
-        "Customers wave away the strange wire cart",
-        "Hired shoppers stroll through the aisles with empty carts",
-        "Carts fill up and the till overflows with coins"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "explainer",
-      "series": "One Decision That Made a Company",
-      "hook_type": "story",
-      "research_basis": "evergreen, well-documented history (Oklahoma City, 1937)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 9,
-        "clarity": 9,
-        "twist": 8
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-033146-en-the-grocer-who-staged-a-crow",
+      "status": "produced",
+      "created": "2026-11-26T04:19+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why did a restaurant menu with no dollar signs make people spend more?",
       "title": "The Missing Symbol on Your Menu",

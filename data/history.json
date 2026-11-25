@@ -699,6 +699,22 @@
       "yt_video_id": "yjqRjTZBZuw",
       "yt_state": "posted",
       "published_at": "2026-11-26T04:06+05:30"
+    },
+    {
+      "id": "20261126-033146-en-the-grocer-who-staged-a-crow",
+      "title": "The Grocer Who Paid People to Push Empty Carts",
+      "topic": "The grocer who staged a crowd of cart pushers",
+      "canonical_en": "Why did a grocer pay people to push empty shopping carts in 1937?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "He paid strangers to push empty carts around his store.",
+      "duration": 56.05,
+      "storyboard": "kit",
+      "tag": "vid-20261126-033146-en-the-grocer-who-staged-a-crow",
+      "status": "queued",
+      "created": "2026-11-26T04:19+05:30"
     }
   ],
   "version": 2,
