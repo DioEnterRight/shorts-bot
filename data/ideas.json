@@ -341,39 +341,20 @@
       "video_id": "20261126-043124-en-menus-without-dollar-signs",
       "status": "produced",
       "created": "2026-11-26T05:05+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why did the US stop making pennies when each one cost more than one cent?",
-      "title": "The Coin That Cost More Than Itself",
       "question": "Why did the penny cost more to make than it was worth, and why did that take so long to fix?",
       "hook": "Every penny the mint made lost money.",
       "angle": "A recent-news explainer on the end of US penny production in late 2025. It explains why zinc, labour and habit kept the coin alive.",
-      "why_care": "You see pennies everywhere, and the maths behind them is stranger than you think.",
-      "payoff": "It cost nearly four cents to make one cent, and we kept doing it for decades.",
-      "visual_moments": [
-        "A mint machine feeds a tall stack of coins into a hopper that costs more than it spits out",
-        "A shopkeeper rounds a bill to the nearest nickel",
-        "A jar of forgotten pennies in a kitchen"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "Money Oddities",
-      "hook_type": "paradox",
-      "research_basis": "recent news (US Treasury penny production end, late 2025); exact figures to verify before scripting",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-052654-en-the-end-of-the-us-penny",
+      "status": "produced",
+      "created": "2026-11-26T06:02+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why do gas prices end in nine-tenths of a cent?",
       "title": "Why Gas Costs a Fraction of a Cent",

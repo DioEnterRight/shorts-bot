@@ -745,6 +745,22 @@
       "yt_video_id": "wjaE3_JtPss",
       "yt_state": "posted",
       "published_at": "2026-11-26T05:59+05:30"
+    },
+    {
+      "id": "20261126-052654-en-the-end-of-the-us-penny",
+      "title": "The Coin That Cost More Than Itself",
+      "topic": "The end of the US penny",
+      "canonical_en": "Why did the US stop making pennies when each one cost more than one cent?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "Making one penny cost the US Mint nearly four cents.",
+      "duration": 50.59,
+      "storyboard": "kit",
+      "tag": "vid-20261126-052654-en-the-end-of-the-us-penny",
+      "status": "queued",
+      "created": "2026-11-26T06:02+05:30"
     }
   ],
   "version": 2,
