@@ -919,8 +919,14 @@
       "duration": 50.82,
       "storyboard": "kit",
       "tag": "vid-20261126-173933-en-yap-rai-stones-and-money-as",
-      "status": "queued",
-      "created": "2026-11-26T18:17+05:30"
+      "status": "published",
+      "created": "2026-11-26T18:17+05:30",
+      "slot": "2026-11-26 20:23 manual",
+      "ig_media_id": "18391854862235063",
+      "ig_link": "https://www.instagram.com/reel/DgNXcJrO9Jo/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-26T20:25+05:30"
     }
   ],
   "version": 2,
