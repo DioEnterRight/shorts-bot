@@ -451,6 +451,17 @@
       "video_id": "20261126-214248-en-the-cash-register-was-built",
       "status": "produced",
       "created": "2026-11-26T22:07+05:30"
+    },
+    {
+      "canonical_en": "Why did a small Austrian town in 1932 make its money lose value every month, and why did everyone spend it fast (Wörgl)?",
+      "question": "Why would a town want its money to lose value every month?",
+      "hook": "A mayor made his town's money shrink every month, and the town boomed.",
+      "angle": "The mechanism is shown as a stamp being added to notes: whoever holds the note on stamp day pays. The story ends with a central bank shutting it down.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "status": "produced",
+      "created": "2026-11-27T00:00+05:30"
     }
   ],
   "backlog": [
@@ -843,36 +854,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did a small Austrian town in 1932 make its money lose value every month, and why did everyone spend it fast (Wörgl)?",
-      "title": "The Town That Taxed Its Own Cash",
-      "question": "Why would a town want its money to lose value every month?",
-      "hook": "A mayor made his town's money shrink every month, and the town boomed.",
-      "angle": "The mechanism is shown as a stamp being added to notes: whoever holds the note on stamp day pays. The story ends with a central bank shutting it down.",
-      "why_care": "It's a counter-intuitive test of why people save and hoard money.",
-      "payoff": "The money worked best when nobody wanted to keep it.",
-      "visual_moments": [
-        "A note collecting stamps while shoppers race to spend it",
-        "A baker, a builder and a grocer passing the same note around a loop",
-        "A bank official's 'STOP' on the notes"
-      ],
-      "fact_status": "disputed",
-      "category": "money_explained",
-      "format": "story",
-      "series": "Weird Money Around the World",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. The Wörgl 'labour certificates' of 1932-33 with a monthly stamp fee are documented. The size of its economic success is debated, so the video says 'the town claimed'. Different mechanism from the wooden scrip we've already made.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 7,
-        "visual": 7,
-        "clarity": 7,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Why do people value things they build themselves more, even badly (the IKEA effect study)?",

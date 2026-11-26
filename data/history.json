@@ -971,6 +971,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-26T23:29+05:30"
+    },
+    {
+      "id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "title": "The Town That Taxed Its Own Cash",
+      "topic": "The town that taxed its own cash",
+      "canonical_en": "Why did a small Austrian town in 1932 make its money lose value every month, and why did everyone spend it fast (Wörgl)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "A town once made its own money lose value every month, on purpose.",
+      "duration": 65.7,
+      "storyboard": "kit",
+      "tag": "vid-20261126-224737-en-the-town-that-taxed-its-own",
+      "status": "queued",
+      "created": "2026-11-27T00:00+05:30"
     }
   ],
   "version": 2,
