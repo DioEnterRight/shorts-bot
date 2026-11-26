@@ -761,6 +761,22 @@
       "tag": "vid-20261126-052654-en-the-end-of-the-us-penny",
       "status": "queued",
       "created": "2026-11-26T06:02+05:30"
+    },
+    {
+      "id": "20261126-065137-en-why-gas-prices-end-in-nine-t",
+      "title": "Why Gas Costs a Fraction of a Cent",
+      "topic": "Why gas prices end in nine-tenths of a cent",
+      "canonical_en": "Why do gas prices end in nine-tenths of a cent?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "Every gas station sells you something you can't actually pay for.",
+      "duration": 64.23,
+      "storyboard": "claude",
+      "tag": "vid-20261126-065137-en-why-gas-prices-end-in-nine-t",
+      "status": "queued",
+      "created": "2026-11-26T07:02+05:30"
     }
   ],
   "version": 2,

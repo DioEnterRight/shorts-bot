@@ -352,39 +352,20 @@
       "video_id": "20261126-052654-en-the-end-of-the-us-penny",
       "status": "produced",
       "created": "2026-11-26T06:02+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why do gas prices end in nine-tenths of a cent?",
-      "title": "Why Gas Costs a Fraction of a Cent",
       "question": "Why does gas cost $3.49 and nine-tenths of a cent, when no coin exists for that?",
       "hook": "Gas costs a price you can't actually pay.",
       "angle": "The 9/10 ending is traced back to 1930s fuel taxes charged in fractions of a cent per gallon. Stations then kept the fraction as a pricing habit that customers never question.",
-      "why_care": "You see the strange number every day and never asked why it's there.",
-      "payoff": "Nobody can pay the tenth of a cent. You just round up for the next ninety years.",
-      "visual_moments": [
-        "A 1930s pump with a hand-painted price sign",
-        "A tax collector slicing a coin into tenths",
-        "A driver counting out coins and getting stuck on the last fraction"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "Prices Explained",
-      "hook_type": "paradox",
-      "research_basis": "evergreen; origin tied to 1930s state fuel taxes, wording kept cautious",
-      "scores": {
-        "curiosity": 7,
-        "originality": 7,
-        "visual": 7,
-        "clarity": 8,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-065137-en-why-gas-prices-end-in-nine-t",
+      "status": "produced",
+      "created": "2026-11-26T07:02+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why do companies love it when you never use a gift card?",
       "title": "Why Stores Love Gift Cards You Forget",
