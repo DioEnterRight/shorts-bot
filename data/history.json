@@ -858,6 +858,22 @@
       "yt_video_id": "Bfna56zWCQM",
       "yt_state": "posted",
       "published_at": "2026-11-26T12:03+05:30"
+    },
+    {
+      "id": "20261126-125622-en-the-concorde-and-the-sunk-co",
+      "title": "The Plane Too Expensive to Abandon",
+      "topic": "The Concorde and the sunk cost fallacy",
+      "canonical_en": "Why did the Concorde keep flying and being funded even when it was clearly losing money, and what is the sunk cost fallacy?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Two governments kept paying for a plane they knew would lose money.",
+      "duration": 59.38,
+      "storyboard": "kit",
+      "tag": "vid-20261126-125622-en-the-concorde-and-the-sunk-co",
+      "status": "queued",
+      "created": "2026-11-26T14:08+05:30"
     }
   ],
   "version": 2,

@@ -396,39 +396,20 @@
       "video_id": "20261126-104724-en-the-legend-behind-the-99-pri",
       "status": "produced",
       "created": "2026-11-26T11:22+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why did the Concorde keep flying and being funded even when it was clearly losing money, and what is the sunk cost fallacy?",
-      "title": "The Plane Too Expensive to Abandon",
       "question": "Why did two governments keep pouring money into the Concorde after it was clear it would never pay off?",
       "hook": "Two governments kept paying for a plane they knew would lose money.",
       "angle": "A real example of the sunk cost fallacy, told as one family refusing to sell a car they've repaired too many times. The Concorde is the big-scale mirror.",
-      "why_care": "Everyone has stayed in a bad plan because of what they've already spent, and this explains it.",
-      "payoff": "The more they spent, the harder it was to stop. Stopping would have been the cheapest part.",
-      "visual_moments": [
-        "A giant money stack feeds into a sleek jet's engine",
-        "A family garage with a mountain of repair bills around an old car",
-        "Two officials shake hands over an empty runway"
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Why Smart People Make Dumb Choices",
-      "hook_type": "paradox",
-      "research_basis": "evergreen; Concorde is a textbook sunk cost example (UK and France funding), figures to verify",
-      "scores": {
-        "curiosity": 7,
-        "originality": 5,
-        "visual": 7,
-        "clarity": 8,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-125622-en-the-concorde-and-the-sunk-co",
+      "status": "produced",
+      "created": "2026-11-26T14:08+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Hetty Green lent New York City money during the Panic of 1907 after bankers laughed at her for dressing like a pauper",
       "title": "The Richest Woman Dressed Like a Beggar",
