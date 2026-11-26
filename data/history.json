@@ -1030,8 +1030,15 @@
       "duration": 62.87,
       "storyboard": "kit",
       "tag": "vid-20261127-014156-en-the-man-who-bought-london-br",
-      "status": "queued",
-      "created": "2026-11-27T02:25+05:30"
+      "status": "published",
+      "created": "2026-11-27T02:25+05:30",
+      "slot": "2026-11-27 02:30",
+      "ig_media_id": "18119711498018732",
+      "ig_link": "https://www.instagram.com/reel/DgOEtcyzhv7/",
+      "ig_state": "posted",
+      "yt_video_id": "Yz-C4_g_rtc",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T03:01+05:30"
     }
   ],
   "version": 2,

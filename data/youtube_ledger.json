@@ -157,18 +157,33 @@
       "video_id": "f6U6yHApXf4",
       "local_id": "20261126-224737-en-the-town-that-taxed-its-own",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-26T21:31:00+00:00",
+      "video_id": "Yz-C4_g_rtc",
+      "local_id": "20261127-014156-en-the-man-who-bought-london-br",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
     {
       "ts": "2026-11-26T19:03:11+00:00",
       "local_id": "20261126-224737-en-the-town-that-taxed-its-own"
+    },
+    {
+      "ts": "2026-11-26T21:31:00+00:00",
+      "local_id": "20261127-014156-en-the-man-who-bought-london-br"
     }
   ],
   "attempts": [
     {
       "ts": "2026-11-26T19:03:11+00:00",
       "local_id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-26T21:31:00+00:00",
+      "local_id": "20261127-014156-en-the-man-who-bought-london-br",
       "result": "ok"
     }
   ],
@@ -205,5 +220,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-26T20:11:07+00:00"
+  "last_reconcile": "2026-11-26T21:31:00+00:00"
 }
