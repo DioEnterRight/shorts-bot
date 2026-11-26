@@ -363,6 +363,17 @@
       "video_id": "20261126-065137-en-why-gas-prices-end-in-nine-t",
       "status": "produced",
       "created": "2026-11-26T07:02+05:30"
+    },
+    {
+      "canonical_en": "Monopoly was invented to teach people that landlords are unfair, and the original inventor got almost nothing (Lizzie Magie, 1904)",
+      "question": "Monopoly असल में किस चीज़ के खिलाफ़ सिखाने के लिए बनी थी?",
+      "hook": "Monopoly एक ऐसा खेल था जो अमीर बनने के खिलाफ़ सिखाता था।",
+      "angle": "Lizzie Magie's 'Landlord's Game' (patented 1904) had two rule sets, one where everyone shares the wealth and one where one landlord wins. Parker Brothers later bought her patent for $500 and sold the game under another name. The video follows the board game as a physical object on a 1930s kitchen table.",
+      "language": "hi",
+      "theme": "explainer",
+      "video_id": "20261126-083101-hi-lizzie-magie-and-the-landlor",
+      "status": "produced",
+      "created": "2026-11-26T09:39+05:30"
     }
   ],
   "backlog": [
@@ -665,6 +676,216 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-26T03:25+05:30"
+    },
+    {
+      "canonical_en": "Why is an ATM PIN only 4 digits? (Because the inventor's wife could not remember 6)",
+      "title": "ATM PIN सिर्फ़ 4 digits का क्यों?",
+      "question": "ATM का PIN 4 digits का ही क्यों होता है, 6 या 8 का क्यों नहीं?",
+      "hook": "ATM का PIN पहले 6 digits का था, फिर एक औरत ने उसे 4 का करवा दिया।",
+      "angle": "The 1967 story of John Shepherd-Barron, who wanted 6 digits until his wife said she could only remember 4. The video then explains why 4 digits was safe enough with a 3-try limit. The inventor himself told this story in interviews.",
+      "why_care": "Everyone uses a PIN daily and has never wondered why it is 4 digits.",
+      "payoff": "जिस PIN को हम सबसे सुरक्षित समझते हैं, वो एक पत्नी की याददाश्त पर तय हुआ था।",
+      "visual_moments": [
+        "a 1930s-style clerk at a bank wall machine with a six-digit lock, and a wife shaking her head",
+        "10,000 combinations shown as a giant wall of keys, with only 3 tries allowed before the machine locks",
+        "a thief gives up after the third wrong try as the machine swallows the card"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "Why Money Works Like This",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (widely reported BBC interviews with Shepherd-Barron)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 7,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "How a 1947 ad slogan made the diamond engagement ring a 'tradition' (De Beers, 'A Diamond Is Forever')",
+      "title": "हीरे की अंगूठी 'परंपरा' कैसे बनी?",
+      "question": "शादी की अंगूठी में हीरा ही क्यों, यह परंपरा आई कहाँ से?",
+      "hook": "हीरे की अंगूठी कोई पुरानी परंपरा नहीं थी, वो एक विज्ञापन था।",
+      "angle": "In the Depression, diamond sales were weak. De Beers' agency N.W. Ayer ran a campaign and in 1947 wrote the line 'A diamond is forever.' The video shows how a slogan, films and a 'two months of salary' idea turned a product into a custom. The 'two months' rule is a marketing idea with no hard rule behind it, and the video says so.",
+      "why_care": "It is relevant to Indian wedding season and everyone feels the pressure of the ring.",
+      "payoff": "हीरा हमेशा रहता है, ये सच है। ये बात भी कि उसे हमेशा के लिए बेचा गया था।",
+      "visual_moments": [
+        "a jeweler's empty shop window in 1930s downtown, then a huge billboard with the slogan",
+        "a movie screen where every actress wears a diamond ring and the audience gasps",
+        "a man at the counter counting two months of salary into a tiny ring box"
+      ],
+      "fact_status": "documented",
+      "category": "business",
+      "format": "explainer",
+      "series": "Hidden Origins",
+      "hook_type": "myth_busting",
+      "research_basis": "evergreen (De Beers and N.W. Ayer campaign, 1947 slogan, widely documented)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 8
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why does a '0 rupee' offer beat a 1 rupee offer by far? (Amazon's free shipping in France, the zero-price effect)",
+      "title": "'Free' और 1 रुपये में इतना फ़र्क़ क्यों?",
+      "question": "1 रुपये की चीज़ और फ्री चीज़ में दिमाग को इतना बड़ा फ़र्क़ क्यों लगता है?",
+      "hook": "फ्री शिपिंग और एक रुपये की शिपिंग में बस एक रुपये का फ़र्क़ था।",
+      "angle": "The behavioural economics story that Amazon offered free shipping in most countries but charged a tiny sum (about 1 franc) in France, and orders there did not rise until it was made fully free. It is told in Ariely's book Predictably Irrational and the usual caveat is that exact numbers vary by account, so the video keeps it simple. Shown with two shop counters and one customer.",
+      "why_care": "It explains why we add things to the cart to reach 'free delivery' on our own phones.",
+      "payoff": "हम बचत नहीं खरीदते। हम 'zero' शब्द खरीदते हैं।",
+      "visual_moments": [
+        "two counters side by side: one with a '1' sign, one with a '0' sign, and a crowd rushing to the zero one",
+        "a shopper adds ten useless items to a basket to reach the free-shipping line",
+        "a giant zero rolls like a magnet pulling all the coins from the one-coin counter"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Mind Traps",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (Ariely's account and the zero-price effect paper by Shampanier, Mazar and Ariely, 2007)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why did instant cake mix sell badly until people had to add their own egg? (legend, the IKEA effect)",
+      "title": "Cake mix बिका जब उसमें एक काम जुड़ा",
+      "question": "क्या सच में 'बस पानी मिलाओ' वाला cake mix इसलिए नहीं बिका कि वो बहुत आसान था?",
+      "hook": "Cake mix तब बिकना शुरू हुआ जब उसे थोड़ा मुश्किल बनाया गया।",
+      "angle": "Legend says the first 'just add water' cake mixes sold poorly because buyers felt they were cheating, and a mix that needed a fresh egg sold better. Historians say this story is overstated and is partly a marketing legend, so the video frames it as 'legend says'. It then explains the real, studied IKEA effect, where we value what we helped build.",
+      "why_care": "It explains why you love the shelf you assembled and why 'a little effort' sells.",
+      "payoff": "कभी-कभी चीज़ को आसान नहीं, थोड़ा आपका बनाना ही बेचता है।",
+      "visual_moments": [
+        "a 1950s kitchen: a housewife looks guilty holding a box that says 'just add water'",
+        "a hand cracks a single egg into the bowl and the cake rises like a balloon",
+        "a man proudly shows a crooked shelf he built to guests"
+      ],
+      "fact_status": "legend",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Mind Traps",
+      "hook_type": "myth_busting",
+      "research_basis": "evergreen (the egg story is debated by historians; the IKEA effect is documented in Norton, Mochon and Ariely, 2011)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 7,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why isn't your bank balance actually sitting in a vault? (fractional reserve banking, simply)",
+      "title": "आपका पैसा Bank की तिजोरी में नहीं है",
+      "question": "आपने जो पैसा जमा किया, वो बैंक में है कहाँ?",
+      "hook": "आपने बैंक में सौ रुपये रखे, और बैंक ने उनमें से नब्बे किसी और को दे दिए।",
+      "angle": "A tiny town story where one saver's 100 coins get lent out and come back as someone else's deposit, so each coin is 'counted' many times. It then shows why a rush of customers on one day breaks the trick, and why the reserve rule exists. Told with coins in a 1930s bank, with no financial advice.",
+      "why_care": "It explains why a bank run is scary and why your deposit is safe in normal times.",
+      "payoff": "आपका पैसा तिजोरी में नहीं सोता, वो शहर में काम पर गया हुआ है।",
+      "visual_moments": [
+        "a coin passes from the saver to the baker to the carpenter and back into the bank, so there are many 'balances' made of one coin",
+        "a crowd lines up at the teller window while the vault shows only a few coins",
+        "the vault door opens to show a nearly empty room and a small sign: 'reserve'"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "Why Money Works Like This",
+      "hook_type": "paradox",
+      "research_basis": "evergreen",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why did Britain and France keep paying for the Concorde long after they knew it would lose money? (sunk cost fallacy)",
+      "title": "जानते हुए भी उन्होंने पैसा क्यों डुबोया?",
+      "question": "जब पता था कि Concorde घाटे में है, तो भी सरकारें पैसा क्यों डालती रहीं?",
+      "hook": "उन्हें पता था कि प्लेन घाटे में है, फिर भी उन्होंने और पैसा लगाया।",
+      "angle": "The Concorde project (1962-1976), and why it is sometimes called the 'Concorde fallacy', explained through 'Imagine you are halfway through a bad movie or a bad meal.' Honest note: economists argue about how much of it was sunk cost versus politics and treaty obligations.",
+      "why_care": "Viewers see themselves in it: a bad course, a bad relationship, a bad stock they will not sell.",
+      "payoff": "सबसे महँगा शब्द 'अब तक तो इतना लगा दिया' है।",
+      "visual_moments": [
+        "a man at a diner keeps eating cold, awful food because he already paid",
+        "stacks of money fed into a plane-shaped furnace as officials clap",
+        "a split screen of 'stop now' versus 'continue' with a growing number on the continue side"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Mind Traps",
+      "hook_type": "why",
+      "research_basis": "evergreen (the term 'Concorde fallacy' is well documented in economics and psychology)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 6,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why a shop shows a very expensive item next to a normal one (price anchoring, the Williams-Sonoma bread maker story)",
+      "title": "दुकानदार महँगी चीज़ बगल में क्यों रखता है?",
+      "question": "दुकान में सबसे महँगी चीज़ अक्सर सामान्य चीज़ के पास क्यों रखी होती है?",
+      "hook": "दुकानदार ने एक चीज़ बेचने के लिए एक और महँगी चीज़ रख दी, जिसे कोई नहीं खरीदता।",
+      "angle": "The much-told story is that a kitchen store added a more expensive bread maker, sales of the cheaper one then rose, and the pricey one was the 'anchor'. The story is widely repeated in marketing books but its numbers are hard to verify, so the video presents the anchor idea as documented psychology and the bread maker as 'the story goes'. It ends with a simple test: look at the middle option.",
+      "why_care": "Viewers can spot this trick in any phone shop or restaurant menu tomorrow.",
+      "payoff": "महँगी चीज़ खरीदने के लिए नहीं रखी थी। वो आपको सस्ती वाली को सस्ता महसूस कराने के लिए थी।",
+      "visual_moments": [
+        "a 1930s shop shelf with a huge price tag next to a normal one and a customer squinting",
+        "a split screen: with and without the expensive item, and the cheaper item's sales number rising",
+        "a shopkeeper winks as a customer walks off happily with the middle option"
+      ],
+      "fact_status": "disputed",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "Shop Tricks",
+      "hook_type": "why",
+      "research_basis": "evergreen (anchoring is documented by Tversky and Kahneman; the bread maker story is repeated in books such as Priceless, and the exact numbers are unverified)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 5,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "hi",
+      "theme": "explainer",
+      "added": "2026-11-26T09:39+05:30"
     }
   ]
 }
