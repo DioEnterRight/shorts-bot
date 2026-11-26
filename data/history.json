@@ -805,13 +805,15 @@
       "duration": 68.74,
       "storyboard": "kit",
       "tag": "vid-20261126-083101-hi-lizzie-magie-and-the-landlor",
-      "status": "queued",
+      "status": "published",
       "created": "2026-11-26T09:39+05:30",
       "slot": "2026-11-26 13:30",
       "ig_media_id": "17986934607066798",
       "ig_link": "https://www.instagram.com/reel/DgMoOIFKpgv/",
       "ig_state": "posted",
-      "yt_attempts": 1
+      "yt_attempts": 2,
+      "yt_state": "manual_notified",
+      "published_at": "2026-11-26T14:39+05:30"
     },
     {
       "id": "20261126-094036-en-gift-card-breakage",
