@@ -943,6 +943,22 @@
       "tag": "vid-20261126-204012-en-han-van-meegeren-the-forger",
       "status": "queued",
       "created": "2026-11-26T21:23+05:30"
+    },
+    {
+      "id": "20261126-214248-en-the-cash-register-was-built",
+      "title": "The Bar Owner Who Built a Thief Detector",
+      "topic": "The cash register was built to catch thieves",
+      "canonical_en": "Why did the inventor of the cash register build it to catch his own staff stealing (James Ritty, 1879)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "The cash register was built to watch the staff, not to serve customers.",
+      "duration": 55.63,
+      "storyboard": "claude",
+      "tag": "vid-20261126-214248-en-the-cash-register-was-built",
+      "status": "queued",
+      "created": "2026-11-26T22:07+05:30"
     }
   ],
   "version": 2,

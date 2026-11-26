@@ -440,6 +440,17 @@
       "video_id": "20261126-204012-en-han-van-meegeren-the-forger",
       "status": "produced",
       "created": "2026-11-26T21:23+05:30"
+    },
+    {
+      "canonical_en": "Why did the inventor of the cash register build it to catch his own staff stealing (James Ritty, 1879)?",
+      "question": "Why was the cash register invented to catch employees, not to help customers?",
+      "hook": "The cash register was invented because a bartender's staff were stealing.",
+      "angle": "Frames the register as a trap, with the bell as the real invention: it announced every sale to the owner.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261126-214248-en-the-cash-register-was-built",
+      "status": "produced",
+      "created": "2026-11-26T22:07+05:30"
     }
   ],
   "backlog": [
@@ -832,36 +843,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did the inventor of the cash register build it to catch his own staff stealing (James Ritty, 1879)?",
-      "title": "The Bar Owner Who Built a Thief Detector",
-      "question": "Why was the cash register invented to catch employees, not to help customers?",
-      "hook": "The cash register was invented because a bartender's staff were stealing.",
-      "angle": "Frames the register as a trap, with the bell as the real invention: it announced every sale to the owner.",
-      "why_care": "It makes a boring object a tiny heist story, and the 'bell' payoff is a clear 'oh, THAT's why'.",
-      "payoff": "The bell was never for the customers. It was for the boss.",
-      "visual_moments": [
-        "A 1930s-style till with a hand in the drawer and no bell",
-        "A drawer slamming open with a loud ring, and the whole room looking up",
-        "Staff caught mid-reach, frozen"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "Inventions Born From Crime",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. Ritty's saloon in Dayton, 1879, and the bell announcing each sale are well documented. The 'ship propeller counter' inspiration is told as a legend only.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Why did a small Austrian town in 1932 make its money lose value every month, and why did everyone spend it fast (Wörgl)?",
