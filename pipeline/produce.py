@@ -10,7 +10,7 @@ import shutil
 import sys
 import time
 
-from . import allocation, analytics, brain, ideas, languages, qc, schedule, studio, toon2d, voice
+from . import allocation, analytics, brain, branding, ideas, languages, qc, schedule, studio, toon2d, voice
 from .common import DATA, OUT, ROOT, load_config, load_history, log, now_ist, run, save_history, slugify
 
 
@@ -48,6 +48,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
     lp = languages.profile(cfg, language)
     log(f"Slot: language={language} theme={theme}")
     script, idea = make_script(cfg, history, stats, lp, theme, test)
+    script = branding.add_outro(cfg, script)   # last ~3 s: the main character says "Follow Cons and Coins, and @outrichguy"
     lp = languages.profile(cfg, script["language"])
     vid_id = f"{stamp}-{script['language']}-{slugify(script['topic'], 28)}"
     work = OUT / vid_id
@@ -69,6 +70,7 @@ def produce_one(cfg, history, stats, test, language, theme=None):
         log(f"studio failed ({str(e)[:300]}); making this Short with the emergency 2D engine", "WARN")
         final, storyboard = toon2d.render(cfg, script, studio.caption_timeline(script, timeline), voice_path, vlen + 0.7, work, lp["code"],
                                           brain.call_claude, brain.extract_json, use_claude=True)
+    final = branding.apply(cfg, final, studio.caption_timeline(script, timeline), work / "branded.mp4")
     duration = qc.check(final, fps=cfg["video"]["fps"])
     shutil.move(final, work / "final.mp4")
     final = work / "final.mp4"

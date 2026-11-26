@@ -24,6 +24,18 @@ video:                    # vertical 1080x1920, 30 fps
   fps: 30
 
 # ------------------------------------------------------------
+#  BRAND — "@outrichguy" in the top-right corner of every frame; the last ~3 s: the main character says the follow
+#  line to camera while a FOLLOW card shows the channel name and the handle (pipeline/branding.py)
+# ------------------------------------------------------------
+brand:
+  corner_handle: "@outrichguy"
+  channel_name: "Cons & Coins"
+  outro_seconds: 3
+  outro:
+    en: {caption: "Follow Cons & Coins and @outrichguy", spoken: "Follow Cons and Coins, and at out rich guy!"}
+    hi: {caption: "Follow karo Cons & Coins aur @outrichguy", spoken: "Cons and Coins aur at out rich guy ko follow karo!"}
+
+# ------------------------------------------------------------
 #  SCHEDULE  — India time (24h), one language per video.
 #  The Make run (every hour) keeps the next uploads ready; the Post run (every 30 min)
 #  posts each slot's video at its time. Change any number here any time.

@@ -18,7 +18,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from . import freellm, sound
+from . import branding, freellm, sound
 from .common import KIT, log, run
 
 CODE = KIT / "code"
@@ -368,6 +368,7 @@ def build(cfg, script, beats, vid, vdir, budget, call_claude, plan, label, work,
     def attempt(p, who):
         nonlocal n
         n += 1
+        p = branding.force_outro_beat(p, script)   # the follow outro is always the same fixed beat
         res = solve(cfg, vid, vdir, p, label)
         (rd / f"round_{n:02d}.json").write_text(json.dumps(
             {"director": who, "ok": res["ok"], "problems": res["problems"], "gate_failures": [f["text"] for f in res["fails"]],
