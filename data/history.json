@@ -759,8 +759,15 @@
       "duration": 50.59,
       "storyboard": "kit",
       "tag": "vid-20261126-052654-en-the-end-of-the-us-penny",
-      "status": "queued",
-      "created": "2026-11-26T06:02+05:30"
+      "status": "published",
+      "created": "2026-11-26T06:02+05:30",
+      "slot": "2026-11-26 06:30",
+      "ig_media_id": "18361115203174295",
+      "ig_link": "https://www.instagram.com/reel/DgL-ml9uAdh/",
+      "ig_state": "posted",
+      "yt_video_id": "jZ0ulGkWaok",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T07:28+05:30"
     },
     {
       "id": "20261126-065137-en-why-gas-prices-end-in-nine-t",
