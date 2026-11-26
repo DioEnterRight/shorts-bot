@@ -473,39 +473,20 @@
       "video_id": "20261127-003518-en-the-ikea-effect",
       "status": "produced",
       "created": "2026-11-27T01:27+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Robert McCulloch bought London Bridge in 1968 and shipped it to Arizona; legend says he thought it was Tower Bridge",
-      "title": "The Man Who Bought London Bridge",
       "question": "Why did an American buy a bridge from London, ship it to a desert, and did he really think it was a different bridge?",
       "hook": "A man bought a bridge in London, and moved it to the desert.",
       "angle": "The real story is a land developer's marketing: the bridge sold lots in a town with no water. The 'wrong bridge' claim is told as a legend.",
-      "why_care": "It's a funny example of marketing beating logic, with a myth-versus-fact twist.",
-      "payoff": "People laughed at him, and the bridge that stood over a desert now stands over a canal people pay to see.",
-      "visual_moments": [
-        "Numbered stone blocks lifted onto a ship",
-        "Truck unloads the blocks in front of a dry desert",
-        "Crowds of buyers line up for plots next to the finished bridge"
-      ],
-      "fact_status": "disputed",
-      "category": "weird_history",
-      "format": "story",
-      "series": "Weird Money Deals",
-      "hook_type": "myth_busting",
-      "research_basis": "Evergreen; the purchase is documented, the 'mistook it for Tower Bridge' story is disputed and is framed as legend",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 9,
-        "clarity": 8,
-        "twist": 8
-      },
       "language": "en",
       "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
+      "video_id": "20261127-014156-en-the-man-who-bought-london-br",
+      "status": "produced",
+      "created": "2026-11-27T02:25+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Gary Dahl sold ordinary rocks as 'Pet Rocks' in 1975 and became a millionaire in months",
       "title": "The Man Who Sold Rocks for Christmas",

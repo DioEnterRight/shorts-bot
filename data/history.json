@@ -1016,6 +1016,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T01:41+05:30"
+    },
+    {
+      "id": "20261127-014156-en-the-man-who-bought-london-br",
+      "title": "The Man Who Bought London Bridge",
+      "topic": "The Man Who Bought London Bridge",
+      "canonical_en": "Robert McCulloch bought London Bridge in 1968 and shipped it to Arizona; legend says he thought it was Tower Bridge",
+      "language": "en",
+      "theme": "story",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "A man bought a bridge in London, and moved it to the desert.",
+      "duration": 62.87,
+      "storyboard": "kit",
+      "tag": "vid-20261127-014156-en-the-man-who-bought-london-br",
+      "status": "queued",
+      "created": "2026-11-27T02:25+05:30"
     }
   ],
   "version": 2,
