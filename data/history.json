@@ -821,8 +821,15 @@
       "duration": 58.2,
       "storyboard": "auto",
       "tag": "vid-20261126-094036-en-gift-card-breakage",
-      "status": "queued",
-      "created": "2026-11-26T09:53+05:30"
+      "status": "published",
+      "created": "2026-11-26T09:53+05:30",
+      "slot": "2026-11-26 10:30",
+      "ig_media_id": "18084802040347944",
+      "ig_link": "https://www.instagram.com/reel/DgMVKVNT3p9/",
+      "ig_state": "posted",
+      "yt_video_id": "rD37aFswx7U",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T10:46+05:30"
     }
   ],
   "version": 2,
