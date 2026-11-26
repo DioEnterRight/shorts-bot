@@ -1039,6 +1039,22 @@
       "yt_video_id": "Yz-C4_g_rtc",
       "yt_state": "posted",
       "published_at": "2026-11-27T03:01+05:30"
+    },
+    {
+      "id": "20261127-023327-en-the-cake-mix-egg-legend",
+      "title": "The Cake Mix That Needed One Egg",
+      "topic": "The cake mix egg legend",
+      "canonical_en": "Did instant cake mix really sell only after bakers had to add an egg, or is that a legend?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Legend says nobody bought cake mix until it got harder to make.",
+      "duration": 62.33,
+      "storyboard": "kit",
+      "tag": "vid-20261127-023327-en-the-cake-mix-egg-legend",
+      "status": "queued",
+      "created": "2026-11-27T03:22+05:30"
     }
   ],
   "version": 2,

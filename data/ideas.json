@@ -484,6 +484,17 @@
       "video_id": "20261127-014156-en-the-man-who-bought-london-br",
       "status": "produced",
       "created": "2026-11-27T02:25+05:30"
+    },
+    {
+      "canonical_en": "Did instant cake mix really sell only after bakers had to add an egg, or is that a legend?",
+      "question": "Did cake mix only sell once you had to add your own egg?",
+      "hook": "Legend says nobody bought instant cake mix until it got harder to make.",
+      "angle": "Framed honestly as 'legend says', the video tests the story and ends on the real lesson: effort makes people feel they baked it.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-023327-en-the-cake-mix-egg-legend",
+      "status": "produced",
+      "created": "2026-11-27T03:22+05:30"
     }
   ],
   "backlog": [
@@ -846,36 +857,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Did instant cake mix really sell only after bakers had to add an egg, or is that a legend?",
-      "title": "The Cake Mix That Needed One Egg",
-      "question": "Did cake mix only sell once you had to add your own egg?",
-      "hook": "Legend says nobody bought instant cake mix until it got harder to make.",
-      "angle": "Framed honestly as 'legend says', the video tests the story and ends on the real lesson: effort makes people feel they baked it.",
-      "why_care": "It's a myth-check people will have heard, with a psychology payoff.",
-      "payoff": "The extra egg was the only part that felt like cooking.",
-      "visual_moments": [
-        "A box of mix with 'just add water' and a puzzled housewife",
-        "A hand cracking an egg into the bowl, and a proud smile",
-        "Shelves with the two box versions, one gathering dust"
-      ],
-      "fact_status": "legend",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Myth or Money",
-      "hook_type": "myth_busting",
-      "research_basis": "Evergreen. The egg-in-the-mix story is widely told, but its historical basis is thin and contested, so it must be framed as 'legend says' with the verified IKEA-effect research as the real lesson.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 8,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Why do banks lend out money that isn't in the vault, and where did the idea come from (goldsmith receipts)?",
