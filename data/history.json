@@ -985,8 +985,15 @@
       "duration": 65.7,
       "storyboard": "kit",
       "tag": "vid-20261126-224737-en-the-town-that-taxed-its-own",
-      "status": "queued",
-      "created": "2026-11-27T00:00+05:30"
+      "status": "published",
+      "created": "2026-11-27T00:00+05:30",
+      "slot": "2026-11-27 00:30",
+      "ig_media_id": "18122930317964603",
+      "ig_link": "https://www.instagram.com/reel/DgNz01IKhDV/",
+      "ig_state": "posted",
+      "yt_video_id": "f6U6yHApXf4",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T00:33+05:30"
     }
   ],
   "version": 2,

@@ -151,10 +151,27 @@
       "video_id": "5lDXaejx5k8",
       "local_id": "20261119-045408-en-how-a-gold-duplication-glitc",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-26T19:03:11+00:00",
+      "video_id": "f6U6yHApXf4",
+      "local_id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "source": "this-repo"
     }
   ],
-  "insert_calls": [],
-  "attempts": [],
+  "insert_calls": [
+    {
+      "ts": "2026-11-26T19:03:11+00:00",
+      "local_id": "20261126-224737-en-the-town-that-taxed-its-own"
+    }
+  ],
+  "attempts": [
+    {
+      "ts": "2026-11-26T19:03:11+00:00",
+      "local_id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "result": "ok"
+    }
+  ],
   "rejected": [
     {
       "ts": "2026-11-26T14:55:02+00:00",
@@ -181,5 +198,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-26T17:59:14+00:00"
+  "last_reconcile": "2026-11-26T19:03:11+00:00"
 }
