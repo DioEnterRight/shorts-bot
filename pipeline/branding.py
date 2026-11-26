@@ -69,7 +69,7 @@ def overlays(cfg, size, workdir):
     d = ImageDraw.Draw(corner)
     f = _font(40)
     tw = d.textlength(b["corner_handle"], font=f)
-    x1, y0 = W - 36, 70
+    x1, y0 = W - 100, 70   # 100 px in from the edge: phones crop the sides of 9:16 a little
     d.rounded_rectangle((x1 - tw - 52, y0, x1, y0 + 66), radius=33, fill=(0, 0, 0, 130))
     d.text((x1 - tw - 26, y0 + 6), b["corner_handle"], font=f, fill=(255, 255, 255, 240))
     card = Image.new("RGBA", (W, H), (0, 0, 0, 0))
