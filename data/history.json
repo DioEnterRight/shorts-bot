@@ -1053,8 +1053,15 @@
       "duration": 62.33,
       "storyboard": "kit",
       "tag": "vid-20261127-023327-en-the-cake-mix-egg-legend",
-      "status": "queued",
-      "created": "2026-11-27T03:22+05:30"
+      "status": "published",
+      "created": "2026-11-27T03:22+05:30",
+      "slot": "2026-11-27 03:30",
+      "ig_media_id": "18140237212655907",
+      "ig_link": "https://www.instagram.com/reel/DgOL3lPzfk8/",
+      "ig_state": "posted",
+      "yt_video_id": "jlavjGsRAds",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T04:03+05:30"
     }
   ],
   "version": 2,

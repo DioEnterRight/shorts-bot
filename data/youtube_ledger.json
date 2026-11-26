@@ -163,6 +163,12 @@
       "video_id": "Yz-C4_g_rtc",
       "local_id": "20261127-014156-en-the-man-who-bought-london-br",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-26T22:33:14+00:00",
+      "video_id": "jlavjGsRAds",
+      "local_id": "20261127-023327-en-the-cake-mix-egg-legend",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -173,6 +179,10 @@
     {
       "ts": "2026-11-26T21:31:00+00:00",
       "local_id": "20261127-014156-en-the-man-who-bought-london-br"
+    },
+    {
+      "ts": "2026-11-26T22:33:14+00:00",
+      "local_id": "20261127-023327-en-the-cake-mix-egg-legend"
     }
   ],
   "attempts": [
@@ -184,6 +194,11 @@
     {
       "ts": "2026-11-26T21:31:00+00:00",
       "local_id": "20261127-014156-en-the-man-who-bought-london-br",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-26T22:33:14+00:00",
+      "local_id": "20261127-023327-en-the-cake-mix-egg-legend",
       "result": "ok"
     }
   ],
@@ -220,5 +235,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-26T21:31:00+00:00"
+  "last_reconcile": "2026-11-26T22:33:14+00:00"
 }
