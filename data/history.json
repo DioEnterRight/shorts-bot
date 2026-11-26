@@ -1008,8 +1008,14 @@
       "duration": 50.71,
       "storyboard": "kit",
       "tag": "vid-20261127-003518-en-the-ikea-effect",
-      "status": "queued",
-      "created": "2026-11-27T01:27+05:30"
+      "status": "published",
+      "created": "2026-11-27T01:27+05:30",
+      "slot": "2026-11-27 01:30",
+      "ig_media_id": "18189909085413800",
+      "ig_link": "https://www.instagram.com/reel/DgN7l9Ih4me/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T01:41+05:30"
     }
   ],
   "version": 2,
