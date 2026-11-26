@@ -927,6 +927,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-26T20:25+05:30"
+    },
+    {
+      "id": "20261126-204012-en-han-van-meegeren-the-forger",
+      "title": "The Man Who Confessed to Forgery to Survive",
+      "topic": "Han van Meegeren, the forger who confessed to survive",
+      "canonical_en": "How did a forger prove he wasn't a Nazi collaborator by proving he'd fooled the Nazis (Han van Meegeren)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "true_crime",
+      "hook_type": "paradox",
+      "hook_line": "A man accused of treason begged the court to call him a fraud.",
+      "duration": 64.14,
+      "storyboard": "kit",
+      "tag": "vid-20261126-204012-en-han-van-meegeren-the-forger",
+      "status": "queued",
+      "created": "2026-11-26T21:23+05:30"
     }
   ],
   "version": 2,

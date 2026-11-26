@@ -429,6 +429,17 @@
       "video_id": "20261126-173933-en-yap-rai-stones-and-money-as",
       "status": "produced",
       "created": "2026-11-26T18:17+05:30"
+    },
+    {
+      "canonical_en": "How did a forger prove he wasn't a Nazi collaborator by proving he'd fooled the Nazis (Han van Meegeren)?",
+      "question": "Why did a man beg a court to believe he was a forger?",
+      "hook": "A man was on trial for treason and begged the judge to call him a fraud.",
+      "angle": "A reverse-con: the confession is the escape. Told as a courtroom scene plus a painting being made live.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261126-204012-en-han-van-meegeren-the-forger",
+      "status": "produced",
+      "created": "2026-11-26T21:23+05:30"
     }
   ],
   "backlog": [
@@ -821,36 +832,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "How did a forger prove he wasn't a Nazi collaborator by proving he'd fooled the Nazis (Han van Meegeren)?",
-      "title": "The Man Who Confessed to Forgery to Survive",
-      "question": "Why did a man beg a court to believe he was a forger?",
-      "hook": "A man was on trial for treason and begged the judge to call him a fraud.",
-      "angle": "A reverse-con: the confession is the escape. Told as a courtroom scene plus a painting being made live.",
-      "why_care": "It's a clean 'the lie was the defence' twist, nothing graphic.",
-      "payoff": "He saved himself by being the one con nobody wanted to claim.",
-      "visual_moments": [
-        "A 'Vermeer' being handed to a man in uniform in exchange for stacks of money",
-        "A courtroom where the forger paints a fake in front of the judge",
-        "A crowd gasping at a newspaper headline"
-      ],
-      "fact_status": "documented",
-      "category": "true_crime",
-      "format": "story",
-      "series": "Greatest Cons",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. Van Meegeren sold 'The Woman Taken in Adultery' to Hermann Göring and in 1945 confessed to forgery to escape a collaboration charge; he was convicted of forgery in 1947 and died the same year. Not a living person.",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 8,
-        "clarity": 7,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Why did the inventor of the cash register build it to catch his own staff stealing (James Ritty, 1879)?",
