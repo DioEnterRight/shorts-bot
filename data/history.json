@@ -963,8 +963,14 @@
       "duration": 55.63,
       "storyboard": "claude",
       "tag": "vid-20261126-214248-en-the-cash-register-was-built",
-      "status": "queued",
-      "created": "2026-11-26T22:07+05:30"
+      "status": "published",
+      "created": "2026-11-26T22:07+05:30",
+      "slot": "2026-11-26 22:30",
+      "ig_media_id": "18054203627607122",
+      "ig_link": "https://www.instagram.com/reel/DgNshIBB622/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-26T23:29+05:30"
     }
   ],
   "version": 2,

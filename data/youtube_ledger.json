@@ -169,10 +169,17 @@
       "reasons": [
         "channel cap: 11 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-26T17:59:14+00:00",
+      "local_id": "20261126-214248-en-the-cash-register-was-built",
+      "reasons": [
+        "channel cap: 11 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-26T16:45:54+00:00"
+  "last_reconcile": "2026-11-26T17:59:14+00:00"
 }
