@@ -807,6 +807,22 @@
       "tag": "vid-20261126-083101-hi-lizzie-magie-and-the-landlor",
       "status": "queued",
       "created": "2026-11-26T09:39+05:30"
+    },
+    {
+      "id": "20261126-094036-en-gift-card-breakage",
+      "title": "Why Stores Love Gift Cards You Forget",
+      "topic": "Gift card breakage",
+      "canonical_en": "Why do companies love it when you never use a gift card?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "A gift card is a loan you give a store for free.",
+      "duration": 58.2,
+      "storyboard": "auto",
+      "tag": "vid-20261126-094036-en-gift-card-breakage",
+      "status": "queued",
+      "created": "2026-11-26T09:53+05:30"
     }
   ],
   "version": 2,

@@ -374,39 +374,20 @@
       "video_id": "20261126-083101-hi-lizzie-magie-and-the-landlor",
       "status": "produced",
       "created": "2026-11-26T09:39+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why do companies love it when you never use a gift card?",
-      "title": "Why Stores Love Gift Cards You Forget",
       "question": "Why do stores quietly win when you forget to spend a gift card?",
       "hook": "A gift card is a loan you give a store for free.",
       "angle": "This is a holiday-season explainer on 'breakage': unspent balances become pure profit. It's told as one person who stuffs a card in a drawer.",
-      "why_care": "It's gift season, and it shows how a present can turn into a free loan for the store.",
-      "payoff": "The best customer is the one who never comes back.",
-      "visual_moments": [
-        "A hand tucks a card into a messy drawer",
-        "A cashier takes cash and hands over a plastic card",
-        "A giant pile of unspent value piles up behind the store counter"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "How Companies Really Make Money",
-      "hook_type": "paradox",
-      "research_basis": "evergreen; seasonal gift-card timing (holiday shopping)",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-094036-en-gift-card-breakage",
+      "status": "produced",
+      "created": "2026-11-26T09:53+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why do .99 prices work, and is the 'forcing clerks to open the register' origin story true?",
       "title": "The Legend Behind the .99 Price",
