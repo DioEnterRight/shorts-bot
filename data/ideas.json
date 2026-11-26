@@ -495,39 +495,20 @@
       "video_id": "20261127-023327-en-the-cake-mix-egg-legend",
       "status": "produced",
       "created": "2026-11-27T03:22+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Gary Dahl sold ordinary rocks as 'Pet Rocks' in 1975 and became a millionaire in months",
-      "title": "The Man Who Sold Rocks for Christmas",
       "question": "How did a man sell ordinary beach rocks to millions of people, and why did it stop after one Christmas?",
       "hook": "A man sold plain rocks, and people lined up to buy them.",
       "angle": "Shows the rise, the crash and the lesson about novelty products through the rock's tiny box, its air holes and its training manual.",
-      "why_care": "It's a Christmas-season story that shows packaging and a joke can be worth more than the product.",
-      "payoff": "He stopped selling them because customers got bored, and he still kept the money.",
-      "visual_moments": [
-        "Customers laugh at a stall selling rocks in cardboard boxes with air holes",
-        "Store shelves empty out and the money stacks pile up",
-        "The rocks sit unsold in a bargain bin by January"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "Laughed At, Then Right",
-      "hook_type": "story",
-      "research_basis": "Evergreen; widely documented 1975 craze (should be re-checked for the price and quantity figures in the script)",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 9,
-        "clarity": 9,
-        "twist": 7
-      },
       "language": "en",
       "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
+      "video_id": "20261127-033132-en-the-pet-rock-craze-of-1975",
+      "status": "produced",
+      "created": "2026-11-27T04:32+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Lizzie Magie created the Landlord's Game in 1904 to show how rent hurts people, and Monopoly's later inventor took the credit",
       "title": "The Woman Who Invented Monopoly First",

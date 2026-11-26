@@ -1062,6 +1062,22 @@
       "yt_video_id": "jlavjGsRAds",
       "yt_state": "posted",
       "published_at": "2026-11-27T04:03+05:30"
+    },
+    {
+      "id": "20261127-033132-en-the-pet-rock-craze-of-1975",
+      "title": "The Man Who Sold Rocks for Christmas",
+      "topic": "The Pet Rock craze of 1975",
+      "canonical_en": "Gary Dahl sold ordinary rocks as 'Pet Rocks' in 1975 and became a millionaire in months",
+      "language": "en",
+      "theme": "story",
+      "category": "business",
+      "hook_type": "story",
+      "hook_line": "A man sold plain rocks, and people lined up to buy them.",
+      "duration": 64.79,
+      "storyboard": "kit",
+      "tag": "vid-20261127-033132-en-the-pet-rock-craze-of-1975",
+      "status": "queued",
+      "created": "2026-11-27T04:32+05:30"
     }
   ],
   "version": 2,
