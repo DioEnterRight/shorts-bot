@@ -844,8 +844,15 @@
       "duration": 55.47,
       "storyboard": "claude",
       "tag": "vid-20261126-104724-en-the-legend-behind-the-99-pri",
-      "status": "queued",
-      "created": "2026-11-26T11:22+05:30"
+      "status": "published",
+      "created": "2026-11-26T11:22+05:30",
+      "slot": "2026-11-26 11:30",
+      "ig_media_id": "18162238015514158",
+      "ig_link": "https://www.instagram.com/reel/DgMeAW5T2BQ/",
+      "ig_state": "posted",
+      "yt_video_id": "Bfna56zWCQM",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T12:03+05:30"
     }
   ],
   "version": 2,
