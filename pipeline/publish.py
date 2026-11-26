@@ -7,7 +7,9 @@ Per-platform state lives on each history entry and is saved after EVERY step, so
 or a re-run never posts the same video twice:
 
   ig_state: posted | manual_notified            (absent = still to do)
-  yt_state: posted | private | manual_notified  (absent = still to do)
+  yt_state: posted | private | manual_notified | skipped_limit  (absent = still to do)
+  skipped_limit = the YouTube safety controller (yt_guard.py) did not allow an upload for this video;
+                  it stays on Instagram only. Nothing is ever retried after uploadLimitExceeded.
 
 A video leaves the queue (status=published) once every enabled platform reached a final state.
 """
@@ -16,11 +18,11 @@ import json
 import os
 import sys
 
-from . import instagram, schedule, youtube
+from . import instagram, schedule, youtube, yt_guard
 from .common import OUT, load_config, load_history, log, now_ist, parse_time, run, save_history
 
 IG_DONE = {"posted", "manual_notified"}
-YT_DONE = {"posted", "private", "manual_notified"}
+YT_DONE = {"posted", "private", "manual_notified", "skipped_limit"}
 
 
 def cleanup_old_releases(history, keep_days=14):
@@ -75,17 +77,54 @@ def post_instagram(v, meta, video, cfg, history):
 
 def post_youtube(v, meta, video, cfg, history):
     mode = cfg["publish"].get("youtube_mode", "manual")
+    guard = None
     try:
         if mode == "manual":
             youtube.notify_manual(meta, v["tag"])
             v["yt_state"] = "manual_notified"
             return None
-        existing = youtube.find_existing(meta["title"])
-        if existing:
-            log(f"YouTube already has this video ({existing}); recording it instead of re-uploading")
-            v["yt_video_id"], v["yt_state"] = existing, "posted"
+        guard = yt_guard.Guard(cfg, repo=os.environ.get("GITHUB_REPOSITORY", "local"))
+        if guard.paused():
+            v["yt_state"] = "skipped_limit"
+            log(f"YouTube paused until {guard.paused()['until']} ({guard.paused()['reason']}); this video stays Instagram-only")
             return None
-        vid, privacy = youtube.upload(video, meta)
+        yt = youtube._client()
+        try:
+            channel_id, recent = youtube.channel_state(yt)
+            guard.reconcile(channel_id, recent, history)
+        except PermissionError as e:
+            open_issue_once("⛔ YouTube channel mismatch", str(e))
+            v["yt_state"] = "skipped_limit"
+            return f"YouTube refused: {e}"
+        target = youtube._norm(meta["title"])
+        hit = next((r for r in recent if youtube._norm(r["title"]) == target), None)
+        if hit:
+            log(f"YouTube already has this video ({hit['video_id']}); recording it instead of re-uploading")
+            v["yt_video_id"], v["yt_state"] = hit["video_id"], "posted"
+            return None
+        ok, reasons = guard.clearance(v)
+        if not ok:
+            guard.reject(v, reasons)
+            v["yt_state"] = "skipped_limit"
+            log("YouTube not cleared: " + "; ".join(reasons))
+            return None
+        guard.begin(v)
+        yt_guard.save(guard.led)          # pending marker on disk before the insert call
+        try:
+            vid, privacy = youtube.upload(video, meta)
+        except Exception as e:  # noqa: BLE001
+            kind = yt_guard.classify(e)
+            pause = guard.failure(v, kind, e)
+            if kind in ("upload_limit", "quota"):
+                v["yt_state"] = "skipped_limit"
+                if kind == "upload_limit":
+                    open_issue_once("⛔ YouTube daily upload limit reached: publishing paused",
+                                    f"YouTube answered `uploadLimitExceeded`. Uploads are paused until **{pause['until']}** "
+                                    "(at least 24 h). Nothing is retried or uploaded another way. If this repeats, lower "
+                                    "`publish.youtube_channel_daily_cap` in config.yaml.")
+                return f"YouTube {kind}: paused until {pause['until']}"
+            raise
+        guard.success(v, vid)
         v["yt_video_id"] = vid
         if privacy == "public":
             v["yt_state"] = "posted"
@@ -106,6 +145,9 @@ def post_youtube(v, meta, video, cfg, history):
             return f"YouTube failed {v['yt_attempts']}x, manual upload requested: {e}"
         return f"YouTube failed (attempt {v['yt_attempts']}/{max_attempts}, will retry next run): {e}"
     finally:
+        if guard is not None:
+            guard.prune()
+            yt_guard.save(guard.led)
         save_history(history)
 
 

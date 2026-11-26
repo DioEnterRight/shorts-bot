@@ -65,6 +65,10 @@ def world(tmp_state, monkeypatch, tmp_path):
     monkeypatch.setattr(publish, "run", fake_run)
     monkeypatch.setattr(instagram, "find_existing", lambda caption: None)
     monkeypatch.setattr(youtube, "find_existing", lambda title: None)
+    # the YouTube safety controller reconciles with the channel before uploading (pipeline/yt_guard.py)
+    calls["yt_recent"] = []
+    monkeypatch.setattr(youtube, "_client", lambda: object())
+    monkeypatch.setattr(youtube, "channel_state", lambda yt: ("UC" + "x" * 22, calls["yt_recent"]))
     monkeypatch.setattr(instagram, "notify_manual", lambda m, t: calls.__setitem__("notify_ig", calls["notify_ig"] + 1))
     monkeypatch.setattr(youtube, "notify_manual", lambda m, t: calls.__setitem__("notify_yt", calls["notify_yt"] + 1))
     cfg = common.load_config()
@@ -148,7 +152,7 @@ def test_private_youtube_upload_is_not_treated_as_posted(world, monkeypatch):
 
 def test_lost_state_does_not_double_post(world, monkeypatch):
     monkeypatch.setattr(instagram, "find_existing", lambda caption: "IG_OLD")
-    monkeypatch.setattr(youtube, "find_existing", lambda title: "YT_OLD")
+    world["yt_recent"].append({"video_id": "YT_OLD", "title": "T #shorts", "published_at": "2026-11-16T04:00:00Z"})
     monkeypatch.setattr(instagram, "publish", ig_ok(world))
     monkeypatch.setattr(youtube, "upload", yt_ok(world))
     publish.main()

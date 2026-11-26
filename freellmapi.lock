@@ -1,0 +1,5 @@
+# FreeLLMAPI container image used by every run (tools/start_freellmapi.sh reads the first non-comment line).
+# NOT YET PINNED: the build environment could not reach ghcr.io to resolve a digest.
+# Run the "Pin FreeLLMAPI" workflow once (Actions tab): it resolves a release tag to its sha256 digest,
+# starts that exact image, smoke-tests it and opens a pull request that replaces the line below.
+ghcr.io/tashfeenahmed/freellmapi:latest

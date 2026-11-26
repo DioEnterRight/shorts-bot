@@ -8,7 +8,12 @@ if [ -z "${FREELLMAPI_KEYS:-}" ]; then
   echo "::notice::FREELLMAPI_KEYS secret not set: FreeLLMAPI not started (free 3D builder off). See FREELLM_SETUP.md."
   exit 0
 fi
-IMAGE="${FREELLMAPI_IMAGE:-ghcr.io/tashfeenahmed/freellmapi:latest}"
+LOCK="$(dirname "$0")/../freellmapi.lock"
+IMAGE="$(grep -v '^[[:space:]]*#' "$LOCK" | grep -m1 -E '[^[:space:]]')"
+case "$IMAGE" in
+  *@sha256:*) echo "FreeLLMAPI image pinned: $IMAGE" ;;
+  *) echo "::warning::FreeLLMAPI image is NOT pinned by digest ($IMAGE). Run the 'Pin FreeLLMAPI' workflow." ;;
+esac
 PORT=3001
 EMAIL="bot@example.com"
 PASS="$(openssl rand -hex 16)"

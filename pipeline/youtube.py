@@ -46,6 +46,15 @@ def recent_uploads(yt, n=50):
     return yt.playlistItems().list(part="snippet", playlistId=uploads, maxResults=n).execute().get("items", [])
 
 
+def channel_state(yt, n=25):
+    """-> (channel id, [{video_id, title, published_at}]) of the authenticated channel's latest uploads (2 quota units)."""
+    ch = yt.channels().list(part="id,contentDetails", mine=True).execute()["items"][0]
+    pl = ch["contentDetails"]["relatedPlaylists"]["uploads"]
+    items = yt.playlistItems().list(part="snippet", playlistId=pl, maxResults=n).execute().get("items", [])
+    return ch["id"], [{"video_id": it["snippet"]["resourceId"]["videoId"], "title": it["snippet"]["title"],
+                       "published_at": it["snippet"]["publishedAt"]} for it in items]
+
+
 def find_existing(title):
     """Guard against double uploads when saved state was lost: is this title already on the channel?"""
     try:

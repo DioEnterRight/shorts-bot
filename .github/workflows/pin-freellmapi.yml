@@ -1,0 +1,44 @@
+name: Pin FreeLLMAPI
+
+# Resolve a FreeLLMAPI release tag to its sha256 digest, start that exact image and check its health, then open a
+# pull request that updates freellmapi.lock. Review and merge it; production only ever runs the locked digest.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to pin, e.g. v0.12.0 (see github.com/tashfeenahmed/freellmapi/releases)"
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: pin-freellmapi
+  cancel-in-progress: false
+
+jobs:
+  pin:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Resolve, pull and health-check the image
+        env:
+          TAG: ${{ inputs.tag }}
+        run: bash tools/pin_freellmapi.sh "$TAG"
+      - name: Open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          BR="pin/freellmapi-${TAG//[^a-zA-Z0-9.]/-}"
+          git config user.name "pin-bot"; git config user.email "pin-bot@users.noreply.github.com"
+          git checkout -b "$BR" && git add freellmapi.lock && git commit -m "Pin FreeLLMAPI $TAG by digest"
+          AUTH="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')"
+          git -c http.extraheader="$AUTH" push "https://github.com/${GITHUB_REPOSITORY}.git" "$BR"
+          gh pr create --head "$BR" --title "Pin FreeLLMAPI $TAG by digest" --body "$(tail -1 freellmapi.lock)" \
+            || echo "::notice::Could not open the PR automatically (Settings > Actions > allow PR creation). Branch $BR is pushed."
