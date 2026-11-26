@@ -736,8 +736,15 @@
       "duration": 51.76,
       "storyboard": "kit",
       "tag": "vid-20261126-043124-en-menus-without-dollar-signs",
-      "status": "queued",
-      "created": "2026-11-26T05:05+05:30"
+      "status": "published",
+      "created": "2026-11-26T05:05+05:30",
+      "slot": "2026-11-26 05:30",
+      "ig_media_id": "17901691266398460",
+      "ig_link": "https://www.instagram.com/reel/DgL0XLWBvE4/",
+      "ig_state": "posted",
+      "yt_video_id": "wjaE3_JtPss",
+      "yt_state": "posted",
+      "published_at": "2026-11-26T05:59+05:30"
     }
   ],
   "version": 2,
