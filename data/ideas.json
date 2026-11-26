@@ -385,39 +385,20 @@
       "video_id": "20261126-094036-en-gift-card-breakage",
       "status": "produced",
       "created": "2026-11-26T09:53+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Why do .99 prices work, and is the 'forcing clerks to open the register' origin story true?",
-      "title": "The Legend Behind the .99 Price",
       "question": "Did the .99 price start as a trick to make clerks open the cash register?",
       "hook": "Legend says the .99 price was invented to catch thieving clerks.",
       "angle": "The cash-register story is a widely repeated legend, and the video frames it as 'legend says'. Then it shows what's documented: the left-digit effect in modern pricing studies.",
-      "why_care": "It covers both the story you've heard and the real reason it works on your brain.",
-      "payoff": "The honest reason is less clever: your eyes just stop reading after the first digit.",
-      "visual_moments": [
-        "A clerk at a 1930s register shoves a till drawer shut",
-        "Two price tags with $3.00 and $2.99 side by side",
-        "A shopper's eye blinks at the first digit only"
-      ],
-      "fact_status": "legend",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Myth or Money",
-      "hook_type": "myth_busting",
-      "research_basis": "evergreen; origin story is a legend, left-digit effect documented in studies",
-      "scores": {
-        "curiosity": 7,
-        "originality": 5,
-        "visual": 8,
-        "clarity": 8,
-        "twist": 7
-      },
       "language": "en",
       "theme": "explainer",
-      "added": "2026-11-26T02:06+05:30"
-    },
+      "video_id": "20261126-104724-en-the-legend-behind-the-99-pri",
+      "status": "produced",
+      "created": "2026-11-26T11:22+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Why did the Concorde keep flying and being funded even when it was clearly losing money, and what is the sunk cost fallacy?",
       "title": "The Plane Too Expensive to Abandon",

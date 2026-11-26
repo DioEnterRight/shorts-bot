@@ -830,6 +830,22 @@
       "yt_video_id": "rD37aFswx7U",
       "yt_state": "posted",
       "published_at": "2026-11-26T10:46+05:30"
+    },
+    {
+      "id": "20261126-104724-en-the-legend-behind-the-99-pri",
+      "title": "The Legend Behind the .99 Price",
+      "topic": "The legend behind the .99 price",
+      "canonical_en": "Why do .99 prices work, and is the 'forcing clerks to open the register' origin story true?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "myth_busting",
+      "hook_line": "Legend says the ninety-nine cent price was invented to catch thieving clerks.",
+      "duration": 55.47,
+      "storyboard": "claude",
+      "tag": "vid-20261126-104724-en-the-legend-behind-the-99-pri",
+      "status": "queued",
+      "created": "2026-11-26T11:22+05:30"
     }
   ],
   "version": 2,
