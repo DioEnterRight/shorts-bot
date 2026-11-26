@@ -407,39 +407,20 @@
       "video_id": "20261126-125622-en-the-concorde-and-the-sunk-co",
       "status": "produced",
       "created": "2026-11-26T14:08+05:30"
-    }
-  ],
-  "backlog": [
+    },
     {
       "canonical_en": "Hetty Green lent New York City money during the Panic of 1907 after bankers laughed at her for dressing like a pauper",
-      "title": "The Richest Woman Dressed Like a Beggar",
       "question": "Why did bankers laugh at the shabbiest woman on Wall Street, until the city came begging her for money?",
       "hook": "The richest woman in America ate cold oatmeal because she wouldn't pay to heat it.",
       "angle": "Told from the view of a polished banker who mocks her black dress, then has to ask her for cash. The lesson: she held cash while everyone else held debt.",
-      "why_care": "It shows why holding cash before a crash gives you power, and it makes the underdog the winner.",
-      "payoff": "The city's bankers wore their finest suits to ask for a loan from the woman in the oldest dress.",
-      "visual_moments": [
-        "Banker in a top hat sneers at a woman in a faded black dress at a bank counter",
-        "Panicking crowd packs the street in front of the bank",
-        "City officials line up to meet her while she counts a giant stack of cash"
-      ],
-      "fact_status": "documented",
-      "category": "money_cons",
-      "format": "story",
-      "series": "Laughed At, Then Right",
-      "hook_type": "story",
-      "research_basis": "Fortune, Smithsonian and NPS pages on Hetty Green found in search (her 1907 loan to NYC and her thrift are documented; exact details of some anecdotes vary)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 8,
-        "twist": 9
-      },
       "language": "en",
       "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
+      "video_id": "20261126-144444-en-hetty-green-and-the-panic-of",
+      "status": "produced",
+      "created": "2026-11-26T15:24+05:30"
+    }
+  ],
+  "backlog": [
     {
       "canonical_en": "Robert McCulloch bought London Bridge in 1968 and shipped it to Arizona; legend says he thought it was Tower Bridge",
       "title": "The Man Who Bought London Bridge",

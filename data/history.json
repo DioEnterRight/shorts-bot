@@ -876,6 +876,22 @@
       "tag": "vid-20261126-125622-en-the-concorde-and-the-sunk-co",
       "status": "queued",
       "created": "2026-11-26T14:08+05:30"
+    },
+    {
+      "id": "20261126-144444-en-hetty-green-and-the-panic-of",
+      "title": "The Richest Woman Dressed Like a Beggar",
+      "topic": "Hetty Green and the Panic of 1907",
+      "canonical_en": "Hetty Green lent New York City money during the Panic of 1907 after bankers laughed at her for dressing like a pauper",
+      "language": "en",
+      "theme": "story",
+      "category": "money_cons",
+      "hook_type": "story",
+      "hook_line": "The richest woman in America dressed so badly, the bankers laughed at her.",
+      "duration": 55.69,
+      "storyboard": "kit",
+      "tag": "vid-20261126-144444-en-hetty-green-and-the-panic-of",
+      "status": "queued",
+      "created": "2026-11-26T15:24+05:30"
     }
   ],
   "version": 2,
