@@ -2,8 +2,10 @@
 import json
 import re
 
-from . import languages
-from .common import DATA, ROOT, env, load_config, log, norm_text, now_ist, run, skill_text
+import os
+
+from . import freellm, languages
+from .common import DATA, ROOT, load_config, log, norm_text, now_ist, run, skill_text
 
 MIN_SCENES, MAX_SCENES = 8, 18   # one beat = one line = one picture (kit: a scene change every 1-3.5 s)
 
@@ -60,10 +62,31 @@ def claude_model_args(effort=None, model=None):
     return args
 
 
+_FREE = {"budget": None}
+
+
 def call_claude(prompt, tools="WebSearch,WebFetch", max_turns=20, effort=None, cwd=None, timeout=None, model=None, system=None):
+    """Claude first. When Claude cannot answer (usage limit, outage, no token) the SAME prompt goes to the free models
+    through FreeLLMAPI (config `claude_fallback_to_free`), so ideas, script, director and storyboard still get made.
+    The free models get no web tools: facts the prompt asks to check rely on the model's own knowledge."""
+    try:
+        return _call_claude(prompt, tools, max_turns, effort, cwd, timeout, model, system)
+    except RuntimeError as e:
+        cfg = load_config()
+        if not cfg.get("claude_fallback_to_free", True) or not freellm.configured(cfg):
+            raise
+        log(f"Claude unavailable ({str(e)[:160]}); the free models answer instead", "WARN")
+        if _FREE["budget"] is None:
+            _FREE["budget"] = freellm.Budget(cfg)
+        msgs = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": prompt}]
+        return freellm.chat(cfg, msgs, _FREE["budget"])
+
+
+def _call_claude(prompt, tools, max_turns, effort, cwd, timeout, model, system):
     """prompt goes by stdin (no argv size cap). system = our own system prompt instead of Claude Code's big default one,
     with no tools: a plain one-shot answer, the cheapest call there is."""
-    env("CLAUDE_CODE_OAUTH_TOKEN", required=True)
+    if not os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip():
+        raise RuntimeError("CLAUDE_CODE_OAUTH_TOKEN is not set")
     extra = ["--system-prompt", system, "--tools", ""] if system else (["--allowedTools", tools] if tools else [])
     res = run(["claude", "-p", "--output-format", "json", *claude_model_args(effort, model), *extra,
                "--max-turns", str(max_turns)], capture=True, check=False, cwd=cwd, timeout=timeout, input=prompt)

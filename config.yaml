@@ -108,6 +108,8 @@ claude:
   fallback_model: opus        # used automatically if Sonnet is overloaded
   effort: medium              # high = more thinking tokens per script
 
+claude_fallback_to_free: true   # Claude out of usage / down -> the same prompts go to FreeLLMAPI's free models
+
 # The video engine: the animated-shorts-kit head skill (.claude/skills/animated-shorts-kit), see references/08_OUR_PIPELINE.md.
 studio:
   director: claude          # who writes + repairs the shot plan: claude (best, ~10k tokens a call) or freellm (free)
@@ -135,7 +137,7 @@ freellm:
   temperature: 0.5
   max_tokens: 12000
   timeout_seconds: 300
-  max_calls_per_video: 16     # hard cap on requests for one video (repairs + judge included)
+  max_calls_per_video: 24     # hard cap on requests for one video (repairs + judge + Claude fallback included)
   monthly_token_cap: 30000000 # once this month's total (data/freellm_usage.json) passes this, FreeLLMAPI is not used
 
 # EMERGENCY ONLY: when the kit build fails, that Short is drawn by the old flat 2D engine (toon2d/).
