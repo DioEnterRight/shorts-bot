@@ -20,7 +20,7 @@
         "ig_saves": 0,
         "ig_avg_watch_ms": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "ig": 0
       },
@@ -60,7 +60,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 68,
         "ig": 0
@@ -106,7 +106,7 @@
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 466,
         "ig": 0
@@ -152,7 +152,7 @@
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 5,
         "ig": 0
@@ -186,13 +186,13 @@
       "duration": 42.5,
       "published_at": "2026-11-17T15:59+05:30",
       "metrics": {
-        "ig_views": 372,
-        "ig_reach": 305,
+        "ig_views": 375,
+        "ig_reach": 307,
         "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 14826,
+        "ig_avg_watch_ms": 14700,
         "yt_views": 988,
         "yt_likes": 23,
         "yt_comments": 0,
@@ -201,10 +201,10 @@
         "yt_avg_view_sec": 26,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 988,
-        "ig": 372
+        "ig": 375
       },
       "metrics_day7": {
         "ig_views": 367,
@@ -244,7 +244,7 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 10417,
+        "ig_avg_watch_ms": 10355,
         "yt_views": 980,
         "yt_likes": 13,
         "yt_comments": 1,
@@ -253,7 +253,7 @@
         "yt_avg_view_sec": 39,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 980,
         "ig": 184
@@ -296,7 +296,7 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 13285,
+        "ig_avg_watch_ms": 13192,
         "yt_views": 1188,
         "yt_likes": 25,
         "yt_comments": 0,
@@ -305,7 +305,7 @@
         "yt_avg_view_sec": 25,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 1188,
         "ig": 175
@@ -348,7 +348,7 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 17392,
+        "ig_avg_watch_ms": 17377,
         "yt_views": 1295,
         "yt_likes": 41,
         "yt_comments": 1,
@@ -357,8 +357,28 @@
         "yt_avg_view_sec": 30,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
+        "yt": 1295,
+        "ig": 1461
+      },
+      "metrics_day7": {
+        "ig_views": 1461,
+        "ig_reach": 1109,
+        "ig_likes": 8,
+        "ig_comments": 0,
+        "ig_shares": 1,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 17377,
+        "yt_views": 1295,
+        "yt_likes": 41,
+        "yt_comments": 1,
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 80.3,
+        "yt_avg_view_sec": 30,
+        "yt_subs_gained": 2
+      },
+      "views_day7": {
         "yt": 1295,
         "ig": 1461
       }
@@ -380,18 +400,38 @@
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 18332,
-        "yt_views": 1227,
+        "ig_avg_watch_ms": 18289,
+        "yt_views": 1228,
         "yt_likes": 25,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 73.3,
+        "yt_avg_view_pct": 73.2,
         "yt_avg_view_sec": 29,
         "yt_subs_gained": 1
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1227,
+        "yt": 1228,
+        "ig": 583
+      },
+      "metrics_day7": {
+        "ig_views": 583,
+        "ig_reach": 392,
+        "ig_likes": 8,
+        "ig_comments": 0,
+        "ig_shares": 1,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 18289,
+        "yt_views": 1228,
+        "yt_likes": 25,
+        "yt_comments": 0,
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 73.2,
+        "yt_avg_view_sec": 29,
+        "yt_subs_gained": 1
+      },
+      "views_day7": {
+        "yt": 1228,
         "ig": 583
       }
     },
@@ -407,13 +447,13 @@
       "published_at": "2026-11-20T19:36+05:30",
       "metrics": {
         "ig_views": 2197,
-        "ig_reach": 1390,
+        "ig_reach": 1392,
         "ig_likes": 36,
         "ig_comments": 0,
         "ig_shares": 2,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21612,
-        "yt_views": 1974,
+        "ig_avg_watch_ms": 21567,
+        "yt_views": 1976,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
@@ -421,9 +461,9 @@
         "yt_avg_view_sec": 32,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1974,
+        "yt": 1976,
         "ig": 2197
       }
     },
@@ -439,23 +479,23 @@
       "published_at": "2026-11-21T16:07+05:30",
       "metrics": {
         "ig_views": 1544,
-        "ig_reach": 1085,
+        "ig_reach": 1086,
         "ig_likes": 22,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 23928,
-        "yt_views": 1933,
+        "ig_avg_watch_ms": 23885,
+        "yt_views": 1935,
         "yt_likes": 35,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 81.8,
+        "yt_avg_view_pct": 81.7,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 2
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1933,
+        "yt": 1935,
         "ig": 1544
       }
     },
@@ -470,25 +510,25 @@
       "duration": 34.08,
       "published_at": "2026-11-22T16:08+05:30",
       "metrics": {
-        "ig_views": 1946,
+        "ig_views": 1947,
         "ig_reach": 1299,
         "ig_likes": 15,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 18452,
+        "ig_avg_watch_ms": 18413,
         "yt_views": 1506,
         "yt_likes": 29,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 81.7,
+        "yt_avg_view_pct": 81.6,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 1506,
-        "ig": 1946
+        "ig": 1947
       }
     },
     "20261123-044748-en-the-hope-diamond-sent-by-mai": {
@@ -508,16 +548,16 @@
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 21531,
+        "ig_avg_watch_ms": 21500,
         "yt_views": 1319,
         "yt_likes": 34,
         "yt_comments": 0,
         "yt_privacy": "public",
-        "yt_avg_view_pct": 65.9,
+        "yt_avg_view_pct": 65.8,
         "yt_avg_view_sec": 28,
         "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
         "yt": 1319,
         "ig": 1909
@@ -534,22 +574,25 @@
       "duration": 30.7,
       "published_at": "2026-11-24T16:15+05:30",
       "metrics": {
-        "ig_views": 2244,
+        "ig_views": 2245,
         "ig_reach": 1392,
         "ig_likes": 14,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 20412,
-        "yt_views": 1649,
+        "ig_avg_watch_ms": 20369,
+        "yt_views": 1654,
         "yt_likes": 33,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 88.1,
+        "yt_avg_view_sec": 27,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1649,
-        "ig": 2244
+        "yt": 1654,
+        "ig": 2245
       }
     },
     "20261124-223947-en-the-italian-bank-that-takes": {
@@ -563,22 +606,25 @@
       "duration": 33.7,
       "published_at": "2026-11-24T23:47+05:30",
       "metrics": {
-        "ig_views": 534,
+        "ig_views": 536,
         "ig_reach": 398,
         "ig_likes": 4,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 17203,
-        "yt_views": 1183,
+        "ig_avg_watch_ms": 17082,
+        "yt_views": 1186,
         "yt_likes": 36,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 64.6,
+        "yt_avg_view_sec": 21,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1183,
-        "ig": 534
+        "yt": 1186,
+        "ig": 536
       }
     },
     "20261125-005148-hi-the-gulf-rupee-of-1959": {
@@ -592,22 +638,25 @@
       "duration": 38.13,
       "published_at": "2026-11-25T01:57+05:30",
       "metrics": {
-        "ig_views": 1507,
+        "ig_views": 1510,
         "ig_reach": 1103,
         "ig_likes": 9,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 2,
-        "ig_avg_watch_ms": 18913,
-        "yt_views": 196,
+        "ig_avg_watch_ms": 18849,
+        "yt_views": 203,
         "yt_likes": 1,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 50.2,
+        "yt_avg_view_sec": 19,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 196,
-        "ig": 1507
+        "yt": 203,
+        "ig": 1510
       }
     },
     "20261125-020110-hi-india-s-1991-gold-pledge-in": {
@@ -621,22 +670,25 @@
       "duration": 40.17,
       "published_at": "2026-11-25T10:36+05:30",
       "metrics": {
-        "ig_views": 1369,
-        "ig_reach": 1055,
-        "ig_likes": 12,
+        "ig_views": 1419,
+        "ig_reach": 1093,
+        "ig_likes": 13,
         "ig_comments": 0,
         "ig_shares": 3,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 17150,
-        "yt_views": 63,
+        "ig_avg_watch_ms": 17061,
+        "yt_views": 66,
         "yt_likes": 0,
         "yt_comments": 0,
-        "yt_privacy": "public"
+        "yt_privacy": "public",
+        "yt_avg_view_pct": 52.8,
+        "yt_avg_view_sec": 21,
+        "yt_subs_gained": 0
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 63,
-        "ig": 1369
+        "yt": 66,
+        "ig": 1419
       }
     },
     "20261125-045516-en-the-great-diamond-hoax-of-18": {
@@ -650,22 +702,22 @@
       "duration": 37.38,
       "published_at": "2026-11-25T16:17+05:30",
       "metrics": {
-        "ig_views": 168,
-        "ig_reach": 126,
+        "ig_views": 170,
+        "ig_reach": 128,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 12316,
-        "yt_views": 1139,
+        "ig_avg_watch_ms": 12342,
+        "yt_views": 1185,
         "yt_likes": 18,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1139,
-        "ig": 168
+        "yt": 1185,
+        "ig": 170
       }
     },
     "20261125-173157-hi-frederic-tudor-shipped-new-e": {
@@ -679,22 +731,22 @@
       "duration": 82.33,
       "published_at": "2026-11-25T18:27+05:30",
       "metrics": {
-        "ig_views": 1327,
-        "ig_reach": 1114,
+        "ig_views": 1345,
+        "ig_reach": 1131,
         "ig_likes": 16,
         "ig_comments": 0,
         "ig_shares": 1,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 31014,
-        "yt_views": 29,
+        "ig_avg_watch_ms": 30582,
+        "yt_views": 32,
         "yt_likes": 0,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 29,
-        "ig": 1327
+        "yt": 32,
+        "ig": 1345
       }
     },
     "20261125-175928-en-tenino-s-wooden-depression-m": {
@@ -708,22 +760,22 @@
       "duration": 57.73,
       "published_at": "2026-11-25T20:16+05:30",
       "metrics": {
-        "ig_views": 1002,
-        "ig_reach": 727,
-        "ig_likes": 11,
+        "ig_views": 1426,
+        "ig_reach": 1054,
+        "ig_likes": 19,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 30705,
-        "yt_views": 1173,
+        "ig_avg_watch_ms": 29425,
+        "yt_views": 1299,
         "yt_likes": 43,
         "yt_comments": 1,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1173,
-        "ig": 1002
+        "yt": 1299,
+        "ig": 1426
       }
     },
     "20261125-181047-en-the-great-stock-exchange-fra": {
@@ -737,22 +789,22 @@
       "duration": 63.4,
       "published_at": "2026-11-25T23:33+05:30",
       "metrics": {
-        "ig_views": 23,
-        "ig_reach": 14,
-        "ig_likes": 0,
+        "ig_views": 124,
+        "ig_reach": 97,
+        "ig_likes": 1,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 9400,
-        "yt_views": 22,
+        "ig_avg_watch_ms": 16174,
+        "yt_views": 66,
         "yt_likes": 3,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 22,
-        "ig": 23
+        "yt": 66,
+        "ig": 124
       }
     },
     "20261125-215007-hi-great-hanoi-rat-massacre-of": {
@@ -766,22 +818,22 @@
       "duration": 68.07,
       "published_at": "2026-11-26T00:06+05:30",
       "metrics": {
-        "ig_views": 64,
-        "ig_reach": 49,
+        "ig_views": 135,
+        "ig_reach": 111,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 19258,
-        "yt_views": 34,
+        "ig_avg_watch_ms": 17409,
+        "yt_views": 48,
         "yt_likes": 2,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 34,
-        "ig": 64
+        "yt": 48,
+        "ig": 135
       }
     },
     "20261125-221704-en-the-real-origin-of-the-name": {
@@ -795,22 +847,22 @@
       "duration": 50.02,
       "published_at": "2026-11-26T02:02+05:30",
       "metrics": {
-        "ig_views": 1459,
-        "ig_reach": 1096,
+        "ig_views": 1481,
+        "ig_reach": 1112,
         "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24704,
-        "yt_views": 1108,
-        "yt_likes": 44,
+        "ig_avg_watch_ms": 24707,
+        "yt_views": 1294,
+        "yt_likes": 38,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 1108,
-        "ig": 1459
+        "yt": 1294,
+        "ig": 1481
       }
     },
     "20261126-012434-en-bank-vault-time-locks": {
@@ -824,22 +876,22 @@
       "duration": 42.72,
       "published_at": "2026-11-26T03:07+05:30",
       "metrics": {
-        "ig_views": 1806,
-        "ig_reach": 1236,
+        "ig_views": 1843,
+        "ig_reach": 1260,
         "ig_likes": 14,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 24432,
-        "yt_views": 303,
-        "yt_likes": 18,
+        "ig_avg_watch_ms": 24162,
+        "yt_views": 996,
+        "yt_likes": 48,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 303,
-        "ig": 1806
+        "yt": 996,
+        "ig": 1843
       }
     },
     "20261126-023244-en-victor-lustig-s-money-printi": {
@@ -853,22 +905,22 @@
       "duration": 59.48,
       "published_at": "2026-11-26T04:06+05:30",
       "metrics": {
-        "ig_views": 1323,
-        "ig_reach": 733,
-        "ig_likes": 5,
+        "ig_views": 1465,
+        "ig_reach": 1113,
+        "ig_likes": 7,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 1,
-        "ig_avg_watch_ms": 30141,
-        "yt_views": 631,
-        "yt_likes": 37,
+        "ig_avg_watch_ms": 34193,
+        "yt_views": 1359,
+        "yt_likes": 47,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 631,
-        "ig": 1323
+        "yt": 1359,
+        "ig": 1465
       }
     },
     "20261126-033146-en-the-grocer-who-staged-a-crow": {
@@ -882,24 +934,424 @@
       "duration": 56.05,
       "published_at": "2026-11-26T05:00+05:30",
       "metrics": {
-        "ig_views": 0,
+        "ig_views": 187,
+        "ig_reach": 149,
+        "ig_likes": 3,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 19661,
+        "yt_views": 1183,
+        "yt_likes": 45,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1183,
+        "ig": 187
+      }
+    },
+    "20261126-043124-en-menus-without-dollar-signs": {
+      "video_id": "20261126-043124-en-menus-without-dollar-signs",
+      "language": "en",
+      "topic": "Menus without dollar signs",
+      "theme": "explainer",
+      "title": "The Missing Symbol on Your Menu",
+      "hook_type": "paradox",
+      "hook_line": "Some restaurants delete one tiny symbol, and customers quietly spend more.",
+      "duration": 51.76,
+      "published_at": "2026-11-26T05:59+05:30",
+      "metrics": {
+        "ig_views": 1428,
+        "ig_reach": 1159,
+        "ig_likes": 28,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 27277,
+        "yt_views": 1206,
+        "yt_likes": 34,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1206,
+        "ig": 1428
+      }
+    },
+    "20261126-052654-en-the-end-of-the-us-penny": {
+      "video_id": "20261126-052654-en-the-end-of-the-us-penny",
+      "language": "en",
+      "topic": "The end of the US penny",
+      "theme": "explainer",
+      "title": "The Coin That Cost More Than Itself",
+      "hook_type": "paradox",
+      "hook_line": "Making one penny cost the US Mint nearly four cents.",
+      "duration": 50.59,
+      "published_at": "2026-11-26T07:28+05:30",
+      "metrics": {
+        "ig_views": 160,
+        "ig_reach": 123,
+        "ig_likes": 1,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 20063,
+        "yt_views": 1280,
+        "yt_likes": 40,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1280,
+        "ig": 160
+      }
+    },
+    "20261126-065137-en-why-gas-prices-end-in-nine-t": {
+      "video_id": "20261126-065137-en-why-gas-prices-end-in-nine-t",
+      "language": "en",
+      "topic": "Why gas prices end in nine-tenths of a cent",
+      "theme": "explainer",
+      "title": "Why Gas Costs a Fraction of a Cent",
+      "hook_type": "paradox",
+      "hook_line": "Every gas station sells you something you can't actually pay for.",
+      "duration": 64.23,
+      "published_at": "2026-11-26T08:29+05:30",
+      "metrics": {
+        "ig_views": 1772,
+        "ig_reach": 1426,
+        "ig_likes": 34,
+        "ig_comments": 0,
+        "ig_shares": 1,
+        "ig_saves": 4,
+        "ig_avg_watch_ms": 37231,
+        "yt_views": 1171,
+        "yt_likes": 43,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1171,
+        "ig": 1772
+      }
+    },
+    "20261126-083101-hi-lizzie-magie-and-the-landlor": {
+      "video_id": "20261126-083101-hi-lizzie-magie-and-the-landlor",
+      "language": "hi",
+      "topic": "Lizzie Magie and the Landlord's Game behind Monopoly",
+      "theme": "explainer",
+      "title": "Monopoly बनी थी अमीर बनने के खिलाफ़ सिखाने के लिए",
+      "hook_type": "paradox",
+      "hook_line": "Monopoly एक ऐसा खेल था, जो अमीर बनने के खिलाफ़ सिखाता था।",
+      "duration": 68.74,
+      "published_at": "2026-11-26T14:39+05:30",
+      "metrics": {
+        "ig_views": 377,
+        "ig_reach": 319,
+        "ig_likes": 3,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 14695
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 377
+      }
+    },
+    "20261126-094036-en-gift-card-breakage": {
+      "video_id": "20261126-094036-en-gift-card-breakage",
+      "language": "en",
+      "topic": "Gift card breakage",
+      "theme": "explainer",
+      "title": "Why Stores Love Gift Cards You Forget",
+      "hook_type": "paradox",
+      "hook_line": "A gift card is a loan you give a store for free.",
+      "duration": 58.2,
+      "published_at": "2026-11-26T10:46+05:30",
+      "metrics": {
+        "ig_views": 1317,
+        "ig_reach": 1138,
+        "ig_likes": 28,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 25197,
+        "yt_views": 1157,
+        "yt_likes": 36,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1157,
+        "ig": 1317
+      }
+    },
+    "20261126-104724-en-the-legend-behind-the-99-pri": {
+      "video_id": "20261126-104724-en-the-legend-behind-the-99-pri",
+      "language": "en",
+      "topic": "The legend behind the .99 price",
+      "theme": "explainer",
+      "title": "The Legend Behind the .99 Price",
+      "hook_type": "myth_busting",
+      "hook_line": "Legend says the ninety-nine cent price was invented to catch thieving clerks.",
+      "duration": 55.47,
+      "published_at": "2026-11-26T12:03+05:30",
+      "metrics": {
+        "ig_views": 1672,
+        "ig_reach": 1262,
+        "ig_likes": 23,
+        "ig_comments": 2,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 31555,
+        "yt_views": 1125,
+        "yt_likes": 38,
+        "yt_comments": 2,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1125,
+        "ig": 1672
+      }
+    },
+    "20261126-125622-en-the-concorde-and-the-sunk-co": {
+      "video_id": "20261126-125622-en-the-concorde-and-the-sunk-co",
+      "language": "en",
+      "topic": "The Concorde and the sunk cost fallacy",
+      "theme": "explainer",
+      "title": "The Plane Too Expensive to Abandon",
+      "hook_type": "paradox",
+      "hook_line": "Two governments kept paying for a plane they knew would lose money.",
+      "duration": 59.38,
+      "published_at": "2026-11-26T17:02+05:30",
+      "metrics": {
+        "ig_views": 271,
+        "ig_reach": 226,
+        "ig_likes": 3,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 19988
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 271
+      }
+    },
+    "20261126-144444-en-hetty-green-and-the-panic-of": {
+      "video_id": "20261126-144444-en-hetty-green-and-the-panic-of",
+      "language": "en",
+      "topic": "Hetty Green and the Panic of 1907",
+      "theme": "story",
+      "title": "The Richest Woman Dressed Like a Beggar",
+      "hook_type": "story",
+      "hook_line": "The richest woman in America dressed so badly, the bankers laughed at her.",
+      "duration": 55.69,
+      "published_at": "2026-11-26T19:54+05:30",
+      "metrics": {
+        "ig_views": 1532,
+        "ig_reach": 1114,
+        "ig_likes": 18,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 1,
+        "ig_avg_watch_ms": 29094
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 1532
+      }
+    },
+    "20261126-173933-en-yap-rai-stones-and-money-as": {
+      "video_id": "20261126-173933-en-yap-rai-stones-and-money-as",
+      "language": "en",
+      "topic": "Yap rai stones and money as a shared record",
+      "theme": "explainer",
+      "title": "The Money Nobody Could Lift",
+      "hook_type": "paradox",
+      "hook_line": "On one island, people paid each other with a stone that never moved.",
+      "duration": 50.82,
+      "published_at": "2026-11-26T20:25+05:30",
+      "metrics": {
+        "ig_views": 1632,
+        "ig_reach": 1243,
+        "ig_likes": 28,
+        "ig_comments": 0,
+        "ig_shares": 1,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 24724
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 1632
+      }
+    },
+    "20261126-204012-en-han-van-meegeren-the-forger": {
+      "video_id": "20261126-204012-en-han-van-meegeren-the-forger",
+      "language": "en",
+      "topic": "Han van Meegeren, the forger who confessed to survive",
+      "theme": "explainer",
+      "title": "The Man Who Confessed to Forgery to Survive",
+      "hook_type": "paradox",
+      "hook_line": "A man accused of treason begged the court to call him a fraud.",
+      "duration": 64.14,
+      "published_at": "2026-11-26T22:15+05:30",
+      "metrics": {
+        "ig_views": 6,
+        "ig_reach": 5,
+        "ig_likes": 1,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 18351
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 6
+      }
+    },
+    "20261126-214248-en-the-cash-register-was-built": {
+      "video_id": "20261126-214248-en-the-cash-register-was-built",
+      "language": "en",
+      "topic": "The cash register was built to catch thieves",
+      "theme": "explainer",
+      "title": "The Bar Owner Who Built a Thief Detector",
+      "hook_type": "paradox",
+      "hook_line": "The cash register was built to watch the staff, not to serve customers.",
+      "duration": 55.63,
+      "published_at": "2026-11-26T23:29+05:30",
+      "metrics": {
+        "ig_views": 147,
+        "ig_reach": 135,
+        "ig_likes": 0,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 16170
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 147
+      }
+    },
+    "20261126-224737-en-the-town-that-taxed-its-own": {
+      "video_id": "20261126-224737-en-the-town-that-taxed-its-own",
+      "language": "en",
+      "topic": "The town that taxed its own cash",
+      "theme": "explainer",
+      "title": "The Town That Taxed Its Own Cash",
+      "hook_type": "paradox",
+      "hook_line": "A town once made its own money lose value every month, on purpose.",
+      "duration": 65.7,
+      "published_at": "2026-11-27T00:33+05:30",
+      "metrics": {
+        "ig_views": 399,
+        "ig_reach": 333,
+        "ig_likes": 4,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 22818,
+        "yt_views": 1123,
+        "yt_likes": 28,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 1123,
+        "ig": 399
+      }
+    },
+    "20261127-003518-en-the-ikea-effect": {
+      "video_id": "20261127-003518-en-the-ikea-effect",
+      "language": "en",
+      "topic": "The IKEA effect",
+      "theme": "explainer",
+      "title": "Why You Love Your Wobbly Shelf",
+      "hook_type": "paradox",
+      "hook_line": "Folding a crooked paper crane made people pay far more for it.",
+      "duration": 50.71,
+      "published_at": "2026-11-27T01:41+05:30",
+      "metrics": {
+        "ig_views": 1352,
+        "ig_reach": 1185,
+        "ig_likes": 22,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 19419
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "ig": 1352
+      }
+    },
+    "20261127-014156-en-the-man-who-bought-london-br": {
+      "video_id": "20261127-014156-en-the-man-who-bought-london-br",
+      "language": "en",
+      "topic": "The Man Who Bought London Bridge",
+      "theme": "story",
+      "title": "The Man Who Bought London Bridge",
+      "hook_type": "paradox",
+      "hook_line": "A man bought a bridge in London, and moved it to the desert.",
+      "duration": 62.87,
+      "published_at": "2026-11-27T03:01+05:30",
+      "metrics": {
+        "ig_views": 1276,
+        "ig_reach": 1049,
+        "ig_likes": 22,
+        "ig_comments": 0,
+        "ig_shares": 0,
+        "ig_saves": 0,
+        "ig_avg_watch_ms": 24889,
+        "yt_views": 305,
+        "yt_likes": 10,
+        "yt_comments": 0,
+        "yt_privacy": "public"
+      },
+      "last_update": "2026-11-27T04:35+05:30",
+      "views": {
+        "yt": 305,
+        "ig": 1276
+      }
+    },
+    "20261127-023327-en-the-cake-mix-egg-legend": {
+      "video_id": "20261127-023327-en-the-cake-mix-egg-legend",
+      "language": "en",
+      "topic": "The cake mix egg legend",
+      "theme": "explainer",
+      "title": "The Cake Mix That Needed One Egg",
+      "hook_type": "paradox",
+      "hook_line": "Legend says nobody bought cake mix until it got harder to make.",
+      "duration": 62.33,
+      "published_at": "2026-11-27T04:03+05:30",
+      "metrics": {
+        "ig_views": 80,
         "ig_reach": 0,
         "ig_likes": 0,
         "ig_comments": 0,
         "ig_shares": 0,
         "ig_saves": 0,
-        "ig_avg_watch_ms": 0,
-        "yt_views": 205,
-        "yt_likes": 10,
+        "ig_avg_watch_ms": 22217,
+        "yt_views": 311,
+        "yt_likes": 9,
         "yt_comments": 0,
         "yt_privacy": "public"
       },
-      "last_update": "2026-11-26T05:26+05:30",
+      "last_update": "2026-11-27T04:35+05:30",
       "views": {
-        "yt": 205,
-        "ig": 0
+        "yt": 311,
+        "ig": 80
       }
     }
   },
-  "updated": "2026-11-26T05:26+05:30"
+  "updated": "2026-11-27T04:35+05:30"
 }
