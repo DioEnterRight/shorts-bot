@@ -994,6 +994,22 @@
       "yt_video_id": "f6U6yHApXf4",
       "yt_state": "posted",
       "published_at": "2026-11-27T00:33+05:30"
+    },
+    {
+      "id": "20261127-003518-en-the-ikea-effect",
+      "title": "Why You Love Your Wobbly Shelf",
+      "topic": "The IKEA effect",
+      "canonical_en": "Why do people value things they build themselves more, even badly (the IKEA effect study)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Folding a crooked paper crane made people pay far more for it.",
+      "duration": 50.71,
+      "storyboard": "kit",
+      "tag": "vid-20261127-003518-en-the-ikea-effect",
+      "status": "queued",
+      "created": "2026-11-27T01:27+05:30"
     }
   ],
   "version": 2,

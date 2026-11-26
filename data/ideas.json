@@ -462,6 +462,17 @@
       "video_id": "20261126-224737-en-the-town-that-taxed-its-own",
       "status": "produced",
       "created": "2026-11-27T00:00+05:30"
+    },
+    {
+      "canonical_en": "Why do people value things they build themselves more, even badly (the IKEA effect study)?",
+      "question": "Why do we value a badly built thing more because we built it?",
+      "hook": "People paid more for their own crooked paper cranes than for expert ones.",
+      "angle": "Tells the Norton, Mochon and Ariely origami experiment as a tiny story with two buyers at a table, then links it to why furniture kits sell.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-003518-en-the-ikea-effect",
+      "status": "produced",
+      "created": "2026-11-27T01:27+05:30"
     }
   ],
   "backlog": [
@@ -854,36 +865,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do people value things they build themselves more, even badly (the IKEA effect study)?",
-      "title": "Why You Love Your Wobbly Shelf",
-      "question": "Why do we value a badly built thing more because we built it?",
-      "hook": "People paid more for their own crooked paper cranes than for expert ones.",
-      "angle": "Tells the Norton, Mochon and Ariely origami experiment as a tiny story with two buyers at a table, then links it to why furniture kits sell.",
-      "why_care": "It explains a real buying habit viewers recognise in themselves.",
-      "payoff": "You didn't build a shelf. You built a reason to love it.",
-      "visual_moments": [
-        "A person holding a crooked origami crane next to a perfect one, with price tags rising on the crooked one",
-        "A man hugging a wobbly shelf while a perfect one sits ignored",
-        "Two bidders, same stack of coins"
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Weird Brain, Real Money",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. Norton, Mochon and Ariely, 'The IKEA effect', Journal of Consumer Psychology, 2012. The video states it as one study with a small sample.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 6
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Did instant cake mix really sell only after bakers had to add an egg, or is that a legend?",
