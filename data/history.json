@@ -941,8 +941,14 @@
       "duration": 64.14,
       "storyboard": "kit",
       "tag": "vid-20261126-204012-en-han-van-meegeren-the-forger",
-      "status": "queued",
-      "created": "2026-11-26T21:23+05:30"
+      "status": "published",
+      "created": "2026-11-26T21:23+05:30",
+      "slot": "2026-11-26 21:30",
+      "ig_media_id": "18133374367850077",
+      "ig_link": "https://www.instagram.com/reel/DgNkCc6K9Nw/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-26T22:15+05:30"
     },
     {
       "id": "20261126-214248-en-the-cash-register-was-built",
