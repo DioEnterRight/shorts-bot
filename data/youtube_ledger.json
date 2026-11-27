@@ -193,6 +193,12 @@
       "video_id": "lsqUgrBnTyM",
       "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T05:18:36+00:00",
+      "video_id": "0bbtMzeKgkk",
+      "local_id": "20261127-094033-en-the-window-tax",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -223,6 +229,10 @@
     {
       "ts": "2026-11-27T04:08:02+00:00",
       "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits"
+    },
+    {
+      "ts": "2026-11-27T05:18:36+00:00",
+      "local_id": "20261127-094033-en-the-window-tax"
     }
   ],
   "attempts": [
@@ -260,6 +270,11 @@
       "ts": "2026-11-27T04:08:02+00:00",
       "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
       "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T05:18:36+00:00",
+      "local_id": "20261127-094033-en-the-window-tax",
+      "result": "ok"
     }
   ],
   "rejected": [
@@ -295,5 +310,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T04:08:02+00:00"
+  "last_reconcile": "2026-11-27T05:18:36+00:00"
 }

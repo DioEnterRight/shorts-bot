@@ -1191,8 +1191,15 @@
       "duration": 56.85,
       "storyboard": "kit",
       "tag": "vid-20261127-094033-en-the-window-tax",
-      "status": "queued",
-      "created": "2026-11-27T10:39+05:30"
+      "status": "published",
+      "created": "2026-11-27T10:39+05:30",
+      "slot": "2026-11-27 10:30",
+      "ig_media_id": "18122542267983584",
+      "ig_link": "https://www.instagram.com/reel/DgO6QsrzDwU/",
+      "ig_state": "posted",
+      "yt_video_id": "0bbtMzeKgkk",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T10:48+05:30"
     }
   ],
   "version": 2,
