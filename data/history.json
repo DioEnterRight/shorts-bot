@@ -1378,6 +1378,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T22:46+05:30"
+    },
+    {
+      "id": "20261127-224655-en-the-1992-bankers-trust-compu",
+      "title": "The Decimal Point That Broke London",
+      "topic": "The 1992 Bankers Trust computer error",
+      "canonical_en": "Why did the 1980s 'Black Wednesday' crash happen because of a single computer error?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "One decimal point moved, and a major London bank lost a fortune.",
+      "duration": 44.21,
+      "storyboard": "kit",
+      "tag": "vid-20261127-224655-en-the-1992-bankers-trust-compu",
+      "status": "queued",
+      "created": "2026-11-27T23:21+05:30"
     }
   ],
   "version": 2,
