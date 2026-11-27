@@ -1416,6 +1416,22 @@
       "tag": "vid-20261128-003407-en-gold-plated-coin-scam",
       "status": "queued",
       "created": "2026-11-28T01:13+05:30"
+    },
+    {
+      "id": "20261128-013531-en-the-bank-that-printed-mistak",
+      "title": "The Mistake Worth a Fortune",
+      "topic": "The Bank That Printed Mistakes",
+      "canonical_en": "How did a bank accidentally create a new currency?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "what_if",
+      "hook_line": "A simple printing error once turned a twenty-dollar bill into a twenty-thousand-dollar fortune.",
+      "duration": 49.19,
+      "storyboard": "kit",
+      "tag": "vid-20261128-013531-en-the-bank-that-printed-mistak",
+      "status": "queued",
+      "created": "2026-11-28T02:12+05:30"
     }
   ],
   "version": 2,

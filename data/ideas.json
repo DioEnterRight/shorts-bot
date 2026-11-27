@@ -671,6 +671,17 @@
       "video_id": "20261128-003407-en-gold-plated-coin-scam",
       "status": "produced",
       "created": "2026-11-28T01:13+05:30"
+    },
+    {
+      "canonical_en": "How did a bank accidentally create a new currency?",
+      "question": "Can a printing error create money?",
+      "hook": "A typo on a bill made it worth twice as much.",
+      "angle": "Focuses on the 'star note' or 'misprint' phenomenon where a specific error (like a double-printed serial number) makes a bill a collector's item, turning a mistake into a profit for the finder, not the bank.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-013531-en-the-bank-that-printed-mistak",
+      "status": "produced",
+      "created": "2026-11-28T02:12+05:30"
     }
   ],
   "backlog": [
@@ -943,36 +954,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "How did a bank accidentally create a new currency?",
-      "title": "The Bank That Printed Mistakes",
-      "question": "Can a printing error create money?",
-      "hook": "A typo on a bill made it worth twice as much.",
-      "angle": "Focuses on the 'star note' or 'misprint' phenomenon where a specific error (like a double-printed serial number) makes a bill a collector's item, turning a mistake into a profit for the finder, not the bank.",
-      "why_care": "It’s a 'what if' scenario that makes the viewer check their own wallet, driving engagement.",
-      "payoff": "The bank lost the money; the guy who kept it bought a new car.",
-      "visual_moments": [
-        "A printer spits out a bill with two serial numbers.",
-        "A man holds the bill up to the light, and it glows gold.",
-        "A car dealership sign changes from 'For Sale' to 'Sold' as the man walks in."
-      ],
-      "fact_status": "documented",
-      "category": "weird_history",
-      "format": "story",
-      "series": "Money Mistakes",
-      "hook_type": "what_if",
-      "research_basis": "Numismatic records of US currency misprints (e.g., the 1935 $500 bill, the 1993 $2 bill misprints).",
-      "scores": {
-        "curiosity": 9,
-        "originality": 8,
-        "visual": 9,
-        "clarity": 8,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "How did a fake invoice scam a company for millions?",
