@@ -1356,6 +1356,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T21:37+05:30"
+    },
+    {
+      "id": "20261127-214030-en-the-gamble-that-saved-fedex",
+      "title": "The CEO Who Bet Everything on Blackjack",
+      "topic": "The Gamble That Saved FedEx",
+      "canonical_en": "FedEx founder Fred Smith reportedly turned $5,000 into $27,000 at blackjack in Las Vegas to pay fuel bills in 1973",
+      "language": "en",
+      "theme": "story",
+      "category": "business",
+      "hook_type": "story",
+      "hook_line": "He couldn't afford to fuel his planes, so he flew to Las Vegas.",
+      "duration": 56.57,
+      "storyboard": "claude",
+      "tag": "vid-20261127-214030-en-the-gamble-that-saved-fedex",
+      "status": "queued",
+      "created": "2026-11-27T21:55+05:30"
     }
   ],
   "version": 2,

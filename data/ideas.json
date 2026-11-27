@@ -638,6 +638,17 @@
       "video_id": "20261127-203344-en-the-ben-franklin-effect",
       "status": "produced",
       "created": "2026-11-27T21:15+05:30"
+    },
+    {
+      "canonical_en": "FedEx founder Fred Smith reportedly turned $5,000 into $27,000 at blackjack in Las Vegas to pay fuel bills in 1973",
+      "question": "Did a company really survive by winning at blackjack the week it couldn't pay for fuel?",
+      "hook": "He couldn't buy fuel, so he flew to Las Vegas.",
+      "angle": "Told as a legend: the company's founder tells the story himself, but the amount and the effect are framed as 'he said'. The story is paired with the real reason the company was losing money.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261127-214030-en-the-gamble-that-saved-fedex",
+      "status": "produced",
+      "created": "2026-11-27T21:55+05:30"
     }
   ],
   "backlog": [
@@ -666,36 +677,6 @@
         "visual": 7,
         "clarity": 8,
         "twist": 9
-      },
-      "language": "en",
-      "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
-    {
-      "canonical_en": "FedEx founder Fred Smith reportedly turned $5,000 into $27,000 at blackjack in Las Vegas to pay fuel bills in 1973",
-      "title": "The Gamble That Saved a Delivery Company",
-      "question": "Did a company really survive by winning at blackjack the week it couldn't pay for fuel?",
-      "hook": "He couldn't buy fuel, so he flew to Las Vegas.",
-      "angle": "Told as a legend: the company's founder tells the story himself, but the amount and the effect are framed as 'he said'. The story is paired with the real reason the company was losing money.",
-      "why_care": "It shows the line between desperation and a plan, and how a story grows around a lucky break.",
-      "payoff": "He said the casino saved the company, and the casino never knew it had.",
-      "visual_moments": [
-        "Empty-tank planes sit on a field next to a stack of unpaid bills",
-        "Man at a card table pushes a pile of chips across the table",
-        "Planes take off the next morning with full tanks"
-      ],
-      "fact_status": "legend",
-      "category": "business",
-      "format": "story",
-      "series": "Business Rise and Fall",
-      "hook_type": "story",
-      "research_basis": "Evergreen; the founder's account is widely reported, but the amount and effect are disputed and must be framed as 'legend says'",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 8,
-        "twist": 8
       },
       "language": "en",
       "theme": "story",
