@@ -1326,8 +1326,14 @@
       "duration": 50.7,
       "storyboard": "kit",
       "tag": "vid-20261127-185254-en-the-reciprocity-trap",
-      "status": "queued",
-      "created": "2026-11-27T19:28+05:30"
+      "status": "published",
+      "created": "2026-11-27T19:28+05:30",
+      "slot": "2026-11-27 20:30",
+      "ig_media_id": "17867049258695251",
+      "ig_link": "https://www.instagram.com/reel/DgP8_XbgUeD/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T20:31+05:30"
     }
   ],
   "version": 2,

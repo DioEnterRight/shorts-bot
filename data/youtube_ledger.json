@@ -356,10 +356,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-27T15:01:44+00:00",
+      "local_id": "20261127-185254-en-the-reciprocity-trap",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T12:37:49+00:00"
+  "last_reconcile": "2026-11-27T15:01:44+00:00"
 }
