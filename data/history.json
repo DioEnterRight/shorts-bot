@@ -1260,8 +1260,14 @@
       "duration": 50.57,
       "storyboard": "claude",
       "tag": "vid-20261127-144522-en-cyber-monday",
-      "status": "queued",
-      "created": "2026-11-27T14:55+05:30"
+      "status": "published",
+      "created": "2026-11-27T14:55+05:30",
+      "slot": "2026-11-27 15:30",
+      "ig_media_id": "18123276748969906",
+      "ig_link": "https://www.instagram.com/reel/DgPemHDOMvd/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T16:06+05:30"
     }
   ],
   "version": 2,
