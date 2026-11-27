@@ -211,6 +211,12 @@
       "video_id": "zJWSudQ_Jso",
       "local_id": "20261127-125625-en-the-decoy-effect",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T21:00:47+00:00",
+      "video_id": "8QLh_zhX_yY",
+      "local_id": "20261128-003407-en-gold-plated-coin-scam",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -253,6 +259,10 @@
     {
       "ts": "2026-11-27T09:11:49+00:00",
       "local_id": "20261127-125625-en-the-decoy-effect"
+    },
+    {
+      "ts": "2026-11-27T21:00:47+00:00",
+      "local_id": "20261128-003407-en-gold-plated-coin-scam"
     }
   ],
   "attempts": [
@@ -304,6 +314,11 @@
     {
       "ts": "2026-11-27T09:11:49+00:00",
       "local_id": "20261127-125625-en-the-decoy-effect",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T21:00:47+00:00",
+      "local_id": "20261128-003407-en-gold-plated-coin-scam",
       "result": "ok"
     }
   ],
@@ -389,5 +404,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T18:26:01+00:00"
+  "last_reconcile": "2026-11-27T21:00:47+00:00"
 }

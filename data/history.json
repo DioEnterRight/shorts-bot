@@ -1414,8 +1414,15 @@
       "duration": 45.24,
       "storyboard": "kit",
       "tag": "vid-20261128-003407-en-gold-plated-coin-scam",
-      "status": "queued",
-      "created": "2026-11-28T01:13+05:30"
+      "status": "published",
+      "created": "2026-11-28T01:13+05:30",
+      "slot": "2026-11-28 01:30",
+      "ig_media_id": "18034966376681169",
+      "ig_link": "https://www.instagram.com/reel/DgQmG-sI6AZ/",
+      "ig_state": "posted",
+      "yt_video_id": "8QLh_zhX_yY",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T02:30+05:30"
     },
     {
       "id": "20261128-013531-en-the-bank-that-printed-mistak",
