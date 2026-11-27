@@ -1437,8 +1437,15 @@
       "duration": 49.19,
       "storyboard": "kit",
       "tag": "vid-20261128-013531-en-the-bank-that-printed-mistak",
-      "status": "queued",
-      "created": "2026-11-28T02:12+05:30"
+      "status": "published",
+      "created": "2026-11-28T02:12+05:30",
+      "slot": "2026-11-28 02:30",
+      "ig_media_id": "17977192044188179",
+      "ig_link": "https://www.instagram.com/reel/DgQs6Dtid94/",
+      "ig_state": "posted",
+      "yt_video_id": "7FsOjzUJMlk",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T03:30+05:30"
     }
   ],
   "version": 2,
