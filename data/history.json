@@ -1469,6 +1469,22 @@
       "yt_video_id": "yEoyLRrkY9s",
       "yt_state": "posted",
       "published_at": "2026-11-28T04:31+05:30"
+    },
+    {
+      "id": "20261128-043316-en-mental-accounting-and-pain-o",
+      "title": "The Coffee Price Paradox",
+      "topic": "Mental Accounting and Pain of Paying",
+      "canonical_en": "Why do we remember the price of a coffee but forget the price of a house?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Your brain panics over a six-dollar coffee, but barely flinches at a half-million-dollar house.",
+      "duration": 49.19,
+      "storyboard": "kit",
+      "tag": "vid-20261128-043316-en-mental-accounting-and-pain-o",
+      "status": "queued",
+      "created": "2026-11-28T05:07+05:30"
     }
   ],
   "version": 2,

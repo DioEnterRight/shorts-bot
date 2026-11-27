@@ -693,6 +693,17 @@
       "video_id": "20261128-033130-en-invoice-fraud",
       "status": "produced",
       "created": "2026-11-28T04:22+05:30"
+    },
+    {
+      "canonical_en": "Why do we remember the price of a coffee but forget the price of a house?",
+      "question": "Why does $6 for coffee feel like a robbery?",
+      "hook": "Your brain thinks $6 for coffee is a crime.",
+      "angle": "Explains 'numerosity bias' and the difference between 'pain of paying' for small, frequent purchases vs. large, infrequent ones. The brain treats small recurring costs as more painful than large one-off costs.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-043316-en-mental-accounting-and-pain-o",
+      "status": "produced",
+      "created": "2026-11-28T05:07+05:30"
     }
   ],
   "backlog": [
@@ -965,36 +976,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do we remember the price of a coffee but forget the price of a house?",
-      "title": "The Coffee Price Trick",
-      "question": "Why does $6 for coffee feel like a robbery?",
-      "hook": "Your brain thinks $6 for coffee is a crime.",
-      "angle": "Explains 'numerosity bias' and the difference between 'pain of paying' for small, frequent purchases vs. large, infrequent ones. The brain treats small recurring costs as more painful than large one-off costs.",
-      "why_care": "It explains a universal frustration and gives a tool to reframe financial stress.",
-      "payoff": "You hate the coffee because you buy it every day; you love the house because you buy it once.",
-      "visual_moments": [
-        "A small coffee cup with a huge red '6' on it, looking like a bomb.",
-        "A giant house with a small '500,000' tag that looks like a tiny sticker.",
-        "A man wincing at the coffee cup, but smiling at the house key."
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Brain Glitches",
-      "hook_type": "why",
-      "research_basis": "Behavioral economics research on 'pain of paying' and mental accounting (Thaler).",
-      "scores": {
-        "curiosity": 8,
-        "originality": 8,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "Why do people buy things they don't need just to feel like they've achieved something?",
