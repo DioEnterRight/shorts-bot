@@ -223,6 +223,12 @@
       "video_id": "7FsOjzUJMlk",
       "local_id": "20261128-013531-en-the-bank-that-printed-mistak",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T23:01:39+00:00",
+      "video_id": "yEoyLRrkY9s",
+      "local_id": "20261128-033130-en-invoice-fraud",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -273,6 +279,10 @@
     {
       "ts": "2026-11-27T22:00:38+00:00",
       "local_id": "20261128-013531-en-the-bank-that-printed-mistak"
+    },
+    {
+      "ts": "2026-11-27T23:01:39+00:00",
+      "local_id": "20261128-033130-en-invoice-fraud"
     }
   ],
   "attempts": [
@@ -334,6 +344,11 @@
     {
       "ts": "2026-11-27T22:00:38+00:00",
       "local_id": "20261128-013531-en-the-bank-that-printed-mistak",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T23:01:39+00:00",
+      "local_id": "20261128-033130-en-invoice-fraud",
       "result": "ok"
     }
   ],
@@ -419,5 +434,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T22:00:38+00:00"
+  "last_reconcile": "2026-11-27T23:01:39+00:00"
 }
