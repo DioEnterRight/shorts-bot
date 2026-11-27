@@ -1223,6 +1223,22 @@
       "yt_video_id": "SpZrxDWlkso",
       "yt_state": "posted",
       "published_at": "2026-11-27T12:05+05:30"
+    },
+    {
+      "id": "20261127-125625-en-the-decoy-effect",
+      "title": "The Menu Option Nobody Was Meant to Pick",
+      "topic": "The decoy effect",
+      "canonical_en": "How did a useless third option in an Economist subscription ad change what people bought? (decoy effect)",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "Nobody picked the middle option, and that was its entire job.",
+      "duration": 59.96,
+      "storyboard": "kit",
+      "tag": "vid-20261127-125625-en-the-decoy-effect",
+      "status": "queued",
+      "created": "2026-11-27T13:40+05:30"
     }
   ],
   "version": 2,

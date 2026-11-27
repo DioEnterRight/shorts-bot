@@ -572,6 +572,17 @@
       "video_id": "20261127-104819-en-the-bank-holiday-of-1933",
       "status": "produced",
       "created": "2026-11-27T10:57+05:30"
+    },
+    {
+      "canonical_en": "How did a useless third option in an Economist subscription ad change what people bought? (decoy effect)",
+      "question": "Why would a store add an option nobody wants?",
+      "hook": "Nobody picked the middle option, and that was its entire job.",
+      "angle": "Three price signs in a 1930s newsstand: web only, print only, and print plus web at the same price as print. Shows how a decoy steers the choice.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-125625-en-the-decoy-effect",
+      "status": "produced",
+      "created": "2026-11-27T13:40+05:30"
     }
   ],
   "backlog": [
@@ -874,36 +885,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "How did a useless third option in an Economist subscription ad change what people bought? (decoy effect)",
-      "title": "The Menu Option Nobody Was Meant to Pick",
-      "question": "Why would a store add an option nobody wants?",
-      "hook": "Nobody picked the middle option, and that was its entire job.",
-      "angle": "Three price signs in a 1930s newsstand: web only, print only, and print plus web at the same price as print. Shows how a decoy steers the choice.",
-      "why_care": "Viewers can spot the same trick on every cinema popcorn menu and phone plan.",
-      "payoff": "The option nobody bought made the most money.",
-      "visual_moments": [
-        "Three price signs on a newsstand board",
-        "A crowd drifts toward the third sign, with arrows pulled by a tiny 'decoy' sign",
-        "The sign flips: remove the decoy and the crowd scatters"
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Pricing Tricks",
-      "hook_type": "paradox",
-      "research_basis": "evergreen (Dan Ariely, Predictably Irrational, 2008; the decoy effect is replicated, but the Economist example is from a classroom exercise and its prices are only illustrative, so don't present them as the magazine's real sales data)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "Who invented Cyber Monday, and why was it a made-up name for a day that wasn't yet busy? (2005)",
