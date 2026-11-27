@@ -583,6 +583,17 @@
       "video_id": "20261127-125625-en-the-decoy-effect",
       "status": "produced",
       "created": "2026-11-27T13:40+05:30"
+    },
+    {
+      "canonical_en": "Who invented Cyber Monday, and why was it a made-up name for a day that wasn't yet busy? (2005)",
+      "question": "Where did Cyber Monday come from?",
+      "hook": "Cyber Monday was named before it was a real thing.",
+      "angle": "Seasonal: this very weekend. The name came from a 2005 press release, claiming people shopped at work on fast office internet, and it then became true.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-144522-en-cyber-monday",
+      "status": "produced",
+      "created": "2026-11-27T14:55+05:30"
     }
   ],
   "backlog": [
@@ -885,36 +896,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Who invented Cyber Monday, and why was it a made-up name for a day that wasn't yet busy? (2005)",
-      "title": "The Shopping Day Invented by a Press Release",
-      "question": "Where did Cyber Monday come from?",
-      "hook": "Cyber Monday was named before it was a real thing.",
-      "angle": "Seasonal: this very weekend. The name came from a 2005 press release, claiming people shopped at work on fast office internet, and it then became true.",
-      "why_care": "It explains how a label can create the behaviour it names, right as viewers are shopping.",
-      "payoff": "Nobody discovered Cyber Monday. Someone announced it, and we all showed up.",
-      "visual_moments": [
-        "A clerk at an office desk shopping from a catalogue while the boss passes",
-        "A giant calendar with a Monday circled and a crowd running toward it",
-        "A name tag stuck on an empty day, then the shop fills"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "explainer",
-      "series": "Invented Traditions",
-      "hook_type": "paradox",
-      "research_basis": "evergreen/seasonal (term coined by Shop.org's Ellen Davis and Scott Silverman, announced November 2005 per the National Retail Federation; the 'office shopping' reasoning was real but small at the time)",
-      "scores": {
-        "curiosity": 7,
-        "originality": 7,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "Is it true that the word 'salary' comes from Roman soldiers being paid in salt?",

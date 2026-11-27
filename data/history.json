@@ -1246,6 +1246,22 @@
       "yt_video_id": "zJWSudQ_Jso",
       "yt_state": "posted",
       "published_at": "2026-11-27T14:41+05:30"
+    },
+    {
+      "id": "20261127-144522-en-cyber-monday",
+      "title": "The Shopping Day Invented by a Press Release",
+      "topic": "Cyber Monday",
+      "canonical_en": "Who invented Cyber Monday, and why was it a made-up name for a day that wasn't yet busy? (2005)",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "Cyber Monday had a name before it had any customers.",
+      "duration": 50.57,
+      "storyboard": "claude",
+      "tag": "vid-20261127-144522-en-cyber-monday",
+      "status": "queued",
+      "created": "2026-11-27T14:55+05:30"
     }
   ],
   "version": 2,
