@@ -1370,8 +1370,14 @@
       "duration": 56.57,
       "storyboard": "claude",
       "tag": "vid-20261127-214030-en-the-gamble-that-saved-fedex",
-      "status": "queued",
-      "created": "2026-11-27T21:55+05:30"
+      "status": "published",
+      "created": "2026-11-27T21:55+05:30",
+      "slot": "2026-11-27 22:30",
+      "ig_media_id": "18161190031515493",
+      "ig_link": "https://www.instagram.com/reel/DgQMaDiuZIt/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T22:46+05:30"
     }
   ],
   "version": 2,
