@@ -1290,6 +1290,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T17:02+05:30"
+    },
+    {
+      "id": "20261127-173321-en-why-casinos-use-chips",
+      "title": "Why Casinos Never Let You Bet Cash",
+      "topic": "Why Casinos Use Chips",
+      "canonical_en": "Why do casinos use chips instead of cash, and what does it do to how you spend?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_cons",
+      "hook_type": "paradox",
+      "hook_line": "The first thing a casino does is take your real money away.",
+      "duration": 45.93,
+      "storyboard": "claude",
+      "tag": "vid-20261127-173321-en-why-casinos-use-chips",
+      "status": "queued",
+      "created": "2026-11-27T17:43+05:30"
     }
   ],
   "version": 2,

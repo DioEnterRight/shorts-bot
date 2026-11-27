@@ -605,6 +605,17 @@
       "video_id": "20261127-163036-en-roman-salary-myth",
       "status": "produced",
       "created": "2026-11-27T16:48+05:30"
+    },
+    {
+      "canonical_en": "Why do casinos use chips instead of cash, and what does it do to how you spend?",
+      "question": "Why do casinos swap your money for plastic chips?",
+      "hook": "The casino's first move is to take your money away.",
+      "angle": "Follow one player at the cashier window: cash goes in, colourful discs come out, and the discs stop feeling like money. Both the practical reasons (counting, security) and the psychology (pain of paying) are covered.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-173321-en-why-casinos-use-chips",
+      "status": "produced",
+      "created": "2026-11-27T17:43+05:30"
     }
   ],
   "backlog": [
@@ -907,36 +918,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do casinos use chips instead of cash, and what does it do to how you spend?",
-      "title": "Why Casinos Never Let You Bet Cash",
-      "question": "Why do casinos swap your money for plastic chips?",
-      "hook": "The casino's first move is to take your money away.",
-      "angle": "Follow one player at the cashier window: cash goes in, colourful discs come out, and the discs stop feeling like money. Both the practical reasons (counting, security) and the psychology (pain of paying) are covered.",
-      "why_care": "It explains why paying with a card, tokens or in-game coins is easier to spend.",
-      "payoff": "You didn't lose a hundred dollars. You lost twenty pretty discs.",
-      "visual_moments": [
-        "Cash disappears under the cashier's grille and chips slide out",
-        "A chip tower rising and falling on the felt",
-        "A split screen of a hand holding bills and a hand holding chips"
-      ],
-      "fact_status": "documented",
-      "category": "money_cons",
-      "format": "explainer",
-      "series": "Casino Psychology",
-      "hook_type": "paradox",
-      "research_basis": "evergreen (the 'pain of paying' and payment-decoupling research by Prelec and Loewenstein, 1998; the exact casino intent is partly inferred, so say 'researchers think')",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "Why does one free soda make you buy more raffle tickets? (Regan 1971 reciprocity study)",
