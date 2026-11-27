@@ -1268,6 +1268,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T16:06+05:30"
+    },
+    {
+      "id": "20261127-163036-en-roman-salary-myth",
+      "title": "Were Roman Soldiers Really Paid in Salt?",
+      "topic": "Roman Salary Myth",
+      "canonical_en": "Is it true that the word 'salary' comes from Roman soldiers being paid in salt?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "The word for your paycheck comes from a bucket of ancient salt.",
+      "duration": 59.6,
+      "storyboard": "claude",
+      "tag": "vid-20261127-163036-en-roman-salary-myth",
+      "status": "queued",
+      "created": "2026-11-27T16:48+05:30"
     }
   ],
   "version": 2,

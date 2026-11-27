@@ -594,6 +594,17 @@
       "video_id": "20261127-144522-en-cyber-monday",
       "status": "produced",
       "created": "2026-11-27T14:55+05:30"
+    },
+    {
+      "canonical_en": "Is it true that the word 'salary' comes from Roman soldiers being paid in salt?",
+      "question": "Were Roman soldiers really paid in salt, and does 'salary' come from it?",
+      "hook": "You were told 'salary' means salt money. Probably not.",
+      "angle": "Myth-busting told by an imagined legionnaire counting what he is actually handed. The real link is a 'salarium', money for salt or a salt allowance, and historians disagree even on that.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-163036-en-roman-salary-myth",
+      "status": "produced",
+      "created": "2026-11-27T16:48+05:30"
     }
   ],
   "backlog": [
@@ -896,36 +907,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Is it true that the word 'salary' comes from Roman soldiers being paid in salt?",
-      "title": "Were Roman Soldiers Really Paid in Salt?",
-      "question": "Were Roman soldiers really paid in salt, and does 'salary' come from it?",
-      "hook": "You were told 'salary' means salt money. Probably not.",
-      "angle": "Myth-busting told by an imagined legionnaire counting what he is actually handed. The real link is a 'salarium', money for salt or a salt allowance, and historians disagree even on that.",
-      "why_care": "People repeat this fact to sound smart, and the real answer is more interesting.",
-      "payoff": "Nobody was paid in salt, and you can quote that at the next dinner.",
-      "visual_moments": [
-        "A legionnaire handed a sack of salt and a handful of coins",
-        "A giant salt pile next to a coin pile with a question mark",
-        "A 'myth' stamp slamming onto a Roman scroll"
-      ],
-      "fact_status": "disputed",
-      "category": "weird_history",
-      "format": "explainer",
-      "series": "Money Myths",
-      "hook_type": "myth_busting",
-      "research_basis": "evergreen (Latin salarium is real and linked to salt, but Pliny the Elder's wording is ambiguous and there is no proof soldiers were paid in actual salt; frame it clearly as 'disputed')",
-      "scores": {
-        "curiosity": 7,
-        "originality": 7,
-        "visual": 8,
-        "clarity": 8,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "Why do casinos use chips instead of cash, and what does it do to how you spend?",
