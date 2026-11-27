@@ -528,6 +528,17 @@
       "video_id": "20261127-053207-en-the-goldsmith-who-lent-other",
       "status": "produced",
       "created": "2026-11-27T06:04+05:30"
+    },
+    {
+      "canonical_en": "Why did Kodak invent the digital camera in 1975 and then bury it?",
+      "question": "Why did Kodak shelve the digital camera it invented?",
+      "hook": "A Kodak engineer built a digital camera in 1975, and his bosses said keep quiet.",
+      "angle": "One decision, a film-versus-chip comparison, and a clear twist: it was too good for its own profit.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-065623-en-kodak-buried-the-digital-cam",
+      "status": "produced",
+      "created": "2026-11-27T07:57+05:30"
     }
   ],
   "backlog": [
@@ -860,36 +871,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did Kodak invent the digital camera in 1975 and then bury it?",
-      "title": "The Company That Invented Its Own Killer",
-      "question": "Why did Kodak shelve the digital camera it invented?",
-      "hook": "A Kodak engineer built a digital camera in 1975, and his bosses said keep quiet.",
-      "angle": "One decision, a film-versus-chip comparison, and a clear twist: it was too good for its own profit.",
-      "why_care": "It shows why successful companies sabotage themselves, in a single story.",
-      "payoff": "Kodak sold the film, and forgot it was in the picture business.",
-      "visual_moments": [
-        "A tiny toaster-sized camera in a lab, with a boss waving it away",
-        "A shop shelf of film boxes slowly emptying",
-        "A split comparison: a huge pile of film cash against a tiny chip"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "One Decision That Broke a Company",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. Steven Sasson built the first digital camera prototype at Kodak in 1975. Kodak filed for bankruptcy in January 2012. The exact boss quotes are told as paraphrase.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 4,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     }
   ]
 }

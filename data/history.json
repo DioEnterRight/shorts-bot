@@ -1131,6 +1131,22 @@
       "yt_video_id": "thmlyaOTWVE",
       "yt_state": "posted",
       "published_at": "2026-11-27T07:29+05:30"
+    },
+    {
+      "id": "20261127-065623-en-kodak-buried-the-digital-cam",
+      "title": "The Company That Invented Its Own Killer",
+      "topic": "Kodak buried the digital camera",
+      "canonical_en": "Why did Kodak invent the digital camera in 1975 and then bury it?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "A Kodak engineer built the first digital camera, and his bosses told him to hide it.",
+      "duration": 60.36,
+      "storyboard": "kit",
+      "tag": "vid-20261127-065623-en-kodak-buried-the-digital-cam",
+      "status": "queued",
+      "created": "2026-11-27T07:57+05:30"
     }
   ],
   "version": 2,
