@@ -1122,8 +1122,15 @@
       "duration": 58.97,
       "storyboard": "claude",
       "tag": "vid-20261127-053207-en-the-goldsmith-who-lent-other",
-      "status": "queued",
-      "created": "2026-11-27T06:04+05:30"
+      "status": "published",
+      "created": "2026-11-27T06:04+05:30",
+      "slot": "2026-11-27 06:30",
+      "ig_media_id": "18106372298039894",
+      "ig_link": "https://www.instagram.com/reel/DgOjhIVvBfP/",
+      "ig_state": "posted",
+      "yt_video_id": "thmlyaOTWVE",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T07:29+05:30"
     }
   ],
   "version": 2,
