@@ -660,6 +660,17 @@
       "video_id": "20261127-224655-en-the-1992-bankers-trust-compu",
       "status": "produced",
       "created": "2026-11-27T23:21+05:30"
+    },
+    {
+      "canonical_en": "How did a fake gold coin scam fool a bank for years?",
+      "question": "How can a fake coin pass a bank's test?",
+      "hook": "This coin is real gold, except it isn't.",
+      "angle": "A deep dive into the 'clad' or 'plated' coin trick, where a thin layer of gold covers a cheap core, explaining the specific chemical test banks used (and failed to use) that would have caught it.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-003407-en-gold-plated-coin-scam",
+      "status": "produced",
+      "created": "2026-11-28T01:13+05:30"
     }
   ],
   "backlog": [
@@ -932,36 +943,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "How did a fake gold coin scam fool a bank for years?",
-      "title": "The Coin That Wasn't Gold",
-      "question": "How can a fake coin pass a bank's test?",
-      "hook": "This coin is real gold, except it isn't.",
-      "angle": "A deep dive into the 'clad' or 'plated' coin trick, where a thin layer of gold covers a cheap core, explaining the specific chemical test banks used (and failed to use) that would have caught it.",
-      "why_care": "It teaches a practical lesson about verifying value and the limits of surface-level checks, applicable to digital signatures and certificates too.",
-      "payoff": "The bank kept the coin for a decade, only finding out when it started to rust.",
-      "visual_moments": [
-        "A close-up of a coin being scratched, revealing a black core under the gold skin.",
-        "A bank vault door opens, and a stack of gold coins turns into lead weights.",
-        "A magnifying glass zooms in on a tiny scratch that reveals the lie."
-      ],
-      "fact_status": "documented",
-      "category": "money_cons",
-      "format": "story",
-      "series": "Greatest Cons",
-      "hook_type": "how",
-      "research_basis": "Historical records of coin counterfeiting methods, specifically 'plating' techniques used in 19th and 20th-century frauds.",
-      "scores": {
-        "curiosity": 9,
-        "originality": 8,
-        "visual": 9,
-        "clarity": 8,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "How did a bank accidentally create a new currency?",

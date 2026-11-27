@@ -1400,6 +1400,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T23:56+05:30"
+    },
+    {
+      "id": "20261128-003407-en-gold-plated-coin-scam",
+      "title": "The Bank That Guarded Fake Gold for 10 Years",
+      "topic": "Gold Plated Coin Scam",
+      "canonical_en": "How did a fake gold coin scam fool a bank for years?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_cons",
+      "hook_type": "paradox",
+      "hook_line": "A bank spent ten years guarding gold coins made of cheap metal.",
+      "duration": 45.24,
+      "storyboard": "kit",
+      "tag": "vid-20261128-003407-en-gold-plated-coin-scam",
+      "status": "queued",
+      "created": "2026-11-28T01:13+05:30"
     }
   ],
   "version": 2,
