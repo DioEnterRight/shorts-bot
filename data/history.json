@@ -1101,6 +1101,22 @@
       "tag": "vid-20261127-043518-en-the-pet-rock-craze",
       "status": "queued",
       "created": "2026-11-27T05:23+05:30"
+    },
+    {
+      "id": "20261127-053207-en-the-goldsmith-who-lent-other",
+      "title": "The Goldsmith Who Lent Gold That Wasn't His",
+      "topic": "The goldsmith who lent other people's gold",
+      "canonical_en": "Why do banks lend out money that isn't in the vault, and where did the idea come from (goldsmith receipts)?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "A goldsmith got rich lending gold that belonged to other people.",
+      "duration": 58.97,
+      "storyboard": "claude",
+      "tag": "vid-20261127-053207-en-the-goldsmith-who-lent-other",
+      "status": "queued",
+      "created": "2026-11-27T06:04+05:30"
     }
   ],
   "version": 2,

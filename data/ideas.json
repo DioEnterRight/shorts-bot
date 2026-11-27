@@ -517,6 +517,17 @@
       "video_id": "20261127-043518-en-the-pet-rock-craze",
       "status": "produced",
       "created": "2026-11-27T05:23+05:30"
+    },
+    {
+      "canonical_en": "Why do banks lend out money that isn't in the vault, and where did the idea come from (goldsmith receipts)?",
+      "question": "How did lending other people's stored gold turn into modern banking?",
+      "hook": "Merchants stored their gold with a goldsmith, and he quietly lent it out.",
+      "angle": "A stripped-down, one-character story: a receipt becomes money, then the run on the shop shows the risk.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-053207-en-the-goldsmith-who-lent-other",
+      "status": "produced",
+      "created": "2026-11-27T06:04+05:30"
     }
   ],
   "backlog": [
@@ -849,36 +860,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do banks lend out money that isn't in the vault, and where did the idea come from (goldsmith receipts)?",
-      "title": "The Goldsmith Who Lent Gold That Wasn't His",
-      "question": "How did lending other people's stored gold turn into modern banking?",
-      "hook": "Merchants stored their gold with a goldsmith, and he quietly lent it out.",
-      "angle": "A stripped-down, one-character story: a receipt becomes money, then the run on the shop shows the risk.",
-      "why_care": "It explains why banks can't give everyone their cash at once, in under 40 seconds.",
-      "payoff": "Your deposit isn't in a vault. It's in someone else's mortgage.",
-      "visual_moments": [
-        "A goldsmith slipping gold coins into a stranger's hand while the owner's chest sits closed",
-        "A queue of merchants all arriving at once",
-        "An empty chest and a trembling goldsmith"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "How Money Really Works",
-      "hook_type": "paradox",
-      "research_basis": "Evergreen. The standard origin of fractional reserve banking via 17th-century London goldsmiths. Historians say the real story is more complicated, so it is told as the simplified version.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 5,
-        "visual": 8,
-        "clarity": 8,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-26T18:17+05:30"
     },
     {
       "canonical_en": "Why did Kodak invent the digital camera in 1975 and then bury it?",
