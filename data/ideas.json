@@ -550,6 +550,17 @@
       "video_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
       "status": "produced",
       "created": "2026-11-27T09:17+05:30"
+    },
+    {
+      "canonical_en": "Why did England tax windows in 1696, and why did people brick theirs up?",
+      "question": "Why did people in England brick up their own windows?",
+      "hook": "England once taxed sunlight, and people paid to stop getting any.",
+      "angle": "Told as one ordinary householder with a tax collector at the door. The window count is the bill, and the story ends in a walled-up house.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-094033-en-the-window-tax",
+      "status": "produced",
+      "created": "2026-11-27T10:39+05:30"
     }
   ],
   "backlog": [
@@ -852,6 +863,216 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
+    },
+    {
+      "canonical_en": "Why did Roosevelt close every US bank in March 1933, and why did people deposit money again afterwards?",
+      "title": "The Week America Closed Every Bank",
+      "question": "Why would closing every bank save the banking system?",
+      "hook": "The president shut every bank in America, and that was the rescue.",
+      "angle": "Follows one depositor in line before the bank holiday and the same person back in line after it, to show confidence and a bank run as a crowd mechanism.",
+      "why_care": "It explains a bank run and why 'is my money safe' is mostly about what others believe.",
+      "payoff": "After four days with no banks, people put more money back in than they pulled out.",
+      "visual_moments": [
+        "A long line of coat-clad people at a bank door",
+        "A 'CLOSED' sign hung on the door and the crowd freezing",
+        "The line reversed: people carrying cash back inside"
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "explainer",
+      "series": "How Money Really Works",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (Emergency Banking Act, March 9, 1933; first fireside chat March 12; deposits exceeded withdrawals in the following weeks, per Federal Reserve History)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 7,
+        "visual": 9,
+        "clarity": 8,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "How did a useless third option in an Economist subscription ad change what people bought? (decoy effect)",
+      "title": "The Menu Option Nobody Was Meant to Pick",
+      "question": "Why would a store add an option nobody wants?",
+      "hook": "Nobody picked the middle option, and that was its entire job.",
+      "angle": "Three price signs in a 1930s newsstand: web only, print only, and print plus web at the same price as print. Shows how a decoy steers the choice.",
+      "why_care": "Viewers can spot the same trick on every cinema popcorn menu and phone plan.",
+      "payoff": "The option nobody bought made the most money.",
+      "visual_moments": [
+        "Three price signs on a newsstand board",
+        "A crowd drifts toward the third sign, with arrows pulled by a tiny 'decoy' sign",
+        "The sign flips: remove the decoy and the crowd scatters"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Pricing Tricks",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (Dan Ariely, Predictably Irrational, 2008; the decoy effect is replicated, but the Economist example is from a classroom exercise and its prices are only illustrative, so don't present them as the magazine's real sales data)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Who invented Cyber Monday, and why was it a made-up name for a day that wasn't yet busy? (2005)",
+      "title": "The Shopping Day Invented by a Press Release",
+      "question": "Where did Cyber Monday come from?",
+      "hook": "Cyber Monday was named before it was a real thing.",
+      "angle": "Seasonal: this very weekend. The name came from a 2005 press release, claiming people shopped at work on fast office internet, and it then became true.",
+      "why_care": "It explains how a label can create the behaviour it names, right as viewers are shopping.",
+      "payoff": "Nobody discovered Cyber Monday. Someone announced it, and we all showed up.",
+      "visual_moments": [
+        "A clerk at an office desk shopping from a catalogue while the boss passes",
+        "A giant calendar with a Monday circled and a crowd running toward it",
+        "A name tag stuck on an empty day, then the shop fills"
+      ],
+      "fact_status": "documented",
+      "category": "business",
+      "format": "explainer",
+      "series": "Invented Traditions",
+      "hook_type": "paradox",
+      "research_basis": "evergreen/seasonal (term coined by Shop.org's Ellen Davis and Scott Silverman, announced November 2005 per the National Retail Federation; the 'office shopping' reasoning was real but small at the time)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 7,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Is it true that the word 'salary' comes from Roman soldiers being paid in salt?",
+      "title": "Were Roman Soldiers Really Paid in Salt?",
+      "question": "Were Roman soldiers really paid in salt, and does 'salary' come from it?",
+      "hook": "You were told 'salary' means salt money. Probably not.",
+      "angle": "Myth-busting told by an imagined legionnaire counting what he is actually handed. The real link is a 'salarium', money for salt or a salt allowance, and historians disagree even on that.",
+      "why_care": "People repeat this fact to sound smart, and the real answer is more interesting.",
+      "payoff": "Nobody was paid in salt, and you can quote that at the next dinner.",
+      "visual_moments": [
+        "A legionnaire handed a sack of salt and a handful of coins",
+        "A giant salt pile next to a coin pile with a question mark",
+        "A 'myth' stamp slamming onto a Roman scroll"
+      ],
+      "fact_status": "disputed",
+      "category": "weird_history",
+      "format": "explainer",
+      "series": "Money Myths",
+      "hook_type": "myth_busting",
+      "research_basis": "evergreen (Latin salarium is real and linked to salt, but Pliny the Elder's wording is ambiguous and there is no proof soldiers were paid in actual salt; frame it clearly as 'disputed')",
+      "scores": {
+        "curiosity": 7,
+        "originality": 7,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Why do casinos use chips instead of cash, and what does it do to how you spend?",
+      "title": "Why Casinos Never Let You Bet Cash",
+      "question": "Why do casinos swap your money for plastic chips?",
+      "hook": "The casino's first move is to take your money away.",
+      "angle": "Follow one player at the cashier window: cash goes in, colourful discs come out, and the discs stop feeling like money. Both the practical reasons (counting, security) and the psychology (pain of paying) are covered.",
+      "why_care": "It explains why paying with a card, tokens or in-game coins is easier to spend.",
+      "payoff": "You didn't lose a hundred dollars. You lost twenty pretty discs.",
+      "visual_moments": [
+        "Cash disappears under the cashier's grille and chips slide out",
+        "A chip tower rising and falling on the felt",
+        "A split screen of a hand holding bills and a hand holding chips"
+      ],
+      "fact_status": "documented",
+      "category": "money_cons",
+      "format": "explainer",
+      "series": "Casino Psychology",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (the 'pain of paying' and payment-decoupling research by Prelec and Loewenstein, 1998; the exact casino intent is partly inferred, so say 'researchers think')",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Why does one free soda make you buy more raffle tickets? (Regan 1971 reciprocity study)",
+      "title": "The Free Soda That Cost Double",
+      "question": "Why does a small favour make you spend more?",
+      "hook": "A stranger handed out free sodas, and then sold twice as many tickets.",
+      "angle": "'Imagine you' sit in a waiting room while a stranger brings back a drink. The study is shown as a before/after of two ticket piles.",
+      "why_care": "It explains free samples and 'little gifts' in shops, and how to notice when you feel you owe someone.",
+      "payoff": "The soda cost a few cents. The 'free' part was the most expensive thing you took that day.",
+      "visual_moments": [
+        "Two people on a bench, one gets a soda and the other gets nothing",
+        "A ticket pile that is twice as tall for the soda drinker",
+        "A shop counter with a free sample tray and a growing pile of purchases"
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Tricks Your Brain Falls For",
+      "hook_type": "paradox",
+      "research_basis": "evergreen (Dennis Regan, 1971, Journal of Experimental Social Psychology; the effect is real, but the exact size varied by how much participants liked the helper)",
+      "scores": {
+        "curiosity": 8,
+        "originality": 6,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Why did Benjamin Franklin win over a rival by asking to borrow a book? (the Ben Franklin effect)",
+      "title": "Make an Enemy Do You a Favour",
+      "question": "Why do people like you more after doing you a favour?",
+      "hook": "Franklin made a rival like him by asking for a favour.",
+      "angle": "A 1700s legislator story from Franklin's own autobiography, with a modern study as the explanation: we justify our favours by deciding we like the person.",
+      "why_care": "It is a practical social trick that runs against intuition and costs nothing.",
+      "payoff": "He borrowed a rare book, returned it with a thank-you note, and gained a friend for life.",
+      "visual_moments": [
+        "A rival in a powdered wig glaring across the legislature hall",
+        "A rare book handed across a table",
+        "The same two men shaking hands, speech bubbles turning to hearts"
+      ],
+      "fact_status": "documented",
+      "category": "self_improvement",
+      "format": "explainer",
+      "series": "Tricks Your Brain Falls For",
+      "hook_type": "story",
+      "research_basis": "evergreen (Franklin's autobiography tells it himself; the 'effect' is named after it, and a 1969 Jecker and Landy study supports the idea, though research is limited)",
+      "scores": {
+        "curiosity": 7,
+        "originality": 6,
+        "visual": 7,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-27T10:39+05:30"
     }
   ]
 }

@@ -1177,6 +1177,22 @@
       "yt_video_id": "lsqUgrBnTyM",
       "yt_state": "posted",
       "published_at": "2026-11-27T09:38+05:30"
+    },
+    {
+      "id": "20261127-094033-en-the-window-tax",
+      "title": "The Tax That Made Houses Go Blind",
+      "topic": "The window tax",
+      "canonical_en": "Why did England tax windows in 1696, and why did people brick theirs up?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "England taxed sunlight, and people paid to stop getting any.",
+      "duration": 56.85,
+      "storyboard": "kit",
+      "tag": "vid-20261127-094033-en-the-window-tax",
+      "status": "queued",
+      "created": "2026-11-27T10:39+05:30"
     }
   ],
   "version": 2,
