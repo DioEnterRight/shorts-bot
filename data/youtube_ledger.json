@@ -342,10 +342,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-27T11:32:20+00:00",
+      "local_id": "20261127-163036-en-roman-salary-myth",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T10:36:05+00:00"
+  "last_reconcile": "2026-11-27T11:32:20+00:00"
 }
