@@ -1304,8 +1304,14 @@
       "duration": 45.93,
       "storyboard": "claude",
       "tag": "vid-20261127-173321-en-why-casinos-use-chips",
-      "status": "queued",
-      "created": "2026-11-27T17:43+05:30"
+      "status": "published",
+      "created": "2026-11-27T17:43+05:30",
+      "slot": "2026-11-27 17:30",
+      "ig_media_id": "18095678360690831",
+      "ig_link": "https://www.instagram.com/reel/DgPshb7yNHC/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T18:07+05:30"
     }
   ],
   "version": 2,
