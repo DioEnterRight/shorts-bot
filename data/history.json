@@ -1154,6 +1154,22 @@
       "yt_video_id": "97ogeZO-y5s",
       "yt_state": "posted",
       "published_at": "2026-11-27T08:30+05:30"
+    },
+    {
+      "id": "20261127-083245-hi-why-atm-pins-have-4-digits",
+      "title": "ATM PIN सिर्फ़ 4 digits का क्यों?",
+      "topic": "Why ATM PINs have 4 digits",
+      "canonical_en": "Why is an ATM PIN only 4 digits? (Because the inventor's wife could not remember 6)",
+      "language": "hi",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "ATM का PIN एक पत्नी की याददाश्त ने 4 digits का किया।",
+      "duration": 69.83,
+      "storyboard": "kit",
+      "tag": "vid-20261127-083245-hi-why-atm-pins-have-4-digits",
+      "status": "queued",
+      "created": "2026-11-27T09:17+05:30"
     }
   ],
   "version": 2,

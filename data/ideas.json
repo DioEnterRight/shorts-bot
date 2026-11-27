@@ -539,6 +539,17 @@
       "video_id": "20261127-065623-en-kodak-buried-the-digital-cam",
       "status": "produced",
       "created": "2026-11-27T07:57+05:30"
+    },
+    {
+      "canonical_en": "Why is an ATM PIN only 4 digits? (Because the inventor's wife could not remember 6)",
+      "question": "ATM का PIN 4 digits का ही क्यों होता है, 6 या 8 का क्यों नहीं?",
+      "hook": "ATM का PIN पहले 6 digits का था, फिर एक औरत ने उसे 4 का करवा दिया।",
+      "angle": "The 1967 story of John Shepherd-Barron, who wanted 6 digits until his wife said she could only remember 4. The video then explains why 4 digits was safe enough with a 3-try limit. The inventor himself told this story in interviews.",
+      "language": "hi",
+      "theme": "explainer",
+      "video_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
+      "status": "produced",
+      "created": "2026-11-27T09:17+05:30"
     }
   ],
   "backlog": [
@@ -661,36 +672,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-26T03:25+05:30"
-    },
-    {
-      "canonical_en": "Why is an ATM PIN only 4 digits? (Because the inventor's wife could not remember 6)",
-      "title": "ATM PIN सिर्फ़ 4 digits का क्यों?",
-      "question": "ATM का PIN 4 digits का ही क्यों होता है, 6 या 8 का क्यों नहीं?",
-      "hook": "ATM का PIN पहले 6 digits का था, फिर एक औरत ने उसे 4 का करवा दिया।",
-      "angle": "The 1967 story of John Shepherd-Barron, who wanted 6 digits until his wife said she could only remember 4. The video then explains why 4 digits was safe enough with a 3-try limit. The inventor himself told this story in interviews.",
-      "why_care": "Everyone uses a PIN daily and has never wondered why it is 4 digits.",
-      "payoff": "जिस PIN को हम सबसे सुरक्षित समझते हैं, वो एक पत्नी की याददाश्त पर तय हुआ था।",
-      "visual_moments": [
-        "a 1930s-style clerk at a bank wall machine with a six-digit lock, and a wife shaking her head",
-        "10,000 combinations shown as a giant wall of keys, with only 3 tries allowed before the machine locks",
-        "a thief gives up after the third wrong try as the machine swallows the card"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "Why Money Works Like This",
-      "hook_type": "paradox",
-      "research_basis": "evergreen (widely reported BBC interviews with Shepherd-Barron)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "hi",
-      "theme": "explainer",
-      "added": "2026-11-26T09:39+05:30"
     },
     {
       "canonical_en": "How a 1947 ad slogan made the diamond engagement ring a 'tradition' (De Beers, 'A Diamond Is Forever')",
