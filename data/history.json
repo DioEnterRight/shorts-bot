@@ -1099,8 +1099,15 @@
       "duration": 60.06,
       "storyboard": "kit",
       "tag": "vid-20261127-043518-en-the-pet-rock-craze",
-      "status": "queued",
-      "created": "2026-11-27T05:23+05:30"
+      "status": "published",
+      "created": "2026-11-27T05:23+05:30",
+      "slot": "2026-11-27 05:30",
+      "ig_media_id": "18081243365733893",
+      "ig_link": "https://www.instagram.com/reel/DgOZtcPvtIZ/",
+      "ig_state": "posted",
+      "yt_video_id": "hAVtgnkDmao",
+      "yt_state": "posted",
+      "published_at": "2026-11-27T06:04+05:30"
     },
     {
       "id": "20261127-053207-en-the-goldsmith-who-lent-other",
