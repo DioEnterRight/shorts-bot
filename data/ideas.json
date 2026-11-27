@@ -627,6 +627,17 @@
       "video_id": "20261127-185254-en-the-reciprocity-trap",
       "status": "produced",
       "created": "2026-11-27T19:28+05:30"
+    },
+    {
+      "canonical_en": "Why did Benjamin Franklin win over a rival by asking to borrow a book? (the Ben Franklin effect)",
+      "question": "Why do people like you more after doing you a favour?",
+      "hook": "Franklin made a rival like him by asking for a favour.",
+      "angle": "A 1700s legislator story from Franklin's own autobiography, with a modern study as the explanation: we justify our favours by deciding we like the person.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-203344-en-the-ben-franklin-effect",
+      "status": "produced",
+      "created": "2026-11-27T21:15+05:30"
     }
   ],
   "backlog": [
@@ -929,36 +940,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did Benjamin Franklin win over a rival by asking to borrow a book? (the Ben Franklin effect)",
-      "title": "Make an Enemy Do You a Favour",
-      "question": "Why do people like you more after doing you a favour?",
-      "hook": "Franklin made a rival like him by asking for a favour.",
-      "angle": "A 1700s legislator story from Franklin's own autobiography, with a modern study as the explanation: we justify our favours by deciding we like the person.",
-      "why_care": "It is a practical social trick that runs against intuition and costs nothing.",
-      "payoff": "He borrowed a rare book, returned it with a thank-you note, and gained a friend for life.",
-      "visual_moments": [
-        "A rival in a powdered wig glaring across the legislature hall",
-        "A rare book handed across a table",
-        "The same two men shaking hands, speech bubbles turning to hearts"
-      ],
-      "fact_status": "documented",
-      "category": "self_improvement",
-      "format": "explainer",
-      "series": "Tricks Your Brain Falls For",
-      "hook_type": "story",
-      "research_basis": "evergreen (Franklin's autobiography tells it himself; the 'effect' is named after it, and a 1969 Jecker and Landy study supports the idea, though research is limited)",
-      "scores": {
-        "curiosity": 7,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     }
   ]
 }

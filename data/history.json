@@ -1334,6 +1334,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T20:31+05:30"
+    },
+    {
+      "id": "20261127-203344-en-the-ben-franklin-effect",
+      "title": "Make an Enemy Like You With One Small Favor",
+      "topic": "The Ben Franklin Effect",
+      "canonical_en": "Why did Benjamin Franklin win over a rival by asking to borrow a book? (the Ben Franklin effect)",
+      "language": "en",
+      "theme": "explainer",
+      "category": "self_improvement",
+      "hook_type": "story",
+      "hook_line": "Benjamin Franklin won over his fiercest enemy by asking him for a favor.",
+      "duration": 52.99,
+      "storyboard": "kit",
+      "tag": "vid-20261127-203344-en-the-ben-franklin-effect",
+      "status": "queued",
+      "created": "2026-11-27T21:15+05:30"
     }
   ],
   "version": 2,
