@@ -1392,8 +1392,14 @@
       "duration": 44.21,
       "storyboard": "kit",
       "tag": "vid-20261127-224655-en-the-1992-bankers-trust-compu",
-      "status": "queued",
-      "created": "2026-11-27T23:21+05:30"
+      "status": "published",
+      "created": "2026-11-27T23:21+05:30",
+      "slot": "2026-11-27 23:30",
+      "ig_media_id": "18007009734008788",
+      "ig_link": "https://www.instagram.com/reel/DgQUXdwvzMP/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-27T23:56+05:30"
     }
   ],
   "version": 2,
