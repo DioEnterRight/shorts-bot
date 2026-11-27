@@ -187,6 +187,12 @@
       "video_id": "97ogeZO-y5s",
       "local_id": "20261127-065623-en-kodak-buried-the-digital-cam",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T04:08:02+00:00",
+      "video_id": "lsqUgrBnTyM",
+      "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -213,6 +219,10 @@
     {
       "ts": "2026-11-27T03:00:37+00:00",
       "local_id": "20261127-065623-en-kodak-buried-the-digital-cam"
+    },
+    {
+      "ts": "2026-11-27T04:08:02+00:00",
+      "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits"
     }
   ],
   "attempts": [
@@ -244,6 +254,11 @@
     {
       "ts": "2026-11-27T03:00:37+00:00",
       "local_id": "20261127-065623-en-kodak-buried-the-digital-cam",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T04:08:02+00:00",
+      "local_id": "20261127-083245-hi-why-atm-pins-have-4-digits",
       "result": "ok"
     }
   ],
@@ -280,5 +295,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T03:00:37+00:00"
+  "last_reconcile": "2026-11-27T04:08:02+00:00"
 }
