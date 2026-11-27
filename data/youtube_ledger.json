@@ -181,6 +181,12 @@
       "video_id": "thmlyaOTWVE",
       "local_id": "20261127-053207-en-the-goldsmith-who-lent-other",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T03:00:37+00:00",
+      "video_id": "97ogeZO-y5s",
+      "local_id": "20261127-065623-en-kodak-buried-the-digital-cam",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -203,6 +209,10 @@
     {
       "ts": "2026-11-27T01:59:53+00:00",
       "local_id": "20261127-053207-en-the-goldsmith-who-lent-other"
+    },
+    {
+      "ts": "2026-11-27T03:00:37+00:00",
+      "local_id": "20261127-065623-en-kodak-buried-the-digital-cam"
     }
   ],
   "attempts": [
@@ -229,6 +239,11 @@
     {
       "ts": "2026-11-27T01:59:53+00:00",
       "local_id": "20261127-053207-en-the-goldsmith-who-lent-other",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T03:00:37+00:00",
+      "local_id": "20261127-065623-en-kodak-buried-the-digital-cam",
       "result": "ok"
     }
   ],
@@ -265,5 +280,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T01:59:53+00:00"
+  "last_reconcile": "2026-11-27T03:00:37+00:00"
 }
