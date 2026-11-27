@@ -205,6 +205,12 @@
       "video_id": "SpZrxDWlkso",
       "local_id": "20261127-104819-en-the-bank-holiday-of-1933",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-27T09:11:49+00:00",
+      "video_id": "zJWSudQ_Jso",
+      "local_id": "20261127-125625-en-the-decoy-effect",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -243,6 +249,10 @@
     {
       "ts": "2026-11-27T06:35:39+00:00",
       "local_id": "20261127-104819-en-the-bank-holiday-of-1933"
+    },
+    {
+      "ts": "2026-11-27T09:11:49+00:00",
+      "local_id": "20261127-125625-en-the-decoy-effect"
     }
   ],
   "attempts": [
@@ -290,6 +300,11 @@
       "ts": "2026-11-27T06:35:39+00:00",
       "local_id": "20261127-104819-en-the-bank-holiday-of-1933",
       "result": "ok"
+    },
+    {
+      "ts": "2026-11-27T09:11:49+00:00",
+      "local_id": "20261127-125625-en-the-decoy-effect",
+      "result": "ok"
     }
   ],
   "rejected": [
@@ -325,5 +340,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T06:35:39+00:00"
+  "last_reconcile": "2026-11-27T09:11:49+00:00"
 }
