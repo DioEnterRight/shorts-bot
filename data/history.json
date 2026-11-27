@@ -1312,6 +1312,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-27T18:07+05:30"
+    },
+    {
+      "id": "20261127-185254-en-the-reciprocity-trap",
+      "title": "The Free Soda That Cost Double",
+      "topic": "The Reciprocity Trap",
+      "canonical_en": "Why does one free soda make you buy more raffle tickets? (Regan 1971 reciprocity study)",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "A man spent his last coins buying sodas for strangers just to lose money.",
+      "duration": 50.7,
+      "storyboard": "kit",
+      "tag": "vid-20261127-185254-en-the-reciprocity-trap",
+      "status": "queued",
+      "created": "2026-11-27T19:28+05:30"
     }
   ],
   "version": 2,

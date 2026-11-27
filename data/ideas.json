@@ -616,6 +616,17 @@
       "video_id": "20261127-173321-en-why-casinos-use-chips",
       "status": "produced",
       "created": "2026-11-27T17:43+05:30"
+    },
+    {
+      "canonical_en": "Why does one free soda make you buy more raffle tickets? (Regan 1971 reciprocity study)",
+      "question": "Why does a small favour make you spend more?",
+      "hook": "A stranger handed out free sodas, and then sold twice as many tickets.",
+      "angle": "'Imagine you' sit in a waiting room while a stranger brings back a drink. The study is shown as a before/after of two ticket piles.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-185254-en-the-reciprocity-trap",
+      "status": "produced",
+      "created": "2026-11-27T19:28+05:30"
     }
   ],
   "backlog": [
@@ -918,36 +929,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why does one free soda make you buy more raffle tickets? (Regan 1971 reciprocity study)",
-      "title": "The Free Soda That Cost Double",
-      "question": "Why does a small favour make you spend more?",
-      "hook": "A stranger handed out free sodas, and then sold twice as many tickets.",
-      "angle": "'Imagine you' sit in a waiting room while a stranger brings back a drink. The study is shown as a before/after of two ticket piles.",
-      "why_care": "It explains free samples and 'little gifts' in shops, and how to notice when you feel you owe someone.",
-      "payoff": "The soda cost a few cents. The 'free' part was the most expensive thing you took that day.",
-      "visual_moments": [
-        "Two people on a bench, one gets a soda and the other gets nothing",
-        "A ticket pile that is twice as tall for the soda drinker",
-        "A shop counter with a free sample tray and a growing pile of purchases"
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Tricks Your Brain Falls For",
-      "hook_type": "paradox",
-      "research_basis": "evergreen (Dennis Regan, 1971, Journal of Experimental Social Psychology; the effect is real, but the exact size varied by how much participants liked the helper)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 6,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 7
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "Why did Benjamin Franklin win over a rival by asking to borrow a book? (the Ben Franklin effect)",
