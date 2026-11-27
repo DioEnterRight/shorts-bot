@@ -561,6 +561,17 @@
       "video_id": "20261127-094033-en-the-window-tax",
       "status": "produced",
       "created": "2026-11-27T10:39+05:30"
+    },
+    {
+      "canonical_en": "Why did Roosevelt close every US bank in March 1933, and why did people deposit money again afterwards?",
+      "question": "Why would closing every bank save the banking system?",
+      "hook": "The president shut every bank in America, and that was the rescue.",
+      "angle": "Follows one depositor in line before the bank holiday and the same person back in line after it, to show confidence and a bank run as a crowd mechanism.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261127-104819-en-the-bank-holiday-of-1933",
+      "status": "produced",
+      "created": "2026-11-27T10:57+05:30"
     }
   ],
   "backlog": [
@@ -863,36 +874,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did Roosevelt close every US bank in March 1933, and why did people deposit money again afterwards?",
-      "title": "The Week America Closed Every Bank",
-      "question": "Why would closing every bank save the banking system?",
-      "hook": "The president shut every bank in America, and that was the rescue.",
-      "angle": "Follows one depositor in line before the bank holiday and the same person back in line after it, to show confidence and a bank run as a crowd mechanism.",
-      "why_care": "It explains a bank run and why 'is my money safe' is mostly about what others believe.",
-      "payoff": "After four days with no banks, people put more money back in than they pulled out.",
-      "visual_moments": [
-        "A long line of coat-clad people at a bank door",
-        "A 'CLOSED' sign hung on the door and the crowd freezing",
-        "The line reversed: people carrying cash back inside"
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "explainer",
-      "series": "How Money Really Works",
-      "hook_type": "paradox",
-      "research_basis": "evergreen (Emergency Banking Act, March 9, 1933; first fireside chat March 12; deposits exceeded withdrawals in the following weeks, per Federal Reserve History)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 9,
-        "clarity": 8,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T10:39+05:30"
     },
     {
       "canonical_en": "How did a useless third option in an Economist subscription ad change what people bought? (decoy effect)",

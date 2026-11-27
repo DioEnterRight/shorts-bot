@@ -1200,6 +1200,22 @@
       "yt_video_id": "0bbtMzeKgkk",
       "yt_state": "posted",
       "published_at": "2026-11-27T10:48+05:30"
+    },
+    {
+      "id": "20261127-104819-en-the-bank-holiday-of-1933",
+      "title": "The Week America Closed Every Bank",
+      "topic": "The bank holiday of 1933",
+      "canonical_en": "Why did Roosevelt close every US bank in March 1933, and why did people deposit money again afterwards?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "The president shut every bank in America, and that saved them.",
+      "duration": 53.93,
+      "storyboard": "auto",
+      "tag": "vid-20261127-104819-en-the-bank-holiday-of-1933",
+      "status": "queued",
+      "created": "2026-11-27T10:57+05:30"
     }
   ],
   "version": 2,
