@@ -569,10 +569,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-28T14:55:07+00:00",
+      "local_id": "20261128-183534-en-the-1923-piggly-wiggly-stock",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-28T13:44:09+00:00"
+  "last_reconcile": "2026-11-28T14:55:07+00:00"
 }
