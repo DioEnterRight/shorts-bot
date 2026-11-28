@@ -1732,8 +1732,14 @@
       "duration": 48.84,
       "storyboard": "kit",
       "tag": "vid-20261128-172443-en-the-hoover-free-flights-scan",
-      "status": "queued",
-      "created": "2026-11-28T17:57+05:30"
+      "status": "published",
+      "created": "2026-11-28T17:57+05:30",
+      "slot": "2026-11-28 18:30",
+      "ig_media_id": "18135182515702783",
+      "ig_link": "https://www.instagram.com/reel/DgSY5r-MsuU/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T19:14+05:30"
     }
   ],
   "version": 2,

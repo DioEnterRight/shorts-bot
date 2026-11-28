@@ -562,10 +562,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-28T13:44:09+00:00",
+      "local_id": "20261128-172443-en-the-hoover-free-flights-scan",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-28T12:28:25+00:00"
+  "last_reconcile": "2026-11-28T13:44:09+00:00"
 }
