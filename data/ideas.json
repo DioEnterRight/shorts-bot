@@ -759,6 +759,17 @@
       "video_id": "20261128-103702-en-the-schlitz-cost-cutting-col",
       "status": "produced",
       "created": "2026-11-28T10:49+05:30"
+    },
+    {
+      "canonical_en": "Why do we trust a bank more if it has a big marble lobby?",
+      "question": "Why does a fancy bank feel safer?",
+      "hook": "The bank is empty, but the marble makes you trust it.",
+      "angle": "Explains 'environmental psychology' and the 'halo effect' in finance: how physical cues (marble, gold, silence) trigger a sense of security that has nothing to do with the actual solvency of the institution.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-113546-en-the-marble-lie",
+      "status": "produced",
+      "created": "2026-11-28T12:08+05:30"
     }
   ],
   "backlog": [
@@ -971,36 +982,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do we trust a bank more if it has a big marble lobby?",
-      "title": "The Marble Lie",
-      "question": "Why does a fancy bank feel safer?",
-      "hook": "The bank is empty, but the marble makes you trust it.",
-      "angle": "Explains 'environmental psychology' and the 'halo effect' in finance: how physical cues (marble, gold, silence) trigger a sense of security that has nothing to do with the actual solvency of the institution.",
-      "why_care": "It reveals how easily we are manipulated by design, a key skill in avoiding scams.",
-      "payoff": "You trusted the stone, not the money.",
-      "visual_moments": [
-        "A plain cardboard box labeled 'Bank' vs. a marble building labeled 'Bank'.",
-        "A customer puts money in the marble bank with a smile, and in the cardboard box with a frown.",
-        "The marble building cracks, revealing it's just painted wood."
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Brain Glitches",
-      "hook_type": "why",
-      "research_basis": "Studies on architectural psychology and trust signals in financial institutions.",
-      "scores": {
-        "curiosity": 7,
-        "originality": 7,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "Why people are more likely to buy a product if they see it in a movie",
