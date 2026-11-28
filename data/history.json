@@ -1492,6 +1492,22 @@
       "yt_video_id": "NIIJw3hUamA",
       "yt_state": "posted",
       "published_at": "2026-11-28T05:26+05:30"
+    },
+    {
+      "id": "20261128-052854-en-the-day-blockbuster-laughed",
+      "title": "The Day Blockbuster Laughed at Netflix",
+      "topic": "The Day Blockbuster Laughed at Netflix",
+      "canonical_en": "Blockbuster's CEO turned down an offer to buy Netflix for $50 million in 2000, and why it matters",
+      "language": "en",
+      "theme": "story",
+      "category": "business",
+      "hook_type": "story",
+      "hook_line": "A company was offered Netflix for 50 million dollars and said no.",
+      "duration": 42.98,
+      "storyboard": "kit",
+      "tag": "vid-20261128-052854-en-the-day-blockbuster-laughed",
+      "status": "queued",
+      "created": "2026-11-28T06:00+05:30"
     }
   ],
   "version": 2,

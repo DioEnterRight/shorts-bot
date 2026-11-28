@@ -704,6 +704,17 @@
       "video_id": "20261128-043316-en-mental-accounting-and-pain-o",
       "status": "produced",
       "created": "2026-11-28T05:07+05:30"
+    },
+    {
+      "canonical_en": "Blockbuster's CEO turned down an offer to buy Netflix for $50 million in 2000, and why it matters",
+      "question": "Why did the biggest video store chain laugh at a tiny mail-order company in 2000?",
+      "hook": "A company was offered Netflix for fifty million dollars and said no.",
+      "angle": "Told as a meeting where the late fee is the secret income, which explains why the giant couldn't copy the idea. Details are framed as 'according to Netflix's co-founder'.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261128-052854-en-the-day-blockbuster-laughed",
+      "status": "produced",
+      "created": "2026-11-28T06:00+05:30"
     }
   ],
   "backlog": [
@@ -732,36 +743,6 @@
         "visual": 7,
         "clarity": 8,
         "twist": 9
-      },
-      "language": "en",
-      "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
-    {
-      "canonical_en": "Blockbuster's CEO turned down an offer to buy Netflix for $50 million in 2000, and why it matters",
-      "title": "The Day Blockbuster Laughed at Netflix",
-      "question": "Why did the biggest video store chain laugh at a tiny mail-order company in 2000?",
-      "hook": "A company was offered Netflix for fifty million dollars and said no.",
-      "angle": "Told as a meeting where the late fee is the secret income, which explains why the giant couldn't copy the idea. Details are framed as 'according to Netflix's co-founder'.",
-      "why_care": "It shows how a profitable habit can block a company from seeing the future.",
-      "payoff": "Netflix kept the customers, and Blockbuster kept the late fees.",
-      "visual_moments": [
-        "Two founders pitch in an office and the executive laughs",
-        "Customers hand over late fees at a counter",
-        "Video shelves are empty and the stores close as mail envelopes pile up"
-      ],
-      "fact_status": "disputed",
-      "category": "business",
-      "format": "story",
-      "series": "Business Rise and Fall",
-      "hook_type": "story",
-      "research_basis": "Newsweek, Fortune and Marketplace results (the 2000 meeting is reported by Netflix's co-founder; accounts differ on some details, including the wording and the exact price)",
-      "scores": {
-        "curiosity": 8,
-        "originality": 5,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 8
       },
       "language": "en",
       "theme": "story",
