@@ -1551,8 +1551,15 @@
       "duration": 60.33,
       "storyboard": "kit",
       "tag": "vid-20261128-082855-en-henry-ford-s-five-dollar-day",
-      "status": "queued",
-      "created": "2026-11-28T09:09+05:30"
+      "status": "published",
+      "created": "2026-11-28T09:09+05:30",
+      "slot": "2026-11-28 09:30",
+      "ig_media_id": "17889336621690018",
+      "ig_link": "https://www.instagram.com/reel/DgRak4wuUZ1/",
+      "ig_state": "posted",
+      "yt_video_id": "YjLhm-8ExMM",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T10:09+05:30"
     }
   ],
   "version": 2,
