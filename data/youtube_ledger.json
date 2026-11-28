@@ -265,6 +265,12 @@
       "video_id": "t__laczQzwQ",
       "local_id": "20261128-113546-en-the-marble-lie",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-28T09:29:52+00:00",
+      "video_id": "7pl9B94y7zg",
+      "local_id": "20261128-125014-en-swedish-copper-plate-money",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -343,6 +349,10 @@
     {
       "ts": "2026-11-28T08:33:31+00:00",
       "local_id": "20261128-113546-en-the-marble-lie"
+    },
+    {
+      "ts": "2026-11-28T09:29:52+00:00",
+      "local_id": "20261128-125014-en-swedish-copper-plate-money"
     }
   ],
   "attempts": [
@@ -440,6 +450,11 @@
       "ts": "2026-11-28T08:33:31+00:00",
       "local_id": "20261128-113546-en-the-marble-lie",
       "result": "ok"
+    },
+    {
+      "ts": "2026-11-28T09:29:52+00:00",
+      "local_id": "20261128-125014-en-swedish-copper-plate-money",
+      "result": "ok"
     }
   ],
   "rejected": [
@@ -531,5 +546,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-28T08:33:31+00:00"
+  "last_reconcile": "2026-11-28T09:29:52+00:00"
 }

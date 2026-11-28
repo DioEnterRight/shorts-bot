@@ -1643,8 +1643,15 @@
       "duration": 42.08,
       "storyboard": "kit",
       "tag": "vid-20261128-125014-en-swedish-copper-plate-money",
-      "status": "queued",
-      "created": "2026-11-28T13:35+05:30"
+      "status": "published",
+      "created": "2026-11-28T13:35+05:30",
+      "slot": "2026-11-28 14:30",
+      "ig_media_id": "18118269842030506",
+      "ig_link": "https://www.instagram.com/reel/DgR71wyzapj/",
+      "ig_state": "posted",
+      "yt_video_id": "7pl9B94y7zg",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T14:59+05:30"
     }
   ],
   "version": 2,
