@@ -781,6 +781,17 @@
       "video_id": "20261128-125014-en-swedish-copper-plate-money",
       "status": "produced",
       "created": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "When Irish banks went on strike for six months in 1970, local pub owners replaced the banking system using beer tabs and trust.",
+      "question": "What happens when every bank in a country closes for half a year?",
+      "hook": "Every bank in Ireland locked its doors for six months, and the economy didn't collapse.",
+      "angle": "How informal social trust in neighborhood pubs completely replaced paper currency and central banks.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-142824-en-the-1970-irish-bank-strike",
+      "status": "produced",
+      "created": "2026-11-28T15:24+05:30"
     }
   ],
   "backlog": [
@@ -1086,36 +1097,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "When Irish banks went on strike for six months in 1970, local pub owners replaced the banking system using beer tabs and trust.",
-      "title": "The Country That Ran on Beer Tabs",
-      "question": "What happens when every bank in a country closes for half a year?",
-      "hook": "Every bank in Ireland locked its doors for six months, and the economy didn't collapse.",
-      "angle": "How informal social trust in neighborhood pubs completely replaced paper currency and central banks.",
-      "why_care": "Proves money is just a shared belief, not a marble building or a bank vault.",
-      "payoff": "When the banks finally reopened, they discovered the pub owners had kept better credit records than the accountants.",
-      "visual_moments": [
-        "Padlocked bank doors with giant rusty chains while a confused crowd stands outside.",
-        "A bartender taking a handwritten check written on a paper napkin and sliding a cold pint across the bar.",
-        "A pub basement overflowing with millions of paper checks organized neatly in wooden beer crates."
-      ],
-      "fact_status": "documented",
-      "category": "money_explained",
-      "format": "story",
-      "series": "Financial System Collapses",
-      "hook_type": "paradox",
-      "research_basis": "Murphy (1978) 'Money in a Bankless Society: Irish Bank Strikes', Journal of Money, Credit and Banking",
-      "scores": {
-        "curiosity": 10,
-        "originality": 9,
-        "visual": 9,
-        "clarity": 9,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "Peter the Great instituted a tax on beards in 1698 and forced men to carry a copper token declaring 'the beard is a useless burden'.",

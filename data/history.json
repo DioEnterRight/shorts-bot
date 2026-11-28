@@ -1652,6 +1652,22 @@
       "yt_video_id": "7pl9B94y7zg",
       "yt_state": "posted",
       "published_at": "2026-11-28T14:59+05:30"
+    },
+    {
+      "id": "20261128-142824-en-the-1970-irish-bank-strike",
+      "title": "The Country That Ran on Beer Tabs",
+      "topic": "The 1970 Irish Bank Strike",
+      "canonical_en": "When Irish banks went on strike for six months in 1970, local pub owners replaced the banking system using beer tabs and trust.",
+      "language": "en",
+      "theme": "explainer",
+      "category": "money_explained",
+      "hook_type": "paradox",
+      "hook_line": "Every bank in Ireland locked its doors for six months, and the economy didn't collapse.",
+      "duration": 54.78,
+      "storyboard": "kit",
+      "tag": "vid-20261128-142824-en-the-1970-irish-bank-strike",
+      "status": "queued",
+      "created": "2026-11-28T15:24+05:30"
     }
   ],
   "version": 2,
