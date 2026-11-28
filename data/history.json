@@ -1778,6 +1778,22 @@
       "tag": "vid-20261128-194045-en-hotelling-s-law",
       "status": "queued",
       "created": "2026-11-28T20:10+05:30"
+    },
+    {
+      "id": "20261128-202725-en-grocery-store-music-trick",
+      "title": "Slow Music Makes You Spend More",
+      "topic": "Grocery Store Music Trick",
+      "canonical_en": "Milliman's 1982 study showed playing slow background music in stores makes customers walk slower and spend 38 percent more money.",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "A store slowed its music, and sales jumped thirty-eight percent.",
+      "duration": 37.25,
+      "storyboard": "kit",
+      "tag": "vid-20261128-202725-en-grocery-store-music-trick",
+      "status": "queued",
+      "created": "2026-11-28T21:16+05:30"
     }
   ],
   "version": 2,

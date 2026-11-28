@@ -847,6 +847,17 @@
       "video_id": "20261128-194045-en-hotelling-s-law",
       "status": "produced",
       "created": "2026-11-28T20:10+05:30"
+    },
+    {
+      "canonical_en": "Milliman's 1982 study showed playing slow background music in stores makes customers walk slower and spend 38 percent more money.",
+      "question": "How does background music secretly trick your brain into spending more cash?",
+      "hook": "A store slowed down its background music, and sales jumped thirty-eight percent overnight.",
+      "angle": "The subtle psychological link between musical tempo, heart rate, walking speed, and impulse shopping.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-202725-en-grocery-store-music-trick",
+      "status": "produced",
+      "created": "2026-11-28T21:16+05:30"
     }
   ],
   "backlog": [
@@ -1152,36 +1163,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "Milliman's 1982 study showed playing slow background music in stores makes customers walk slower and spend 38 percent more money.",
-      "title": "Why Grocery Stores Play Slow Music",
-      "question": "How does background music secretly trick your brain into spending more cash?",
-      "hook": "A store slowed down its background music, and sales jumped thirty-eight percent overnight.",
-      "angle": "The subtle psychological link between musical tempo, heart rate, walking speed, and impulse shopping.",
-      "why_care": "It happens to every viewer every week in supermarkets without them noticing.",
-      "payoff": "The store wasn't playing soft music to relax you—it was just slowing your legs down so your hands had time to reach more shelves.",
-      "visual_moments": [
-        "A shopper marching briskly past grocery aisles while upbeat fast music plays.",
-        "A cartoon clock ticking slower while the shopper's feet drag in slow motion to slow music, filling their cart.",
-        "A cash register drawer popping open repeatedly with floating dollar signs synced to a slow drum beat."
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Mind Hacks of Retailing",
-      "hook_type": "paradox",
-      "research_basis": "Ronald E. Milliman (1982) 'Using Background Music to Affect the Behavior of Supermarket Shoppers', Journal of Marketing",
-      "scores": {
-        "curiosity": 8,
-        "originality": 8,
-        "visual": 8,
-        "clarity": 10,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     }
   ]
 }
