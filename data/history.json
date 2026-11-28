@@ -1574,8 +1574,15 @@
       "duration": 54.1,
       "storyboard": "kit",
       "tag": "vid-20261128-093136-en-the-serum-run-hero",
-      "status": "queued",
-      "created": "2026-11-28T10:14+05:30"
+      "status": "published",
+      "created": "2026-11-28T10:14+05:30",
+      "slot": "2026-11-28 11:30",
+      "ig_media_id": "18029366018929282",
+      "ig_link": "https://www.instagram.com/reel/DgRkISkhxVp/",
+      "ig_state": "posted",
+      "yt_video_id": "T1J25sxlOh0",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T11:33+05:30"
     },
     {
       "id": "20261128-103702-en-the-schlitz-cost-cutting-col",
