@@ -1776,8 +1776,14 @@
       "duration": 35.27,
       "storyboard": "claude",
       "tag": "vid-20261128-194045-en-hotelling-s-law",
-      "status": "queued",
-      "created": "2026-11-28T20:10+05:30"
+      "status": "published",
+      "created": "2026-11-28T20:10+05:30",
+      "slot": "2026-11-28 20:30",
+      "ig_media_id": "17937886095146888",
+      "ig_link": "https://www.instagram.com/reel/DgSnmuzTL3i/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T21:22+05:30"
     },
     {
       "id": "20261128-202725-en-grocery-store-music-trick",

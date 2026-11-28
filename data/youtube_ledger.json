@@ -576,10 +576,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-28T15:52:36+00:00",
+      "local_id": "20261128-194045-en-hotelling-s-law",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-28T14:55:07+00:00"
+  "last_reconcile": "2026-11-28T15:52:36+00:00"
 }
