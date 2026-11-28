@@ -770,6 +770,17 @@
       "video_id": "20261128-113546-en-the-marble-lie",
       "status": "produced",
       "created": "2026-11-28T12:08+05:30"
+    },
+    {
+      "canonical_en": "Swedish copper plate money (1644) was so heavy people needed wheelbarrows to go shopping.",
+      "question": "Why did Sweden make a coin so heavy you needed a horse to carry your wallet?",
+      "hook": "A man carried his wallet home in a horse-drawn cart, and nobody tried to mug him.",
+      "angle": "How a national silver shortage forced Sweden to turn copper into literal furniture-sized physical currency.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-125014-en-swedish-copper-plate-money",
+      "status": "produced",
+      "created": "2026-11-28T13:35+05:30"
     }
   ],
   "backlog": [
@@ -1075,6 +1086,216 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
+    },
+    {
+      "canonical_en": "When Irish banks went on strike for six months in 1970, local pub owners replaced the banking system using beer tabs and trust.",
+      "title": "The Country That Ran on Beer Tabs",
+      "question": "What happens when every bank in a country closes for half a year?",
+      "hook": "Every bank in Ireland locked its doors for six months, and the economy didn't collapse.",
+      "angle": "How informal social trust in neighborhood pubs completely replaced paper currency and central banks.",
+      "why_care": "Proves money is just a shared belief, not a marble building or a bank vault.",
+      "payoff": "When the banks finally reopened, they discovered the pub owners had kept better credit records than the accountants.",
+      "visual_moments": [
+        "Padlocked bank doors with giant rusty chains while a confused crowd stands outside.",
+        "A bartender taking a handwritten check written on a paper napkin and sliding a cold pint across the bar.",
+        "A pub basement overflowing with millions of paper checks organized neatly in wooden beer crates."
+      ],
+      "fact_status": "documented",
+      "category": "money_explained",
+      "format": "story",
+      "series": "Financial System Collapses",
+      "hook_type": "paradox",
+      "research_basis": "Murphy (1978) 'Money in a Bankless Society: Irish Bank Strikes', Journal of Money, Credit and Banking",
+      "scores": {
+        "curiosity": 10,
+        "originality": 9,
+        "visual": 9,
+        "clarity": 9,
+        "twist": 9
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "Peter the Great instituted a tax on beards in 1698 and forced men to carry a copper token declaring 'the beard is a useless burden'.",
+      "title": "The Emperor Who Taxed Men's Beards",
+      "question": "Why did a Russian tsar force men to pay cash just to keep facial hair?",
+      "hook": "If a man wanted to grow a beard, he had to carry a metal coin that called his face a burden.",
+      "angle": "How taxation was used not to raise government money, but as aggressive social engineering to force European modernization.",
+      "why_care": "Demonstrates how governments use financial penalties to change personal culture.",
+      "payoff": "Tax inspectors stood at city gates with giant razors, shaving anyone who forgot their beard token at home.",
+      "visual_moments": [
+        "Peter the Great physically snipping off a nobleman's long beard with heavy iron shears.",
+        "A copper beard token showing a nose and mustache with stamped Russian lettering.",
+        "A guard at a wooden city gate grabbing a traveler's chin and checking his pockets for the metal coin."
+      ],
+      "fact_status": "documented",
+      "category": "weird_history",
+      "format": "story",
+      "series": "Strange Laws of History",
+      "hook_type": "paradox",
+      "research_basis": "1698 Russian Imperial Edicts on the Beard Tax and State Historical Museum records",
+      "scores": {
+        "curiosity": 9,
+        "originality": 9,
+        "visual": 10,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "The 1784 British Hat Tax fined hatmakers who forged tax stamps inside hat linings with the death penalty.",
+      "title": "The Hat Tax with the Death Penalty",
+      "question": "Why was putting a fake stamp inside a hat punishable by death in 1780s Britain?",
+      "hook": "British inspectors checked inside every man's hat, because missing a government stamp meant the gallows.",
+      "angle": "The extreme measures taken to enforce luxury taxes, creating weird visual loopholes in fashion history.",
+      "why_care": "Reveals how tax laws force creators to invent absurd legal workarounds for everyday products.",
+      "payoff": "Hatmakers stopped selling hats entirely—and started selling 'head coverings' to legally dodge the tax.",
+      "visual_moments": [
+        "A 1780s gentleman tipping his top hat to reveal a bright red ink stamp stamped inside the inner lining.",
+        "A strict tax inspector using a magnifying glass to check the lining of a top hat in a dark shop.",
+        "A shopkeeper hanging a sign reading 'No Hats Sold Here—Only Upper Head Garments'."
+      ],
+      "fact_status": "documented",
+      "category": "weird_history",
+      "format": "story",
+      "series": "Bizarre Taxes That Changed History",
+      "hook_type": "paradox",
+      "research_basis": "British Duty on Hats Act 1784 (24 Geo. 3. Sess. 2 c. 51) UK Parliamentary archives",
+      "scores": {
+        "curiosity": 9,
+        "originality": 9,
+        "visual": 9,
+        "clarity": 9,
+        "twist": 9
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "Hoover offered free airline tickets worth £600 to anyone buying a £100 vacuum, bankrupting the company when people bought vacuums just for the tickets.",
+      "title": "The Vacuum That Ruined a Company",
+      "question": "How did a free airline ticket promotion lose a famous brand forty-eight million pounds?",
+      "hook": "A company sold vacuum cleaners for one hundred pounds and gave away six hundred pounds of plane tickets with every purchase.",
+      "angle": "The classic corporate math blunder where a marketing team forgot customers will happily exploit flawed incentives.",
+      "why_care": "A hilarious and dramatic lesson in unintended consequences.",
+      "payoff": "Thousands of brand-new vacuums were thrown straight into landfills, while their owners flew to America for free.",
+      "visual_moments": [
+        "A customer handing over £100 cash and receiving a giant vacuum plus two golden airplane tickets.",
+        "A mountain of unopened Hoover vacuum boxes piled high in a landfill outside an airport runway.",
+        "Executives staring in terror at a financial chart arrow plunging straight through the floorboards."
+      ],
+      "fact_status": "documented",
+      "category": "business",
+      "format": "story",
+      "series": "Billion-Dollar Blunders",
+      "hook_type": "paradox",
+      "research_basis": "UK Advertising Standards Authority records and 1992 Hoover free flights scandal reports",
+      "scores": {
+        "curiosity": 9,
+        "originality": 8,
+        "visual": 9,
+        "clarity": 10,
+        "twist": 9
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "Piggly Wiggly founder Clarence Saunders tried to crush Wall Street short sellers in 1923, so the exchange changed the rules overnight to ruin him.",
+      "title": "The Man Who Bought His Own Stock",
+      "question": "How did a grocery tycoon buy every single share of his company and still lose everything?",
+      "hook": "A man bought 99 percent of his own company's stock to trap Wall Street, and woke up bankrupt.",
+      "angle": "The David vs. Goliath story of an early supermarket pioneer against Wall Street short sellers where the exchange rigged the rules.",
+      "why_care": "Shows how financial markets aren't always neutral playgrounds when big institutions face total ruin.",
+      "payoff": "He trapped the short sellers fair and square, but forgot Wall Street owned the building.",
+      "visual_moments": [
+        "Clarence Saunders standing over a giant pile of stock certificates laughing while bankers panic.",
+        "Stock exchange directors whispering in a dark room and pulling a giant emergency brake lever.",
+        "Saunders walking out of a grand marble building with empty pockets, holding one brown paper grocery bag."
+      ],
+      "fact_status": "documented",
+      "category": "money_cons",
+      "format": "story",
+      "series": "Wall Street Showdowns",
+      "hook_type": "paradox",
+      "research_basis": "Historical records of Clarence Saunders and the 1923 Piggly Wiggly stock corner attempt",
+      "scores": {
+        "curiosity": 9,
+        "originality": 9,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 9
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "Hotelling's Law explains why competing stores and gas stations open right next to each other instead of spreading out.",
+      "title": "Why Competing Stores Build Right Next Door",
+      "question": "Why do two rival gas stations open on the exact same intersection?",
+      "hook": "Two ice cream sellers moved their carts closer together until they were touching, and made more money.",
+      "angle": "Using a simple 2D beach diagram to explain game theory and spatial competition visually.",
+      "why_care": "Explains an everyday visual mystery you see every time you drive through a commercial district.",
+      "payoff": "By trying to steal each other's customers, both stores ended up forcing everyone to walk twice as far.",
+      "visual_moments": [
+        "Two ice cream carts on opposite ends of a sunny cartoon beach moving step-by-step toward the center line.",
+        "A split map showing two competing gas stations built right across the street from each other.",
+        "Angry customers walking all the way across empty hot sand to reach the crowded center spot."
+      ],
+      "fact_status": "documented",
+      "category": "business",
+      "format": "explainer",
+      "series": "Hidden Rules of Business",
+      "hook_type": "paradox",
+      "research_basis": "Harold Hotelling (1929) 'Stability in Competition', The Economic Journal",
+      "scores": {
+        "curiosity": 8,
+        "originality": 8,
+        "visual": 9,
+        "clarity": 10,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
+    },
+    {
+      "canonical_en": "Milliman's 1982 study showed playing slow background music in stores makes customers walk slower and spend 38 percent more money.",
+      "title": "Why Grocery Stores Play Slow Music",
+      "question": "How does background music secretly trick your brain into spending more cash?",
+      "hook": "A store slowed down its background music, and sales jumped thirty-eight percent overnight.",
+      "angle": "The subtle psychological link between musical tempo, heart rate, walking speed, and impulse shopping.",
+      "why_care": "It happens to every viewer every week in supermarkets without them noticing.",
+      "payoff": "The store wasn't playing soft music to relax you—it was just slowing your legs down so your hands had time to reach more shelves.",
+      "visual_moments": [
+        "A shopper marching briskly past grocery aisles while upbeat fast music plays.",
+        "A cartoon clock ticking slower while the shopper's feet drag in slow motion to slow music, filling their cart.",
+        "A cash register drawer popping open repeatedly with floating dollar signs synced to a slow drum beat."
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Mind Hacks of Retailing",
+      "hook_type": "paradox",
+      "research_basis": "Ronald E. Milliman (1982) 'Using Background Music to Affect the Behavior of Supermarket Shoppers', Journal of Marketing",
+      "scores": {
+        "curiosity": 8,
+        "originality": 8,
+        "visual": 8,
+        "clarity": 10,
+        "twist": 9
+      },
+      "language": "en",
+      "theme": "explainer",
+      "added": "2026-11-28T13:35+05:30"
     }
   ]
 }
