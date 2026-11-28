@@ -1710,8 +1710,14 @@
       "duration": 57.3,
       "storyboard": "claude",
       "tag": "vid-20261128-162646-en-the-1784-british-hat-tax",
-      "status": "queued",
-      "created": "2026-11-28T16:35+05:30"
+      "status": "published",
+      "created": "2026-11-28T16:35+05:30",
+      "slot": "2026-11-28 17:30",
+      "ig_media_id": "18139287415735788",
+      "ig_link": "https://www.instagram.com/reel/DgSQPT7BUHl/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T17:58+05:30"
     },
     {
       "id": "20261128-172443-en-the-hoover-free-flights-scan",
