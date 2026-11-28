@@ -253,6 +253,12 @@
       "video_id": "T1J25sxlOh0",
       "local_id": "20261128-093136-en-the-serum-run-hero",
       "source": "this-repo"
+    },
+    {
+      "ts": "2026-11-28T07:17:07+00:00",
+      "video_id": "eqj6Abi_yVI",
+      "local_id": "20261128-103702-en-the-schlitz-cost-cutting-col",
+      "source": "this-repo"
     }
   ],
   "insert_calls": [
@@ -323,6 +329,10 @@
     {
       "ts": "2026-11-28T06:03:07+00:00",
       "local_id": "20261128-093136-en-the-serum-run-hero"
+    },
+    {
+      "ts": "2026-11-28T07:17:07+00:00",
+      "local_id": "20261128-103702-en-the-schlitz-cost-cutting-col"
     }
   ],
   "attempts": [
@@ -409,6 +419,11 @@
     {
       "ts": "2026-11-28T06:03:07+00:00",
       "local_id": "20261128-093136-en-the-serum-run-hero",
+      "result": "ok"
+    },
+    {
+      "ts": "2026-11-28T07:17:07+00:00",
+      "local_id": "20261128-103702-en-the-schlitz-cost-cutting-col",
       "result": "ok"
     }
   ],
@@ -501,5 +516,5 @@
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-28T06:03:07+00:00"
+  "last_reconcile": "2026-11-28T07:17:07+00:00"
 }

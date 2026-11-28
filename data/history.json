@@ -1597,8 +1597,15 @@
       "duration": 47.7,
       "storyboard": "auto",
       "tag": "vid-20261128-103702-en-the-schlitz-cost-cutting-col",
-      "status": "queued",
-      "created": "2026-11-28T10:49+05:30"
+      "status": "published",
+      "created": "2026-11-28T10:49+05:30",
+      "slot": "2026-11-28 12:30",
+      "ig_media_id": "18115152797351265",
+      "ig_link": "https://www.instagram.com/reel/DgRspDLhZpJ/",
+      "ig_state": "posted",
+      "yt_video_id": "eqj6Abi_yVI",
+      "yt_state": "posted",
+      "published_at": "2026-11-28T12:47+05:30"
     },
     {
       "id": "20261128-113546-en-the-marble-lie",
