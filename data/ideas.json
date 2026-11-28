@@ -825,6 +825,17 @@
       "video_id": "20261128-172443-en-the-hoover-free-flights-scan",
       "status": "produced",
       "created": "2026-11-28T17:57+05:30"
+    },
+    {
+      "canonical_en": "Piggly Wiggly founder Clarence Saunders tried to crush Wall Street short sellers in 1923, so the exchange changed the rules overnight to ruin him.",
+      "question": "How did a grocery tycoon buy every single share of his company and still lose everything?",
+      "hook": "A man bought 99 percent of his own company's stock to trap Wall Street, and woke up bankrupt.",
+      "angle": "The David vs. Goliath story of an early supermarket pioneer against Wall Street short sellers where the exchange rigged the rules.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-183534-en-the-1923-piggly-wiggly-stock",
+      "status": "produced",
+      "created": "2026-11-28T19:21+05:30"
     }
   ],
   "backlog": [
@@ -1130,36 +1141,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "Piggly Wiggly founder Clarence Saunders tried to crush Wall Street short sellers in 1923, so the exchange changed the rules overnight to ruin him.",
-      "title": "The Man Who Bought His Own Stock",
-      "question": "How did a grocery tycoon buy every single share of his company and still lose everything?",
-      "hook": "A man bought 99 percent of his own company's stock to trap Wall Street, and woke up bankrupt.",
-      "angle": "The David vs. Goliath story of an early supermarket pioneer against Wall Street short sellers where the exchange rigged the rules.",
-      "why_care": "Shows how financial markets aren't always neutral playgrounds when big institutions face total ruin.",
-      "payoff": "He trapped the short sellers fair and square, but forgot Wall Street owned the building.",
-      "visual_moments": [
-        "Clarence Saunders standing over a giant pile of stock certificates laughing while bankers panic.",
-        "Stock exchange directors whispering in a dark room and pulling a giant emergency brake lever.",
-        "Saunders walking out of a grand marble building with empty pockets, holding one brown paper grocery bag."
-      ],
-      "fact_status": "documented",
-      "category": "money_cons",
-      "format": "story",
-      "series": "Wall Street Showdowns",
-      "hook_type": "paradox",
-      "research_basis": "Historical records of Clarence Saunders and the 1923 Piggly Wiggly stock corner attempt",
-      "scores": {
-        "curiosity": 9,
-        "originality": 9,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "Hotelling's Law explains why competing stores and gas stations open right next to each other instead of spreading out.",
