@@ -1666,8 +1666,14 @@
       "duration": 54.78,
       "storyboard": "kit",
       "tag": "vid-20261128-142824-en-the-1970-irish-bank-strike",
-      "status": "queued",
-      "created": "2026-11-28T15:24+05:30"
+      "status": "published",
+      "created": "2026-11-28T15:24+05:30",
+      "slot": "2026-11-28 15:30",
+      "ig_media_id": "18182487850447761",
+      "ig_link": "https://www.instagram.com/reel/DgSCvtUBtoN/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T16:00+05:30"
     }
   ],
   "version": 2,
