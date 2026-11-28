@@ -1688,8 +1688,14 @@
       "duration": 48.8,
       "storyboard": "kit",
       "tag": "vid-20261128-152838-en-the-emperor-who-taxed-men-s",
-      "status": "queued",
-      "created": "2026-11-28T16:07+05:30"
+      "status": "published",
+      "created": "2026-11-28T16:07+05:30",
+      "slot": "2026-11-28 16:30",
+      "ig_media_id": "18135745318820966",
+      "ig_link": "https://www.instagram.com/reel/DgSJOQCRR-H/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T16:57+05:30"
     },
     {
       "id": "20261128-162646-en-the-1784-british-hat-tax",
