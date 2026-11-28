@@ -1537,6 +1537,22 @@
       "yt_video_id": "Dh1HGeGumMQ",
       "yt_state": "posted",
       "published_at": "2026-11-28T08:06+05:30"
+    },
+    {
+      "id": "20261128-082855-en-henry-ford-s-five-dollar-day",
+      "title": "The Boss Who Doubled Everyone's Pay",
+      "topic": "Henry Ford's Five Dollar Day",
+      "canonical_en": "Henry Ford doubled factory wages to $5 a day in 1914, was mocked by rivals, and then profits rose as turnover fell",
+      "language": "en",
+      "theme": "story",
+      "category": "business",
+      "hook_type": "story",
+      "hook_line": "A boss doubled every worker's pay and rivals called him crazy.",
+      "duration": 60.33,
+      "storyboard": "kit",
+      "tag": "vid-20261128-082855-en-henry-ford-s-five-dollar-day",
+      "status": "queued",
+      "created": "2026-11-28T09:09+05:30"
     }
   ],
   "version": 2,

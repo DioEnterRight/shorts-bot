@@ -726,6 +726,17 @@
       "video_id": "20261128-065034-en-the-500-toy-that-isn-t-real",
       "status": "produced",
       "created": "2026-11-28T07:21+05:30"
+    },
+    {
+      "canonical_en": "Henry Ford doubled factory wages to $5 a day in 1914, was mocked by rivals, and then profits rose as turnover fell",
+      "question": "Why did a factory owner double his workers' pay in 1914, and why did rivals laugh until they lost workers?",
+      "hook": "A boss doubled every worker's pay and rivals called him crazy.",
+      "angle": "Uses the line of men waiting outside the factory gate and the turnover problem (quitting and retraining) as the mechanism behind the decision.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261128-082855-en-henry-ford-s-five-dollar-day",
+      "status": "produced",
+      "created": "2026-11-28T09:09+05:30"
     }
   ],
   "backlog": [
@@ -754,36 +765,6 @@
         "visual": 7,
         "clarity": 8,
         "twist": 9
-      },
-      "language": "en",
-      "theme": "story",
-      "added": "2026-11-26T03:25+05:30"
-    },
-    {
-      "canonical_en": "Henry Ford doubled factory wages to $5 a day in 1914, was mocked by rivals, and then profits rose as turnover fell",
-      "title": "The Boss Who Doubled Everyone's Pay",
-      "question": "Why did a factory owner double his workers' pay in 1914, and why did rivals laugh until they lost workers?",
-      "hook": "A boss doubled every worker's pay and rivals called him crazy.",
-      "angle": "Uses the line of men waiting outside the factory gate and the turnover problem (quitting and retraining) as the mechanism behind the decision.",
-      "why_care": "It explains why cheap labor can cost more than fair labor.",
-      "payoff": "His own workers became customers for the cars they built.",
-      "visual_moments": [
-        "Huge crowd of job seekers at the factory gate",
-        "Rival owners laugh over cigars in a newspaper office",
-        "Workers drive off in cars they built, shown next to an empty rival factory"
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "Laughed At, Then Right",
-      "hook_type": "story",
-      "research_basis": "Evergreen; well documented. Note: 'workers became customers' is partly a later retelling, so the script should treat it as an effect rather than the stated motive",
-      "scores": {
-        "curiosity": 7,
-        "originality": 5,
-        "visual": 7,
-        "clarity": 9,
-        "twist": 8
       },
       "language": "en",
       "theme": "story",
