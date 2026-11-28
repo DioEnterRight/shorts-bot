@@ -1514,6 +1514,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-28T06:46+05:30"
+    },
+    {
+      "id": "20261128-065034-en-the-500-toy-that-isn-t-real",
+      "title": "The $500 Watch That Doesn't Tell Time",
+      "topic": "The $500 Toy That Isn't Real",
+      "canonical_en": "Why do people buy things they don't need just to feel like they've achieved something?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "psychology",
+      "hook_type": "paradox",
+      "hook_line": "You paid five hundred dollars for a watch that has no hands.",
+      "duration": 43.39,
+      "storyboard": "kit",
+      "tag": "vid-20261128-065034-en-the-500-toy-that-isn-t-real",
+      "status": "queued",
+      "created": "2026-11-28T07:21+05:30"
     }
   ],
   "version": 2,

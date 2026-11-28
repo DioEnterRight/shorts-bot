@@ -715,6 +715,17 @@
       "video_id": "20261128-052854-en-the-day-blockbuster-laughed",
       "status": "produced",
       "created": "2026-11-28T06:00+05:30"
+    },
+    {
+      "canonical_en": "Why do people buy things they don't need just to feel like they've achieved something?",
+      "question": "Why do we buy fake achievements?",
+      "hook": "You bought a $500 watch, but it doesn't tell time.",
+      "angle": "Explains the 'signaling' aspect of luxury goods through the lens of a specific, absurd example (a non-functional luxury item or a 'status' purchase that serves no practical purpose), linking it to evolutionary psychology.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-065034-en-the-500-toy-that-isn-t-real",
+      "status": "produced",
+      "created": "2026-11-28T07:21+05:30"
     }
   ],
   "backlog": [
@@ -957,36 +968,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why do people buy things they don't need just to feel like they've achieved something?",
-      "title": "The $500 Toy That Isn't Real",
-      "question": "Why do we buy fake achievements?",
-      "hook": "You bought a $500 watch, but it doesn't tell time.",
-      "angle": "Explains the 'signaling' aspect of luxury goods through the lens of a specific, absurd example (a non-functional luxury item or a 'status' purchase that serves no practical purpose), linking it to evolutionary psychology.",
-      "why_care": "It validates the viewer's feeling of being 'tricked' by their own brain, turning a financial loss into a psychological insight.",
-      "payoff": "Your brain didn't buy a watch; it bought a trophy for a game you didn't play.",
-      "visual_moments": [
-        "A man proudly holds up a gold watch that has no hands.",
-        "A ghostly 'Status' meter fills up while his bank account drains to zero.",
-        "He tries to check the time, but the watch just shows a blank white face."
-      ],
-      "fact_status": "documented",
-      "category": "psychology",
-      "format": "explainer",
-      "series": "Brain Glitches",
-      "hook_type": "paradox",
-      "research_basis": "Psychological studies on conspicuous consumption and Veblen goods; general behavioral economics principles.",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "Why did a company fire its best employees to save money, and why did it fail?",
