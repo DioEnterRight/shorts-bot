@@ -1690,6 +1690,22 @@
       "tag": "vid-20261128-152838-en-the-emperor-who-taxed-men-s",
       "status": "queued",
       "created": "2026-11-28T16:07+05:30"
+    },
+    {
+      "id": "20261128-162646-en-the-1784-british-hat-tax",
+      "title": "The Hat Tax with a Death Penalty",
+      "topic": "The 1784 British Hat Tax",
+      "canonical_en": "The 1784 British Hat Tax fined hatmakers who forged tax stamps inside hat linings with the death penalty.",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "In 1784, a fake stamp inside your hat was a crime punishable by death.",
+      "duration": 57.3,
+      "storyboard": "claude",
+      "tag": "vid-20261128-162646-en-the-1784-british-hat-tax",
+      "status": "queued",
+      "created": "2026-11-28T16:35+05:30"
     }
   ],
   "version": 2,

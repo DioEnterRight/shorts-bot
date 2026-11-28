@@ -803,6 +803,17 @@
       "video_id": "20261128-152838-en-the-emperor-who-taxed-men-s",
       "status": "produced",
       "created": "2026-11-28T16:07+05:30"
+    },
+    {
+      "canonical_en": "The 1784 British Hat Tax fined hatmakers who forged tax stamps inside hat linings with the death penalty.",
+      "question": "Why was putting a fake stamp inside a hat punishable by death in 1780s Britain?",
+      "hook": "British inspectors checked inside every man's hat, because missing a government stamp meant the gallows.",
+      "angle": "The extreme measures taken to enforce luxury taxes, creating weird visual loopholes in fashion history.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-162646-en-the-1784-british-hat-tax",
+      "status": "produced",
+      "created": "2026-11-28T16:35+05:30"
     }
   ],
   "backlog": [
@@ -1108,36 +1119,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "The 1784 British Hat Tax fined hatmakers who forged tax stamps inside hat linings with the death penalty.",
-      "title": "The Hat Tax with the Death Penalty",
-      "question": "Why was putting a fake stamp inside a hat punishable by death in 1780s Britain?",
-      "hook": "British inspectors checked inside every man's hat, because missing a government stamp meant the gallows.",
-      "angle": "The extreme measures taken to enforce luxury taxes, creating weird visual loopholes in fashion history.",
-      "why_care": "Reveals how tax laws force creators to invent absurd legal workarounds for everyday products.",
-      "payoff": "Hatmakers stopped selling hats entirely—and started selling 'head coverings' to legally dodge the tax.",
-      "visual_moments": [
-        "A 1780s gentleman tipping his top hat to reveal a bright red ink stamp stamped inside the inner lining.",
-        "A strict tax inspector using a magnifying glass to check the lining of a top hat in a dark shop.",
-        "A shopkeeper hanging a sign reading 'No Hats Sold Here—Only Upper Head Garments'."
-      ],
-      "fact_status": "documented",
-      "category": "weird_history",
-      "format": "story",
-      "series": "Bizarre Taxes That Changed History",
-      "hook_type": "paradox",
-      "research_basis": "British Duty on Hats Act 1784 (24 Geo. 3. Sess. 2 c. 51) UK Parliamentary archives",
-      "scores": {
-        "curiosity": 9,
-        "originality": 9,
-        "visual": 9,
-        "clarity": 9,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "Hoover offered free airline tickets worth £600 to anyone buying a £100 vacuum, bankrupting the company when people bought vacuums just for the tickets.",
