@@ -444,10 +444,17 @@
       "reasons": [
         "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
       ]
+    },
+    {
+      "ts": "2026-11-28T01:16:06+00:00",
+      "local_id": "20261128-052854-en-the-day-blockbuster-laughed",
+      "reasons": [
+        "channel cap: 10 successful upload(s) in the last 24 h (cap 10)"
+      ]
     }
   ],
   "errors": [],
   "pause": null,
   "pending": null,
-  "last_reconcile": "2026-11-27T23:56:25+00:00"
+  "last_reconcile": "2026-11-28T01:16:06+00:00"
 }

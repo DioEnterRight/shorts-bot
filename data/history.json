@@ -1506,8 +1506,14 @@
       "duration": 42.98,
       "storyboard": "kit",
       "tag": "vid-20261128-052854-en-the-day-blockbuster-laughed",
-      "status": "queued",
-      "created": "2026-11-28T06:00+05:30"
+      "status": "published",
+      "created": "2026-11-28T06:00+05:30",
+      "slot": "2026-11-28 06:30",
+      "ig_media_id": "17995966439852661",
+      "ig_link": "https://www.instagram.com/reel/DgRDVEohZ3k/",
+      "ig_state": "posted",
+      "yt_state": "skipped_limit",
+      "published_at": "2026-11-28T06:46+05:30"
     }
   ],
   "version": 2,
