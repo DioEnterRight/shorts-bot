@@ -748,6 +748,17 @@
       "video_id": "20261128-093136-en-the-serum-run-hero",
       "status": "produced",
       "created": "2026-11-28T10:14+05:30"
+    },
+    {
+      "canonical_en": "Why did a company fire its best employees to save money, and why did it fail?",
+      "question": "Why does cutting costs sometimes kill a business?",
+      "hook": "They fired the smartest people to save $10,000 a month.",
+      "angle": "Uses the concept of 'competence traps' and the Dunning-Kruger effect in reverse: a company that doesn't understand why its experts are valuable cuts them, leading to a catastrophic drop in quality that no amount of marketing can fix.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-103702-en-the-schlitz-cost-cutting-col",
+      "status": "produced",
+      "created": "2026-11-28T10:49+05:30"
     }
   ],
   "backlog": [
@@ -960,36 +971,6 @@
       "language": "hi",
       "theme": "explainer",
       "added": "2026-11-26T09:39+05:30"
-    },
-    {
-      "canonical_en": "Why did a company fire its best employees to save money, and why did it fail?",
-      "title": "The Company That Fired Its Brains",
-      "question": "Why does cutting costs sometimes kill a business?",
-      "hook": "They fired the smartest people to save $10,000 a month.",
-      "angle": "Uses the concept of 'competence traps' and the Dunning-Kruger effect in reverse: a company that doesn't understand why its experts are valuable cuts them, leading to a catastrophic drop in quality that no amount of marketing can fix.",
-      "why_care": "A cautionary tale for anyone who has ever felt undervalued or seen a company cut corners.",
-      "payoff": "The customers didn't leave because the price went up; they left because the product became garbage.",
-      "visual_moments": [
-        "A boss chops a stack of 'Employee' cards with an axe, keeping only the 'Cheap' ones.",
-        "A factory line produces a product that looks like a lump of mud.",
-        "A customer throws the mud-product back at the store window."
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "Business Failures",
-      "hook_type": "paradox",
-      "research_basis": "Case studies of companies that failed due to cost-cutting in R&D or talent (e.g., early 2000s tech layoffs, airline industry cuts).",
-      "scores": {
-        "curiosity": 8,
-        "originality": 7,
-        "visual": 8,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-27T23:21+05:30"
     },
     {
       "canonical_en": "Why do we trust a bank more if it has a big marble lobby?",

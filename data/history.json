@@ -1576,6 +1576,22 @@
       "tag": "vid-20261128-093136-en-the-serum-run-hero",
       "status": "queued",
       "created": "2026-11-28T10:14+05:30"
+    },
+    {
+      "id": "20261128-103702-en-the-schlitz-cost-cutting-col",
+      "title": "The Company That Fired Its Brains",
+      "topic": "The Schlitz Cost-Cutting Collapse",
+      "canonical_en": "Why did a company fire its best employees to save money, and why did it fail?",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "A top brewery fired its master craftsmen to save ten thousand dollars.",
+      "duration": 47.7,
+      "storyboard": "auto",
+      "tag": "vid-20261128-103702-en-the-schlitz-cost-cutting-col",
+      "status": "queued",
+      "created": "2026-11-28T10:49+05:30"
     }
   ],
   "version": 2,
