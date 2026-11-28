@@ -1560,6 +1560,22 @@
       "yt_video_id": "YjLhm-8ExMM",
       "yt_state": "posted",
       "published_at": "2026-11-28T10:09+05:30"
+    },
+    {
+      "id": "20261128-093136-en-the-serum-run-hero",
+      "title": "The Dog Who Didn't Deliver the Serum",
+      "topic": "The Serum Run Hero",
+      "canonical_en": "Why a dog named Balto became a hero while the dog who actually delivered the serum was forgotten",
+      "language": "en",
+      "theme": "story",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "The most famous hero of the 1925 Alaska serum run never actually finished the job.",
+      "duration": 54.1,
+      "storyboard": "kit",
+      "tag": "vid-20261128-093136-en-the-serum-run-hero",
+      "status": "queued",
+      "created": "2026-11-28T10:14+05:30"
     }
   ],
   "version": 2,

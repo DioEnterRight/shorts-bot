@@ -737,6 +737,17 @@
       "video_id": "20261128-082855-en-henry-ford-s-five-dollar-day",
       "status": "produced",
       "created": "2026-11-28T09:09+05:30"
+    },
+    {
+      "canonical_en": "Why a dog named Balto became a hero while the dog who actually delivered the serum was forgotten",
+      "question": "Why is Balto famous if he didn't save Nome?",
+      "hook": "The hero of the serum run didn't even carry the medicine.",
+      "angle": "Highlights the marketing twist where the dog who crossed the ice (Balto) became the symbol, while the lead sled dog (Togo) who did the hardest work was ignored.",
+      "language": "en",
+      "theme": "story",
+      "video_id": "20261128-093136-en-the-serum-run-hero",
+      "status": "produced",
+      "created": "2026-11-28T10:14+05:30"
     }
   ],
   "backlog": [
@@ -1009,6 +1020,99 @@
       "language": "en",
       "theme": "explainer",
       "added": "2026-11-27T23:21+05:30"
+    },
+    {
+      "canonical_en": "Why people are more likely to buy a product if they see it in a movie",
+      "title": "The Movie That Sold More Cars",
+      "question": "How does a movie make you buy a car you don't need?",
+      "hook": "You didn't buy the car, you bought the feeling of driving it in the film.",
+      "angle": "Explains 'parasocial influence' and how cinematic association bypasses logical price checks.",
+      "why_care": "Helps viewers recognize when they are buying an emotion, not a product.",
+      "payoff": "The car in the movie was a prop, but the one in your driveway is real debt.",
+      "visual_moments": [
+        "A character in a movie driving a sleek car, slow motion.",
+        "A viewer in a living room, eyes wide, heart beating fast.",
+        "The viewer walking into a dealership, ignoring the price tag.",
+        "A split screen: the movie car vs. the real car with a huge loan payment."
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Psychology of Money",
+      "hook_type": "why",
+      "research_basis": "Studies on product placement and parasocial relationships (Journal of Consumer Research).",
+      "scores": {
+        "curiosity": 8,
+        "originality": 7,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 8
+      },
+      "language": "en",
+      "theme": "story",
+      "added": "2026-11-28T10:14+05:30"
+    },
+    {
+      "canonical_en": "How a fake insurance claim for a stolen car led to a massive fraud ring",
+      "title": "The Car That Was Stolen Twice",
+      "question": "How did a man get paid for a car he never lost?",
+      "hook": "He reported his car stolen, then bought the same car back from the junkyard.",
+      "angle": "Focuses on the 'phantom vehicle' scam where cars are cloned or reused to claim insurance multiple times.",
+      "why_care": "Explains a common but hidden financial crime that affects insurance premiums.",
+      "payoff": "The junkyard owner thought he was buying a cheap car, but he was buying a crime scene.",
+      "visual_moments": [
+        "A man waving goodbye to his car, which drives off into the night.",
+        "A police report being filed with a sad face.",
+        "The same car being sold at a junkyard to the same man.",
+        "Two identical cars sitting in a garage, one labeled 'Claimed', one 'Purchased'."
+      ],
+      "fact_status": "documented",
+      "category": "money_cons",
+      "format": "story",
+      "series": "Insurance Scams",
+      "hook_type": "how",
+      "research_basis": "Insurance fraud case studies (Insurance Information Institute).",
+      "scores": {
+        "curiosity": 7,
+        "originality": 7,
+        "visual": 8,
+        "clarity": 8,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "story",
+      "added": "2026-11-28T10:14+05:30"
+    },
+    {
+      "canonical_en": "Why people are more likely to help someone they see struggling in public",
+      "title": "The Bystander Effect in a Diner",
+      "question": "Why did nobody help the man who fell over?",
+      "hook": "The more people around, the less likely anyone is to help.",
+      "angle": "Explains the 'diffusion of responsibility' using a simple, relatable scenario in a diner.",
+      "why_care": "Helps viewers understand their own inaction in emergencies and how to overcome it.",
+      "payoff": "The person who finally helped was the one who felt the most guilt, not the most compassion.",
+      "visual_moments": [
+        "A man falling over in a crowded diner, everyone looking at their phones.",
+        "A split screen of 10 faces, all looking away.",
+        "One person standing up, stepping forward.",
+        "The crowd slowly turning to look at the helper, then clapping."
+      ],
+      "fact_status": "documented",
+      "category": "psychology",
+      "format": "explainer",
+      "series": "Human Behavior",
+      "hook_type": "why",
+      "research_basis": "Latané and Darley's bystander effect studies (1968).",
+      "scores": {
+        "curiosity": 7,
+        "originality": 6,
+        "visual": 8,
+        "clarity": 9,
+        "twist": 7
+      },
+      "language": "en",
+      "theme": "story",
+      "added": "2026-11-28T10:14+05:30"
     }
   ]
 }
