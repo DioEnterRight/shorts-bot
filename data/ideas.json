@@ -814,6 +814,17 @@
       "video_id": "20261128-162646-en-the-1784-british-hat-tax",
       "status": "produced",
       "created": "2026-11-28T16:35+05:30"
+    },
+    {
+      "canonical_en": "Hoover offered free airline tickets worth £600 to anyone buying a £100 vacuum, bankrupting the company when people bought vacuums just for the tickets.",
+      "question": "How did a free airline ticket promotion lose a famous brand forty-eight million pounds?",
+      "hook": "A company sold vacuum cleaners for one hundred pounds and gave away six hundred pounds of plane tickets with every purchase.",
+      "angle": "The classic corporate math blunder where a marketing team forgot customers will happily exploit flawed incentives.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-172443-en-the-hoover-free-flights-scan",
+      "status": "produced",
+      "created": "2026-11-28T17:57+05:30"
     }
   ],
   "backlog": [
@@ -1119,36 +1130,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "Hoover offered free airline tickets worth £600 to anyone buying a £100 vacuum, bankrupting the company when people bought vacuums just for the tickets.",
-      "title": "The Vacuum That Ruined a Company",
-      "question": "How did a free airline ticket promotion lose a famous brand forty-eight million pounds?",
-      "hook": "A company sold vacuum cleaners for one hundred pounds and gave away six hundred pounds of plane tickets with every purchase.",
-      "angle": "The classic corporate math blunder where a marketing team forgot customers will happily exploit flawed incentives.",
-      "why_care": "A hilarious and dramatic lesson in unintended consequences.",
-      "payoff": "Thousands of brand-new vacuums were thrown straight into landfills, while their owners flew to America for free.",
-      "visual_moments": [
-        "A customer handing over £100 cash and receiving a giant vacuum plus two golden airplane tickets.",
-        "A mountain of unopened Hoover vacuum boxes piled high in a landfill outside an airport runway.",
-        "Executives staring in terror at a financial chart arrow plunging straight through the floorboards."
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "story",
-      "series": "Billion-Dollar Blunders",
-      "hook_type": "paradox",
-      "research_basis": "UK Advertising Standards Authority records and 1992 Hoover free flights scandal reports",
-      "scores": {
-        "curiosity": 9,
-        "originality": 8,
-        "visual": 9,
-        "clarity": 10,
-        "twist": 9
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "Piggly Wiggly founder Clarence Saunders tried to crush Wall Street short sellers in 1923, so the exchange changed the rules overnight to ruin him.",
