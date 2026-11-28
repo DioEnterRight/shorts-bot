@@ -1756,6 +1756,22 @@
       "tag": "vid-20261128-183534-en-the-1923-piggly-wiggly-stock",
       "status": "queued",
       "created": "2026-11-28T19:21+05:30"
+    },
+    {
+      "id": "20261128-194045-en-hotelling-s-law",
+      "title": "Why Rivals Build Right Next Door",
+      "topic": "Hotelling's Law",
+      "canonical_en": "Hotelling's Law explains why competing stores and gas stations open right next to each other instead of spreading out.",
+      "language": "en",
+      "theme": "explainer",
+      "category": "business",
+      "hook_type": "paradox",
+      "hook_line": "Two ice cream sellers moved their carts until they touched.",
+      "duration": 35.27,
+      "storyboard": "claude",
+      "tag": "vid-20261128-194045-en-hotelling-s-law",
+      "status": "queued",
+      "created": "2026-11-28T20:10+05:30"
     }
   ],
   "version": 2,

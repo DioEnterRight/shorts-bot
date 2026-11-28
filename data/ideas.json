@@ -836,6 +836,17 @@
       "video_id": "20261128-183534-en-the-1923-piggly-wiggly-stock",
       "status": "produced",
       "created": "2026-11-28T19:21+05:30"
+    },
+    {
+      "canonical_en": "Hotelling's Law explains why competing stores and gas stations open right next to each other instead of spreading out.",
+      "question": "Why do two rival gas stations open on the exact same intersection?",
+      "hook": "Two ice cream sellers moved their carts closer together until they were touching, and made more money.",
+      "angle": "Using a simple 2D beach diagram to explain game theory and spatial competition visually.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-194045-en-hotelling-s-law",
+      "status": "produced",
+      "created": "2026-11-28T20:10+05:30"
     }
   ],
   "backlog": [
@@ -1141,36 +1152,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "Hotelling's Law explains why competing stores and gas stations open right next to each other instead of spreading out.",
-      "title": "Why Competing Stores Build Right Next Door",
-      "question": "Why do two rival gas stations open on the exact same intersection?",
-      "hook": "Two ice cream sellers moved their carts closer together until they were touching, and made more money.",
-      "angle": "Using a simple 2D beach diagram to explain game theory and spatial competition visually.",
-      "why_care": "Explains an everyday visual mystery you see every time you drive through a commercial district.",
-      "payoff": "By trying to steal each other's customers, both stores ended up forcing everyone to walk twice as far.",
-      "visual_moments": [
-        "Two ice cream carts on opposite ends of a sunny cartoon beach moving step-by-step toward the center line.",
-        "A split map showing two competing gas stations built right across the street from each other.",
-        "Angry customers walking all the way across empty hot sand to reach the crowded center spot."
-      ],
-      "fact_status": "documented",
-      "category": "business",
-      "format": "explainer",
-      "series": "Hidden Rules of Business",
-      "hook_type": "paradox",
-      "research_basis": "Harold Hotelling (1929) 'Stability in Competition', The Economic Journal",
-      "scores": {
-        "curiosity": 8,
-        "originality": 8,
-        "visual": 9,
-        "clarity": 10,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "Milliman's 1982 study showed playing slow background music in stores makes customers walk slower and spend 38 percent more money.",
