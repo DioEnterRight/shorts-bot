@@ -1674,6 +1674,22 @@
       "ig_state": "posted",
       "yt_state": "skipped_limit",
       "published_at": "2026-11-28T16:00+05:30"
+    },
+    {
+      "id": "20261128-152838-en-the-emperor-who-taxed-men-s",
+      "title": "The Tsar Who Taxed Facial Hair",
+      "topic": "The Emperor Who Taxed Men's Beards",
+      "canonical_en": "Peter the Great instituted a tax on beards in 1698 and forced men to carry a copper token declaring 'the beard is a useless burden'.",
+      "language": "en",
+      "theme": "explainer",
+      "category": "weird_history",
+      "hook_type": "paradox",
+      "hook_line": "In sixteen ninety eight, Russian men had to buy a metal coin just to keep their facial hair.",
+      "duration": 48.8,
+      "storyboard": "kit",
+      "tag": "vid-20261128-152838-en-the-emperor-who-taxed-men-s",
+      "status": "queued",
+      "created": "2026-11-28T16:07+05:30"
     }
   ],
   "version": 2,

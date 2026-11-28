@@ -792,6 +792,17 @@
       "video_id": "20261128-142824-en-the-1970-irish-bank-strike",
       "status": "produced",
       "created": "2026-11-28T15:24+05:30"
+    },
+    {
+      "canonical_en": "Peter the Great instituted a tax on beards in 1698 and forced men to carry a copper token declaring 'the beard is a useless burden'.",
+      "question": "Why did a Russian tsar force men to pay cash just to keep facial hair?",
+      "hook": "If a man wanted to grow a beard, he had to carry a metal coin that called his face a burden.",
+      "angle": "How taxation was used not to raise government money, but as aggressive social engineering to force European modernization.",
+      "language": "en",
+      "theme": "explainer",
+      "video_id": "20261128-152838-en-the-emperor-who-taxed-men-s",
+      "status": "produced",
+      "created": "2026-11-28T16:07+05:30"
     }
   ],
   "backlog": [
@@ -1097,36 +1108,6 @@
       "language": "en",
       "theme": "story",
       "added": "2026-11-28T10:14+05:30"
-    },
-    {
-      "canonical_en": "Peter the Great instituted a tax on beards in 1698 and forced men to carry a copper token declaring 'the beard is a useless burden'.",
-      "title": "The Emperor Who Taxed Men's Beards",
-      "question": "Why did a Russian tsar force men to pay cash just to keep facial hair?",
-      "hook": "If a man wanted to grow a beard, he had to carry a metal coin that called his face a burden.",
-      "angle": "How taxation was used not to raise government money, but as aggressive social engineering to force European modernization.",
-      "why_care": "Demonstrates how governments use financial penalties to change personal culture.",
-      "payoff": "Tax inspectors stood at city gates with giant razors, shaving anyone who forgot their beard token at home.",
-      "visual_moments": [
-        "Peter the Great physically snipping off a nobleman's long beard with heavy iron shears.",
-        "A copper beard token showing a nose and mustache with stamped Russian lettering.",
-        "A guard at a wooden city gate grabbing a traveler's chin and checking his pockets for the metal coin."
-      ],
-      "fact_status": "documented",
-      "category": "weird_history",
-      "format": "story",
-      "series": "Strange Laws of History",
-      "hook_type": "paradox",
-      "research_basis": "1698 Russian Imperial Edicts on the Beard Tax and State Historical Museum records",
-      "scores": {
-        "curiosity": 9,
-        "originality": 9,
-        "visual": 10,
-        "clarity": 9,
-        "twist": 8
-      },
-      "language": "en",
-      "theme": "explainer",
-      "added": "2026-11-28T13:35+05:30"
     },
     {
       "canonical_en": "The 1784 British Hat Tax fined hatmakers who forged tax stamps inside hat linings with the death penalty.",
